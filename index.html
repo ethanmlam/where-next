@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Next — Founder Migration Tracker</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e8;
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 32px 40px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+
+  header p {
+    font-size: 14px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  .controls {
+    padding: 16px 40px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .controls label {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .controls select, .controls input {
+    background: #16161f;
+    border: 1px solid #2a2a3a;
+    color: #ccc;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+  }
+
+  .controls select:focus, .controls input:focus {
+    border-color: #5566ff;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+  }
+
+  .pill:hover { opacity: 0.8; }
+
+  .pill.active {
+    border-color: rgba(255,255,255,0.3);
+    box-shadow: 0 0 8px rgba(85,102,255,0.3);
+  }
+
+  .view-tabs {
+    display: flex;
+    gap: 4px;
+    background: #16161f;
+    border-radius: 8px;
+    padding: 2px;
+  }
+
+  .view-tab {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #888;
+    transition: all 0.15s;
+    border: none;
+    background: none;
+  }
+
+  .view-tab.active {
+    background: #2a2a3a;
+    color: #fff;
+  }
+
+  .view-tab:hover { color: #ccc; }
+
+  #main-viz {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    position: relative;
+  }
+
+  /* Alluvial view */
+  #alluvial-container {
+    width: 100%;
+    padding: 20px 40px;
+    overflow-x: auto;
+  }
+
+  #alluvial-svg {
+    width: 100%;
+    min-height: 600px;
+  }
+
+  /* Cards / timeline view */
+  #cards-container {
+    display: none;
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 16px;
+  }
+
+  .founder-card {
+    background: #14141e;
+    border: 1px solid #222233;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .founder-card:hover {
+    border-color: #3a3a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .founder-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .founder-card .switches {
+    margin-bottom: 12px;
+  }
+
+  .switch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: rgba(85,102,255,0.12);
+    color: #8899ff;
+    margin: 2px 4px 2px 0;
+  }
+
+  .switch-badge .arrow { color: #555; }
+
+  .timeline-row {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  .role-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #ccc;
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+  }
+
+  .role-chip .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .role-chip .years {
+    color: #666;
+    font-size: 10px;
+  }
+
+  /* Sector colors */
+  .sector-finance { --c: #f59e0b; }
+  .sector-crypto { --c: #8b5cf6; }
+  .sector-ai { --c: #06b6d4; }
+  .sector-biotech { --c: #10b981; }
+  .sector-consumer { --c: #f472b6; }
+  .sector-enterprise { --c: #3b82f6; }
+  .sector-social { --c: #ec4899; }
+  .sector-defense { --c: #ef4444; }
+  .sector-vc { --c: #a78bfa; }
+  .sector-neurotech { --c: #14b8a6; }
+  .sector-aerospace { --c: #f97316; }
+  .sector-other { --c: #6b7280; }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    background: #1e1e2e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    pointer-events: none;
+    z-index: 1000;
+    max-width: 320px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    display: none;
+  }
+
+  .tooltip .tt-name {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .tooltip .tt-detail {
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    padding: 12px 40px;
+    display: flex;
+    gap: 32px;
+    font-size: 13px;
+    color: #666;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .stats-bar .stat-value {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    display: block;
+  }
+
+  .stats-bar .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+  }
+
+  /* Sector legend */
+  .sector-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 40px 12px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: #888;
+    cursor: pointer;
+    padding: 3px 8px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+
+  .legend-item:hover { background: rgba(255,255,255,0.05); }
+  .legend-item.dimmed { opacity: 0.3; }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  /* Alluvial specific */
+  .alluvial-path {
+    fill: none;
+    stroke-opacity: 0.25;
+    stroke-width: 2;
+    transition: stroke-opacity 0.2s, stroke-width 0.2s;
+    cursor: pointer;
+  }
+
+  .alluvial-path:hover, .alluvial-path.highlight {
+    stroke-opacity: 0.7;
+    stroke-width: 3.5;
+  }
+
+  .alluvial-path.dimmed {
+    stroke-opacity: 0.04;
+  }
+
+  .sector-block {
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .sector-block:hover { opacity: 0.85; }
+
+  .sector-label {
+    font-size: 11px;
+    fill: #999;
+    text-anchor: middle;
+    pointer-events: none;
+  }
+
+  .era-label {
+    font-size: 12px;
+    fill: #555;
+    text-anchor: middle;
+    font-weight: 600;
+  }
+
+  .person-label {
+    font-size: 10px;
+    fill: #888;
+    cursor: pointer;
+  }
+
+  .person-label:hover { fill: #fff; }
+
+  /* Hidden views */
+  .view-hidden { display: none !important; }
+
+  .switch-highlight {
+    background: rgba(255, 170, 0, 0.08);
+    border-color: rgba(255, 170, 0, 0.25);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Where Next</h1>
+  <p>Tracking where proven founders go after they leave. Sector switches = signal.</p>
+</header>
+
+<div class="stats-bar" id="stats-bar"></div>
+
+<div class="controls">
+  <div class="view-tabs">
+    <button class="view-tab active" data-view="alluvial">Flow</button>
+    <button class="view-tab" data-view="cards">Cards</button>
+  </div>
+  <div style="flex:1"></div>
+  <label>Filter sector:</label>
+  <select id="sector-filter">
+    <option value="all">All Sectors</option>
+  </select>
+  <label>Show only switchers:</label>
+  <input type="checkbox" id="switchers-only">
+</div>
+
+<div class="sector-legend" id="sector-legend"></div>
+
+<div id="main-viz">
+  <div id="alluvial-container">
+    <svg id="alluvial-svg"></svg>
+  </div>
+  <div id="cards-container" class="view-hidden"></div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <div class="tt-name"></div>
+  <div class="tt-detail"></div>
+</div>
+
+<script>
+// =====================================================
+// DATA
+// =====================================================
+const FOUNDERS_DATA = [
+  {
+    "name": "Fred Ehrsam",
+    "id": "fred-ehrsam",
+    "born": 1988,
+    "source": "https://en.wikipedia.org/wiki/Fred_Ehrsam",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Goldman Sachs",
+        "role": "FX Trader",
+        "sector": "Finance",
+        "start": 2010,
+        "end": 2012
+      },
+      {
+        "company": "Coinbase",
+        "role": "Co-founder & President",
+        "sector": "Crypto",
+        "start": 2012,
+        "end": 2017,
+        "note": "Stepped down from day-to-day, remained on board"
+      },
+      {
+        "company": "Paradigm",
+        "role": "Co-founder & Managing Partner",
+        "sector": "Crypto VC",
+        "start": 2018,
+        "end": 2023,
+        "note": "Stepped down to General Partner in Oct 2023"
+      },
+      {
+        "company": "Nudge",
+        "role": "Co-founder & CEO",
+        "sector": "Neurotech",
+        "start": 2024,
+        "end": null,
+        "note": "Non-invasive brain-computer interfaces using focused ultrasound. $100M Series A (Jul 2025). Co-founded with ex-Neuralink VP."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Finance",
+        "to": "Crypto",
+        "year": 2012
+      },
+      {
+        "from": "Crypto VC",
+        "to": "Neurotech",
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "name": "Balaji Srinivasan",
+    "id": "balaji-srinivasan",
+    "born": 1980,
+    "source": "https://en.wikipedia.org/wiki/Balaji_Srinivasan",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Counsyl",
+        "role": "Co-founder",
+        "sector": "Biotech",
+        "start": 2007,
+        "end": 2018,
+        "note": "Genetic testing. Acquired by Myriad Genetics for $375M"
+      },
+      {
+        "company": "Andreessen Horowitz",
+        "role": "General Partner",
+        "sector": "VC",
+        "start": 2013,
+        "end": 2017
+      },
+      {
+        "company": "21 Inc / Earn.com",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2013,
+        "end": 2018,
+        "note": "Bitcoin mining -> pay-to-reply emails. Acquired by Coinbase for $120M"
+      },
+      {
+        "company": "Coinbase",
+        "role": "CTO",
+        "sector": "Crypto",
+        "start": 2018,
+        "end": 2019
+      },
+      {
+        "company": "The Network School",
+        "role": "Founder",
+        "sector": "Education / Network States",
+        "start": 2024,
+        "end": null,
+        "note": "Physical campus in Forest City, Malaysia. 400+ students. Expanding to Miami, Dubai, Tokyo."
+      },
+      {
+        "company": "Balaji Fund",
+        "role": "Founder",
+        "sector": "VC",
+        "start": 2023,
+        "end": null,
+        "note": "Venture fund backed by Armstrong, Naval, etc."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Biotech",
+        "to": "VC",
+        "year": 2013
+      },
+      {
+        "from": "VC",
+        "to": "Crypto",
+        "year": 2013
+      },
+      {
+        "from": "Crypto",
+        "to": "Education / Network States",
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "name": "Alex Atallah",
+    "id": "alex-atallah",
+    "born": null,
+    "source": "https://www.theblock.co/post/360093/opensea-co-founder-alex-atallah-raises-40-million-for-ai-startup-openrouter",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Palantir",
+        "role": "Engineer",
+        "sector": "Defense Tech",
+        "start": null,
+        "end": null
+      },
+      {
+        "company": "OpenSea",
+        "role": "Co-founder & CTO",
+        "sector": "Crypto / NFTs",
+        "start": 2017,
+        "end": 2024
+      },
+      {
+        "company": "OpenRouter",
+        "role": "Founder & CEO",
+        "sector": "AI Infrastructure",
+        "start": 2024,
+        "end": null,
+        "note": "Unified LLM API. $40M raised (Jun 2025)."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Defense Tech",
+        "to": "Crypto / NFTs",
+        "year": 2017
+      },
+      {
+        "from": "Crypto / NFTs",
+        "to": "AI Infrastructure",
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "name": "Brian Armstrong",
+    "id": "brian-armstrong",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Brian_Armstrong_(businessman)",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "IBM",
+        "role": "Developer",
+        "sector": "Enterprise Tech",
+        "start": 2003,
+        "end": 2005
+      },
+      {
+        "company": "Deloitte",
+        "role": "Consultant",
+        "sector": "Consulting",
+        "start": 2005,
+        "end": 2010
+      },
+      {
+        "company": "Airbnb",
+        "role": "Software Engineer",
+        "sector": "Consumer Tech",
+        "start": 2011,
+        "end": 2012
+      },
+      {
+        "company": "Coinbase",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2012,
+        "end": null
+      },
+      {
+        "company": "NewLimit",
+        "role": "Co-founder",
+        "sector": "Biotech / Longevity",
+        "start": 2022,
+        "end": null,
+        "note": "Epigenetic reprogramming for aging. $40M Series A (May 2023)"
+      },
+      {
+        "company": "ResearchHub",
+        "role": "Founder",
+        "sector": "Science / Open Access",
+        "start": 2020,
+        "end": null,
+        "note": "GitHub for research papers"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Crypto",
+        "year": 2012
+      },
+      {
+        "from": "Crypto",
+        "to": "Biotech / Longevity",
+        "year": 2022,
+        "note": "Side venture while still CEO of Coinbase"
+      }
+    ]
+  },
+  {
+    "name": "Matt Huang",
+    "id": "matt-huang",
+    "born": null,
+    "source": "https://www.matthuang.com/",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Hotspots",
+        "role": "Founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2010,
+        "end": 2012,
+        "note": "YC company, acquired by Twitter"
+      },
+      {
+        "company": "Sequoia Capital",
+        "role": "Partner",
+        "sector": "VC",
+        "start": 2014,
+        "end": 2018,
+        "note": "Led crypto efforts at Sequoia"
+      },
+      {
+        "company": "Paradigm",
+        "role": "Co-founder & Managing Partner",
+        "sector": "Crypto VC",
+        "start": 2018,
+        "end": null,
+        "note": "Co-founded with Fred Ehrsam. $2.5B fund (2021)"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "VC",
+        "year": 2014
+      },
+      {
+        "from": "VC",
+        "to": "Crypto VC",
+        "year": 2018
+      }
+    ]
+  },
+  {
+    "name": "Dario Amodei",
+    "id": "dario-amodei",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Dario_Amodei",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Stanford Medicine",
+        "role": "Postdoc",
+        "sector": "Academia / Neuroscience",
+        "start": 2011,
+        "end": 2014
+      },
+      {
+        "company": "Baidu",
+        "role": "Researcher",
+        "sector": "AI",
+        "start": 2014,
+        "end": 2015
+      },
+      {
+        "company": "Google",
+        "role": "Researcher",
+        "sector": "AI",
+        "start": 2015,
+        "end": 2016
+      },
+      {
+        "company": "OpenAI",
+        "role": "VP of Research",
+        "sector": "AI",
+        "start": 2016,
+        "end": 2021
+      },
+      {
+        "company": "Anthropic",
+        "role": "Co-founder & CEO",
+        "sector": "AI Safety",
+        "start": 2021,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Academia / Neuroscience",
+        "to": "AI",
+        "year": 2014
+      }
+    ]
+  },
+  {
+    "name": "Mustafa Suleyman",
+    "id": "mustafa-suleyman",
+    "born": 1984,
+    "source": "https://en.wikipedia.org/wiki/Mustafa_Suleyman",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Reos Partners",
+        "role": "Founder",
+        "sector": "Consulting / Conflict Resolution",
+        "start": 2007,
+        "end": 2010
+      },
+      {
+        "company": "DeepMind",
+        "role": "Co-founder & Head of Applied AI",
+        "sector": "AI Research",
+        "start": 2010,
+        "end": 2019,
+        "note": "Acquired by Google for ~$500M in 2014"
+      },
+      {
+        "company": "Google",
+        "role": "VP of AI Product Management",
+        "sector": "Big Tech / AI",
+        "start": 2019,
+        "end": 2022
+      },
+      {
+        "company": "Inflection AI",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer AI",
+        "start": 2022,
+        "end": 2024,
+        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Kar\u00e9n Simonyan"
+      },
+      {
+        "company": "Microsoft AI",
+        "role": "CEO",
+        "sector": "Big Tech / AI",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consulting / Conflict Resolution",
+        "to": "AI Research",
+        "year": 2010
+      }
+    ]
+  },
+  {
+    "name": "Jack Dorsey",
+    "id": "jack-dorsey",
+    "born": 1976,
+    "source": "https://en.wikipedia.org/wiki/Jack_Dorsey",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Twitter",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2006,
+        "end": 2021,
+        "note": "CEO 2007-2008, then again 2015-2021"
+      },
+      {
+        "company": "Square / Block",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech",
+        "start": 2009,
+        "end": null,
+        "note": "Renamed to Block Inc. Expanded into crypto (Cash App Bitcoin, TBD)"
+      },
+      {
+        "company": "Bluesky",
+        "role": "Founder",
+        "sector": "Decentralized Social",
+        "start": 2019,
+        "end": null,
+        "note": "Decentralized social protocol, later departed from board"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social Media",
+        "to": "Fintech",
+        "year": 2009
+      },
+      {
+        "from": "Fintech",
+        "to": "Crypto / Decentralized Social",
+        "year": 2019
+      }
+    ]
+  },
+  {
+    "name": "Stewart Butterfield",
+    "id": "stewart-butterfield",
+    "born": 1973,
+    "source": "https://en.wikipedia.org/wiki/Stewart_Butterfield",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Ludicorp (Game Neverending)",
+        "role": "Co-founder",
+        "sector": "Gaming",
+        "start": 2002,
+        "end": 2004,
+        "note": "MMO game failed, pivoted to Flickr"
+      },
+      {
+        "company": "Flickr",
+        "role": "Co-founder",
+        "sector": "Consumer Tech / Photo Sharing",
+        "start": 2004,
+        "end": 2008,
+        "note": "Acquired by Yahoo for ~$25M (2005)"
+      },
+      {
+        "company": "Tiny Speck (Glitch)",
+        "role": "Founder",
+        "sector": "Gaming",
+        "start": 2009,
+        "end": 2012,
+        "note": "MMO game, shut down Dec 2012"
+      },
+      {
+        "company": "Slack",
+        "role": "Founder & CEO",
+        "sector": "Enterprise SaaS",
+        "start": 2013,
+        "end": 2022,
+        "note": "Internal chat tool from Glitch became the product. Acquired by Salesforce for $27.7B (2021)"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Gaming",
+        "to": "Consumer Tech / Photo Sharing",
+        "year": 2004
+      },
+      {
+        "from": "Consumer Tech / Photo Sharing",
+        "to": "Gaming",
+        "year": 2009
+      },
+      {
+        "from": "Gaming",
+        "to": "Enterprise SaaS",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "name": "Reid Hoffman",
+    "id": "reid-hoffman",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Reid_Hoffman",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Apple (eWorld)",
+        "role": "Product",
+        "sector": "Consumer Tech",
+        "start": 1994,
+        "end": 1996
+      },
+      {
+        "company": "SocialNet.com",
+        "role": "Co-founder",
+        "sector": "Social / Dating",
+        "start": 1997,
+        "end": 2000
+      },
+      {
+        "company": "PayPal",
+        "role": "Board Member & EVP",
+        "sector": "Fintech",
+        "start": 2000,
+        "end": 2002
+      },
+      {
+        "company": "LinkedIn",
+        "role": "Co-founder & CEO",
+        "sector": "Professional Social Network",
+        "start": 2002,
+        "end": 2016,
+        "note": "Acquired by Microsoft for $26.2B (2016)"
+      },
+      {
+        "company": "Greylock Partners",
+        "role": "Partner",
+        "sector": "VC",
+        "start": 2009,
+        "end": null
+      },
+      {
+        "company": "Inflection AI",
+        "role": "Co-founder",
+        "sector": "Consumer AI",
+        "start": 2022,
+        "end": 2024,
+        "note": "Co-founded with Mustafa Suleyman"
+      },
+      {
+        "company": "Manas AI",
+        "role": "Co-founder",
+        "sector": "AI",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Fintech",
+        "year": 2000
+      },
+      {
+        "from": "Fintech",
+        "to": "Professional Social Network",
+        "year": 2002
+      },
+      {
+        "from": "VC",
+        "to": "Consumer AI",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Elon Musk",
+    "id": "elon-musk",
+    "born": 1971,
+    "source": "https://en.wikipedia.org/wiki/Elon_Musk",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Zip2",
+        "role": "Co-founder",
+        "sector": "Internet / Media",
+        "start": 1995,
+        "end": 1999,
+        "note": "City guide software. Sold to Compaq for $307M"
+      },
+      {
+        "company": "X.com / PayPal",
+        "role": "Co-founder",
+        "sector": "Fintech",
+        "start": 1999,
+        "end": 2002,
+        "note": "Merged with Confinity, became PayPal. Sold to eBay for $1.5B"
+      },
+      {
+        "company": "SpaceX",
+        "role": "Founder & CEO",
+        "sector": "Aerospace",
+        "start": 2002,
+        "end": null
+      },
+      {
+        "company": "Tesla",
+        "role": "Chairman & CEO",
+        "sector": "Automotive / Clean Energy",
+        "start": 2004,
+        "end": null
+      },
+      {
+        "company": "Neuralink",
+        "role": "Co-founder",
+        "sector": "Neurotech",
+        "start": 2016,
+        "end": null
+      },
+      {
+        "company": "The Boring Company",
+        "role": "Founder",
+        "sector": "Infrastructure / Tunneling",
+        "start": 2016,
+        "end": null
+      },
+      {
+        "company": "OpenAI",
+        "role": "Co-founder & Board",
+        "sector": "AI",
+        "start": 2015,
+        "end": 2018,
+        "note": "Left board in 2018"
+      },
+      {
+        "company": "xAI",
+        "role": "Founder",
+        "sector": "AI",
+        "start": 2023,
+        "end": null,
+        "note": "Built Grok LLM"
+      },
+      {
+        "company": "X Corp (Twitter)",
+        "role": "Owner & CTO",
+        "sector": "Social Media",
+        "start": 2022,
+        "end": null,
+        "note": "Acquired Twitter for $44B"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Internet / Media",
+        "to": "Fintech",
+        "year": 1999
+      },
+      {
+        "from": "Fintech",
+        "to": "Aerospace",
+        "year": 2002
+      },
+      {
+        "from": "Aerospace",
+        "to": "Automotive / Clean Energy",
+        "year": 2004
+      },
+      {
+        "from": "Automotive / Clean Energy",
+        "to": "AI",
+        "year": 2015
+      },
+      {
+        "from": "AI",
+        "to": "Social Media",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Peter Thiel",
+    "id": "peter-thiel",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Peter_Thiel",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Sullivan & Cromwell",
+        "role": "Lawyer",
+        "sector": "Law",
+        "start": 1992,
+        "end": 1996
+      },
+      {
+        "company": "PayPal",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech",
+        "start": 1998,
+        "end": 2002,
+        "note": "Sold to eBay for $1.5B"
+      },
+      {
+        "company": "Clarium Capital",
+        "role": "Founder",
+        "sector": "Hedge Fund",
+        "start": 2002,
+        "end": null
+      },
+      {
+        "company": "Palantir",
+        "role": "Co-founder & Chairman",
+        "sector": "Defense Tech / Data",
+        "start": 2003,
+        "end": null
+      },
+      {
+        "company": "Founders Fund",
+        "role": "Co-founder & Partner",
+        "sector": "VC",
+        "start": 2005,
+        "end": null,
+        "note": "Early investor in Facebook, SpaceX, Anduril"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Law",
+        "to": "Fintech",
+        "year": 1998
+      },
+      {
+        "from": "Fintech",
+        "to": "Defense Tech / Data",
+        "year": 2003
+      }
+    ]
+  },
+  {
+    "name": "Devin Finzer",
+    "id": "devin-finzer",
+    "born": 1990,
+    "source": "https://en.wikipedia.org/wiki/Devin_Finzer",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Pinterest",
+        "role": "Software Engineer",
+        "sector": "Consumer Tech",
+        "start": 2013,
+        "end": 2015
+      },
+      {
+        "company": "Claimdog",
+        "role": "Co-founder",
+        "sector": "Fintech",
+        "start": 2015,
+        "end": 2016,
+        "note": "Acquired by Credit Karma"
+      },
+      {
+        "company": "OpenSea",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto / NFTs",
+        "start": 2017,
+        "end": null,
+        "note": "YC W18. Peaked at $13.3B valuation (Jan 2022)"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Fintech",
+        "year": 2015
+      },
+      {
+        "from": "Fintech",
+        "to": "Crypto / NFTs",
+        "year": 2017
+      }
+    ]
+  }
+];
+
+// =====================================================
+// SECTOR COLORS
+// =====================================================
+const SECTOR_COLORS = {
+  'Finance': '#f59e0b',
+  'Crypto': '#8b5cf6',
+  'Crypto VC': '#9d6dfc',
+  'Crypto / NFTs': '#8b5cf6',
+  'Crypto / Decentralized Social': '#7c3aed',
+  'AI': '#06b6d4',
+  'AI Safety': '#0ea5e9',
+  'AI Research': '#22d3ee',
+  'AI Infrastructure': '#0891b2',
+  'Consumer AI': '#38bdf8',
+  'Big Tech / AI': '#0284c7',
+  'Biotech': '#10b981',
+  'Biotech / Longevity': '#34d399',
+  'Neurotech': '#14b8a6',
+  'Consumer Tech': '#f472b6',
+  'Consumer Tech / Photo Sharing': '#f472b6',
+  'Enterprise Tech': '#3b82f6',
+  'Enterprise SaaS': '#6366f1',
+  'Social Media': '#ec4899',
+  'Social / Dating': '#f43f5e',
+  'Professional Social Network': '#e879f9',
+  'Decentralized Social': '#d946ef',
+  'Defense Tech': '#ef4444',
+  'Defense Tech / Data': '#dc2626',
+  'VC': '#a78bfa',
+  'Hedge Fund': '#c084fc',
+  'Aerospace': '#f97316',
+  'Automotive / Clean Energy': '#facc15',
+  'Fintech': '#fbbf24',
+  'Law': '#9ca3af',
+  'Consulting': '#6b7280',
+  'Consulting / Conflict Resolution': '#6b7280',
+  'Academia / Neuroscience': '#818cf8',
+  'Internet / Media': '#fb923c',
+  'Infrastructure / Tunneling': '#a3a3a3',
+  'Gaming': '#84cc16',
+  'Education / Network States': '#2dd4bf',
+  'Science / Open Access': '#4ade80',
+};
+
+function getSectorColor(sector) {
+  return SECTOR_COLORS[sector] || '#6b7280';
+}
+
+// Normalize sectors into broader categories for the alluvial
+function broadSector(s) {
+  if (!s) return 'Other';
+  const l = s.toLowerCase();
+  if (l.includes('crypto') || l.includes('nft') || l.includes('decentralized social')) return 'Crypto';
+  if (l.includes('ai') || l.includes('artificial')) return 'AI';
+  if (l.includes('biotech') || l.includes('longevity') || l.includes('neurotech') || l.includes('neuroscience')) return 'Bio / Neurotech';
+  if (l.includes('fintech') || l.includes('finance') || l.includes('hedge')) return 'Finance / Fintech';
+  if (l.includes('vc') || l.includes('venture')) return 'VC';
+  if (l.includes('defense') || l.includes('aerospace')) return 'Defense / Aerospace';
+  if (l.includes('social') || l.includes('professional social')) return 'Social';
+  if (l.includes('consumer') || l.includes('photo')) return 'Consumer Tech';
+  if (l.includes('enterprise') || l.includes('saas')) return 'Enterprise';
+  if (l.includes('gaming')) return 'Gaming';
+  if (l.includes('education') || l.includes('network state') || l.includes('science')) return 'Education / Science';
+  if (l.includes('law') || l.includes('consulting') || l.includes('conflict')) return 'Professional Services';
+  if (l.includes('internet') || l.includes('media')) return 'Internet / Media';
+  if (l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling')) return 'Hardware / Energy';
+  return 'Other';
+}
+
+const BROAD_COLORS = {
+  'Crypto': '#8b5cf6',
+  'AI': '#06b6d4',
+  'Bio / Neurotech': '#10b981',
+  'Finance / Fintech': '#f59e0b',
+  'VC': '#a78bfa',
+  'Defense / Aerospace': '#ef4444',
+  'Social': '#ec4899',
+  'Consumer Tech': '#f472b6',
+  'Enterprise': '#3b82f6',
+  'Gaming': '#84cc16',
+  'Education / Science': '#2dd4bf',
+  'Professional Services': '#6b7280',
+  'Internet / Media': '#fb923c',
+  'Hardware / Energy': '#facc15',
+  'Other': '#4b5563',
+};
+
+// =====================================================
+// STATE
+// =====================================================
+let currentView = 'alluvial';
+let highlightedSector = null;
+let highlightedPerson = null;
+let switchersOnly = false;
+let sectorFilter = 'all';
+
+// =====================================================
+// INIT
+// =====================================================
+document.addEventListener('DOMContentLoaded', () => {
+  computeStats();
+  populateFilters();
+  buildLegend();
+  renderAlluvial();
+  renderCards();
+  setupEvents();
+});
+
+function computeStats() {
+  const founders = getFiltered();
+  const switches = founders.reduce((sum, f) => sum + (f.sectorSwitches?.length || 0), 0);
+  const allSectors = new Set();
+  founders.forEach(f => f.roles.forEach(r => allSectors.add(broadSector(r.sector))));
+  
+  // Find hottest destination
+  const destCounts = {};
+  founders.forEach(f => {
+    if (f.roles.length > 0) {
+      const last = f.roles[f.roles.length - 1];
+      const bs = broadSector(last.sector);
+      destCounts[bs] = (destCounts[bs] || 0) + 1;
+    }
+  });
+  const hottest = Object.entries(destCounts).sort((a, b) => b[1] - a[1])[0];
+
+  document.getElementById('stats-bar').innerHTML = `
+    <div><span class="stat-value">${founders.length}</span><span class="stat-label">Founders tracked</span></div>
+    <div><span class="stat-value">${switches}</span><span class="stat-label">Sector switches</span></div>
+    <div><span class="stat-value">${allSectors.size}</span><span class="stat-label">Sectors</span></div>
+    <div><span class="stat-value" style="color:${BROAD_COLORS[hottest[0]]}">${hottest[0]}</span><span class="stat-label">Hottest current sector</span></div>
+  `;
+}
+
+function getFiltered() {
+  let data = [...FOUNDERS_DATA];
+  if (switchersOnly) {
+    data = data.filter(f => f.sectorSwitches && f.sectorSwitches.length > 0);
+  }
+  if (sectorFilter !== 'all') {
+    data = data.filter(f => f.roles.some(r => broadSector(r.sector) === sectorFilter));
+  }
+  return data;
+}
+
+function populateFilters() {
+  const sectors = new Set();
+  FOUNDERS_DATA.forEach(f => f.roles.forEach(r => sectors.add(broadSector(r.sector))));
+  const sel = document.getElementById('sector-filter');
+  [...sectors].sort().forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s;
+    opt.textContent = s;
+    sel.appendChild(opt);
+  });
+}
+
+function buildLegend() {
+  const container = document.getElementById('sector-legend');
+  container.innerHTML = '';
+  Object.entries(BROAD_COLORS).forEach(([sector, color]) => {
+    // Only show sectors that appear in data
+    const hasData = FOUNDERS_DATA.some(f => f.roles.some(r => broadSector(r.sector) === sector));
+    if (!hasData) return;
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="legend-dot" style="background:${color}"></span>${sector}`;
+    item.addEventListener('click', () => {
+      if (highlightedSector === sector) {
+        highlightedSector = null;
+        document.querySelectorAll('.legend-item').forEach(i => i.classList.remove('dimmed'));
+      } else {
+        highlightedSector = sector;
+        document.querySelectorAll('.legend-item').forEach(i => {
+          i.classList.toggle('dimmed', !i.textContent.includes(sector));
+        });
+      }
+      updateHighlights();
+    });
+    container.appendChild(item);
+  });
+}
+
+function setupEvents() {
+  // View tabs
+  document.querySelectorAll('.view-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentView = tab.dataset.view;
+      document.getElementById('alluvial-container').classList.toggle('view-hidden', currentView !== 'alluvial');
+      document.getElementById('cards-container').classList.toggle('view-hidden', currentView !== 'cards');
+    });
+  });
+
+  // Filters
+  document.getElementById('sector-filter').addEventListener('change', (e) => {
+    sectorFilter = e.target.value;
+    refresh();
+  });
+
+  document.getElementById('switchers-only').addEventListener('change', (e) => {
+    switchersOnly = e.target.checked;
+    refresh();
+  });
+}
+
+function refresh() {
+  computeStats();
+  renderAlluvial();
+  renderCards();
+}
+
+// =====================================================
+// TOOLTIP
+// =====================================================
+const tooltip = document.getElementById('tooltip');
+
+function showTooltip(e, name, detail) {
+  tooltip.querySelector('.tt-name').textContent = name;
+  tooltip.querySelector('.tt-detail').innerHTML = detail;
+  tooltip.style.display = 'block';
+  positionTooltip(e);
+}
+
+function positionTooltip(e) {
+  let x = e.clientX + 12;
+  let y = e.clientY + 12;
+  if (x + 320 > window.innerWidth) x = e.clientX - 330;
+  if (y + 200 > window.innerHeight) y = e.clientY - 200;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  tooltip.style.display = 'none';
+}
+
+// =====================================================
+// ALLUVIAL DIAGRAM
+// =====================================================
+function renderAlluvial() {
+  const svg = document.getElementById('alluvial-svg');
+  svg.innerHTML = '';
+
+  const founders = getFiltered();
+  if (founders.length === 0) return;
+
+  // Define era columns
+  const eras = [
+    { label: 'Pre-2005', range: [0, 2004] },
+    { label: '2005-2010', range: [2005, 2010] },
+    { label: '2011-2015', range: [2011, 2015] },
+    { label: '2016-2020', range: [2016, 2020] },
+    { label: '2021-2026', range: [2021, 2026] },
+  ];
+
+  // For each founder, determine which broad sector they were in during each era
+  const founderEras = founders.map(f => {
+    return eras.map(era => {
+      // Find the role active during this era
+      const activeRoles = f.roles.filter(r => {
+        const start = r.start || 2000;
+        const end = r.end || 2026;
+        return start <= era.range[1] && end >= era.range[0];
+      });
+      if (activeRoles.length === 0) return null;
+      // Pick the most recent role in the era
+      const role = activeRoles[activeRoles.length - 1];
+      return broadSector(role.sector);
+    });
+  });
+
+  // Count flows between eras
+  // For each column, count people in each sector
+  const columnSectors = eras.map((era, i) => {
+    const counts = {};
+    founderEras.forEach(fe => {
+      if (fe[i]) {
+        counts[fe[i]] = (counts[fe[i]] || 0) + 1;
+      }
+    });
+    return counts;
+  });
+
+  // Layout
+  const W = Math.max(1000, window.innerWidth - 80);
+  const H = 600;
+  const padX = 100;
+  const padY = 60;
+  const colW = 120;
+  const colSpacing = (W - 2 * padX - colW) / (eras.length - 1);
+  
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('width', W);
+  svg.setAttribute('height', H);
+
+  // Build sector positions per column
+  const colPositions = eras.map((era, colIdx) => {
+    const sectors = columnSectors[colIdx];
+    const total = Object.values(sectors).reduce((a, b) => a + b, 0);
+    const usableH = H - 2 * padY;
+    let y = padY;
+    const positions = {};
+    
+    // Sort sectors by size for visual clarity
+    const sorted = Object.entries(sectors).sort((a, b) => b[1] - a[1]);
+    
+    sorted.forEach(([sector, count]) => {
+      const h = (count / Math.max(total, 1)) * usableH;
+      positions[sector] = { y, h, count, used: 0 };
+      y += h + 4;
+    });
+    
+    return positions;
+  });
+
+  // Draw era labels
+  eras.forEach((era, i) => {
+    const x = padX + i * colSpacing + colW / 2;
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', x);
+    label.setAttribute('y', 28);
+    label.setAttribute('class', 'era-label');
+    label.textContent = era.label;
+    svg.appendChild(label);
+  });
+
+  // Draw sector blocks
+  eras.forEach((era, i) => {
+    const x = padX + i * colSpacing;
+    const positions = colPositions[i];
+    
+    Object.entries(positions).forEach(([sector, pos]) => {
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', x);
+      rect.setAttribute('y', pos.y);
+      rect.setAttribute('width', colW);
+      rect.setAttribute('height', Math.max(pos.h, 2));
+      rect.setAttribute('rx', 4);
+      rect.setAttribute('fill', BROAD_COLORS[sector] || '#4b5563');
+      rect.setAttribute('opacity', '0.6');
+      rect.setAttribute('class', 'sector-block');
+      rect.setAttribute('data-sector', sector);
+      
+      rect.addEventListener('mouseenter', (e) => {
+        const people = founders.filter((f, fi) => founderEras[fi][i] === sector);
+        showTooltip(e, `${sector} (${era.label})`, 
+          `${pos.count} founder${pos.count > 1 ? 's' : ''}:<br>` + 
+          people.map(p => `• ${p.name}`).join('<br>')
+        );
+      });
+      rect.addEventListener('mousemove', positionTooltip);
+      rect.addEventListener('mouseleave', hideTooltip);
+      
+      svg.appendChild(rect);
+
+      // Sector label on block
+      if (pos.h > 18) {
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', x + colW / 2);
+        text.setAttribute('y', pos.y + pos.h / 2 + 4);
+        text.setAttribute('class', 'sector-label');
+        text.setAttribute('fill', '#fff');
+        text.setAttribute('opacity', '0.9');
+        text.textContent = pos.count > 1 ? `${sector} (${pos.count})` : sector;
+        // Truncate if too long
+        if (sector.length > 16 && pos.h < 30) {
+          text.textContent = sector.substring(0, 14) + '...';
+        }
+        svg.appendChild(text);
+      }
+    });
+  });
+
+  // Draw flow paths for each founder
+  founderEras.forEach((fe, fi) => {
+    const founder = founders[fi];
+    const color = (() => {
+      // Color by their most recent sector
+      const lastSector = fe.filter(s => s !== null).pop();
+      return BROAD_COLORS[lastSector] || '#6b7280';
+    })();
+
+    for (let i = 0; i < eras.length - 1; i++) {
+      const from = fe[i];
+      const to = fe[i + 1];
+      if (!from || !to) continue;
+
+      const fromPos = colPositions[i][from];
+      const toPos = colPositions[i + 1][to];
+      if (!fromPos || !toPos) continue;
+
+      const isSectorSwitch = from !== to;
+      
+      // Allocate vertical position within the sector block
+      const unitH_from = fromPos.h / fromPos.count;
+      const unitH_to = toPos.h / toPos.count;
+      
+      const y1 = fromPos.y + fromPos.used * unitH_from + unitH_from / 2;
+      const y2 = toPos.y + toPos.used * unitH_to + unitH_to / 2;
+      
+      fromPos.used++;
+      toPos.used++;
+
+      const x1 = padX + i * colSpacing + colW;
+      const x2 = padX + (i + 1) * colSpacing;
+      const cx = (x1 + x2) / 2;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', `M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`);
+      path.setAttribute('stroke', color);
+      path.setAttribute('class', 'alluvial-path');
+      path.setAttribute('data-founder', founder.id);
+      path.setAttribute('data-from-sector', from);
+      path.setAttribute('data-to-sector', to);
+      
+      if (isSectorSwitch) {
+        path.setAttribute('stroke-opacity', '0.5');
+        path.setAttribute('stroke-width', '3');
+        path.setAttribute('stroke-dasharray', '');
+      }
+
+      path.addEventListener('mouseenter', (e) => {
+        highlightedPerson = founder.id;
+        updateHighlights();
+        const switchLabel = isSectorSwitch ? ' <span style="color:#fbbf24">[SECTOR SWITCH]</span>' : '';
+        showTooltip(e, founder.name, 
+          `${from} → ${to}${switchLabel}<br>` +
+          `<span style="color:#666">${eras[i].label} → ${eras[i+1].label}</span>`
+        );
+      });
+      path.addEventListener('mousemove', positionTooltip);
+      path.addEventListener('mouseleave', () => {
+        highlightedPerson = null;
+        updateHighlights();
+        hideTooltip();
+      });
+
+      svg.appendChild(path);
+    }
+  });
+
+  // Reset used counters (they were consumed during path drawing)
+  colPositions.forEach(col => {
+    Object.values(col).forEach(pos => pos.used = 0);
+  });
+
+  // Add person names on the right side
+  const lastCol = eras.length - 1;
+  const nameX = padX + lastCol * colSpacing + colW + 10;
+  
+  // Group by their last sector
+  const byLastSector = {};
+  founderEras.forEach((fe, fi) => {
+    const lastSector = fe[lastCol];
+    if (!lastSector) return;
+    if (!byLastSector[lastSector]) byLastSector[lastSector] = [];
+    byLastSector[lastSector].push(founders[fi]);
+  });
+
+  Object.entries(byLastSector).forEach(([sector, people]) => {
+    const pos = colPositions[lastCol][sector];
+    if (!pos) return;
+    
+    const unitH = pos.h / pos.count;
+    people.forEach((person, i) => {
+      const y = pos.y + i * unitH + unitH / 2;
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', nameX);
+      text.setAttribute('y', y + 3);
+      text.setAttribute('class', 'person-label');
+      text.setAttribute('data-founder', person.id);
+      text.textContent = person.name;
+      
+      text.addEventListener('mouseenter', (e) => {
+        highlightedPerson = person.id;
+        updateHighlights();
+        const roles = person.roles.map(r => 
+          `• ${r.company} (${r.sector}) ${r.start || '?'}${r.end ? '-' + r.end : '-now'}`
+        ).join('<br>');
+        showTooltip(e, person.name, roles);
+      });
+      text.addEventListener('mousemove', positionTooltip);
+      text.addEventListener('mouseleave', () => {
+        highlightedPerson = null;
+        updateHighlights();
+        hideTooltip();
+      });
+      
+      svg.appendChild(text);
+    });
+  });
+}
+
+function updateHighlights() {
+  document.querySelectorAll('.alluvial-path').forEach(path => {
+    const founderId = path.getAttribute('data-founder');
+    const fromSector = path.getAttribute('data-from-sector');
+    const toSector = path.getAttribute('data-to-sector');
+
+    if (highlightedPerson) {
+      path.classList.toggle('highlight', founderId === highlightedPerson);
+      path.classList.toggle('dimmed', founderId !== highlightedPerson);
+    } else if (highlightedSector) {
+      const matches = fromSector === highlightedSector || toSector === highlightedSector;
+      path.classList.toggle('highlight', matches);
+      path.classList.toggle('dimmed', !matches);
+    } else {
+      path.classList.remove('highlight', 'dimmed');
+    }
+  });
+}
+
+// =====================================================
+// CARDS VIEW
+// =====================================================
+function renderCards() {
+  const container = document.getElementById('cards-container');
+  container.innerHTML = '';
+
+  const founders = getFiltered();
+  
+  // Sort: most sector switches first
+  const sorted = [...founders].sort((a, b) => 
+    (b.sectorSwitches?.length || 0) - (a.sectorSwitches?.length || 0)
+  );
+
+  sorted.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'founder-card' + (f.sectorSwitches?.length > 0 ? ' switch-highlight' : '');
+    
+    const switches = (f.sectorSwitches || []).map(s => 
+      `<span class="switch-badge">${s.from} <span class="arrow">→</span> ${s.to} <span style="color:#555">(${s.year})</span></span>`
+    ).join('');
+
+    const roles = f.roles.map(r => {
+      const color = getSectorColor(r.sector);
+      const years = `${r.start || '?'}${r.end ? '-' + r.end : '-now'}`;
+      return `<div class="role-chip" style="border-color:${color}22">
+        <span class="dot" style="background:${color}"></span>
+        <span>${r.company}</span>
+        <span class="years">${years}</span>
+      </div>`;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="name">${f.name} ${f.sectorSwitches?.length > 0 ? `<span style="color:#fbbf24;font-size:12px">${f.sectorSwitches.length} switch${f.sectorSwitches.length > 1 ? 'es' : ''}</span>` : ''}</div>
+      ${switches ? `<div class="switches">${switches}</div>` : ''}
+      <div class="timeline-row">${roles}</div>
+    `;
+
+    card.addEventListener('mouseenter', () => {
+      highlightedPerson = f.id;
+      updateHighlights();
+    });
+    card.addEventListener('mouseleave', () => {
+      highlightedPerson = null;
+      updateHighlights();
+    });
+
+    container.appendChild(card);
+  });
+}
+</script>
+
+</body>
+</html>

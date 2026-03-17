@@ -1,0 +1,649 @@
+[
+  {
+    "name": "Fred Ehrsam",
+    "id": "fred-ehrsam",
+    "born": 1988,
+    "source": "https://en.wikipedia.org/wiki/Fred_Ehrsam",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Goldman Sachs",
+        "role": "FX Trader",
+        "sector": "Finance",
+        "start": 2010,
+        "end": 2012
+      },
+      {
+        "company": "Coinbase",
+        "role": "Co-founder & President",
+        "sector": "Crypto",
+        "start": 2012,
+        "end": 2017,
+        "note": "Stepped down from day-to-day, remained on board"
+      },
+      {
+        "company": "Paradigm",
+        "role": "Co-founder & Managing Partner",
+        "sector": "Crypto VC",
+        "start": 2018,
+        "end": 2023,
+        "note": "Stepped down to General Partner in Oct 2023"
+      },
+      {
+        "company": "Nudge",
+        "role": "Co-founder & CEO",
+        "sector": "Neurotech",
+        "start": 2024,
+        "end": null,
+        "note": "Non-invasive brain-computer interfaces using focused ultrasound. $100M Series A (Jul 2025). Co-founded with ex-Neuralink VP."
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Finance", "to": "Crypto", "year": 2012 },
+      { "from": "Crypto VC", "to": "Neurotech", "year": 2024 }
+    ]
+  },
+  {
+    "name": "Balaji Srinivasan",
+    "id": "balaji-srinivasan",
+    "born": 1980,
+    "source": "https://en.wikipedia.org/wiki/Balaji_Srinivasan",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Counsyl",
+        "role": "Co-founder",
+        "sector": "Biotech",
+        "start": 2007,
+        "end": 2018,
+        "note": "Genetic testing. Acquired by Myriad Genetics for $375M"
+      },
+      {
+        "company": "Andreessen Horowitz",
+        "role": "General Partner",
+        "sector": "VC",
+        "start": 2013,
+        "end": 2017
+      },
+      {
+        "company": "21 Inc / Earn.com",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2013,
+        "end": 2018,
+        "note": "Bitcoin mining -> pay-to-reply emails. Acquired by Coinbase for $120M"
+      },
+      {
+        "company": "Coinbase",
+        "role": "CTO",
+        "sector": "Crypto",
+        "start": 2018,
+        "end": 2019
+      },
+      {
+        "company": "The Network School",
+        "role": "Founder",
+        "sector": "Education / Network States",
+        "start": 2024,
+        "end": null,
+        "note": "Physical campus in Forest City, Malaysia. 400+ students. Expanding to Miami, Dubai, Tokyo."
+      },
+      {
+        "company": "Balaji Fund",
+        "role": "Founder",
+        "sector": "VC",
+        "start": 2023,
+        "end": null,
+        "note": "Venture fund backed by Armstrong, Naval, etc."
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Biotech", "to": "VC", "year": 2013 },
+      { "from": "VC", "to": "Crypto", "year": 2013 },
+      { "from": "Crypto", "to": "Education / Network States", "year": 2024 }
+    ]
+  },
+  {
+    "name": "Alex Atallah",
+    "id": "alex-atallah",
+    "born": null,
+    "source": "https://www.theblock.co/post/360093/opensea-co-founder-alex-atallah-raises-40-million-for-ai-startup-openrouter",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Palantir",
+        "role": "Engineer",
+        "sector": "Defense Tech",
+        "start": null,
+        "end": null
+      },
+      {
+        "company": "OpenSea",
+        "role": "Co-founder & CTO",
+        "sector": "Crypto / NFTs",
+        "start": 2017,
+        "end": 2024
+      },
+      {
+        "company": "OpenRouter",
+        "role": "Founder & CEO",
+        "sector": "AI Infrastructure",
+        "start": 2024,
+        "end": null,
+        "note": "Unified LLM API. $40M raised (Jun 2025)."
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Defense Tech", "to": "Crypto / NFTs", "year": 2017 },
+      { "from": "Crypto / NFTs", "to": "AI Infrastructure", "year": 2024 }
+    ]
+  },
+  {
+    "name": "Brian Armstrong",
+    "id": "brian-armstrong",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Brian_Armstrong_(businessman)",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "IBM",
+        "role": "Developer",
+        "sector": "Enterprise Tech",
+        "start": 2003,
+        "end": 2005
+      },
+      {
+        "company": "Deloitte",
+        "role": "Consultant",
+        "sector": "Consulting",
+        "start": 2005,
+        "end": 2010
+      },
+      {
+        "company": "Airbnb",
+        "role": "Software Engineer",
+        "sector": "Consumer Tech",
+        "start": 2011,
+        "end": 2012
+      },
+      {
+        "company": "Coinbase",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2012,
+        "end": null
+      },
+      {
+        "company": "NewLimit",
+        "role": "Co-founder",
+        "sector": "Biotech / Longevity",
+        "start": 2022,
+        "end": null,
+        "note": "Epigenetic reprogramming for aging. $40M Series A (May 2023)"
+      },
+      {
+        "company": "ResearchHub",
+        "role": "Founder",
+        "sector": "Science / Open Access",
+        "start": 2020,
+        "end": null,
+        "note": "GitHub for research papers"
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Consumer Tech", "to": "Crypto", "year": 2012 },
+      { "from": "Crypto", "to": "Biotech / Longevity", "year": 2022, "note": "Side venture while still CEO of Coinbase" }
+    ]
+  },
+  {
+    "name": "Matt Huang",
+    "id": "matt-huang",
+    "born": null,
+    "source": "https://www.matthuang.com/",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Hotspots",
+        "role": "Founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2010,
+        "end": 2012,
+        "note": "YC company, acquired by Twitter"
+      },
+      {
+        "company": "Sequoia Capital",
+        "role": "Partner",
+        "sector": "VC",
+        "start": 2014,
+        "end": 2018,
+        "note": "Led crypto efforts at Sequoia"
+      },
+      {
+        "company": "Paradigm",
+        "role": "Co-founder & Managing Partner",
+        "sector": "Crypto VC",
+        "start": 2018,
+        "end": null,
+        "note": "Co-founded with Fred Ehrsam. $2.5B fund (2021)"
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Consumer Tech", "to": "VC", "year": 2014 },
+      { "from": "VC", "to": "Crypto VC", "year": 2018 }
+    ]
+  },
+  {
+    "name": "Dario Amodei",
+    "id": "dario-amodei",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Dario_Amodei",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Stanford Medicine",
+        "role": "Postdoc",
+        "sector": "Academia / Neuroscience",
+        "start": 2011,
+        "end": 2014
+      },
+      {
+        "company": "Baidu",
+        "role": "Researcher",
+        "sector": "AI",
+        "start": 2014,
+        "end": 2015
+      },
+      {
+        "company": "Google",
+        "role": "Researcher",
+        "sector": "AI",
+        "start": 2015,
+        "end": 2016
+      },
+      {
+        "company": "OpenAI",
+        "role": "VP of Research",
+        "sector": "AI",
+        "start": 2016,
+        "end": 2021
+      },
+      {
+        "company": "Anthropic",
+        "role": "Co-founder & CEO",
+        "sector": "AI Safety",
+        "start": 2021,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Academia / Neuroscience", "to": "AI", "year": 2014 }
+    ]
+  },
+  {
+    "name": "Mustafa Suleyman",
+    "id": "mustafa-suleyman",
+    "born": 1984,
+    "source": "https://en.wikipedia.org/wiki/Mustafa_Suleyman",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Reos Partners",
+        "role": "Founder",
+        "sector": "Consulting / Conflict Resolution",
+        "start": 2007,
+        "end": 2010
+      },
+      {
+        "company": "DeepMind",
+        "role": "Co-founder & Head of Applied AI",
+        "sector": "AI Research",
+        "start": 2010,
+        "end": 2019,
+        "note": "Acquired by Google for ~$500M in 2014"
+      },
+      {
+        "company": "Google",
+        "role": "VP of AI Product Management",
+        "sector": "Big Tech / AI",
+        "start": 2019,
+        "end": 2022
+      },
+      {
+        "company": "Inflection AI",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer AI",
+        "start": 2022,
+        "end": 2024,
+        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Karén Simonyan"
+      },
+      {
+        "company": "Microsoft AI",
+        "role": "CEO",
+        "sector": "Big Tech / AI",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Consulting / Conflict Resolution", "to": "AI Research", "year": 2010 }
+    ]
+  },
+  {
+    "name": "Jack Dorsey",
+    "id": "jack-dorsey",
+    "born": 1976,
+    "source": "https://en.wikipedia.org/wiki/Jack_Dorsey",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Twitter",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2006,
+        "end": 2021,
+        "note": "CEO 2007-2008, then again 2015-2021"
+      },
+      {
+        "company": "Square / Block",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech",
+        "start": 2009,
+        "end": null,
+        "note": "Renamed to Block Inc. Expanded into crypto (Cash App Bitcoin, TBD)"
+      },
+      {
+        "company": "Bluesky",
+        "role": "Founder",
+        "sector": "Decentralized Social",
+        "start": 2019,
+        "end": null,
+        "note": "Decentralized social protocol, later departed from board"
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Social Media", "to": "Fintech", "year": 2009 },
+      { "from": "Fintech", "to": "Crypto / Decentralized Social", "year": 2019 }
+    ]
+  },
+  {
+    "name": "Stewart Butterfield",
+    "id": "stewart-butterfield",
+    "born": 1973,
+    "source": "https://en.wikipedia.org/wiki/Stewart_Butterfield",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Ludicorp (Game Neverending)",
+        "role": "Co-founder",
+        "sector": "Gaming",
+        "start": 2002,
+        "end": 2004,
+        "note": "MMO game failed, pivoted to Flickr"
+      },
+      {
+        "company": "Flickr",
+        "role": "Co-founder",
+        "sector": "Consumer Tech / Photo Sharing",
+        "start": 2004,
+        "end": 2008,
+        "note": "Acquired by Yahoo for ~$25M (2005)"
+      },
+      {
+        "company": "Tiny Speck (Glitch)",
+        "role": "Founder",
+        "sector": "Gaming",
+        "start": 2009,
+        "end": 2012,
+        "note": "MMO game, shut down Dec 2012"
+      },
+      {
+        "company": "Slack",
+        "role": "Founder & CEO",
+        "sector": "Enterprise SaaS",
+        "start": 2013,
+        "end": 2022,
+        "note": "Internal chat tool from Glitch became the product. Acquired by Salesforce for $27.7B (2021)"
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Gaming", "to": "Consumer Tech / Photo Sharing", "year": 2004 },
+      { "from": "Consumer Tech / Photo Sharing", "to": "Gaming", "year": 2009 },
+      { "from": "Gaming", "to": "Enterprise SaaS", "year": 2013 }
+    ]
+  },
+  {
+    "name": "Reid Hoffman",
+    "id": "reid-hoffman",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Reid_Hoffman",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Apple (eWorld)",
+        "role": "Product",
+        "sector": "Consumer Tech",
+        "start": 1994,
+        "end": 1996
+      },
+      {
+        "company": "SocialNet.com",
+        "role": "Co-founder",
+        "sector": "Social / Dating",
+        "start": 1997,
+        "end": 2000
+      },
+      {
+        "company": "PayPal",
+        "role": "Board Member & EVP",
+        "sector": "Fintech",
+        "start": 2000,
+        "end": 2002
+      },
+      {
+        "company": "LinkedIn",
+        "role": "Co-founder & CEO",
+        "sector": "Professional Social Network",
+        "start": 2002,
+        "end": 2016,
+        "note": "Acquired by Microsoft for $26.2B (2016)"
+      },
+      {
+        "company": "Greylock Partners",
+        "role": "Partner",
+        "sector": "VC",
+        "start": 2009,
+        "end": null
+      },
+      {
+        "company": "Inflection AI",
+        "role": "Co-founder",
+        "sector": "Consumer AI",
+        "start": 2022,
+        "end": 2024,
+        "note": "Co-founded with Mustafa Suleyman"
+      },
+      {
+        "company": "Manas AI",
+        "role": "Co-founder",
+        "sector": "AI",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Consumer Tech", "to": "Fintech", "year": 2000 },
+      { "from": "Fintech", "to": "Professional Social Network", "year": 2002 },
+      { "from": "VC", "to": "Consumer AI", "year": 2022 }
+    ]
+  },
+  {
+    "name": "Elon Musk",
+    "id": "elon-musk",
+    "born": 1971,
+    "source": "https://en.wikipedia.org/wiki/Elon_Musk",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Zip2",
+        "role": "Co-founder",
+        "sector": "Internet / Media",
+        "start": 1995,
+        "end": 1999,
+        "note": "City guide software. Sold to Compaq for $307M"
+      },
+      {
+        "company": "X.com / PayPal",
+        "role": "Co-founder",
+        "sector": "Fintech",
+        "start": 1999,
+        "end": 2002,
+        "note": "Merged with Confinity, became PayPal. Sold to eBay for $1.5B"
+      },
+      {
+        "company": "SpaceX",
+        "role": "Founder & CEO",
+        "sector": "Aerospace",
+        "start": 2002,
+        "end": null
+      },
+      {
+        "company": "Tesla",
+        "role": "Chairman & CEO",
+        "sector": "Automotive / Clean Energy",
+        "start": 2004,
+        "end": null
+      },
+      {
+        "company": "Neuralink",
+        "role": "Co-founder",
+        "sector": "Neurotech",
+        "start": 2016,
+        "end": null
+      },
+      {
+        "company": "The Boring Company",
+        "role": "Founder",
+        "sector": "Infrastructure / Tunneling",
+        "start": 2016,
+        "end": null
+      },
+      {
+        "company": "OpenAI",
+        "role": "Co-founder & Board",
+        "sector": "AI",
+        "start": 2015,
+        "end": 2018,
+        "note": "Left board in 2018"
+      },
+      {
+        "company": "xAI",
+        "role": "Founder",
+        "sector": "AI",
+        "start": 2023,
+        "end": null,
+        "note": "Built Grok LLM"
+      },
+      {
+        "company": "X Corp (Twitter)",
+        "role": "Owner & CTO",
+        "sector": "Social Media",
+        "start": 2022,
+        "end": null,
+        "note": "Acquired Twitter for $44B"
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Internet / Media", "to": "Fintech", "year": 1999 },
+      { "from": "Fintech", "to": "Aerospace", "year": 2002 },
+      { "from": "Aerospace", "to": "Automotive / Clean Energy", "year": 2004 },
+      { "from": "Automotive / Clean Energy", "to": "AI", "year": 2015 },
+      { "from": "AI", "to": "Social Media", "year": 2022 }
+    ]
+  },
+  {
+    "name": "Peter Thiel",
+    "id": "peter-thiel",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Peter_Thiel",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Sullivan & Cromwell",
+        "role": "Lawyer",
+        "sector": "Law",
+        "start": 1992,
+        "end": 1996
+      },
+      {
+        "company": "PayPal",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech",
+        "start": 1998,
+        "end": 2002,
+        "note": "Sold to eBay for $1.5B"
+      },
+      {
+        "company": "Clarium Capital",
+        "role": "Founder",
+        "sector": "Hedge Fund",
+        "start": 2002,
+        "end": null
+      },
+      {
+        "company": "Palantir",
+        "role": "Co-founder & Chairman",
+        "sector": "Defense Tech / Data",
+        "start": 2003,
+        "end": null
+      },
+      {
+        "company": "Founders Fund",
+        "role": "Co-founder & Partner",
+        "sector": "VC",
+        "start": 2005,
+        "end": null,
+        "note": "Early investor in Facebook, SpaceX, Anduril"
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Law", "to": "Fintech", "year": 1998 },
+      { "from": "Fintech", "to": "Defense Tech / Data", "year": 2003 }
+    ]
+  },
+  {
+    "name": "Devin Finzer",
+    "id": "devin-finzer",
+    "born": 1990,
+    "source": "https://en.wikipedia.org/wiki/Devin_Finzer",
+    "verified": "2026-03-17",
+    "roles": [
+      {
+        "company": "Pinterest",
+        "role": "Software Engineer",
+        "sector": "Consumer Tech",
+        "start": 2013,
+        "end": 2015
+      },
+      {
+        "company": "Claimdog",
+        "role": "Co-founder",
+        "sector": "Fintech",
+        "start": 2015,
+        "end": 2016,
+        "note": "Acquired by Credit Karma"
+      },
+      {
+        "company": "OpenSea",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto / NFTs",
+        "start": 2017,
+        "end": null,
+        "note": "YC W18. Peaked at $13.3B valuation (Jan 2022)"
+      }
+    ],
+    "sectorSwitches": [
+      { "from": "Consumer Tech", "to": "Fintech", "year": 2015 },
+      { "from": "Fintech", "to": "Crypto / NFTs", "year": 2017 }
+    ]
+  }
+]
