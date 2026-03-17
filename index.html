@@ -19,320 +19,107 @@
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
-  header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: #fff;
-  }
-
-  header p {
-    font-size: 14px;
-    color: #888;
-    margin-top: 4px;
-  }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: #fff; }
+  header p { font-size: 14px; color: #888; margin-top: 4px; }
 
   .controls {
     padding: 16px 40px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
     border-bottom: 1px solid rgba(255,255,255,0.04);
   }
 
-  .controls label {
-    font-size: 12px;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+  .controls label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
 
-  .controls select, .controls input[type="checkbox"] {
-    background: #16161f;
-    border: 1px solid #2a2a3a;
-    color: #ccc;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    outline: none;
-  }
+  .controls select { background: #16161f; border: 1px solid #2a2a3a; color: #ccc; padding: 6px 10px; border-radius: 6px; font-size: 13px; outline: none; }
 
-  .view-tabs {
-    display: flex;
-    gap: 4px;
-    background: #16161f;
-    border-radius: 8px;
-    padding: 2px;
-  }
-
-  .view-tab {
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-    color: #888;
-    transition: all 0.15s;
-    border: none;
-    background: none;
-  }
-
-  .view-tab.active {
-    background: #2a2a3a;
-    color: #fff;
-  }
-
+  .view-tabs { display: flex; gap: 4px; background: #16161f; border-radius: 8px; padding: 2px; }
+  .view-tab { padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; color: #888; transition: all 0.15s; border: none; background: none; }
+  .view-tab.active { background: #2a2a3a; color: #fff; }
   .view-tab:hover { color: #ccc; }
 
-  #main-viz {
-    width: 100%;
-    min-height: calc(100vh - 200px);
-    position: relative;
-  }
+  #alluvial-container { width: 100%; padding: 20px 20px 20px 40px; overflow-x: auto; }
 
-  /* Alluvial view */
-  #alluvial-container {
-    width: 100%;
-    padding: 20px 20px 20px 40px;
-    overflow-x: auto;
-  }
-
-  /* Cards view */
   #cards-container {
     padding: 20px 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 16px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px;
   }
 
   .founder-card {
-    background: #14141e;
-    border: 1px solid #222233;
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: #14141e; border: 1px solid #222233; border-radius: 12px; padding: 20px;
+    cursor: pointer; transition: all 0.2s;
   }
-
-  .founder-card:hover {
-    border-color: #3a3a5a;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
-
-  .founder-card .name {
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 8px;
-  }
+  .founder-card:hover { border-color: #3a3a5a; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .founder-card .name { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
 
   .switch-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 8px;
-    background: rgba(85,102,255,0.12);
-    color: #8899ff;
-    margin: 2px 4px 2px 0;
+    display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 3px 8px;
+    border-radius: 8px; background: rgba(85,102,255,0.12); color: #8899ff; margin: 2px 4px 2px 0;
   }
-
   .switch-badge .arrow { color: #555; }
 
-  .timeline-row {
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
-    flex-wrap: wrap;
-  }
+  .timeline-row { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
 
   .role-chip {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 12px;
-    color: #ccc;
-    border: 1px solid rgba(255,255,255,0.08);
-    white-space: nowrap;
+    display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 6px;
+    font-size: 12px; color: #ccc; border: 1px solid rgba(255,255,255,0.08); white-space: nowrap;
   }
+  .role-chip .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .role-chip .years { color: #666; font-size: 10px; }
 
-  .role-chip .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .role-chip .years {
-    color: #666;
-    font-size: 10px;
-  }
-
-  /* Tooltip */
   .tooltip {
-    position: fixed;
-    background: #1a1a28;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-size: 13px;
-    pointer-events: none;
-    z-index: 1000;
-    max-width: 380px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-    display: none;
-    line-height: 1.6;
+    position: fixed; background: #1a1a28; border: 1px solid #333; border-radius: 10px;
+    padding: 14px 18px; font-size: 13px; pointer-events: none; z-index: 1000;
+    max-width: 400px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); display: none; line-height: 1.6;
   }
-
-  .tooltip .tt-name {
-    font-weight: 700;
-    color: #fff;
-    font-size: 15px;
-    margin-bottom: 6px;
-  }
-
-  .tooltip .tt-detail {
-    color: #bbb;
-    font-size: 12px;
-  }
-
-  .tooltip .tt-role {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 3px 0;
-  }
-
-  .tooltip .tt-role-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .tooltip .tt-role-company {
-    color: #fff;
-    font-weight: 500;
-  }
-
-  .tooltip .tt-role-title {
-    color: #999;
-    font-size: 11px;
-  }
-
-  .tooltip .tt-role-years {
-    color: #666;
-    font-size: 10px;
-    margin-left: auto;
-  }
-
+  .tooltip .tt-name { font-weight: 700; color: #fff; font-size: 15px; margin-bottom: 6px; }
+  .tooltip .tt-detail { color: #bbb; font-size: 12px; }
+  .tooltip .tt-role { display: flex; align-items: center; gap: 8px; margin: 3px 0; }
+  .tooltip .tt-role-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .tooltip .tt-role-company { color: #fff; font-weight: 500; }
+  .tooltip .tt-role-title { color: #999; font-size: 11px; }
+  .tooltip .tt-role-years { color: #666; font-size: 10px; margin-left: auto; }
   .tooltip .tt-switch-label {
-    display: inline-block;
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: 600;
-    margin-top: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    display: inline-block; background: rgba(251,191,36,0.15); color: #fbbf24;
+    padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;
+    margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px;
   }
+  .tooltip .tt-sector-title {
+    font-weight: 700; color: #fff; font-size: 14px; margin-bottom: 8px;
+  }
+  .tooltip .tt-person-row {
+    display: flex; align-items: center; gap: 8px; margin: 4px 0; color: #ccc; font-size: 12px;
+  }
+  .tooltip .tt-person-company { color: #888; font-size: 11px; }
 
-  /* Stats bar */
   .stats-bar {
-    padding: 12px 40px;
-    display: flex;
-    gap: 32px;
-    font-size: 13px;
-    color: #666;
+    padding: 12px 40px; display: flex; gap: 32px; font-size: 13px; color: #666;
     border-bottom: 1px solid rgba(255,255,255,0.04);
   }
+  .stats-bar .stat-value { color: #fff; font-weight: 600; font-size: 18px; display: block; }
+  .stats-bar .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2px; }
 
-  .stats-bar .stat-value {
-    color: #fff;
-    font-weight: 600;
-    font-size: 18px;
-    display: block;
-  }
-
-  .stats-bar .stat-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    margin-top: 2px;
-  }
-
-  /* Sector legend */
-  .sector-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 8px 40px 12px;
-  }
-
+  .sector-legend { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 40px 12px; }
   .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: #888;
-    cursor: pointer;
-    padding: 3px 8px;
-    border-radius: 6px;
-    transition: background 0.15s;
+    display: flex; align-items: center; gap: 5px; font-size: 11px; color: #888;
+    cursor: pointer; padding: 3px 8px; border-radius: 6px; transition: background 0.15s;
   }
-
   .legend-item:hover { background: rgba(255,255,255,0.05); }
   .legend-item.dimmed { opacity: 0.3; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-  .legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-
-  /* SVG styles */
   .alluvial-path {
-    fill: none;
-    stroke-opacity: 0.3;
-    stroke-width: 2.5;
-    transition: stroke-opacity 0.2s, stroke-width 0.2s;
-    cursor: pointer;
+    fill: none; stroke-opacity: 0.25; stroke-width: 2;
+    transition: stroke-opacity 0.2s, stroke-width 0.2s; cursor: pointer;
   }
+  .alluvial-path.sector-switch { stroke-opacity: 0.45; stroke-width: 2.5; }
+  .alluvial-path:hover, .alluvial-path.highlight { stroke-opacity: 0.85; stroke-width: 3.5; }
+  .alluvial-path.dimmed { stroke-opacity: 0.04; stroke-width: 1.5; }
 
-  .alluvial-path.sector-switch {
-    stroke-opacity: 0.5;
-    stroke-width: 3;
-  }
-
-  .alluvial-path:hover, .alluvial-path.highlight {
-    stroke-opacity: 0.85;
-    stroke-width: 4;
-  }
-
-  .alluvial-path.dimmed {
-    stroke-opacity: 0.04;
-    stroke-width: 1.5;
-  }
-
-  .sector-block {
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
-
-  .sector-block:hover { opacity: 0.9; }
+  .sector-block { cursor: pointer; transition: opacity 0.15s; }
+  .sector-block:hover { opacity: 0.2 !important; }
 
   .view-hidden { display: none !important; }
-
-  .switch-highlight {
-    background: rgba(255, 170, 0, 0.06);
-    border-color: rgba(255, 170, 0, 0.2);
-  }
+  .switch-highlight { background: rgba(255,170,0,0.06); border-color: rgba(255,170,0,0.2); }
 </style>
 </head>
 <body>
@@ -351,67 +138,39 @@
   </div>
   <div style="flex:1"></div>
   <label>Sector:</label>
-  <select id="sector-filter">
-    <option value="all">All</option>
-  </select>
+  <select id="sector-filter"><option value="all">All</option></select>
   <label style="margin-left:8px">Switchers only:</label>
-  <input type="checkbox" id="switchers-only">
+  <input type="checkbox" id="switchers-only" style="margin-left:4px">
 </div>
 
 <div class="sector-legend" id="sector-legend"></div>
 
 <div id="main-viz">
-  <div id="alluvial-container">
-    <svg id="alluvial-svg"></svg>
-  </div>
+  <div id="alluvial-container"><svg id="alluvial-svg"></svg></div>
   <div id="cards-container" class="view-hidden"></div>
 </div>
 
-<div class="tooltip" id="tooltip">
-  <div class="tt-name"></div>
-  <div class="tt-detail"></div>
-</div>
+<div class="tooltip" id="tooltip"></div>
 
 <script>
-// =====================================================
-// DATA
-// =====================================================
 const FOUNDERS_DATA = [{"name": "Fred Ehrsam", "id": "fred-ehrsam", "born": 1988, "source": "https://en.wikipedia.org/wiki/Fred_Ehrsam", "verified": "2026-03-17", "roles": [{"company": "Goldman Sachs", "role": "FX Trader", "sector": "Finance", "start": 2010, "end": 2012}, {"company": "Coinbase", "role": "Co-founder & President", "sector": "Crypto", "start": 2012, "end": 2017, "note": "Stepped down from day-to-day, remained on board"}, {"company": "Paradigm", "role": "Co-founder & Managing Partner", "sector": "Crypto VC", "start": 2018, "end": 2023, "note": "Stepped down to General Partner in Oct 2023"}, {"company": "Nudge", "role": "Co-founder & CEO", "sector": "Neurotech", "start": 2024, "end": null, "note": "Non-invasive brain-computer interfaces using focused ultrasound. $100M Series A (Jul 2025). Co-founded with ex-Neuralink VP."}], "sectorSwitches": [{"from": "Finance", "to": "Crypto", "year": 2012}, {"from": "Crypto VC", "to": "Neurotech", "year": 2024}]}, {"name": "Balaji Srinivasan", "id": "balaji-srinivasan", "born": 1980, "source": "https://en.wikipedia.org/wiki/Balaji_Srinivasan", "verified": "2026-03-17", "roles": [{"company": "Counsyl", "role": "Co-founder", "sector": "Biotech", "start": 2007, "end": 2018, "note": "Genetic testing. Acquired by Myriad Genetics for $375M"}, {"company": "Andreessen Horowitz", "role": "General Partner", "sector": "VC", "start": 2013, "end": 2017}, {"company": "21 Inc / Earn.com", "role": "Co-founder & CEO", "sector": "Crypto", "start": 2013, "end": 2018, "note": "Bitcoin mining -> pay-to-reply emails. Acquired by Coinbase for $120M"}, {"company": "Coinbase", "role": "CTO", "sector": "Crypto", "start": 2018, "end": 2019}, {"company": "The Network School", "role": "Founder", "sector": "Education / Network States", "start": 2024, "end": null, "note": "Physical campus in Forest City, Malaysia. 400+ students. Expanding to Miami, Dubai, Tokyo."}, {"company": "Balaji Fund", "role": "Founder", "sector": "VC", "start": 2023, "end": null, "note": "Venture fund backed by Armstrong, Naval, etc."}], "sectorSwitches": [{"from": "Biotech", "to": "VC", "year": 2013}, {"from": "VC", "to": "Crypto", "year": 2013}, {"from": "Crypto", "to": "Education / Network States", "year": 2024}]}, {"name": "Alex Atallah", "id": "alex-atallah", "born": null, "source": "https://www.theblock.co/post/360093/opensea-co-founder-alex-atallah-raises-40-million-for-ai-startup-openrouter", "verified": "2026-03-17", "roles": [{"company": "Palantir", "role": "Engineer", "sector": "Defense Tech", "start": null, "end": null}, {"company": "OpenSea", "role": "Co-founder & CTO", "sector": "Crypto / NFTs", "start": 2017, "end": 2024}, {"company": "OpenRouter", "role": "Founder & CEO", "sector": "AI Infrastructure", "start": 2024, "end": null, "note": "Unified LLM API. $40M raised (Jun 2025)."}], "sectorSwitches": [{"from": "Defense Tech", "to": "Crypto / NFTs", "year": 2017}, {"from": "Crypto / NFTs", "to": "AI Infrastructure", "year": 2024}]}, {"name": "Brian Armstrong", "id": "brian-armstrong", "born": 1983, "source": "https://en.wikipedia.org/wiki/Brian_Armstrong_(businessman)", "verified": "2026-03-17", "roles": [{"company": "IBM", "role": "Developer", "sector": "Enterprise Tech", "start": 2003, "end": 2005}, {"company": "Deloitte", "role": "Consultant", "sector": "Consulting", "start": 2005, "end": 2010}, {"company": "Airbnb", "role": "Software Engineer", "sector": "Consumer Tech", "start": 2011, "end": 2012}, {"company": "Coinbase", "role": "Co-founder & CEO", "sector": "Crypto", "start": 2012, "end": null}, {"company": "NewLimit", "role": "Co-founder", "sector": "Biotech / Longevity", "start": 2022, "end": null, "note": "Epigenetic reprogramming for aging. $40M Series A (May 2023)"}, {"company": "ResearchHub", "role": "Founder", "sector": "Science / Open Access", "start": 2020, "end": null, "note": "GitHub for research papers"}], "sectorSwitches": [{"from": "Consumer Tech", "to": "Crypto", "year": 2012}, {"from": "Crypto", "to": "Biotech / Longevity", "year": 2022, "note": "Side venture while still CEO of Coinbase"}]}, {"name": "Matt Huang", "id": "matt-huang", "born": null, "source": "https://www.matthuang.com/", "verified": "2026-03-17", "roles": [{"company": "Hotspots", "role": "Founder & CEO", "sector": "Consumer Tech", "start": 2010, "end": 2012, "note": "YC company, acquired by Twitter"}, {"company": "Sequoia Capital", "role": "Partner", "sector": "VC", "start": 2014, "end": 2018, "note": "Led crypto efforts at Sequoia"}, {"company": "Paradigm", "role": "Co-founder & Managing Partner", "sector": "Crypto VC", "start": 2018, "end": null, "note": "Co-founded with Fred Ehrsam. $2.5B fund (2021)"}], "sectorSwitches": [{"from": "Consumer Tech", "to": "VC", "year": 2014}, {"from": "VC", "to": "Crypto VC", "year": 2018}]}, {"name": "Dario Amodei", "id": "dario-amodei", "born": 1983, "source": "https://en.wikipedia.org/wiki/Dario_Amodei", "verified": "2026-03-17", "roles": [{"company": "Stanford Medicine", "role": "Postdoc", "sector": "Academia / Neuroscience", "start": 2011, "end": 2014}, {"company": "Baidu", "role": "Researcher", "sector": "AI", "start": 2014, "end": 2015}, {"company": "Google", "role": "Researcher", "sector": "AI", "start": 2015, "end": 2016}, {"company": "OpenAI", "role": "VP of Research", "sector": "AI", "start": 2016, "end": 2021}, {"company": "Anthropic", "role": "Co-founder & CEO", "sector": "AI Safety", "start": 2021, "end": null}], "sectorSwitches": [{"from": "Academia / Neuroscience", "to": "AI", "year": 2014}]}, {"name": "Mustafa Suleyman", "id": "mustafa-suleyman", "born": 1984, "source": "https://en.wikipedia.org/wiki/Mustafa_Suleyman", "verified": "2026-03-17", "roles": [{"company": "Reos Partners", "role": "Founder", "sector": "Consulting / Conflict Resolution", "start": 2007, "end": 2010}, {"company": "DeepMind", "role": "Co-founder & Head of Applied AI", "sector": "AI Research", "start": 2010, "end": 2019, "note": "Acquired by Google for ~$500M in 2014"}, {"company": "Google", "role": "VP of AI Product Management", "sector": "Big Tech / AI", "start": 2019, "end": 2022}, {"company": "Inflection AI", "role": "Co-founder & CEO", "sector": "Consumer AI", "start": 2022, "end": 2024, "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Kar\u00e9n Simonyan"}, {"company": "Microsoft AI", "role": "CEO", "sector": "Big Tech / AI", "start": 2024, "end": null}], "sectorSwitches": [{"from": "Consulting / Conflict Resolution", "to": "AI Research", "year": 2010}]}, {"name": "Jack Dorsey", "id": "jack-dorsey", "born": 1976, "source": "https://en.wikipedia.org/wiki/Jack_Dorsey", "verified": "2026-03-17", "roles": [{"company": "Twitter", "role": "Co-founder & CEO", "sector": "Social Media", "start": 2006, "end": 2021, "note": "CEO 2007-2008, then again 2015-2021"}, {"company": "Square / Block", "role": "Co-founder & CEO", "sector": "Fintech", "start": 2009, "end": null, "note": "Renamed to Block Inc. Expanded into crypto (Cash App Bitcoin, TBD)"}, {"company": "Bluesky", "role": "Founder", "sector": "Decentralized Social", "start": 2019, "end": null, "note": "Decentralized social protocol, later departed from board"}], "sectorSwitches": [{"from": "Social Media", "to": "Fintech", "year": 2009}, {"from": "Fintech", "to": "Crypto / Decentralized Social", "year": 2019}]}, {"name": "Stewart Butterfield", "id": "stewart-butterfield", "born": 1973, "source": "https://en.wikipedia.org/wiki/Stewart_Butterfield", "verified": "2026-03-17", "roles": [{"company": "Ludicorp (Game Neverending)", "role": "Co-founder", "sector": "Gaming", "start": 2002, "end": 2004, "note": "MMO game failed, pivoted to Flickr"}, {"company": "Flickr", "role": "Co-founder", "sector": "Consumer Tech / Photo Sharing", "start": 2004, "end": 2008, "note": "Acquired by Yahoo for ~$25M (2005)"}, {"company": "Tiny Speck (Glitch)", "role": "Founder", "sector": "Gaming", "start": 2009, "end": 2012, "note": "MMO game, shut down Dec 2012"}, {"company": "Slack", "role": "Founder & CEO", "sector": "Enterprise SaaS", "start": 2013, "end": 2022, "note": "Internal chat tool from Glitch became the product. Acquired by Salesforce for $27.7B (2021)"}], "sectorSwitches": [{"from": "Gaming", "to": "Consumer Tech / Photo Sharing", "year": 2004}, {"from": "Consumer Tech / Photo Sharing", "to": "Gaming", "year": 2009}, {"from": "Gaming", "to": "Enterprise SaaS", "year": 2013}]}, {"name": "Reid Hoffman", "id": "reid-hoffman", "born": 1967, "source": "https://en.wikipedia.org/wiki/Reid_Hoffman", "verified": "2026-03-17", "roles": [{"company": "Apple (eWorld)", "role": "Product", "sector": "Consumer Tech", "start": 1994, "end": 1996}, {"company": "SocialNet.com", "role": "Co-founder", "sector": "Social / Dating", "start": 1997, "end": 2000}, {"company": "PayPal", "role": "Board Member & EVP", "sector": "Fintech", "start": 2000, "end": 2002}, {"company": "LinkedIn", "role": "Co-founder & CEO", "sector": "Professional Social Network", "start": 2002, "end": 2016, "note": "Acquired by Microsoft for $26.2B (2016)"}, {"company": "Greylock Partners", "role": "Partner", "sector": "VC", "start": 2009, "end": null}, {"company": "Inflection AI", "role": "Co-founder", "sector": "Consumer AI", "start": 2022, "end": 2024, "note": "Co-founded with Mustafa Suleyman"}, {"company": "Manas AI", "role": "Co-founder", "sector": "AI", "start": 2024, "end": null}], "sectorSwitches": [{"from": "Consumer Tech", "to": "Fintech", "year": 2000}, {"from": "Fintech", "to": "Professional Social Network", "year": 2002}, {"from": "VC", "to": "Consumer AI", "year": 2022}]}, {"name": "Elon Musk", "id": "elon-musk", "born": 1971, "source": "https://en.wikipedia.org/wiki/Elon_Musk", "verified": "2026-03-17", "roles": [{"company": "Zip2", "role": "Co-founder", "sector": "Internet / Media", "start": 1995, "end": 1999, "note": "City guide software. Sold to Compaq for $307M"}, {"company": "X.com / PayPal", "role": "Co-founder", "sector": "Fintech", "start": 1999, "end": 2002, "note": "Merged with Confinity, became PayPal. Sold to eBay for $1.5B"}, {"company": "SpaceX", "role": "Founder & CEO", "sector": "Aerospace", "start": 2002, "end": null}, {"company": "Tesla", "role": "Chairman & CEO", "sector": "Automotive / Clean Energy", "start": 2004, "end": null}, {"company": "Neuralink", "role": "Co-founder", "sector": "Neurotech", "start": 2016, "end": null}, {"company": "The Boring Company", "role": "Founder", "sector": "Infrastructure / Tunneling", "start": 2016, "end": null}, {"company": "OpenAI", "role": "Co-founder & Board", "sector": "AI", "start": 2015, "end": 2018, "note": "Left board in 2018"}, {"company": "xAI", "role": "Founder", "sector": "AI", "start": 2023, "end": null, "note": "Built Grok LLM"}, {"company": "X Corp (Twitter)", "role": "Owner & CTO", "sector": "Social Media", "start": 2022, "end": null, "note": "Acquired Twitter for $44B"}], "sectorSwitches": [{"from": "Internet / Media", "to": "Fintech", "year": 1999}, {"from": "Fintech", "to": "Aerospace", "year": 2002}, {"from": "Aerospace", "to": "Automotive / Clean Energy", "year": 2004}, {"from": "Automotive / Clean Energy", "to": "AI", "year": 2015}, {"from": "AI", "to": "Social Media", "year": 2022}]}, {"name": "Peter Thiel", "id": "peter-thiel", "born": 1967, "source": "https://en.wikipedia.org/wiki/Peter_Thiel", "verified": "2026-03-17", "roles": [{"company": "Sullivan & Cromwell", "role": "Lawyer", "sector": "Law", "start": 1992, "end": 1996}, {"company": "PayPal", "role": "Co-founder & CEO", "sector": "Fintech", "start": 1998, "end": 2002, "note": "Sold to eBay for $1.5B"}, {"company": "Clarium Capital", "role": "Founder", "sector": "Hedge Fund", "start": 2002, "end": null}, {"company": "Palantir", "role": "Co-founder & Chairman", "sector": "Defense Tech / Data", "start": 2003, "end": null}, {"company": "Founders Fund", "role": "Co-founder & Partner", "sector": "VC", "start": 2005, "end": null, "note": "Early investor in Facebook, SpaceX, Anduril"}], "sectorSwitches": [{"from": "Law", "to": "Fintech", "year": 1998}, {"from": "Fintech", "to": "Defense Tech / Data", "year": 2003}]}, {"name": "Devin Finzer", "id": "devin-finzer", "born": 1990, "source": "https://en.wikipedia.org/wiki/Devin_Finzer", "verified": "2026-03-17", "roles": [{"company": "Pinterest", "role": "Software Engineer", "sector": "Consumer Tech", "start": 2013, "end": 2015}, {"company": "Claimdog", "role": "Co-founder", "sector": "Fintech", "start": 2015, "end": 2016, "note": "Acquired by Credit Karma"}, {"company": "OpenSea", "role": "Co-founder & CEO", "sector": "Crypto / NFTs", "start": 2017, "end": null, "note": "YC W18. Peaked at $13.3B valuation (Jan 2022)"}], "sectorSwitches": [{"from": "Consumer Tech", "to": "Fintech", "year": 2015}, {"from": "Fintech", "to": "Crypto / NFTs", "year": 2017}]}];
 
-// =====================================================
-// ERAS — real tech waves, not arbitrary spans
-// =====================================================
 const ERAS = [
-  { label: 'Dot-com / PayPal', sub: '1995–2004', range: [1995, 2004] },
-  { label: 'Web 2.0 / Social', sub: '2005–2012', range: [2005, 2012] },
-  { label: 'Crypto Wave 1',    sub: '2013–2017', range: [2013, 2017] },
-  { label: 'AI + Crypto Boom', sub: '2018–2021', range: [2018, 2021] },
-  { label: 'AI Gold Rush',     sub: '2022–2026', range: [2022, 2026] },
+  { label: 'Dot-com / PayPal', sub: '1995\u20132004', range: [1995, 2004] },
+  { label: 'Web 2.0 / Social', sub: '2005\u20132012', range: [2005, 2012] },
+  { label: 'Crypto Wave 1',    sub: '2013\u20132017', range: [2013, 2017] },
+  { label: 'AI + Crypto Boom', sub: '2018\u20132021', range: [2018, 2021] },
+  { label: 'AI Gold Rush',     sub: '2022\u20132026', range: [2022, 2026] },
 ];
 
-// =====================================================
-// SECTOR COLORS (broad categories for alluvial)
-// =====================================================
 const BROAD_COLORS = {
-  'Crypto': '#8b5cf6',
-  'AI': '#06b6d4',
-  'Bio / Neurotech': '#10b981',
-  'Finance / Fintech': '#f59e0b',
-  'VC': '#a78bfa',
-  'Defense / Aerospace': '#ef4444',
-  'Social': '#ec4899',
-  'Consumer Tech': '#f472b6',
-  'Enterprise': '#3b82f6',
-  'Gaming': '#84cc16',
-  'Education / Science': '#2dd4bf',
-  'Professional Services': '#6b7280',
-  'Internet / Media': '#fb923c',
-  'Hardware / Energy': '#facc15',
-  'Government / Policy': '#94a3b8',
-  'Other': '#4b5563',
+  'Crypto': '#8b5cf6', 'AI': '#06b6d4', 'Bio / Neurotech': '#10b981',
+  'Finance / Fintech': '#f59e0b', 'VC': '#a78bfa', 'Defense / Aerospace': '#ef4444',
+  'Social': '#ec4899', 'Consumer Tech': '#f472b6', 'Enterprise': '#3b82f6',
+  'Gaming': '#84cc16', 'Education / Science': '#2dd4bf', 'Professional Services': '#6b7280',
+  'Internet / Media': '#fb923c', 'Hardware / Energy': '#facc15', 'Other': '#4b5563',
 };
 
-// Fine-grained sector colors for tooltips/cards
 const SECTOR_COLORS = {
   'Finance': '#f59e0b', 'Crypto': '#8b5cf6', 'Crypto VC': '#9d6dfc',
   'Crypto / NFTs': '#8b5cf6', 'Crypto / Decentralized Social': '#7c3aed',
@@ -423,9 +182,8 @@ const SECTOR_COLORS = {
   'Social Media': '#ec4899', 'Social / Dating': '#f43f5e',
   'Professional Social Network': '#e879f9', 'Decentralized Social': '#d946ef',
   'Defense Tech': '#ef4444', 'Defense Tech / Data': '#dc2626',
-  'VC': '#a78bfa', 'Hedge Fund': '#c084fc',
-  'Aerospace': '#f97316', 'Automotive / Clean Energy': '#facc15',
-  'Fintech': '#fbbf24', 'Law': '#9ca3af',
+  'VC': '#a78bfa', 'Hedge Fund': '#c084fc', 'Aerospace': '#f97316',
+  'Automotive / Clean Energy': '#facc15', 'Fintech': '#fbbf24', 'Law': '#9ca3af',
   'Consulting': '#6b7280', 'Consulting / Conflict Resolution': '#6b7280',
   'Academia / Neuroscience': '#818cf8', 'Internet / Media': '#fb923c',
   'Infrastructure / Tunneling': '#a3a3a3', 'Gaming': '#84cc16',
@@ -454,27 +212,15 @@ function broadSector(s) {
   return 'Other';
 }
 
-// =====================================================
-// STATE
-// =====================================================
 let currentView = 'alluvial';
 let highlightedSector = null;
 let highlightedPerson = null;
 let switchersOnly = false;
 let sectorFilter = 'all';
 
-// =====================================================
-// INIT
-// =====================================================
 document.addEventListener('DOMContentLoaded', () => {
-  computeStats();
-  populateFilters();
-  buildLegend();
-  renderAlluvial();
-  renderCards();
-  setupEvents();
-  
-  // Default: show alluvial, hide cards
+  computeStats(); populateFilters(); buildLegend();
+  renderAlluvial(); renderCards(); setupEvents();
   document.getElementById('cards-container').classList.add('view-hidden');
 });
 
@@ -487,25 +233,22 @@ function getFiltered() {
 
 function computeStats() {
   const founders = getFiltered();
-  const switches = founders.reduce((sum, f) => sum + (f.sectorSwitches?.length || 0), 0);
+  const switches = founders.reduce((s, f) => s + (f.sectorSwitches?.length || 0), 0);
   const allSectors = new Set();
   founders.forEach(f => f.roles.forEach(r => allSectors.add(broadSector(r.sector))));
-  
   const destCounts = {};
   founders.forEach(f => {
     if (f.roles.length > 0) {
-      const last = f.roles[f.roles.length - 1];
-      const bs = broadSector(last.sector);
+      const bs = broadSector(f.roles[f.roles.length - 1].sector);
       destCounts[bs] = (destCounts[bs] || 0) + 1;
     }
   });
   const hottest = Object.entries(destCounts).sort((a, b) => b[1] - a[1])[0];
-
   document.getElementById('stats-bar').innerHTML = `
     <div><span class="stat-value">${founders.length}</span><span class="stat-label">Founders</span></div>
     <div><span class="stat-value">${switches}</span><span class="stat-label">Sector switches</span></div>
     <div><span class="stat-value">${allSectors.size}</span><span class="stat-label">Sectors</span></div>
-    <div><span class="stat-value" style="color:${BROAD_COLORS[hottest[0]]}">${hottest[0]}</span><span class="stat-label">Hottest destination now</span></div>
+    <div><span class="stat-value" style="color:${BROAD_COLORS[hottest[0]]}">${hottest[0]}</span><span class="stat-label">Hottest destination</span></div>
   `;
 }
 
@@ -513,11 +256,7 @@ function populateFilters() {
   const sectors = new Set();
   FOUNDERS_DATA.forEach(f => f.roles.forEach(r => sectors.add(broadSector(r.sector))));
   const sel = document.getElementById('sector-filter');
-  [...sectors].sort().forEach(s => {
-    const opt = document.createElement('option');
-    opt.value = s; opt.textContent = s;
-    sel.appendChild(opt);
-  });
+  [...sectors].sort().forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
 }
 
 function buildLegend() {
@@ -525,22 +264,14 @@ function buildLegend() {
   container.innerHTML = '';
   const seen = new Set();
   FOUNDERS_DATA.forEach(f => f.roles.forEach(r => seen.add(broadSector(r.sector))));
-  
   Object.entries(BROAD_COLORS).forEach(([sector, color]) => {
     if (!seen.has(sector)) return;
     const item = document.createElement('div');
     item.className = 'legend-item';
     item.innerHTML = `<span class="legend-dot" style="background:${color}"></span>${sector}`;
     item.addEventListener('click', () => {
-      if (highlightedSector === sector) {
-        highlightedSector = null;
-        document.querySelectorAll('.legend-item').forEach(i => i.classList.remove('dimmed'));
-      } else {
-        highlightedSector = sector;
-        document.querySelectorAll('.legend-item').forEach(i => {
-          i.classList.toggle('dimmed', !i.textContent.includes(sector));
-        });
-      }
+      if (highlightedSector === sector) { highlightedSector = null; document.querySelectorAll('.legend-item').forEach(i => i.classList.remove('dimmed')); }
+      else { highlightedSector = sector; document.querySelectorAll('.legend-item').forEach(i => i.classList.toggle('dimmed', !i.textContent.includes(sector))); }
       updateHighlights();
     });
     container.appendChild(item);
@@ -557,8 +288,8 @@ function setupEvents() {
       document.getElementById('cards-container').classList.toggle('view-hidden', currentView !== 'cards');
     });
   });
-  document.getElementById('sector-filter').addEventListener('change', (e) => { sectorFilter = e.target.value; refresh(); });
-  document.getElementById('switchers-only').addEventListener('change', (e) => { switchersOnly = e.target.checked; refresh(); });
+  document.getElementById('sector-filter').addEventListener('change', e => { sectorFilter = e.target.value; refresh(); });
+  document.getElementById('switchers-only').addEventListener('change', e => { switchersOnly = e.target.checked; refresh(); });
 }
 
 function refresh() { computeStats(); renderAlluvial(); renderCards(); }
@@ -567,31 +298,22 @@ function refresh() { computeStats(); renderAlluvial(); renderCards(); }
 // TOOLTIP
 // =====================================================
 const tooltip = document.getElementById('tooltip');
-
-function showTooltip(e, html) {
-  tooltip.innerHTML = html;
-  tooltip.style.display = 'block';
-  moveTooltip(e);
-}
-
+function showTooltip(e, html) { tooltip.innerHTML = html; tooltip.style.display = 'block'; moveTooltip(e); }
 function moveTooltip(e) {
   let x = e.clientX + 14, y = e.clientY + 14;
-  const rect = tooltip.getBoundingClientRect();
-  if (x + 380 > window.innerWidth) x = e.clientX - rect.width - 14;
-  if (y + rect.height > window.innerHeight) y = e.clientY - rect.height - 14;
-  tooltip.style.left = x + 'px';
-  tooltip.style.top = y + 'px';
+  const r = tooltip.getBoundingClientRect();
+  if (x + 400 > window.innerWidth) x = e.clientX - r.width - 14;
+  if (y + r.height > window.innerHeight) y = e.clientY - r.height - 14;
+  tooltip.style.left = x + 'px'; tooltip.style.top = y + 'px';
 }
-
 function hideTooltip() { tooltip.style.display = 'none'; }
 
 function founderTooltipHTML(founder, highlightEraIdx) {
-  let html = `<div class="tt-name">${founder.name}</div>`;
-  html += `<div class="tt-detail">`;
+  let html = `<div class="tt-name">${founder.name}</div><div class="tt-detail">`;
   founder.roles.forEach(r => {
     const color = getSectorColor(r.sector);
-    const years = `${r.start || '?'}–${r.end || 'now'}`;
-    const isInEra = highlightEraIdx !== undefined && r.start && 
+    const years = `${r.start || '?'}\u2013${r.end || 'now'}`;
+    const isInEra = highlightEraIdx !== undefined && r.start &&
       r.start <= ERAS[highlightEraIdx].range[1] && (r.end || 2026) >= ERAS[highlightEraIdx].range[0];
     const bold = isInEra ? 'font-weight:600;color:#fff' : '';
     html += `<div class="tt-role" style="${bold}">
@@ -600,11 +322,62 @@ function founderTooltipHTML(founder, highlightEraIdx) {
       <span class="tt-role-years">${years}</span>
     </div>`;
   });
-  if (founder.sectorSwitches?.length > 0) {
-    html += `<div class="tt-switch-label">${founder.sectorSwitches.length} sector switch${founder.sectorSwitches.length > 1 ? 'es' : ''}</div>`;
-  }
+  if (founder.sectorSwitches?.length > 0) html += `<div class="tt-switch-label">${founder.sectorSwitches.length} sector switch${founder.sectorSwitches.length > 1 ? 'es' : ''}</div>`;
+  return html + '</div>';
+}
+
+function sectorBlockTooltipHTML(sector, eraIdx, peopleInBlock) {
+  const era = ERAS[eraIdx];
+  let html = `<div class="tt-sector-title" style="color:${BROAD_COLORS[sector]}">${sector}</div>`;
+  html += `<div style="color:#666;font-size:11px;margin-bottom:8px">${era.label} (${era.sub})</div>`;
+  html += `<div class="tt-detail">`;
+  peopleInBlock.forEach(p => {
+    // Find the role active in this era
+    const role = p.founder.roles.filter(r => {
+      const start = r.start || 1990; const end = r.end || 2026;
+      return start <= era.range[1] && end >= era.range[0] && broadSector(r.sector) === sector;
+    }).pop();
+    const company = role ? role.company : '';
+    const title = role ? role.role : '';
+    html += `<div class="tt-person-row">
+      <span style="color:#fff;font-weight:500">${p.founder.name}</span>
+      <span class="tt-person-company">${title}${company ? ' @ ' + company : ''}</span>
+    </div>`;
+  });
   html += `</div>`;
   return html;
+}
+
+// =====================================================
+// CONCENTRIC DOT POSITIONS
+// =====================================================
+function concentricPositions(cx, cy, count, baseRadius) {
+  if (count === 0) return [];
+  if (count === 1) return [{ x: cx, y: cy }];
+
+  const positions = [];
+  // Center dot first
+  positions.push({ x: cx, y: cy });
+  let placed = 1;
+  let ring = 1;
+
+  while (placed < count) {
+    const r = baseRadius * ring;
+    const circumference = 2 * Math.PI * r;
+    const maxInRing = Math.max(6, Math.floor(circumference / (baseRadius * 0.9)));
+    const inThisRing = Math.min(maxInRing, count - placed);
+    
+    for (let i = 0; i < inThisRing; i++) {
+      const angle = (2 * Math.PI * i / inThisRing) - Math.PI / 2;
+      positions.push({
+        x: cx + r * Math.cos(angle),
+        y: cy + r * Math.sin(angle),
+      });
+      placed++;
+    }
+    ring++;
+  }
+  return positions;
 }
 
 // =====================================================
@@ -617,215 +390,203 @@ function renderAlluvial() {
   const founders = getFiltered();
   if (founders.length === 0) return;
 
-  // For each founder, find their primary broad sector per era
+  // For each founder, find their primary broad sector per era + details
   const founderEras = founders.map(f => {
     return ERAS.map(era => {
       const activeRoles = f.roles.filter(r => {
-        const start = r.start || 1990;
-        const end = r.end || 2026;
+        const start = r.start || 1990; const end = r.end || 2026;
         return start <= era.range[1] && end >= era.range[0];
       });
       if (activeRoles.length === 0) return null;
-      // Pick the latest-started role in the era
       const role = activeRoles.reduce((best, r) => (!best || (r.start || 0) > (best.start || 0)) ? r : best, null);
-      return {
-        broad: broadSector(role.sector),
-        sector: role.sector,
-        company: role.company,
-        role: role.role,
-      };
+      return { broad: broadSector(role.sector), sector: role.sector, company: role.company, role: role.role };
     });
   });
 
-  // Layout dimensions
-  const nameColW = 140;
-  const W = Math.max(1100, window.innerWidth - 60);
-  const vizW = W - nameColW;
-  const padX = 60;
-  const padTop = 70;
-  const padBottom = 30;
-  const colW = 100;
-  const numCols = ERAS.length;
-  const colSpacing = (vizW - 2 * padX - colW) / (numCols - 1);
-  
-  // Height based on max people in any single sector in any column
-  const maxPerSector = (() => {
-    let maxCount = 0;
-    ERAS.forEach((_, i) => {
-      const counts = {};
-      founderEras.forEach(fe => { if (fe[i]) counts[fe[i].broad] = (counts[fe[i].broad] || 0) + 1; });
-      Object.values(counts).forEach(c => { if (c > maxCount) maxCount = c; });
-    });
-    return maxCount;
-  })();
-  
-  const rowH = 28;
-  const sectorGap = 12;
-  const totalSectors = Object.keys(BROAD_COLORS).filter(s => 
-    founderEras.some(fe => fe.some(e => e && e.broad === s))
-  ).length;
-  
-  const H = padTop + padBottom + founders.length * rowH + totalSectors * sectorGap + 40;
-
-  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  svg.setAttribute('width', W);
-  svg.setAttribute('height', H);
-
-  // Compute sector block positions per column
-  // First, get a consistent sector ordering across all columns
+  // Get consistent sector ordering (biggest sectors first for visual weight)
   const allBroads = new Set();
   founderEras.forEach(fe => fe.forEach(e => { if (e) allBroads.add(e.broad); }));
   const sectorOrder = [...allBroads].sort((a, b) => {
-    // Sort by most common first
-    const countA = founderEras.reduce((s, fe) => s + fe.filter(e => e && e.broad === a).length, 0);
-    const countB = founderEras.reduce((s, fe) => s + fe.filter(e => e && e.broad === b).length, 0);
-    return countB - countA;
+    const cA = founderEras.reduce((s, fe) => s + fe.filter(e => e && e.broad === a).length, 0);
+    const cB = founderEras.reduce((s, fe) => s + fe.filter(e => e && e.broad === b).length, 0);
+    return cB - cA;
   });
 
-  const colPositions = ERAS.map((era, colIdx) => {
-    const counts = {};
-    founderEras.forEach(fe => {
-      if (fe[colIdx]) {
-        const b = fe[colIdx].broad;
-        counts[b] = (counts[b] || 0) + 1;
-      }
-    });
+  // Layout
+  const W = Math.max(1200, window.innerWidth - 40);
+  const padX = 80;
+  const padTop = 75;
+  const numCols = ERAS.length;
+  const colSpacing = (W - 2 * padX) / (numCols - 1);
+  const dotRadius = 5;
+  const ringSpacing = 14;
 
+  // Compute cluster sizes to determine height
+  // Each sector cluster: center + rings. Estimate radius needed.
+  function clusterRadius(count) {
+    if (count <= 1) return dotRadius;
+    if (count <= 7) return ringSpacing;
+    if (count <= 19) return ringSpacing * 2;
+    return ringSpacing * 3;
+  }
+
+  // Compute column sector positions
+  const colData = ERAS.map((era, colIdx) => {
+    const groups = {};
+    founderEras.forEach((fe, fi) => {
+      if (!fe[colIdx]) return;
+      const b = fe[colIdx].broad;
+      if (!groups[b]) groups[b] = [];
+      groups[b].push({ founderIdx: fi, founder: founders[fi], detail: fe[colIdx] });
+    });
+    return groups;
+  });
+
+  // Place sector clusters vertically per column, keeping same sector order
+  const sectorGap = 24;
+  const clusterPadding = 16;
+
+  const colPositions = ERAS.map((era, colIdx) => {
+    const groups = colData[colIdx];
     let y = padTop;
     const positions = {};
-    
+
     sectorOrder.forEach(sector => {
-      const count = counts[sector] || 0;
-      if (count === 0) return;
-      const h = count * rowH;
-      positions[sector] = { y, h, count, slots: [] };
-      // Pre-allocate slot positions
-      for (let i = 0; i < count; i++) {
-        positions[sector].slots.push(y + i * rowH + rowH / 2);
-      }
-      y += h + sectorGap;
+      const group = groups[sector];
+      if (!group || group.length === 0) return;
+      const cr = clusterRadius(group.length);
+      const blockH = cr * 2 + clusterPadding;
+      const cx = padX + colIdx * colSpacing;
+      const cy = y + cr + clusterPadding / 2;
+
+      // Get concentric dot positions
+      const dots = concentricPositions(cx, cy, group.length, ringSpacing);
+
+      positions[sector] = {
+        cx, cy, radius: cr, blockH,
+        y: y,
+        people: group,
+        dots: dots,
+      };
+
+      y += blockH + sectorGap;
     });
 
     return positions;
   });
 
-  // Track which slot each founder gets per column
-  const slotCounters = colPositions.map(col => {
-    const counters = {};
-    Object.keys(col).forEach(s => counters[s] = 0);
-    return counters;
-  });
+  const maxY = Math.max(...colPositions.map(col => {
+    const entries = Object.values(col);
+    if (entries.length === 0) return padTop;
+    const last = entries[entries.length - 1];
+    return last.y + last.blockH;
+  }));
+  const H = maxY + 60;
 
-  // Assign slots to founders (maintain consistent ordering within sectors)
-  const founderSlots = founderEras.map((fe, fi) => {
-    return fe.map((e, ei) => {
-      if (!e) return null;
-      const sector = e.broad;
-      const pos = colPositions[ei][sector];
-      if (!pos) return null;
-      const slotIdx = slotCounters[ei][sector]++;
-      return {
-        x: padX + ei * colSpacing,
-        y: pos.slots[slotIdx],
-        sector: sector,
-      };
-    });
-  });
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('width', W);
+  svg.setAttribute('height', H);
 
-  // Draw era labels + vertical lines
+  // Draw era labels
   ERAS.forEach((era, i) => {
-    const x = padX + i * colSpacing + colW / 2;
-    
-    // Era name
+    const x = padX + i * colSpacing;
     const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    label.setAttribute('x', x);
-    label.setAttribute('y', 24);
+    label.setAttribute('x', x); label.setAttribute('y', 24);
     label.setAttribute('text-anchor', 'middle');
-    label.setAttribute('fill', '#777');
-    label.setAttribute('font-size', '13');
-    label.setAttribute('font-weight', '600');
+    label.setAttribute('fill', '#777'); label.setAttribute('font-size', '13'); label.setAttribute('font-weight', '600');
     label.textContent = era.label;
     svg.appendChild(label);
 
-    // Era years
     const sub = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    sub.setAttribute('x', x);
-    sub.setAttribute('y', 42);
+    sub.setAttribute('x', x); sub.setAttribute('y', 42);
     sub.setAttribute('text-anchor', 'middle');
-    sub.setAttribute('fill', '#444');
-    sub.setAttribute('font-size', '11');
+    sub.setAttribute('fill', '#444'); sub.setAttribute('font-size', '11');
     sub.textContent = era.sub;
     svg.appendChild(sub);
 
-    // Light vertical guide
+    // Vertical guide
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', x);
-    line.setAttribute('y1', padTop - 10);
-    line.setAttribute('x2', x);
-    line.setAttribute('y2', H - padBottom);
-    line.setAttribute('stroke', 'rgba(255,255,255,0.03)');
-    line.setAttribute('stroke-width', '1');
+    line.setAttribute('x1', x); line.setAttribute('y1', padTop - 10);
+    line.setAttribute('x2', x); line.setAttribute('y2', H - 20);
+    line.setAttribute('stroke', 'rgba(255,255,255,0.03)'); line.setAttribute('stroke-width', '1');
     svg.appendChild(line);
   });
 
-  // Draw sector blocks (rectangles behind the dots)
-  ERAS.forEach((era, i) => {
-    const x = padX + i * colSpacing;
-    const positions = colPositions[i];
-
+  // Draw sector blocks (rounded rects behind clusters) + sector labels
+  ERAS.forEach((era, colIdx) => {
+    const positions = colPositions[colIdx];
     Object.entries(positions).forEach(([sector, pos]) => {
+      const color = BROAD_COLORS[sector] || '#4b5563';
+      const r = pos.radius + 10;
+
+      // Background circle/pill for the cluster
       const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      rect.setAttribute('x', x - 2);
-      rect.setAttribute('y', pos.y - rowH / 2 + 2);
-      rect.setAttribute('width', colW + 4);
-      rect.setAttribute('height', pos.h - 4);
-      rect.setAttribute('rx', 6);
-      rect.setAttribute('fill', BROAD_COLORS[sector] || '#4b5563');
-      rect.setAttribute('opacity', '0.08');
+      rect.setAttribute('x', pos.cx - r);
+      rect.setAttribute('y', pos.cy - r);
+      rect.setAttribute('width', r * 2);
+      rect.setAttribute('height', r * 2);
+      rect.setAttribute('rx', r);
+      rect.setAttribute('fill', color);
+      rect.setAttribute('opacity', '0.07');
       rect.setAttribute('class', 'sector-block');
       rect.setAttribute('data-sector', sector);
+      rect.setAttribute('data-era', colIdx);
+
+      // Hover: show all people in this sector/era
+      rect.addEventListener('mouseenter', (e) => {
+        showTooltip(e, sectorBlockTooltipHTML(sector, colIdx, pos.people));
+      });
+      rect.addEventListener('mousemove', moveTooltip);
+      rect.addEventListener('mouseleave', hideTooltip);
+
       svg.appendChild(rect);
 
-      // Sector label inside block
-      if (pos.h > 20) {
-        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        text.setAttribute('x', x - 8);
-        text.setAttribute('y', pos.y + pos.h / 2 - rowH / 2 + 4);
-        text.setAttribute('text-anchor', 'end');
-        text.setAttribute('fill', BROAD_COLORS[sector] || '#666');
-        text.setAttribute('font-size', '10');
-        text.setAttribute('opacity', i === 0 ? '0.7' : '0');
-        text.textContent = sector;
-        svg.appendChild(text);
-      }
+      // Sector label below the cluster
+      const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      label.setAttribute('x', pos.cx);
+      label.setAttribute('y', pos.cy + r + 14);
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('fill', color);
+      label.setAttribute('font-size', '10');
+      label.setAttribute('opacity', '0.6');
+      label.textContent = `${sector} (${pos.people.length})`;
+      svg.appendChild(label);
     });
   });
 
-  // Draw sector labels on left side (column 0)
-  const firstColPositions = colPositions[0];
-  Object.entries(firstColPositions).forEach(([sector, pos]) => {
-    // Already drawn above for col 0
+  // Build a lookup: founderIdx -> { eraIdx -> dotPosition }
+  const founderDotPos = {};
+  ERAS.forEach((era, colIdx) => {
+    const positions = colPositions[colIdx];
+    Object.entries(positions).forEach(([sector, pos]) => {
+      pos.people.forEach((p, i) => {
+        if (!founderDotPos[p.founderIdx]) founderDotPos[p.founderIdx] = {};
+        founderDotPos[p.founderIdx][colIdx] = pos.dots[i];
+      });
+    });
   });
 
-  // Draw flow paths for each founder
-  founderEras.forEach((fe, fi) => {
-    const founder = founders[fi];
-    const slots = founderSlots[fi];
+  // Draw flow paths
+  founders.forEach((founder, fi) => {
+    const fe = founderEras[fi];
+    const dotPos = founderDotPos[fi];
+    if (!dotPos) return;
 
     for (let i = 0; i < ERAS.length - 1; i++) {
-      if (!slots[i] || !slots[i + 1]) continue;
+      if (!dotPos[i] || !dotPos[i + 1]) continue;
+      if (!fe[i] || !fe[i + 1]) continue;
 
-      const x1 = slots[i].x + colW;
-      const y1 = slots[i].y;
-      const x2 = slots[i + 1].x;
-      const y2 = slots[i + 1].y;
-      
+      const x1 = dotPos[i].x;
+      const y1 = dotPos[i].y;
+      const x2 = dotPos[i + 1].x;
+      const y2 = dotPos[i + 1].y;
+
       const isSectorSwitch = fe[i].broad !== fe[i + 1].broad;
       const color = BROAD_COLORS[fe[i + 1].broad] || '#6b7280';
 
-      // Bezier curve from right edge of col i to left edge of col i+1
-      const cx1 = x1 + (x2 - x1) * 0.4;
-      const cx2 = x1 + (x2 - x1) * 0.6;
+      const dx = x2 - x1;
+      const cx1 = x1 + dx * 0.35;
+      const cx2 = x1 + dx * 0.65;
 
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', `M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}`);
@@ -841,48 +602,44 @@ function renderAlluvial() {
         showTooltip(e, founderTooltipHTML(founder, i + 1));
       });
       path.addEventListener('mousemove', moveTooltip);
-      path.addEventListener('mouseleave', () => {
-        highlightedPerson = null;
-        updateHighlights();
-        hideTooltip();
-      });
+      path.addEventListener('mouseleave', () => { highlightedPerson = null; updateHighlights(); hideTooltip(); });
 
       svg.appendChild(path);
     }
   });
 
-  // Draw dots at each column position
-  founderEras.forEach((fe, fi) => {
-    const founder = founders[fi];
-    const slots = founderSlots[fi];
+  // Draw dots (concentric within clusters)
+  founders.forEach((founder, fi) => {
+    const fe = founderEras[fi];
+    const dotPos = founderDotPos[fi];
+    if (!dotPos) return;
 
-    ERAS.forEach((era, i) => {
-      if (!fe[i] || !slots[i]) return;
-      
-      const x = slots[i].x + colW / 2;
-      const y = slots[i].y;
-      const color = BROAD_COLORS[fe[i].broad] || '#6b7280';
+    ERAS.forEach((era, colIdx) => {
+      if (!fe[colIdx] || !dotPos[colIdx]) return;
+      const { x, y } = dotPos[colIdx];
+      const color = BROAD_COLORS[fe[colIdx].broad] || '#6b7280';
 
       const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circle.setAttribute('cx', x);
-      circle.setAttribute('cy', y);
-      circle.setAttribute('r', 4);
+      circle.setAttribute('cx', x); circle.setAttribute('cy', y);
+      circle.setAttribute('r', dotRadius);
       circle.setAttribute('fill', color);
       circle.setAttribute('stroke', '#0a0a0f');
-      circle.setAttribute('stroke-width', '1.5');
+      circle.setAttribute('stroke-width', '2');
       circle.setAttribute('data-founder', founder.id);
       circle.style.cursor = 'pointer';
-      circle.style.transition = 'r 0.15s';
+      circle.style.transition = 'r 0.15s, stroke 0.15s';
 
       circle.addEventListener('mouseenter', (e) => {
-        circle.setAttribute('r', 6);
+        circle.setAttribute('r', dotRadius + 2);
+        circle.setAttribute('stroke', '#fff');
         highlightedPerson = founder.id;
         updateHighlights();
-        showTooltip(e, founderTooltipHTML(founder, i));
+        showTooltip(e, founderTooltipHTML(founder, colIdx));
       });
       circle.addEventListener('mousemove', moveTooltip);
       circle.addEventListener('mouseleave', () => {
-        circle.setAttribute('r', 4);
+        circle.setAttribute('r', dotRadius);
+        circle.setAttribute('stroke', '#0a0a0f');
         highlightedPerson = null;
         updateHighlights();
         hideTooltip();
@@ -892,17 +649,32 @@ function renderAlluvial() {
     });
   });
 
-  // Draw names on the right side (after last column)
-  const lastColX = padX + (ERAS.length - 1) * colSpacing + colW + 12;
-  founderEras.forEach((fe, fi) => {
-    const founder = founders[fi];
-    const lastSlot = founderSlots[fi].filter(s => s !== null).pop();
-    if (!lastSlot) return;
+  // Names on right side
+  const nameX = padX + (ERAS.length - 1) * colSpacing + 30;
+  // Group by last era's sector for neat labeling
+  const lastEraGroups = {};
+  founders.forEach((founder, fi) => {
+    const dotPos = founderDotPos[fi];
+    if (!dotPos) return;
+    // Find last era they appear in
+    let lastEra = -1;
+    ERAS.forEach((_, i) => { if (dotPos[i]) lastEra = i; });
+    if (lastEra < 0) return;
+    const sector = founderEras[fi][lastEra].broad;
+    if (!lastEraGroups[sector]) lastEraGroups[sector] = [];
+    lastEraGroups[sector].push({ founder, fi, y: dotPos[lastEra].y });
+  });
 
+  // Sort within each sector group by y position
+  Object.values(lastEraGroups).forEach(group => group.sort((a, b) => a.y - b.y));
+  const allNames = [];
+  sectorOrder.forEach(s => { if (lastEraGroups[s]) allNames.push(...lastEraGroups[s]); });
+
+  allNames.forEach(({ founder, fi, y }) => {
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    text.setAttribute('x', lastColX);
-    text.setAttribute('y', lastSlot.y + 4);
-    text.setAttribute('fill', '#888');
+    text.setAttribute('x', nameX);
+    text.setAttribute('y', y + 4);
+    text.setAttribute('fill', '#777');
     text.setAttribute('font-size', '11');
     text.setAttribute('data-founder', founder.id);
     text.style.cursor = 'pointer';
@@ -917,12 +689,11 @@ function renderAlluvial() {
     });
     text.addEventListener('mousemove', moveTooltip);
     text.addEventListener('mouseleave', () => {
-      text.setAttribute('fill', '#888');
+      text.setAttribute('fill', '#777');
       highlightedPerson = null;
       updateHighlights();
       hideTooltip();
     });
-
     svg.appendChild(text);
   });
 }
@@ -932,27 +703,19 @@ function updateHighlights() {
     const fid = path.getAttribute('data-founder');
     const fromS = path.getAttribute('data-from-sector');
     const toS = path.getAttribute('data-to-sector');
-
     if (highlightedPerson) {
       path.classList.toggle('highlight', fid === highlightedPerson);
       path.classList.toggle('dimmed', fid !== highlightedPerson);
     } else if (highlightedSector) {
-      const matches = fromS === highlightedSector || toS === highlightedSector;
-      path.classList.toggle('highlight', matches);
-      path.classList.toggle('dimmed', !matches);
-    } else {
-      path.classList.remove('highlight', 'dimmed');
-    }
+      const m = fromS === highlightedSector || toS === highlightedSector;
+      path.classList.toggle('highlight', m);
+      path.classList.toggle('dimmed', !m);
+    } else { path.classList.remove('highlight', 'dimmed'); }
   });
-
-  // Also highlight/dim dots and names
   document.querySelectorAll('circle[data-founder], text[data-founder]').forEach(el => {
     const fid = el.getAttribute('data-founder');
-    if (highlightedPerson) {
-      el.style.opacity = fid === highlightedPerson ? '1' : '0.15';
-    } else {
-      el.style.opacity = '1';
-    }
+    if (highlightedPerson) { el.style.opacity = fid === highlightedPerson ? '1' : '0.15'; }
+    else { el.style.opacity = '1'; }
   });
 }
 
@@ -962,38 +725,30 @@ function updateHighlights() {
 function renderCards() {
   const container = document.getElementById('cards-container');
   container.innerHTML = '';
-
-  const founders = getFiltered();
-  const sorted = [...founders].sort((a, b) => (b.sectorSwitches?.length || 0) - (a.sectorSwitches?.length || 0));
-
+  const sorted = [...getFiltered()].sort((a, b) => (b.sectorSwitches?.length || 0) - (a.sectorSwitches?.length || 0));
   sorted.forEach(f => {
     const card = document.createElement('div');
     card.className = 'founder-card' + (f.sectorSwitches?.length > 0 ? ' switch-highlight' : '');
-
     const switches = (f.sectorSwitches || []).map(s =>
       `<span class="switch-badge">${s.from} <span class="arrow">\u2192</span> ${s.to} <span style="color:#555">(${s.year})</span></span>`
     ).join('');
-
     const roles = f.roles.map(r => {
       const color = getSectorColor(r.sector);
-      const years = `${r.start || '?'}–${r.end || 'now'}`;
       return `<div class="role-chip" style="border-color:${color}33">
         <span class="dot" style="background:${color}"></span>
         <span>${r.company}</span>
         <span style="color:#888;font-size:10px">${r.role}</span>
-        <span class="years">${years}</span>
+        <span class="years">${r.start || '?'}\u2013${r.end || 'now'}</span>
       </div>`;
     }).join('');
-
     card.innerHTML = `
       <div class="name">${f.name} ${f.sectorSwitches?.length > 0 ? `<span style="color:#fbbf24;font-size:12px;font-weight:400">${f.sectorSwitches.length} switch${f.sectorSwitches.length > 1 ? 'es' : ''}</span>` : ''}</div>
-      ${switches ? `<div class="switches" style="margin-bottom:8px">${switches}</div>` : ''}
+      ${switches ? `<div style="margin-bottom:8px">${switches}</div>` : ''}
       <div class="timeline-row">${roles}</div>
     `;
     container.appendChild(card);
   });
 }
 </script>
-
 </body>
 </html>
