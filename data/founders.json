@@ -369,7 +369,7 @@
         "sector": "Consumer AI",
         "start": 2022,
         "end": 2024,
-        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Karén Simonyan"
+        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Kar\u00e9n Simonyan"
       },
       {
         "company": "Microsoft AI",
@@ -1738,7 +1738,7 @@
       {
         "company": "Amazon",
         "role": "Founder & CEO",
-        "sector": "E-Commerce",
+        "sector": "Consumer Tech",
         "start": 1994,
         "end": 2021,
         "note": "Built the world's largest online retailer and AWS cloud. Stepped down to Executive Chairman."
@@ -1754,7 +1754,7 @@
       {
         "company": "Amazon",
         "role": "Executive Chairman",
-        "sector": "E-Commerce",
+        "sector": "Consumer Tech",
         "start": 2021,
         "end": null
       }
@@ -1952,149 +1952,6 @@
     ],
     "sectorSwitches": [],
     "primarySector": "Fintech"
-  },
-  {
-    "name": "Su Zhu",
-    "id": "su-zhu",
-    "born": 1986,
-    "source": "https://en.wikipedia.org/wiki/Three_Arrows_Capital",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "Flow Traders",
-        "role": "Trader",
-        "sector": "Finance",
-        "start": 2008,
-        "end": 2011
-      },
-      {
-        "company": "Three Arrows Capital",
-        "role": "Co-founder & CEO",
-        "sector": "Crypto",
-        "start": 2012,
-        "end": 2022,
-        "note": "Crypto hedge fund. Collapsed June 2022 with $3B+ in losses after Luna implosion. Sentenced to 4 months imprisonment."
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "VC & Finance",
-        "to": "Crypto",
-        "year": 2012
-      }
-    ],
-    "primarySector": "Crypto"
-  },
-  {
-    "name": "Kyle Davies",
-    "id": "kyle-davies",
-    "born": 1986,
-    "source": "https://en.wikipedia.org/wiki/Three_Arrows_Capital",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "Credit Suisse",
-        "role": "Trader",
-        "sector": "Finance",
-        "start": 2008,
-        "end": 2011
-      },
-      {
-        "company": "Three Arrows Capital",
-        "role": "Co-founder",
-        "sector": "Crypto",
-        "start": 2012,
-        "end": 2022,
-        "note": "Co-founded with Su Zhu. $3B+ collapse 2022. Filed for bankruptcy."
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "VC & Finance",
-        "to": "Crypto",
-        "year": 2012
-      }
-    ],
-    "primarySector": "Crypto"
-  },
-  {
-    "name": "Do Kwon",
-    "id": "do-kwon",
-    "born": 1991,
-    "source": "https://en.wikipedia.org/wiki/Do_Kwon",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "Microsoft",
-        "role": "Software Engineer",
-        "sector": "Consumer Tech",
-        "start": 2014,
-        "end": 2016
-      },
-      {
-        "company": "Anyfi",
-        "role": "Co-founder & CEO",
-        "sector": "Enterprise Tech",
-        "start": 2016,
-        "end": 2018
-      },
-      {
-        "company": "Terraform Labs",
-        "role": "Co-founder & CEO",
-        "sector": "Crypto",
-        "start": 2018,
-        "end": 2022,
-        "note": "Terra/LUNA stablecoin ecosystem. $60B collapse in May 2022. Arrested in Montenegro 2023, extradited to US."
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "Consumer",
-        "to": "Crypto",
-        "year": 2018
-      }
-    ],
-    "primarySector": "Crypto"
-  },
-  {
-    "name": "Sam Bankman-Fried",
-    "id": "sam-bankman-fried",
-    "born": 1992,
-    "source": "https://en.wikipedia.org/wiki/Sam_Bankman-Fried",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "Jane Street Capital",
-        "role": "Trader",
-        "sector": "Finance",
-        "start": 2014,
-        "end": 2017
-      },
-      {
-        "company": "Alameda Research",
-        "role": "Co-founder & CEO",
-        "sector": "Crypto",
-        "start": 2017,
-        "end": 2022,
-        "note": "Crypto quantitative trading firm."
-      },
-      {
-        "company": "FTX",
-        "role": "Co-founder & CEO",
-        "sector": "Crypto",
-        "start": 2019,
-        "end": 2022,
-        "note": "Crypto derivatives exchange. Collapsed Nov 2022 with $8B shortfall. Convicted of fraud and conspiracy 2023. Sentenced to 25 years."
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "VC & Finance",
-        "to": "Crypto",
-        "year": 2017
-      }
-    ],
-    "primarySector": "Crypto"
   },
   {
     "name": "Jack Clark",
@@ -2296,5 +2153,975 @@
       }
     ],
     "primarySector": "VC & Finance"
+  },
+  {
+    "name": "Paul Graham",
+    "id": "paul-graham",
+    "source": "https://en.wikipedia.org/wiki/Paul_Graham_(programmer)",
+    "roles": [
+      {
+        "company": "Viaweb",
+        "role": "Co-founder & CEO",
+        "sector": "E-commerce Software",
+        "start": 1996,
+        "end": 1998,
+        "note": "Online store builder; sold to Yahoo for $49.6M"
+      },
+      {
+        "company": "Yahoo! Store",
+        "role": "Architect",
+        "sector": "E-commerce Software",
+        "start": 1998,
+        "end": 2003,
+        "note": "Continued after Viaweb acquisition"
+      },
+      {
+        "company": "Y Combinator",
+        "role": "Co-founder & Partner",
+        "sector": "Startup Accelerator",
+        "start": 2005,
+        "end": 2014,
+        "note": "Stepped down from day-to-day Feb 2014; backed Airbnb, Stripe, Dropbox"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer",
+        "to": "VC & Finance",
+        "year": 2005
+      }
+    ],
+    "primarySector": "VC & Finance",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Max Levchin",
+    "id": "max-levchin",
+    "source": "https://en.wikipedia.org/wiki/Max_Levchin",
+    "roles": [
+      {
+        "company": "Confinity / PayPal",
+        "role": "Co-founder & CTO",
+        "sector": "Payments",
+        "start": 1998,
+        "end": 2002,
+        "note": "Merged with X.com; acquired by eBay for $1.5B"
+      },
+      {
+        "company": "Slide",
+        "role": "Founder & CEO",
+        "sector": "Social Media",
+        "start": 2004,
+        "end": 2011,
+        "note": "Media sharing for social networks; sold to Google for $182M"
+      },
+      {
+        "company": "HVF / Affirm",
+        "role": "Founder & CEO",
+        "sector": "Fintech",
+        "start": 2012,
+        "end": null,
+        "note": "BNPL fintech; IPO Jan 2021"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Fintech",
+        "to": "Social & Media",
+        "year": 2004
+      },
+      {
+        "from": "Social & Media",
+        "to": "Fintech",
+        "year": 2012
+      }
+    ],
+    "primarySector": "Fintech",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Sheryl Sandberg",
+    "id": "sheryl-sandberg",
+    "source": "https://en.wikipedia.org/wiki/Sheryl_Sandberg",
+    "roles": [
+      {
+        "company": "McKinsey & Company",
+        "role": "Management Consultant",
+        "sector": "Consulting",
+        "start": 1995,
+        "end": 1996
+      },
+      {
+        "company": "US Treasury Department",
+        "role": "Chief of Staff to Secretary Lawrence Summers",
+        "sector": "Government",
+        "start": 1996,
+        "end": 2001
+      },
+      {
+        "company": "Google",
+        "role": "VP Global Online Sales & Operations",
+        "sector": "Enterprise Advertising",
+        "start": 2001,
+        "end": 2008,
+        "note": "Grew ad sales team from 4 to 4,000 people"
+      },
+      {
+        "company": "Meta (Facebook)",
+        "role": "COO",
+        "sector": "Social Media",
+        "start": 2008,
+        "end": 2022,
+        "note": "Built Facebook's ad business into multi-billion revenue; stepped down Sep 2022"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Other",
+        "to": "Enterprise",
+        "year": 2001
+      },
+      {
+        "from": "Enterprise",
+        "to": "Social & Media",
+        "year": 2008
+      }
+    ],
+    "primarySector": "Social & Media",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Marissa Mayer",
+    "id": "marissa-mayer",
+    "source": "https://en.wikipedia.org/wiki/Marissa_Mayer",
+    "roles": [
+      {
+        "company": "Google",
+        "role": "Employee #20 / SVP Search Products & UX",
+        "sector": "Search & Enterprise",
+        "start": 1999,
+        "end": 2012,
+        "note": "Led Google Search, Maps, Gmail, Chrome product design"
+      },
+      {
+        "company": "Yahoo",
+        "role": "CEO",
+        "sector": "Consumer Internet",
+        "start": 2012,
+        "end": 2017,
+        "note": "Attempted turnaround; sold core business to Verizon for $4.48B"
+      },
+      {
+        "company": "Lumi Labs",
+        "role": "Co-founder & CEO",
+        "sector": "AI",
+        "start": 2018,
+        "end": null,
+        "note": "Consumer AI products"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "Consumer",
+        "year": 2012
+      },
+      {
+        "from": "Consumer",
+        "to": "AI",
+        "year": 2018
+      }
+    ],
+    "primarySector": "Consumer",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Kevin Rose",
+    "id": "kevin-rose",
+    "source": "https://en.wikipedia.org/wiki/Kevin_Rose",
+    "roles": [
+      {
+        "company": "TechTV / G4",
+        "role": "Host & Producer",
+        "sector": "Media",
+        "start": 2002,
+        "end": 2004
+      },
+      {
+        "company": "Digg",
+        "role": "Co-founder & CEO",
+        "sector": "Social News",
+        "start": 2004,
+        "end": 2012,
+        "note": "Pioneered social voting for news; raised $45M"
+      },
+      {
+        "company": "Milk Inc.",
+        "role": "Founder",
+        "sector": "Mobile Apps",
+        "start": 2011,
+        "end": 2012,
+        "note": "Acquired by Google 2012"
+      },
+      {
+        "company": "Google Ventures (GV)",
+        "role": "General Partner",
+        "sector": "Venture Capital",
+        "start": 2012,
+        "end": 2015
+      },
+      {
+        "company": "True Ventures",
+        "role": "Partner",
+        "sector": "Venture Capital",
+        "start": 2015,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social & Media",
+        "to": "VC & Finance",
+        "year": 2012
+      }
+    ],
+    "primarySector": "VC & Finance",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Dennis Crowley",
+    "id": "dennis-crowley",
+    "source": "https://en.wikipedia.org/wiki/Dennis_Crowley",
+    "roles": [
+      {
+        "company": "Vindigo",
+        "role": "Product Developer",
+        "sector": "Mobile Apps",
+        "start": 2000,
+        "end": 2003
+      },
+      {
+        "company": "Dodgeball",
+        "role": "Co-founder",
+        "sector": "Location Social",
+        "start": 2003,
+        "end": 2005,
+        "note": "Early mobile check-in app; acquired by Google in 2005"
+      },
+      {
+        "company": "Google",
+        "role": "Product Manager (Dodgeball)",
+        "sector": "Location Social",
+        "start": 2005,
+        "end": 2007,
+        "note": "Left after Google neglected Dodgeball"
+      },
+      {
+        "company": "Foursquare",
+        "role": "Co-founder & CEO",
+        "sector": "Location Social",
+        "start": 2009,
+        "end": 2016,
+        "note": "Scaled to 50M+ monthly users; split into Foursquare (enterprise) and Swarm (consumer) in 2014"
+      },
+      {
+        "company": "Foursquare",
+        "role": "Executive Chairman",
+        "sector": "Location Data Enterprise",
+        "start": 2016,
+        "end": null
+      },
+      {
+        "company": "Hopscotch Labs",
+        "role": "Co-founder",
+        "sector": "Consumer Mobile",
+        "start": 2024,
+        "end": null,
+        "note": "Location-aware AI via Bluetooth/AirPods"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social & Media",
+        "to": "Enterprise",
+        "year": 2014
+      }
+    ],
+    "primarySector": "Social & Media",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Tony Fadell",
+    "id": "tony-fadell",
+    "source": "https://en.wikipedia.org/wiki/Tony_Fadell",
+    "roles": [
+      {
+        "company": "General Magic",
+        "role": "Systems Architect",
+        "sector": "Consumer Electronics",
+        "start": 1992,
+        "end": 1995,
+        "note": "Apple spinoff building personal communicators"
+      },
+      {
+        "company": "Philips Electronics",
+        "role": "CTO Mobile Computing / VP Strategy & Ventures",
+        "sector": "Consumer Electronics",
+        "start": 1995,
+        "end": 1999
+      },
+      {
+        "company": "Apple",
+        "role": "SVP iPod Division",
+        "sector": "Consumer Hardware",
+        "start": 2001,
+        "end": 2008,
+        "note": "Father of the iPod; co-created iPhone. 300+ patents."
+      },
+      {
+        "company": "Nest Labs",
+        "role": "Founder & CEO",
+        "sector": "Smart Home",
+        "start": 2010,
+        "end": 2016,
+        "note": "Sold to Google for $3.2B Jan 2014"
+      },
+      {
+        "company": "Future Shape",
+        "role": "Founder & Managing Partner",
+        "sector": "Deep Tech VC",
+        "start": 2016,
+        "end": null,
+        "note": "Invests in deep tech startups"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Deep Tech",
+        "to": "Consumer",
+        "year": 2001
+      },
+      {
+        "from": "Consumer",
+        "to": "VC & Finance",
+        "year": 2016
+      }
+    ],
+    "primarySector": "Consumer",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Parker Conrad",
+    "id": "parker-conrad",
+    "source": "https://en.wikipedia.org/wiki/Parker_Conrad",
+    "roles": [
+      {
+        "company": "SigFig (Wikinvest)",
+        "role": "Co-founder & CEO",
+        "sector": "Personal Finance",
+        "start": 2007,
+        "end": 2012,
+        "note": "Portfolio tracking for retail investors"
+      },
+      {
+        "company": "Zenefits",
+        "role": "Co-founder & CEO",
+        "sector": "HR Software",
+        "start": 2012,
+        "end": 2016,
+        "note": "Fastest-growing startup 2014; resigned amid compliance scandal"
+      },
+      {
+        "company": "Rippling",
+        "role": "Founder & CEO",
+        "sector": "HR & Workforce Management",
+        "start": 2016,
+        "end": null,
+        "note": "Compound startup: HR, IT, Finance; valued at $13.5B+"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Fintech",
+        "to": "Enterprise",
+        "year": 2012
+      }
+    ],
+    "primarySector": "Enterprise",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Katrina Lake",
+    "id": "katrina-lake",
+    "source": "https://en.wikipedia.org/wiki/Katrina_Lake",
+    "roles": [
+      {
+        "company": "Polyvore",
+        "role": "Business Development",
+        "sector": "Fashion Tech",
+        "start": 2009,
+        "end": 2011
+      },
+      {
+        "company": "Stitch Fix",
+        "role": "Founder & CEO",
+        "sector": "Retail Tech",
+        "start": 2011,
+        "end": 2021,
+        "note": "IPO 2017; first female founder to take company public on Nasdaq"
+      },
+      {
+        "company": "SKL Ventures",
+        "role": "Founder",
+        "sector": "Venture Capital",
+        "start": 2021,
+        "end": null,
+        "note": "Early-stage consumer & retail investing"
+      },
+      {
+        "company": "Stitch Fix",
+        "role": "CEO (returned)",
+        "sector": "Retail Tech",
+        "start": 2023,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer",
+        "to": "VC & Finance",
+        "year": 2021
+      },
+      {
+        "from": "VC & Finance",
+        "to": "Consumer",
+        "year": 2023
+      }
+    ],
+    "primarySector": "Consumer",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Eric Yuan",
+    "id": "eric-yuan",
+    "source": "https://en.wikipedia.org/wiki/Eric_Yuan",
+    "roles": [
+      {
+        "company": "WebEx",
+        "role": "VP Engineering",
+        "sector": "Video Conferencing",
+        "start": 1997,
+        "end": 2007,
+        "note": "One of first 20 employees; WebEx acquired by Cisco 2007"
+      },
+      {
+        "company": "Cisco",
+        "role": "VP Engineering (Collaboration)",
+        "sector": "Enterprise Software",
+        "start": 2007,
+        "end": 2011,
+        "note": "Left after Cisco rejected smartphone video conferencing idea"
+      },
+      {
+        "company": "Zoom Video Communications",
+        "role": "Founder & CEO",
+        "sector": "Enterprise Video",
+        "start": 2011,
+        "end": null,
+        "note": "IPO 2019; peak $100B+ market cap during COVID"
+      }
+    ],
+    "sectorSwitches": [],
+    "primarySector": "Enterprise",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Tony Hsieh",
+    "id": "tony-hsieh",
+    "source": "https://en.wikipedia.org/wiki/Tony_Hsieh",
+    "roles": [
+      {
+        "company": "Oracle",
+        "role": "Software Engineer",
+        "sector": "Enterprise Software",
+        "start": 1995,
+        "end": 1995,
+        "note": "Left after 5 months"
+      },
+      {
+        "company": "LinkExchange",
+        "role": "Co-founder & CEO",
+        "sector": "Ad Tech",
+        "start": 1996,
+        "end": 1998,
+        "note": "Banner ad network; sold to Microsoft for $265M"
+      },
+      {
+        "company": "Venture Frogs",
+        "role": "Co-founder",
+        "sector": "Venture Capital",
+        "start": 1999,
+        "end": 2009,
+        "note": "Invested in Zappos, Ask Jeeves, OpenTable"
+      },
+      {
+        "company": "Zappos",
+        "role": "CEO",
+        "sector": "E-commerce",
+        "start": 1999,
+        "end": 2020,
+        "note": "Sold to Amazon 2009 for $1.2B; died Nov 27, 2020 aged 46"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "Social & Media",
+        "year": 1996
+      },
+      {
+        "from": "Social & Media",
+        "to": "Consumer",
+        "year": 1999
+      }
+    ],
+    "primarySector": "Consumer",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Caterina Fake",
+    "id": "caterina-fake",
+    "source": "https://en.wikipedia.org/wiki/Caterina_Fake",
+    "roles": [
+      {
+        "company": "Salon Media / Netscape",
+        "role": "Art Director / Community Manager",
+        "sector": "Digital Media",
+        "start": 1997,
+        "end": 2002
+      },
+      {
+        "company": "Ludicorp / Flickr",
+        "role": "Co-founder",
+        "sector": "Photo Sharing",
+        "start": 2002,
+        "end": 2005,
+        "note": "Sold to Yahoo for ~$30M"
+      },
+      {
+        "company": "Yahoo",
+        "role": "VP Technology Development",
+        "sector": "Consumer Internet",
+        "start": 2005,
+        "end": 2008
+      },
+      {
+        "company": "Hunch",
+        "role": "Co-founder",
+        "sector": "Consumer AI",
+        "start": 2007,
+        "end": 2011,
+        "note": "Recommendation engine; sold to eBay for $80M"
+      },
+      {
+        "company": "Findery",
+        "role": "Founder & CEO",
+        "sector": "Location Social",
+        "start": 2012,
+        "end": 2015
+      },
+      {
+        "company": "Yes VC",
+        "role": "Co-founder & General Partner",
+        "sector": "Venture Capital",
+        "start": 2017,
+        "end": null,
+        "note": "Early-stage consumer/social investing"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social & Media",
+        "to": "VC & Finance",
+        "year": 2017
+      }
+    ],
+    "primarySector": "Social & Media",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Susan Wojcicki",
+    "id": "susan-wojcicki",
+    "source": "https://en.wikipedia.org/wiki/Susan_Wojcicki",
+    "roles": [
+      {
+        "company": "Intel",
+        "role": "Marketing Manager",
+        "sector": "Semiconductors",
+        "start": 1993,
+        "end": 1998
+      },
+      {
+        "company": "Google",
+        "role": "Employee #16 / SVP Advertising & Commerce",
+        "sector": "Enterprise Advertising",
+        "start": 1999,
+        "end": 2014,
+        "note": "Rented garage to Sergey & Larry; built Google's ad business. Drove YouTube acquisition ($1.65B)."
+      },
+      {
+        "company": "YouTube",
+        "role": "CEO",
+        "sector": "Social Media",
+        "start": 2014,
+        "end": 2023,
+        "note": "Stepped down Feb 2023. Died August 9, 2023 from lung cancer at age 56."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "Social & Media",
+        "year": 2014
+      }
+    ],
+    "primarySector": "Social & Media",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Gwynne Shotwell",
+    "id": "gwynne-shotwell",
+    "source": "https://en.wikipedia.org/wiki/Gwynne_Shotwell",
+    "roles": [
+      {
+        "company": "The Aerospace Corporation",
+        "role": "Systems Engineer (Thermal Analysis)",
+        "sector": "Aerospace Defense",
+        "start": 1988,
+        "end": 1998,
+        "note": "Military satellite R&D"
+      },
+      {
+        "company": "Microcosm Inc.",
+        "role": "Director of Space Systems",
+        "sector": "Aerospace Defense",
+        "start": 1998,
+        "end": 2002
+      },
+      {
+        "company": "SpaceX",
+        "role": "President & COO",
+        "sector": "Commercial Space",
+        "start": 2002,
+        "end": null,
+        "note": "7th employee; grew company from startup to $200B+ valuation. Manages day-to-day operations and commercial contracts."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Defense",
+        "to": "Deep Tech",
+        "year": 2002
+      }
+    ],
+    "primarySector": "Defense",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Andrew Mason",
+    "id": "andrew-mason",
+    "source": "https://en.wikipedia.org/wiki/Andrew_Mason",
+    "roles": [
+      {
+        "company": "The Point",
+        "role": "Founder",
+        "sector": "Social Activism Platform",
+        "start": 2007,
+        "end": 2008,
+        "note": "Group action platform; pivoted to become Groupon"
+      },
+      {
+        "company": "Groupon",
+        "role": "Founder & CEO",
+        "sector": "E-commerce",
+        "start": 2008,
+        "end": 2013,
+        "note": "Fastest company to $1B valuation at the time; IPO 2011; fired by board 2013"
+      },
+      {
+        "company": "Detour",
+        "role": "Founder & CEO",
+        "sector": "Consumer Audio",
+        "start": 2014,
+        "end": 2019,
+        "note": "Location-based audio tour app; sold to Bose 2019"
+      },
+      {
+        "company": "Descript",
+        "role": "Founder & CEO",
+        "sector": "AI Media Tools",
+        "start": 2017,
+        "end": null,
+        "note": "AI-powered audio/video editing platform for podcasters and video creators"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer",
+        "to": "AI",
+        "year": 2017
+      }
+    ],
+    "primarySector": "Consumer",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Tom Preston-Werner",
+    "id": "tom-preston-werner",
+    "source": "https://en.wikipedia.org/wiki/Tom_Preston-Werner",
+    "roles": [
+      {
+        "company": "Gravatar",
+        "role": "Founder",
+        "sector": "Developer Tools",
+        "start": 2004,
+        "end": 2007,
+        "note": "Global avatar service; acquired by Automattic 2007"
+      },
+      {
+        "company": "GitHub",
+        "role": "Co-founder & CEO",
+        "sector": "Developer Tools",
+        "start": 2008,
+        "end": 2014,
+        "note": "Resigned amid harassment investigation. Microsoft acquired GitHub for $7.5B in 2018."
+      },
+      {
+        "company": "Preston-Werner Ventures",
+        "role": "Founder",
+        "sector": "Venture Capital",
+        "start": 2018,
+        "end": null,
+        "note": "Focus on sustainable tech, food systems, climate"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "VC & Finance",
+        "year": 2018
+      }
+    ],
+    "primarySector": "Enterprise",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Satya Nadella",
+    "id": "satya-nadella",
+    "source": "https://en.wikipedia.org/wiki/Satya_Nadella",
+    "roles": [
+      {
+        "company": "Sun Microsystems",
+        "role": "Software Engineer",
+        "sector": "Enterprise Software",
+        "start": 1988,
+        "end": 1990,
+        "note": "Brief stint before joining Microsoft"
+      },
+      {
+        "company": "Microsoft",
+        "role": "Various VP/EVP roles (Bing, Server & Tools, Cloud)",
+        "sector": "Enterprise Software",
+        "start": 1992,
+        "end": 2014,
+        "note": "Led Azure cloud division before becoming CEO"
+      },
+      {
+        "company": "Microsoft",
+        "role": "CEO",
+        "sector": "Enterprise Cloud & AI",
+        "start": 2014,
+        "end": null,
+        "note": "Transformed Microsoft into cloud-first company; market cap from $300B to $3T+"
+      }
+    ],
+    "sectorSwitches": [],
+    "primarySector": "Enterprise",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Sundar Pichai",
+    "id": "sundar-pichai",
+    "source": "https://en.wikipedia.org/wiki/Sundar_Pichai",
+    "roles": [
+      {
+        "company": "Applied Materials",
+        "role": "Engineering & Product Management Intern",
+        "sector": "Semiconductors",
+        "start": 1995,
+        "end": 1995
+      },
+      {
+        "company": "McKinsey & Company",
+        "role": "Management Consultant",
+        "sector": "Consulting",
+        "start": 2002,
+        "end": 2004
+      },
+      {
+        "company": "Google",
+        "role": "VP Product (Chrome, Search, Maps, Android)",
+        "sector": "Enterprise & Consumer",
+        "start": 2004,
+        "end": 2015,
+        "note": "Led Chrome from zero to world's most popular browser"
+      },
+      {
+        "company": "Google / Alphabet",
+        "role": "CEO",
+        "sector": "AI & Enterprise",
+        "start": 2015,
+        "end": null,
+        "note": "Google CEO 2015, Alphabet CEO 2019"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Other",
+        "to": "Enterprise",
+        "year": 2004
+      }
+    ],
+    "primarySector": "Enterprise",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Jensen Huang",
+    "id": "jensen-huang",
+    "source": "https://en.wikipedia.org/wiki/Jensen_Huang",
+    "roles": [
+      {
+        "company": "AMD",
+        "role": "Microprocessor Design Engineer",
+        "sector": "Semiconductors",
+        "start": 1983,
+        "end": 1984
+      },
+      {
+        "company": "LSI Logic",
+        "role": "Director of Microprocessor Development",
+        "sector": "Semiconductors",
+        "start": 1984,
+        "end": 1993
+      },
+      {
+        "company": "Nvidia",
+        "role": "Co-founder, President & CEO",
+        "sector": "GPU / AI Hardware",
+        "start": 1993,
+        "end": null,
+        "note": "Co-founded at a Denny's. First company to $5T market cap (Oct 2025). Cousin of AMD CEO Lisa Su."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Deep Tech",
+        "to": "AI",
+        "year": 2012
+      }
+    ],
+    "primarySector": "Deep Tech",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Tim Cook",
+    "id": "tim-cook",
+    "source": "https://en.wikipedia.org/wiki/Tim_Cook",
+    "roles": [
+      {
+        "company": "IBM",
+        "role": "Director of North American Fulfillment",
+        "sector": "Enterprise IT",
+        "start": 1983,
+        "end": 1994
+      },
+      {
+        "company": "Intelligent Electronics",
+        "role": "Chief Operating Officer",
+        "sector": "Technology Distribution",
+        "start": 1994,
+        "end": 1997
+      },
+      {
+        "company": "Compaq",
+        "role": "VP Corporate Materials",
+        "sector": "Enterprise Hardware",
+        "start": 1997,
+        "end": 1998
+      },
+      {
+        "company": "Apple",
+        "role": "SVP Worldwide Operations, then CEO",
+        "sector": "Consumer Electronics",
+        "start": 1998,
+        "end": null,
+        "note": "Became CEO when Jobs stepped down Aug 2011. Grew market cap to $3T+."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "Consumer",
+        "year": 1998
+      }
+    ],
+    "primarySector": "Consumer",
+    "verified": "2026-03-18"
+  },
+  {
+    "name": "Lisa Su",
+    "id": "lisa-su",
+    "source": "https://en.wikipedia.org/wiki/Lisa_Su",
+    "roles": [
+      {
+        "company": "Texas Instruments",
+        "role": "Device Physicist",
+        "sector": "Semiconductors",
+        "start": 1994,
+        "end": 1995
+      },
+      {
+        "company": "IBM",
+        "role": "VP & General Manager Semiconductor R&D",
+        "sector": "Semiconductors",
+        "start": 1995,
+        "end": 2007,
+        "note": "Led IBM's copper interconnect semiconductor work"
+      },
+      {
+        "company": "Freescale Semiconductor",
+        "role": "COO",
+        "sector": "Semiconductors",
+        "start": 2007,
+        "end": 2012
+      },
+      {
+        "company": "AMD",
+        "role": "President & CEO",
+        "sector": "Semiconductors & AI Hardware",
+        "start": 2012,
+        "end": null,
+        "note": "CEO from 2014. Saved AMD from near-bankruptcy; grew from $2B to $200B+ market cap via Ryzen & RDNA GPU lines. Cousin of Jensen Huang."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Deep Tech",
+        "to": "AI",
+        "year": 2020
+      }
+    ],
+    "primarySector": "Deep Tech",
+    "verified": "2026-03-18"
   }
 ]
