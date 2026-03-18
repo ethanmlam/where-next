@@ -3123,5 +3123,627 @@
     ],
     "primarySector": "Deep Tech",
     "verified": "2026-03-18"
+  },
+  {
+    "name": "David Sacks",
+    "id": "david-sacks",
+    "born": 1972,
+    "source": "https://en.wikipedia.org/wiki/David_Sacks",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "McKinsey & Company",
+        "role": "Management Consultant",
+        "sector": "Consulting",
+        "start": 1998,
+        "end": 1999
+      },
+      {
+        "company": "PayPal",
+        "role": "COO & Product Lead",
+        "sector": "Fintech",
+        "start": 1999,
+        "end": 2002,
+        "note": "PayPal Mafia; joined as product lead at Confinity"
+      },
+      {
+        "company": "Geni.com",
+        "role": "Founder",
+        "sector": "Consumer",
+        "start": 2006,
+        "end": 2012,
+        "note": "Genealogy website; acquired by MyHeritage 2012"
+      },
+      {
+        "company": "Yammer",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise",
+        "start": 2008,
+        "end": 2012,
+        "note": "Spun out of Geni; sold to Microsoft for $1.2B in 2012"
+      },
+      {
+        "company": "Zenefits",
+        "role": "Interim CEO",
+        "sector": "Enterprise",
+        "start": 2016,
+        "end": 2016,
+        "note": "Ten-month turnaround stint"
+      },
+      {
+        "company": "Craft Ventures",
+        "role": "Co-founder & General Partner",
+        "sector": "VC & Finance",
+        "start": 2017,
+        "end": null,
+        "note": "Early-stage VC firm"
+      },
+      {
+        "company": "White House",
+        "role": "Special Advisor for AI and Crypto",
+        "sector": "Other",
+        "start": 2025,
+        "end": null,
+        "note": "AI/Crypto czar under Trump administration"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consulting",
+        "to": "Fintech",
+        "year": 1999
+      },
+      {
+        "from": "Fintech",
+        "to": "Consumer",
+        "year": 2006
+      },
+      {
+        "from": "Consumer",
+        "to": "Enterprise",
+        "year": 2008
+      },
+      {
+        "from": "Enterprise",
+        "to": "VC & Finance",
+        "year": 2017
+      }
+    ]
+  },
+  {
+    "name": "Keith Rabois",
+    "id": "keith-rabois",
+    "born": 1969,
+    "source": "https://en.wikipedia.org/wiki/Keith_Rabois",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Sullivan & Cromwell",
+        "role": "Associate",
+        "sector": "Other",
+        "start": 1994,
+        "end": 1999,
+        "note": "Law firm; also clerked for 5th Circuit"
+      },
+      {
+        "company": "PayPal",
+        "role": "EVP Business Development & Policy",
+        "sector": "Fintech",
+        "start": 2000,
+        "end": 2002,
+        "note": "PayPal Mafia member"
+      },
+      {
+        "company": "LinkedIn",
+        "role": "VP Business & Corporate Development",
+        "sector": "Social & Media",
+        "start": 2005,
+        "end": 2007
+      },
+      {
+        "company": "Square",
+        "role": "COO",
+        "sector": "Fintech",
+        "start": 2010,
+        "end": 2013
+      },
+      {
+        "company": "Opendoor",
+        "role": "Co-founder",
+        "sector": "Consumer",
+        "start": 2014,
+        "end": null,
+        "note": "Home buying/selling marketplace"
+      },
+      {
+        "company": "Khosla Ventures",
+        "role": "Partner",
+        "sector": "VC & Finance",
+        "start": 2013,
+        "end": 2019
+      },
+      {
+        "company": "Founders Fund",
+        "role": "General Partner",
+        "sector": "VC & Finance",
+        "start": 2019,
+        "end": 2024
+      },
+      {
+        "company": "OpenStore",
+        "role": "Co-founder",
+        "sector": "Consumer",
+        "start": 2021,
+        "end": null,
+        "note": "Shopify brand acquirer"
+      },
+      {
+        "company": "Khosla Ventures",
+        "role": "Managing Director",
+        "sector": "VC & Finance",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Other",
+        "to": "Fintech",
+        "year": 2000
+      },
+      {
+        "from": "Fintech",
+        "to": "Social & Media",
+        "year": 2005
+      },
+      {
+        "from": "Social & Media",
+        "to": "Fintech",
+        "year": 2010
+      },
+      {
+        "from": "Fintech",
+        "to": "VC & Finance",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "name": "Roelof Botha",
+    "id": "roelof-botha",
+    "born": 1973,
+    "source": "https://en.wikipedia.org/wiki/Roelof_Botha",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "McKinsey & Company",
+        "role": "Business Analyst",
+        "sector": "Consulting",
+        "start": 1996,
+        "end": 1998,
+        "note": "Johannesburg"
+      },
+      {
+        "company": "PayPal",
+        "role": "CFO",
+        "sector": "Fintech",
+        "start": 2000,
+        "end": 2003,
+        "note": "Took PayPal public in 2002; joined as Director of Corporate Development"
+      },
+      {
+        "company": "Sequoia Capital",
+        "role": "Partner",
+        "sector": "VC & Finance",
+        "start": 2003,
+        "end": 2022,
+        "note": "Led investments in YouTube, Instagram, Square"
+      },
+      {
+        "company": "Sequoia Capital",
+        "role": "Managing Partner",
+        "sector": "VC & Finance",
+        "start": 2022,
+        "end": 2025,
+        "note": "Resigned Nov 2025; returned $50B+ to LPs"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consulting",
+        "to": "Fintech",
+        "year": 2000
+      },
+      {
+        "from": "Fintech",
+        "to": "VC & Finance",
+        "year": 2003
+      }
+    ]
+  },
+  {
+    "name": "Chad Hurley",
+    "id": "chad-hurley",
+    "born": 1977,
+    "source": "https://en.wikipedia.org/wiki/Chad_Hurley",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "PayPal",
+        "role": "Webmaster / Designer",
+        "sector": "Fintech",
+        "start": 1999,
+        "end": 2004,
+        "note": "Designed original PayPal logo"
+      },
+      {
+        "company": "YouTube",
+        "role": "Co-founder & CEO",
+        "sector": "Social & Media",
+        "start": 2005,
+        "end": 2010,
+        "note": "Sold to Google for $1.65B in Oct 2006"
+      },
+      {
+        "company": "YouTube",
+        "role": "Advisor",
+        "sector": "Social & Media",
+        "start": 2010,
+        "end": 2013
+      },
+      {
+        "company": "AVOS Systems / MixBit",
+        "role": "Co-founder",
+        "sector": "Social & Media",
+        "start": 2011,
+        "end": 2014,
+        "note": "Video editing app for smartphones"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Fintech",
+        "to": "Social & Media",
+        "year": 2005
+      }
+    ]
+  },
+  {
+    "name": "Steve Chen",
+    "id": "steve-chen",
+    "born": 1978,
+    "source": "https://en.wikipedia.org/wiki/Steve_Chen_(YouTube)",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "PayPal",
+        "role": "Software Engineer",
+        "sector": "Fintech",
+        "start": 1999,
+        "end": 2005
+      },
+      {
+        "company": "Facebook",
+        "role": "Early Employee",
+        "sector": "Social & Media",
+        "start": 2004,
+        "end": 2004,
+        "note": "Left after a few months to co-found YouTube"
+      },
+      {
+        "company": "YouTube",
+        "role": "Co-founder & CTO",
+        "sector": "Social & Media",
+        "start": 2005,
+        "end": 2011,
+        "note": "Sold to Google $1.65B in 2006"
+      },
+      {
+        "company": "AVOS Systems",
+        "role": "Co-founder",
+        "sector": "Social & Media",
+        "start": 2011,
+        "end": 2014,
+        "note": "Acquired Delicious from Yahoo; built MixBit"
+      },
+      {
+        "company": "Google Ventures",
+        "role": "Partner",
+        "sector": "VC & Finance",
+        "start": 2014,
+        "end": 2016
+      },
+      {
+        "company": "Nom.com",
+        "role": "Co-founder",
+        "sector": "Social & Media",
+        "start": 2016,
+        "end": 2017,
+        "note": "Live-streaming food network; shut down 2017"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Fintech",
+        "to": "Social & Media",
+        "year": 2004
+      },
+      {
+        "from": "Social & Media",
+        "to": "VC & Finance",
+        "year": 2014
+      },
+      {
+        "from": "VC & Finance",
+        "to": "Social & Media",
+        "year": 2016
+      }
+    ]
+  },
+  {
+    "name": "Jeremy Stoppelman",
+    "id": "jeremy-stoppelman",
+    "born": 1977,
+    "source": "https://en.wikipedia.org/wiki/Jeremy_Stoppelman",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "@Home Network",
+        "role": "Engineer",
+        "sector": "Enterprise",
+        "start": 1999,
+        "end": 1999,
+        "note": "Left after four months"
+      },
+      {
+        "company": "PayPal (X.com)",
+        "role": "VP Engineering",
+        "sector": "Fintech",
+        "start": 2000,
+        "end": 2003,
+        "note": "PayPal Mafia member; joined at X.com"
+      },
+      {
+        "company": "Harvard Business School",
+        "role": "MBA Student",
+        "sector": "Other",
+        "start": 2003,
+        "end": 2004,
+        "note": "Left after one year to co-found Yelp"
+      },
+      {
+        "company": "Yelp",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer",
+        "start": 2004,
+        "end": null,
+        "note": "Took Yelp public in 2012; turned down Google acquisition"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "Fintech",
+        "year": 2000
+      },
+      {
+        "from": "Fintech",
+        "to": "Consumer",
+        "year": 2004
+      }
+    ]
+  },
+  {
+    "name": "Jawed Karim",
+    "id": "jawed-karim",
+    "born": 1979,
+    "source": "https://en.wikipedia.org/wiki/Jawed_Karim",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "PayPal",
+        "role": "Software Engineer",
+        "sector": "Fintech",
+        "start": 2000,
+        "end": 2004,
+        "note": "Designed real-time anti-fraud system; met Hurley and Chen here"
+      },
+      {
+        "company": "YouTube",
+        "role": "Co-founder & Advisor",
+        "sector": "Social & Media",
+        "start": 2005,
+        "end": 2006,
+        "note": "Uploaded first YouTube video; informal adviser role while at Stanford"
+      },
+      {
+        "company": "Stanford University",
+        "role": "Graduate Student (CS)",
+        "sector": "Other",
+        "start": 2005,
+        "end": 2008,
+        "note": "MS in Computer Science"
+      },
+      {
+        "company": "Youniversity Ventures",
+        "role": "Founder",
+        "sector": "VC & Finance",
+        "start": 2008,
+        "end": null,
+        "note": "Early-stage VC focused on student entrepreneurs"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Fintech",
+        "to": "Social & Media",
+        "year": 2005
+      },
+      {
+        "from": "Social & Media",
+        "to": "VC & Finance",
+        "year": 2008
+      }
+    ]
+  },
+  {
+    "name": "Drew Houston",
+    "id": "drew-houston",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Drew_Houston",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Dropbox",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise",
+        "start": 2007,
+        "end": null,
+        "note": "Cloud storage; YC W07; IPO 2018"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Dustin Moskovitz",
+    "id": "dustin-moskovitz",
+    "born": 1984,
+    "source": "https://en.wikipedia.org/wiki/Dustin_Moskovitz",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Facebook",
+        "role": "Co-founder & CTO / VP Engineering",
+        "sector": "Social & Media",
+        "start": 2004,
+        "end": 2008,
+        "note": "Third employee; youngest self-made billionaire in 2011"
+      },
+      {
+        "company": "Asana",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise",
+        "start": 2008,
+        "end": 2025,
+        "note": "Productivity/project management; direct listing Sept 2020"
+      },
+      {
+        "company": "Asana",
+        "role": "Chairman",
+        "sector": "Enterprise",
+        "start": 2025,
+        "end": null
+      },
+      {
+        "company": "Good Ventures / Open Philanthropy",
+        "role": "Co-founder",
+        "sector": "Other",
+        "start": 2011,
+        "end": null,
+        "note": "Major effective altruism funder"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social & Media",
+        "to": "Enterprise",
+        "year": 2008
+      }
+    ]
+  },
+  {
+    "name": "Sean Parker",
+    "id": "sean-parker",
+    "born": 1979,
+    "source": "https://en.wikipedia.org/wiki/Sean_Parker",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Napster",
+        "role": "Co-founder",
+        "sector": "Social & Media",
+        "start": 1999,
+        "end": 2002,
+        "note": "Peer-to-peer music sharing; shut down by courts"
+      },
+      {
+        "company": "Plaxo",
+        "role": "Co-founder",
+        "sector": "Enterprise",
+        "start": 2002,
+        "end": 2004,
+        "note": "Online address book / contact management"
+      },
+      {
+        "company": "Facebook",
+        "role": "President",
+        "sector": "Social & Media",
+        "start": 2004,
+        "end": 2005,
+        "note": "Brought in by Zuckerberg; resigned after drug incident"
+      },
+      {
+        "company": "Founders Fund",
+        "role": "Managing Partner",
+        "sector": "VC & Finance",
+        "start": 2005,
+        "end": 2012,
+        "note": "Co-founded with Peter Thiel"
+      },
+      {
+        "company": "Causes",
+        "role": "Co-founder",
+        "sector": "Social & Media",
+        "start": 2007,
+        "end": 2015,
+        "note": "Civic engagement platform on Facebook"
+      },
+      {
+        "company": "Spotify",
+        "role": "Board Member / Investor",
+        "sector": "Social & Media",
+        "start": 2009,
+        "end": 2017,
+        "note": "Early investor; helped launch in US"
+      },
+      {
+        "company": "Airtime",
+        "role": "Co-founder",
+        "sector": "Social & Media",
+        "start": 2012,
+        "end": 2014,
+        "note": "Video chat social app"
+      },
+      {
+        "company": "Parker Foundation",
+        "role": "Founder & Chairman",
+        "sector": "Other",
+        "start": 2015,
+        "end": null,
+        "note": "Life sciences, global health, civic engagement"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social & Media",
+        "to": "Enterprise",
+        "year": 2002
+      },
+      {
+        "from": "Enterprise",
+        "to": "Social & Media",
+        "year": 2004
+      },
+      {
+        "from": "Social & Media",
+        "to": "VC & Finance",
+        "year": 2005
+      },
+      {
+        "from": "VC & Finance",
+        "to": "Social & Media",
+        "year": 2007
+      }
+    ]
   }
 ]

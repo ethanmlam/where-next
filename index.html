@@ -1162,29 +1162,7 @@ addInput.addEventListener('input', () => {
       } catch(e) { console.error('DB search:', e); }
     }
 
-    // Wikipedia search for anyone not already found
-    const allFoundNames = new Set([
-      ...onChart.map(f => f.name.toLowerCase()),
-      ...removed.map(f => f.name.toLowerCase())
-    ]);
-    try {
-      const resp = await fetch(`/dashboard/api/where-next/search?q=${encodeURIComponent(q)}`);
-      const wdata = await resp.json();
-      const wikiResults = (wdata.results || []).filter(r =>
-        r.name && r.name.length > 2 && !allFoundNames.has(r.name.toLowerCase())
-      );
-      if (wikiResults.length > 0) {
-        html += `<div style="padding:4px 12px;color:#555;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Add from Wikipedia</div>`;
-        html += wikiResults.slice(0, 5).map(r => {
-          const displayName = r.name.split('(')[0].trim();
-          const qualifier = r.name.includes('(') ? r.name.match(/\(([^)]+)\)/)?.[1] || '' : '';
-          return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-title="${r.name}" data-wiki-url="${r.url || ''}">
-            <span class="sg-dot" style="background:#555"></span>
-            <span><span class="sg-name">${displayName}</span> <span class="sg-sub">${qualifier || (r.description || '').slice(0,60)}</span></span>
-          </div>`;
-        }).join('');
-      }
-    } catch(e) { /* wiki search failed */ }
+    // DB-only search — no Wikipedia
 
     if (!html) html = `<div class="add-suggestion"><span class="sg-sub">No results for "${q}"</span></div>`;
 
@@ -1247,69 +1225,7 @@ addInput.addEventListener('input', () => {
       });
     });
 
-    // Add from Wikipedia — trigger research, poll Supabase until ready
-    suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
-      el.addEventListener('mousedown', async (e) => {
-        e.preventDefault();
-        const name = el.dataset.wikiName;
-        const wikiTitle = el.dataset.wikiTitle || name;
-        const cleanName = name.split('(')[0].trim();
-        const id = cleanName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        if (ALL_FOUNDERS.some(f => f.id === id)) return;
-        
-        el.querySelector('.sg-sub').textContent = 'researching...';
-        
-        // Trigger research
-        try {
-          await fetch(`/dashboard/api/where-next/wiki-career?title=${encodeURIComponent(wikiTitle)}`);
-        } catch(err) { /* fire and forget */ }
-        
-        suggestions.classList.remove('show'); suggestionsOpen = false;
-        addInput.value = '';
-        addInput.placeholder = `Researching ${cleanName}...`;
-        addInput.disabled = true;
-        
-        // Poll Supabase every 5s for up to 90s
-        if (sb) {
-          let attempts = 0;
-          const poll = setInterval(async () => {
-            attempts++;
-            try {
-              const { data: found } = await sb.from('founders').select('id, name, primary_sector').eq('id', id).limit(1);
-              if (found && found.length > 0) {
-                clearInterval(poll);
-                // Load full data
-                const { data: roles } = await sb.from('roles').select('*').eq('founder_id', id).order('sort_order');
-                const { data: switches } = await sb.from('sector_switches').select('*').eq('founder_id', id);
-                const newFounder = {
-                  name: found[0].name,
-                  id: id,
-                  primarySector: found[0].primary_sector,
-                  roles: (roles || []).map(r => ({
-                    company: r.company, role: r.role, sector: r.sector,
-                    start: r.start_year, end: r.end_year, note: r.note
-                  })),
-                  sectorSwitches: (switches || []).map(s => ({
-                    from: s.from_sector, to: s.to_sector, year: s.year
-                  }))
-                };
-                ALL_FOUNDERS.push(newFounder);
-                FOUNDERS_DATA.push(newFounder);
-                addInput.placeholder = 'Add person...';
-                addInput.disabled = false;
-                refresh();
-              }
-            } catch(err) { /* keep polling */ }
-            if (attempts >= 18) { // 90 seconds
-              clearInterval(poll);
-              addInput.placeholder = `${cleanName} not ready yet. Try again later.`;
-              addInput.disabled = false;
-              setTimeout(() => { addInput.placeholder = 'Add person...'; }, 5000);
-            }
-          }, 5000);
-        }
-      });
-    });
+    // Wikipedia search removed — DB only
   }, 300);
 });
 
