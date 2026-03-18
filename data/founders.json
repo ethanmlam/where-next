@@ -1169,6 +1169,14 @@
         "start": 2017,
         "end": 2023,
         "note": "Stepped down Nov 2023, pled guilty to AML violations"
+      },
+      {
+        "company": "Angel Investing",
+        "role": "Angel Investor",
+        "sector": "VC & Finance",
+        "start": 2025,
+        "end": null,
+        "note": "Served prison 2024, released Sept 2024, pardoned by Trump fall 2025"
       }
     ],
     "sectorSwitches": [
@@ -1176,6 +1184,11 @@
         "from": "Finance",
         "to": "Crypto",
         "year": 2014
+      },
+      {
+        "from": "Crypto",
+        "to": "VC & Finance",
+        "year": 2025
       }
     ],
     "primarySector": "Crypto"
@@ -1285,7 +1298,15 @@
         "role": "Founder & CEO",
         "sector": "Internet / Media",
         "start": 2012,
-        "end": 2024
+        "end": 2022
+      },
+      {
+        "company": "Mozi",
+        "role": "Founder",
+        "sector": "Social & Media",
+        "start": 2024,
+        "end": null,
+        "note": "Private social network"
       }
     ],
     "sectorSwitches": [
@@ -1418,11 +1439,25 @@
         "role": "Founder & CEO",
         "sector": "AI Infrastructure",
         "start": 2016,
-        "end": null,
+        "end": 2025,
         "note": "Data labeling for AI. Youngest self-made billionaire (age 25)."
+      },
+      {
+        "company": "Meta Superintelligence Labs",
+        "role": "Chief AI Officer",
+        "sector": "AI",
+        "start": 2025,
+        "end": null,
+        "note": "Meta acquired 49% of Scale AI for $14.3B; Wang joined as Chief AI Officer"
       }
     ],
-    "sectorSwitches": [],
+    "sectorSwitches": [
+      {
+        "from": "AI",
+        "to": "AI",
+        "year": 2025
+      }
+    ],
     "primarySector": "AI"
   },
   {
@@ -1653,6 +1688,14 @@
         "note": "Brief interim CEO during Altman ouster (3 days)"
       },
       {
+        "company": "OpenAI",
+        "role": "Interim CEO",
+        "sector": "AI",
+        "start": 2023,
+        "end": 2023,
+        "note": "Briefly served as interim CEO for ~5 days during board crisis, Nov 2023"
+      },
+      {
         "company": "Y Combinator",
         "role": "Partner",
         "sector": "VC",
@@ -1675,6 +1718,11 @@
         "from": "AI",
         "to": "VC",
         "year": 2024
+      },
+      {
+        "from": "Social & Media",
+        "to": "AI",
+        "year": 2023
       }
     ],
     "primarySector": "VC & Finance"
@@ -2808,7 +2856,8 @@
       }
     ],
     "primarySector": "Social & Media",
-    "verified": "2026-03-18"
+    "verified": "2026-03-18",
+    "note": "Passed away August 9, 2024 (age 56, lung cancer)"
   },
   {
     "name": "Gwynne Shotwell",
@@ -6249,6 +6298,13 @@
         "start": 2021,
         "end": 2022,
         "note": "Blockchain infrastructure and Bitcoin mining"
+      },
+      {
+        "company": "Valor Capital Group",
+        "role": "Managing Partner",
+        "sector": "VC & Finance",
+        "start": 2023,
+        "end": null
       }
     ],
     "sectorSwitches": [
@@ -6660,10 +6716,11 @@
       },
       {
         "company": "Netflix",
-        "role": "Executive Chairman",
+        "role": "Non-Executive Chairman",
         "sector": "Social & Media",
         "start": 2023,
-        "end": null
+        "end": null,
+        "note": "Stepped down from Executive Chairman to board chair April 2025"
       }
     ],
     "sectorSwitches": [
@@ -8192,9 +8249,23 @@
         "start": 2021,
         "end": 2022,
         "note": "Replaced Jack Dorsey Nov 2021; fired by Elon Musk at acquisition close Oct 2022; $42M severance"
+      },
+      {
+        "company": "Parallel Web Systems",
+        "role": "Founder & CEO",
+        "sector": "AI",
+        "start": 2025,
+        "end": null,
+        "note": "AI agent infrastructure, out of stealth Aug 2025"
       }
     ],
-    "sectorSwitches": [],
+    "sectorSwitches": [
+      {
+        "from": "Social & Media",
+        "to": "AI",
+        "year": 2025
+      }
+    ],
     "primarySector": "Social & Media"
   },
   {
@@ -8217,7 +8288,7 @@
         "role": "CEO",
         "sector": "Social & Media",
         "start": 2023,
-        "end": null,
+        "end": 2025,
         "note": "Hired by Elon Musk to lead X; focus on rebuilding advertiser relationships and 'everything app' strategy"
       }
     ],
