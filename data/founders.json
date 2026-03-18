@@ -369,7 +369,7 @@
         "sector": "Consumer AI",
         "start": 2022,
         "end": 2024,
-        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Kar\u00e9n Simonyan"
+        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Karén Simonyan"
       },
       {
         "company": "Microsoft AI",
@@ -1701,5 +1701,600 @@
       }
     ],
     "primarySector": "Consumer"
+  },
+  {
+    "name": "Mark Zuckerberg",
+    "id": "mark-zuckerberg",
+    "born": 1984,
+    "source": "https://en.wikipedia.org/wiki/Mark_Zuckerberg",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Facebook / Meta",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2004,
+        "end": null,
+        "note": "Rebranded to Meta in 2021. Acquired Instagram ($1B, 2012) and WhatsApp ($19B, 2014). Pivoted to VR/AR with Quest."
+      }
+    ],
+    "sectorSwitches": [],
+    "primarySector": "Social & Media"
+  },
+  {
+    "name": "Jeff Bezos",
+    "id": "jeff-bezos",
+    "born": 1964,
+    "source": "https://en.wikipedia.org/wiki/Jeff_Bezos",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "D.E. Shaw",
+        "role": "Senior Vice President",
+        "sector": "Finance",
+        "start": 1990,
+        "end": 1994
+      },
+      {
+        "company": "Amazon",
+        "role": "Founder & CEO",
+        "sector": "E-Commerce",
+        "start": 1994,
+        "end": 2021,
+        "note": "Built the world's largest online retailer and AWS cloud. Stepped down to Executive Chairman."
+      },
+      {
+        "company": "Blue Origin",
+        "role": "Founder",
+        "sector": "Aerospace",
+        "start": 2000,
+        "end": null,
+        "note": "Private spaceflight company. New Shepard and New Glenn rockets."
+      },
+      {
+        "company": "Amazon",
+        "role": "Executive Chairman",
+        "sector": "E-Commerce",
+        "start": 2021,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Finance",
+        "to": "Consumer",
+        "year": 1994
+      },
+      {
+        "from": "Consumer",
+        "to": "Deep Tech",
+        "year": 2000,
+        "note": "Blue Origin concurrent with Amazon"
+      }
+    ],
+    "primarySector": "Consumer"
+  },
+  {
+    "name": "Travis Kalanick",
+    "id": "travis-kalanick",
+    "born": 1976,
+    "source": "https://en.wikipedia.org/wiki/Travis_Kalanick",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Scour",
+        "role": "Co-founder",
+        "sector": "Consumer Tech",
+        "start": 1998,
+        "end": 2000,
+        "note": "P2P file sharing. Filed for bankruptcy after $250B copyright lawsuit."
+      },
+      {
+        "company": "Red Swoosh",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise Tech",
+        "start": 2001,
+        "end": 2007,
+        "note": "P2P CDN. Acquired by Akamai for $19M."
+      },
+      {
+        "company": "Uber",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2009,
+        "end": 2017,
+        "note": "Resigned as CEO amid cultural scandals and legal battles."
+      },
+      {
+        "company": "CloudKitchens",
+        "role": "Founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2018,
+        "end": null,
+        "note": "Ghost kitchen real estate. Raised $400M from Saudi PIF."
+      }
+    ],
+    "sectorSwitches": [],
+    "primarySector": "Consumer"
+  },
+  {
+    "name": "Evan Spiegel",
+    "id": "evan-spiegel",
+    "born": 1990,
+    "source": "https://en.wikipedia.org/wiki/Evan_Spiegel",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Snap Inc.",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2011,
+        "end": null,
+        "note": "IPO 2017 at $33B valuation. Turned down $3B acquisition offer from Facebook (2013)."
+      }
+    ],
+    "sectorSwitches": [],
+    "primarySector": "Social & Media"
+  },
+  {
+    "name": "Jan Koum",
+    "id": "jan-koum",
+    "born": 1976,
+    "source": "https://en.wikipedia.org/wiki/Jan_Koum",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Yahoo",
+        "role": "Infrastructure Engineer",
+        "sector": "Consumer Tech",
+        "start": 1997,
+        "end": 2007
+      },
+      {
+        "company": "WhatsApp",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2009,
+        "end": 2018,
+        "note": "Acquired by Facebook for $19B (2014). Left Facebook board 2018 over privacy disagreements."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer",
+        "to": "Social & Media",
+        "year": 2009
+      }
+    ],
+    "primarySector": "Social & Media"
+  },
+  {
+    "name": "Ben Silbermann",
+    "id": "ben-silbermann",
+    "born": 1982,
+    "source": "https://en.wikipedia.org/wiki/Ben_Silbermann",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Google",
+        "role": "Product Specialist",
+        "sector": "Consumer Tech",
+        "start": 2006,
+        "end": 2008
+      },
+      {
+        "company": "Pinterest",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2010,
+        "end": 2022,
+        "note": "IPO 2019 at $10B. Transitioned to Executive Chairman."
+      },
+      {
+        "company": "Pinterest",
+        "role": "Executive Chairman",
+        "sector": "Social Media",
+        "start": 2022,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer",
+        "to": "Social & Media",
+        "year": 2010
+      }
+    ],
+    "primarySector": "Social & Media"
+  },
+  {
+    "name": "Aaron Levie",
+    "id": "aaron-levie",
+    "born": 1985,
+    "source": "https://en.wikipedia.org/wiki/Aaron_Levie",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Box",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise SaaS",
+        "start": 2005,
+        "end": null,
+        "note": "Cloud content management. Founded as USC sophomore. IPO 2015."
+      }
+    ],
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
+  },
+  {
+    "name": "Vlad Tenev",
+    "id": "vlad-tenev",
+    "born": 1987,
+    "source": "https://en.wikipedia.org/wiki/Vlad_Tenev",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Celeris",
+        "role": "Co-founder",
+        "sector": "Fintech",
+        "start": 2011,
+        "end": 2012,
+        "note": "Trading software for hedge funds."
+      },
+      {
+        "company": "Robinhood",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech",
+        "start": 2013,
+        "end": null,
+        "note": "Commission-free stock trading app. IPO 2021. GameStop controversy 2021."
+      }
+    ],
+    "sectorSwitches": [],
+    "primarySector": "Fintech"
+  },
+  {
+    "name": "Su Zhu",
+    "id": "su-zhu",
+    "born": 1986,
+    "source": "https://en.wikipedia.org/wiki/Three_Arrows_Capital",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Flow Traders",
+        "role": "Trader",
+        "sector": "Finance",
+        "start": 2008,
+        "end": 2011
+      },
+      {
+        "company": "Three Arrows Capital",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2012,
+        "end": 2022,
+        "note": "Crypto hedge fund. Collapsed June 2022 with $3B+ in losses after Luna implosion. Sentenced to 4 months imprisonment."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "VC & Finance",
+        "to": "Crypto",
+        "year": 2012
+      }
+    ],
+    "primarySector": "Crypto"
+  },
+  {
+    "name": "Kyle Davies",
+    "id": "kyle-davies",
+    "born": 1986,
+    "source": "https://en.wikipedia.org/wiki/Three_Arrows_Capital",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Credit Suisse",
+        "role": "Trader",
+        "sector": "Finance",
+        "start": 2008,
+        "end": 2011
+      },
+      {
+        "company": "Three Arrows Capital",
+        "role": "Co-founder",
+        "sector": "Crypto",
+        "start": 2012,
+        "end": 2022,
+        "note": "Co-founded with Su Zhu. $3B+ collapse 2022. Filed for bankruptcy."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "VC & Finance",
+        "to": "Crypto",
+        "year": 2012
+      }
+    ],
+    "primarySector": "Crypto"
+  },
+  {
+    "name": "Do Kwon",
+    "id": "do-kwon",
+    "born": 1991,
+    "source": "https://en.wikipedia.org/wiki/Do_Kwon",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Microsoft",
+        "role": "Software Engineer",
+        "sector": "Consumer Tech",
+        "start": 2014,
+        "end": 2016
+      },
+      {
+        "company": "Anyfi",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise Tech",
+        "start": 2016,
+        "end": 2018
+      },
+      {
+        "company": "Terraform Labs",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2018,
+        "end": 2022,
+        "note": "Terra/LUNA stablecoin ecosystem. $60B collapse in May 2022. Arrested in Montenegro 2023, extradited to US."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer",
+        "to": "Crypto",
+        "year": 2018
+      }
+    ],
+    "primarySector": "Crypto"
+  },
+  {
+    "name": "Sam Bankman-Fried",
+    "id": "sam-bankman-fried",
+    "born": 1992,
+    "source": "https://en.wikipedia.org/wiki/Sam_Bankman-Fried",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Jane Street Capital",
+        "role": "Trader",
+        "sector": "Finance",
+        "start": 2014,
+        "end": 2017
+      },
+      {
+        "company": "Alameda Research",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2017,
+        "end": 2022,
+        "note": "Crypto quantitative trading firm."
+      },
+      {
+        "company": "FTX",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto",
+        "start": 2019,
+        "end": 2022,
+        "note": "Crypto derivatives exchange. Collapsed Nov 2022 with $8B shortfall. Convicted of fraud and conspiracy 2023. Sentenced to 25 years."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "VC & Finance",
+        "to": "Crypto",
+        "year": 2017
+      }
+    ],
+    "primarySector": "Crypto"
+  },
+  {
+    "name": "Jack Clark",
+    "id": "jack-clark",
+    "born": null,
+    "source": "https://en.wikipedia.org/wiki/Anthropic",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Bloomberg News",
+        "role": "Technology Journalist",
+        "sector": "Media",
+        "start": 2011,
+        "end": 2016,
+        "note": "Covered AI and tech."
+      },
+      {
+        "company": "OpenAI",
+        "role": "Policy Director",
+        "sector": "AI",
+        "start": 2016,
+        "end": 2021,
+        "note": "Head of policy and communications. Co-founded AI Index at Stanford HAI (2017)."
+      },
+      {
+        "company": "Anthropic",
+        "role": "Co-founder",
+        "sector": "AI",
+        "start": 2021,
+        "end": null,
+        "note": "One of seven co-founders who left OpenAI together."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Other",
+        "to": "AI",
+        "year": 2016
+      }
+    ],
+    "primarySector": "AI"
+  },
+  {
+    "name": "Chris Dixon",
+    "id": "chris-dixon",
+    "born": 1974,
+    "source": "https://en.wikipedia.org/wiki/Chris_Dixon",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "SiteAdvisor",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise Tech",
+        "start": 2005,
+        "end": 2006,
+        "note": "Web security ratings. Acquired by McAfee."
+      },
+      {
+        "company": "Hunch",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2009,
+        "end": 2011,
+        "note": "Recommendation engine. Acquired by eBay."
+      },
+      {
+        "company": "Andreessen Horowitz (a16z)",
+        "role": "General Partner",
+        "sector": "VC",
+        "start": 2012,
+        "end": null,
+        "note": "Led a16z crypto fund. $4.5B crypto fund raised 2022. Author of 'Read Write Own'."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "Consumer",
+        "year": 2009
+      },
+      {
+        "from": "Consumer",
+        "to": "VC & Finance",
+        "year": 2012
+      }
+    ],
+    "primarySector": "VC & Finance"
+  },
+  {
+    "name": "Elad Gil",
+    "id": "elad-gil",
+    "born": null,
+    "source": "https://en.wikipedia.org/wiki/Elad_Gil",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Google",
+        "role": "Product Manager",
+        "sector": "Consumer Tech",
+        "start": 2003,
+        "end": 2007
+      },
+      {
+        "company": "Mixer Labs",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2007,
+        "end": 2010,
+        "note": "Mobile geocoding API. Acquired by Twitter."
+      },
+      {
+        "company": "Twitter",
+        "role": "VP Corporate Strategy",
+        "sector": "Social Media",
+        "start": 2010,
+        "end": 2013
+      },
+      {
+        "company": "Color Genomics",
+        "role": "Co-founder & CEO",
+        "sector": "Biotech",
+        "start": 2013,
+        "end": 2019,
+        "note": "Genetic cancer risk testing."
+      },
+      {
+        "company": "Gil Capital",
+        "role": "Angel Investor",
+        "sector": "VC",
+        "start": 2016,
+        "end": null,
+        "note": "Author of High Growth Handbook. Early investor in Stripe, Airbnb, Coinbase, Instacart, Anduril, Airtable."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer",
+        "to": "Social & Media",
+        "year": 2010
+      },
+      {
+        "from": "Social & Media",
+        "to": "Deep Tech",
+        "year": 2013
+      },
+      {
+        "from": "Deep Tech",
+        "to": "VC & Finance",
+        "year": 2019
+      }
+    ],
+    "primarySector": "VC & Finance"
+  },
+  {
+    "name": "Vinod Khosla",
+    "id": "vinod-khosla",
+    "born": 1955,
+    "source": "https://en.wikipedia.org/wiki/Vinod_Khosla",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Daisy Systems",
+        "role": "Co-founder",
+        "sector": "Enterprise Tech",
+        "start": 1980,
+        "end": 1982,
+        "note": "EDA software for circuit boards."
+      },
+      {
+        "company": "Sun Microsystems",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise Tech",
+        "start": 1982,
+        "end": 1984,
+        "note": "Co-founded with Scott McNealy, Andy Bechtolsheim, Bill Joy."
+      },
+      {
+        "company": "Kleiner Perkins",
+        "role": "General Partner",
+        "sector": "VC",
+        "start": 1986,
+        "end": 2004,
+        "note": "Led investments in Nexgen, Cerent, Juniper Networks."
+      },
+      {
+        "company": "Khosla Ventures",
+        "role": "Founder & Managing Partner",
+        "sector": "VC",
+        "start": 2004,
+        "end": null,
+        "note": "Focus on deep tech, cleantech, AI. Early backer of OpenAI, Stripe, Square, DoorDash."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise",
+        "to": "VC & Finance",
+        "year": 1986
+      }
+    ],
+    "primarySector": "VC & Finance"
   }
 ]
