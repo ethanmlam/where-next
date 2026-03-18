@@ -243,9 +243,11 @@ const SECTOR_COLORS = {
   'Academia / Neuroscience': '#818cf8', 'Internet / Media': '#fb923c',
   'Infrastructure / Tunneling': '#a3a3a3', 'Gaming': '#84cc16',
   'Education / Network States': '#2dd4bf', 'Science / Open Access': '#4ade80',
+  'Clean Energy': '#10b981', 'Government / Policy': '#f97316',
+  'Government': '#f97316', 'Policy': '#f97316',
 };
 
-function getSectorColor(s) { return SECTOR_COLORS[s] || '#6b7280'; }
+function getSectorColor(s) { return SECTOR_COLORS[s] || BROAD_COLORS[broadSector(s)] || '#6b7280'; }
 
 function broadSector(s) {
   if (!s) return 'Other';
@@ -255,7 +257,7 @@ function broadSector(s) {
   // Crypto: blockchain, NFTs, crypto exchanges (but NOT crypto VC — that's VC)
   if ((l.includes('crypto') || l.includes('nft') || l.includes('blockchain')) && !l.includes('vc')) return 'Crypto';
   // Defense: defense tech, aerospace, military
-  if (l.includes('defense') || l.includes('aerospace') || l.includes('military')) return 'Defense';
+  if (l.includes('defense') || l.includes('aerospace') || l.includes('military') || l.includes('government') || l.includes('policy')) return 'Defense';
   // Social & Media: social networks, dating, media, internet/media, gaming, content
   if (l.includes('social') || l.includes('dating') || l.includes('media') || l.includes('internet') || l.includes('gaming')) return 'Social & Media';
   // Enterprise: SaaS, enterprise tools
@@ -763,7 +765,7 @@ function renderAlluvial() {
     }
     currentSector = ps;
     item.nameY = nameY;
-    nameY += 11;
+    nameY += 13;
   });
 
   allNames.forEach(({ founder, fi, nameY }) => {
@@ -775,7 +777,7 @@ function renderAlluvial() {
     xBtn.setAttribute('y', nameY + 4);
     xBtn.setAttribute('text-anchor', 'end');
     xBtn.setAttribute('fill', '#444');
-    xBtn.setAttribute('font-size', '9');
+    xBtn.setAttribute('font-size', '10');
     xBtn.style.cursor = 'pointer';
     xBtn.textContent = '\u00d7';
     xBtn.addEventListener('mouseenter', () => xBtn.setAttribute('fill', '#f87171'));
@@ -787,7 +789,7 @@ function renderAlluvial() {
     text.setAttribute('x', nameX + 4);
     text.setAttribute('y', nameY + 4);
     text.setAttribute('fill', primaryColor);
-    text.setAttribute('font-size', '9');
+    text.setAttribute('font-size', '10');
     text.setAttribute('opacity', '0.7');
     text.setAttribute('data-founder', founder.id);
     text.style.cursor = 'pointer';
@@ -961,6 +963,78 @@ const PRESETS = {
       { company: 'Anduril Industries', role: 'Co-founder & Chairman', sector: 'Defense Tech', start: 2017, end: null },
       { company: 'Founders Fund', role: 'Partner', sector: 'VC', start: 2016, end: null },
     ], sectorSwitches: [{ from: 'Defense', to: 'VC & Finance', year: 2016 }], primarySector: 'Defense', source: 'https://en.wikipedia.org/wiki/Trae_Stephens' },
+  ],
+  'YC Mafia': [
+    { name: 'Sam Altman', id: 'sam-altman' },
+    { name: 'Brian Chesky', id: 'brian-chesky' },
+    { name: 'Patrick Collison', id: 'patrick-collison' },
+    { name: 'Garry Tan', id: 'garry-tan' },
+    { name: 'Emmett Shear', id: 'emmett-shear' },
+    { name: 'Sahil Lavingia', id: 'sahil-lavingia' },
+    { name: 'Dylan Field', id: 'dylan-field' },
+    { name: 'Alexis Ohanian', id: 'alexis-ohanian', roles: [
+      { company: 'Reddit', role: 'Co-founder', sector: 'Social Media', start: 2005, end: 2009 },
+      { company: 'Breadpig', role: 'Founder', sector: 'Consumer Tech', start: 2007, end: 2012 },
+      { company: 'Reddit', role: 'Executive Chairman', sector: 'Social Media', start: 2014, end: 2020 },
+      { company: 'Initialized Capital / 776', role: 'Founder & GP', sector: 'VC', start: 2016, end: null },
+    ], sectorSwitches: [{ from: 'Social & Media', to: 'VC & Finance', year: 2016 }], primarySector: 'VC & Finance', source: 'https://en.wikipedia.org/wiki/Alexis_Ohanian' },
+    { name: 'Drew Houston', id: 'drew-houston', roles: [
+      { company: 'Dropbox', role: 'Co-founder & CEO', sector: 'Enterprise SaaS', start: 2007, end: null, note: 'YC S07. IPO 2018.' },
+    ], sectorSwitches: [], primarySector: 'Enterprise', source: 'https://en.wikipedia.org/wiki/Drew_Houston' },
+    { name: 'Justin Kan', id: 'justin-kan', roles: [
+      { company: 'Justin.tv', role: 'Co-founder', sector: 'Internet / Media', start: 2007, end: 2011 },
+      { company: 'Twitch', role: 'Co-founder', sector: 'Internet / Media', start: 2011, end: 2014, note: 'Acquired by Amazon for $970M' },
+      { company: 'Atrium', role: 'Founder & CEO', sector: 'Enterprise SaaS', start: 2017, end: 2020, note: 'Legal tech, shut down' },
+      { company: 'Fractal', role: 'Founder', sector: 'Gaming', start: 2021, end: null, note: 'NFT gaming marketplace' },
+    ], sectorSwitches: [{ from: 'Social & Media', to: 'Enterprise', year: 2017 }, { from: 'Enterprise', to: 'Crypto', year: 2021 }], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Justin_Kan' },
+  ],
+  'Elon Extended Universe': [
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Sam Altman', id: 'sam-altman' },
+    { name: 'Palmer Luckey', id: 'palmer-luckey' },
+    { name: 'David Sacks', id: 'david-sacks' },
+    { name: 'Kimbal Musk', id: 'kimbal-musk', roles: [
+      { company: 'Zip2', role: 'Co-founder', sector: 'Internet / Media', start: 1995, end: 1999, note: 'With Elon. Sold to Compaq for $307M' },
+      { company: 'The Kitchen', role: 'Founder & CEO', sector: 'Consumer Tech', start: 2004, end: null, note: 'Restaurant group + Square Roots (urban farming)' },
+      { company: 'Tesla / SpaceX', role: 'Board member', sector: 'Automotive / Clean Energy', start: 2004, end: null },
+    ], sectorSwitches: [{ from: 'Consumer', to: 'Deep Tech', year: 2004 }], primarySector: 'Consumer', source: 'https://en.wikipedia.org/wiki/Kimbal_Musk' },
+  ],
+  'Sector Switchers': [
+    { name: 'Jack Dorsey', id: 'jack-dorsey' },
+    { name: 'Stewart Butterfield', id: 'stewart-butterfield' },
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Palmer Luckey', id: 'palmer-luckey' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Sahil Lavingia', id: 'sahil-lavingia' },
+    { name: 'Balaji Srinivasan', id: 'balaji-srinivasan' },
+    { name: 'Logan Paul', id: 'logan-paul' },
+    { name: 'Emmett Shear', id: 'emmett-shear' },
+    { name: 'Whitney Wolfe Herd', id: 'whitney-wolfe-herd' },
+    { name: 'George Hotz', id: 'george-hotz' },
+  ],
+  'Stanford Mafia': [
+    { name: 'Kevin Systrom', id: 'kevin-systrom' },
+    { name: 'Evan Williams', id: 'ev-williams' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Sam Altman', id: 'sam-altman' },
+    { name: 'Sergey Brin', id: 'sergey-brin', roles: [
+      { company: 'Google / Alphabet', role: 'Co-founder & President', sector: 'Big Tech / AI', start: 1998, end: 2019 },
+      { company: 'Alphabet', role: 'Board / Special Projects', sector: 'Big Tech / AI', start: 2019, end: null, note: 'Returned to AI work post-ChatGPT' },
+    ], sectorSwitches: [], primarySector: 'AI', source: 'https://en.wikipedia.org/wiki/Sergey_Brin' },
+    { name: 'Larry Page', id: 'larry-page', roles: [
+      { company: 'Google / Alphabet', role: 'Co-founder & CEO', sector: 'Big Tech / AI', start: 1998, end: 2019 },
+    ], sectorSwitches: [], primarySector: 'AI', source: 'https://en.wikipedia.org/wiki/Larry_Page' },
+    { name: 'Jerry Yang', id: 'jerry-yang', roles: [
+      { company: 'Yahoo!', role: 'Co-founder & CEO', sector: 'Internet / Media', start: 1995, end: 2012 },
+      { company: 'AME Cloud Ventures', role: 'Founder', sector: 'VC', start: 2012, end: null },
+    ], sectorSwitches: [{ from: 'Social & Media', to: 'VC & Finance', year: 2012 }], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Jerry_Yang' },
+    { name: 'Mike Krieger', id: 'mike-krieger', roles: [
+      { company: 'Instagram', role: 'Co-founder & CTO', sector: 'Social Media', start: 2010, end: 2018, note: 'Acquired by Facebook for $1B' },
+      { company: 'Anthropic', role: 'Chief Product Officer', sector: 'AI Safety', start: 2024, end: null },
+    ], sectorSwitches: [{ from: 'Social & Media', to: 'AI', year: 2024 }], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Mike_Krieger' },
   ],
 };
 
