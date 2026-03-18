@@ -233,16 +233,16 @@ const ERAS = [
 ];
 
 const BROAD_COLORS = {
-  'AI': '#06b6d4',
-  'Crypto': '#8b5cf6',
-  'Fintech': '#f59e0b',
-  'Social & Media': '#ec4899',
-  'Consumer': '#fb923c',
-  'Enterprise': '#3b82f6',
-  'Defense': '#ef4444',
-  'Deep Tech': '#10b981',
-  'VC & Finance': '#a78bfa',
-  'Other': '#6b7280',
+  'AI': '#06b6d4',           // cyan
+  'Crypto': '#8b5cf6',       // purple
+  'Fintech': '#fbbf24',      // gold/yellow
+  'Social & Media': '#ec4899', // pink
+  'Consumer': '#f97316',     // deep orange
+  'Enterprise': '#3b82f6',   // blue
+  'Defense': '#ef4444',      // red
+  'Deep Tech': '#10b981',    // emerald green
+  'VC & Finance': '#c084fc', // light violet (distinct from crypto purple)
+  'Other': '#6b7280',        // gray
 };
 
 const SECTOR_COLORS = {
@@ -775,12 +775,14 @@ function renderAlluvial() {
   // Group by primarySector for visual grouping, add small gap between groups
   const groupedNames = [];
   let currentSector = null;
-  // Dynamic name spacing: shrink to fit all names in available height
-  const availH = Math.max(H - padTop - 30, 400);
-  const sectorGroups = new Set(allNames.map(n => n.founder.primarySector || 'Other')).size;
-  const gapSpace = (sectorGroups - 1) * 4;
-  const nameSpacing = Math.min(13, Math.max(9, (availH - gapSpace) / allNames.length));
-  const nameFontSize = nameSpacing >= 12 ? 10 : nameSpacing >= 10 ? 9 : 8;
+  // Dynamic name sizing: scale font + spacing based on how many founders are showing
+  const n = allNames.length;
+  let nameFontSize, nameSpacing;
+  if (n <= 20)      { nameFontSize = 13; nameSpacing = 18; }
+  else if (n <= 35)  { nameFontSize = 11; nameSpacing = 15; }
+  else if (n <= 50)  { nameFontSize = 10; nameSpacing = 13; }
+  else if (n <= 70)  { nameFontSize = 9;  nameSpacing = 11; }
+  else               { nameFontSize = 8;  nameSpacing = 10; }
 
   let nameY = padTop;
   allNames.forEach(item => {
@@ -1112,7 +1114,7 @@ addInput.addEventListener('input', () => {
   searchTimeout = setTimeout(async () => {
     const ql = q.toLowerCase();
     // Founders currently on chart that match
-    const onChart = founders.filter(f => f.name.toLowerCase().includes(ql));
+    const onChart = getFiltered().filter(f => f.name.toLowerCase().includes(ql));
     // Founders removed from chart that match
     const removed = ALL_FOUNDERS.filter(f => f.name.toLowerCase().includes(ql) && removedIds.includes(f.id));
 
