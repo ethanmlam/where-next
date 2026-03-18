@@ -412,17 +412,17 @@ function renderAlluvial() {
     return cB - cA;
   });
 
-  // Layout
-  const W = Math.max(1200, window.innerWidth - 40);
-  const padX = 80;
+  // Layout — compact columns, leave room for names on right
+  const nameColW = 180;
+  const W = Math.max(1000, window.innerWidth - 20);
+  const vizW = W - nameColW;
+  const padX = 60;
   const padTop = 75;
   const numCols = ERAS.length;
-  const colSpacing = (W - 2 * padX) / (numCols - 1);
+  const colSpacing = (vizW - 2 * padX) / (numCols - 1);
   const dotRadius = 5;
-  const ringSpacing = 14;
+  const ringSpacing = 13;
 
-  // Compute cluster sizes to determine height
-  // Each sector cluster: center + rings. Estimate radius needed.
   function clusterRadius(count) {
     if (count <= 1) return dotRadius;
     if (count <= 7) return ringSpacing;
@@ -649,8 +649,8 @@ function renderAlluvial() {
     });
   });
 
-  // Names on right side
-  const nameX = padX + (ERAS.length - 1) * colSpacing + 30;
+  // Names on right side — positioned in the reserved name column
+  const nameX = vizW + 8;
   // Group by last era's sector for neat labeling
   const lastEraGroups = {};
   founders.forEach((founder, fi) => {

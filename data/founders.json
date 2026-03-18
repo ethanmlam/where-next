@@ -39,8 +39,16 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Finance", "to": "Crypto", "year": 2012 },
-      { "from": "Crypto VC", "to": "Neurotech", "year": 2024 }
+      {
+        "from": "Finance",
+        "to": "Crypto",
+        "year": 2012
+      },
+      {
+        "from": "Crypto VC",
+        "to": "Neurotech",
+        "year": 2024
+      }
     ]
   },
   {
@@ -98,9 +106,21 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Biotech", "to": "VC", "year": 2013 },
-      { "from": "VC", "to": "Crypto", "year": 2013 },
-      { "from": "Crypto", "to": "Education / Network States", "year": 2024 }
+      {
+        "from": "Biotech",
+        "to": "VC",
+        "year": 2013
+      },
+      {
+        "from": "VC",
+        "to": "Crypto",
+        "year": 2013
+      },
+      {
+        "from": "Crypto",
+        "to": "Education / Network States",
+        "year": 2024
+      }
     ]
   },
   {
@@ -134,8 +154,16 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Defense Tech", "to": "Crypto / NFTs", "year": 2017 },
-      { "from": "Crypto / NFTs", "to": "AI Infrastructure", "year": 2024 }
+      {
+        "from": "Defense Tech",
+        "to": "Crypto / NFTs",
+        "year": 2017
+      },
+      {
+        "from": "Crypto / NFTs",
+        "to": "AI Infrastructure",
+        "year": 2024
+      }
     ]
   },
   {
@@ -191,8 +219,17 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Consumer Tech", "to": "Crypto", "year": 2012 },
-      { "from": "Crypto", "to": "Biotech / Longevity", "year": 2022, "note": "Side venture while still CEO of Coinbase" }
+      {
+        "from": "Consumer Tech",
+        "to": "Crypto",
+        "year": 2012
+      },
+      {
+        "from": "Crypto",
+        "to": "Biotech / Longevity",
+        "year": 2022,
+        "note": "Side venture while still CEO of Coinbase"
+      }
     ]
   },
   {
@@ -228,8 +265,16 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Consumer Tech", "to": "VC", "year": 2014 },
-      { "from": "VC", "to": "Crypto VC", "year": 2018 }
+      {
+        "from": "Consumer Tech",
+        "to": "VC",
+        "year": 2014
+      },
+      {
+        "from": "VC",
+        "to": "Crypto VC",
+        "year": 2018
+      }
     ]
   },
   {
@@ -276,7 +321,11 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Academia / Neuroscience", "to": "AI", "year": 2014 }
+      {
+        "from": "Academia / Neuroscience",
+        "to": "AI",
+        "year": 2014
+      }
     ]
   },
   {
@@ -314,7 +363,7 @@
         "sector": "Consumer AI",
         "start": 2022,
         "end": 2024,
-        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Karén Simonyan"
+        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Kar\u00e9n Simonyan"
       },
       {
         "company": "Microsoft AI",
@@ -325,7 +374,11 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Consulting / Conflict Resolution", "to": "AI Research", "year": 2010 }
+      {
+        "from": "Consulting / Conflict Resolution",
+        "to": "AI Research",
+        "year": 2010
+      }
     ]
   },
   {
@@ -361,8 +414,16 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Social Media", "to": "Fintech", "year": 2009 },
-      { "from": "Fintech", "to": "Crypto / Decentralized Social", "year": 2019 }
+      {
+        "from": "Social Media",
+        "to": "Fintech",
+        "year": 2009
+      },
+      {
+        "from": "Fintech",
+        "to": "Crypto / Decentralized Social",
+        "year": 2019
+      }
     ]
   },
   {
@@ -406,9 +467,21 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Gaming", "to": "Consumer Tech / Photo Sharing", "year": 2004 },
-      { "from": "Consumer Tech / Photo Sharing", "to": "Gaming", "year": 2009 },
-      { "from": "Gaming", "to": "Enterprise SaaS", "year": 2013 }
+      {
+        "from": "Gaming",
+        "to": "Consumer Tech / Photo Sharing",
+        "year": 2004
+      },
+      {
+        "from": "Consumer Tech / Photo Sharing",
+        "to": "Gaming",
+        "year": 2009
+      },
+      {
+        "from": "Gaming",
+        "to": "Enterprise SaaS",
+        "year": 2013
+      }
     ]
   },
   {
@@ -471,9 +544,21 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Consumer Tech", "to": "Fintech", "year": 2000 },
-      { "from": "Fintech", "to": "Professional Social Network", "year": 2002 },
-      { "from": "VC", "to": "Consumer AI", "year": 2022 }
+      {
+        "from": "Consumer Tech",
+        "to": "Fintech",
+        "year": 2000
+      },
+      {
+        "from": "Fintech",
+        "to": "Professional Social Network",
+        "year": 2002
+      },
+      {
+        "from": "VC",
+        "to": "Consumer AI",
+        "year": 2022
+      }
     ]
   },
   {
@@ -553,11 +638,31 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Internet / Media", "to": "Fintech", "year": 1999 },
-      { "from": "Fintech", "to": "Aerospace", "year": 2002 },
-      { "from": "Aerospace", "to": "Automotive / Clean Energy", "year": 2004 },
-      { "from": "Automotive / Clean Energy", "to": "AI", "year": 2015 },
-      { "from": "AI", "to": "Social Media", "year": 2022 }
+      {
+        "from": "Internet / Media",
+        "to": "Fintech",
+        "year": 1999
+      },
+      {
+        "from": "Fintech",
+        "to": "Aerospace",
+        "year": 2002
+      },
+      {
+        "from": "Aerospace",
+        "to": "Automotive / Clean Energy",
+        "year": 2004
+      },
+      {
+        "from": "Automotive / Clean Energy",
+        "to": "AI",
+        "year": 2015
+      },
+      {
+        "from": "AI",
+        "to": "Social Media",
+        "year": 2022
+      }
     ]
   },
   {
@@ -606,8 +711,16 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Law", "to": "Fintech", "year": 1998 },
-      { "from": "Fintech", "to": "Defense Tech / Data", "year": 2003 }
+      {
+        "from": "Law",
+        "to": "Fintech",
+        "year": 1998
+      },
+      {
+        "from": "Fintech",
+        "to": "Defense Tech / Data",
+        "year": 2003
+      }
     ]
   },
   {
@@ -642,8 +755,443 @@
       }
     ],
     "sectorSwitches": [
-      { "from": "Consumer Tech", "to": "Fintech", "year": 2015 },
-      { "from": "Fintech", "to": "Crypto / NFTs", "year": 2017 }
+      {
+        "from": "Consumer Tech",
+        "to": "Fintech",
+        "year": 2015
+      },
+      {
+        "from": "Fintech",
+        "to": "Crypto / NFTs",
+        "year": 2017
+      }
+    ]
+  },
+  {
+    "name": "Sam Altman",
+    "id": "sam-altman",
+    "born": 1985,
+    "source": "https://en.wikipedia.org/wiki/Sam_Altman",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Loopt",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2005,
+        "end": 2012,
+        "note": "Geosocial networking. Acquired by Green Dot for $43.4M"
+      },
+      {
+        "company": "Y Combinator",
+        "role": "President",
+        "sector": "VC",
+        "start": 2014,
+        "end": 2019
+      },
+      {
+        "company": "OpenAI",
+        "role": "Co-founder & CEO",
+        "sector": "AI",
+        "start": 2015,
+        "end": null,
+        "note": "Co-founded 2015, became CEO 2019"
+      },
+      {
+        "company": "Helion Energy",
+        "role": "Chairman",
+        "sector": "Clean Energy",
+        "start": 2021,
+        "end": null,
+        "note": "Fusion energy"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "VC",
+        "year": 2014
+      },
+      {
+        "from": "VC",
+        "to": "AI",
+        "year": 2019
+      }
+    ]
+  },
+  {
+    "name": "Patrick Collison",
+    "id": "patrick-collison",
+    "born": 1988,
+    "source": "https://en.wikipedia.org/wiki/Patrick_Collison",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Auctomatic",
+        "role": "Co-founder",
+        "sector": "Enterprise Tech",
+        "start": 2007,
+        "end": 2008,
+        "note": "Acquired by Live Current Media"
+      },
+      {
+        "company": "Stripe",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech",
+        "start": 2010,
+        "end": null
+      },
+      {
+        "company": "Arc Institute",
+        "role": "Co-founder",
+        "sector": "Biotech",
+        "start": 2021,
+        "end": null,
+        "note": "Nonprofit biomedical research"
+      },
+      {
+        "company": "Fast Grants",
+        "role": "Co-founder",
+        "sector": "Science / Open Access",
+        "start": 2020,
+        "end": null,
+        "note": "Rapid COVID research funding with Tyler Cowen"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise Tech",
+        "to": "Fintech",
+        "year": 2010
+      },
+      {
+        "from": "Fintech",
+        "to": "Biotech",
+        "year": 2021,
+        "note": "Side venture while still CEO of Stripe"
+      }
+    ]
+  },
+  {
+    "name": "Naval Ravikant",
+    "id": "naval-ravikant",
+    "born": 1974,
+    "source": "https://en.wikipedia.org/wiki/Naval_Ravikant",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Epinions",
+        "role": "Co-founder",
+        "sector": "Consumer Tech",
+        "start": 1999,
+        "end": 2004,
+        "note": "Product reviews. Merged into Shopping.com, IPO 2004"
+      },
+      {
+        "company": "Hit Forge",
+        "role": "Founder",
+        "sector": "VC",
+        "start": 2007,
+        "end": null,
+        "note": "Early investments in Twitter, Uber, Stack Overflow"
+      },
+      {
+        "company": "AngelList",
+        "role": "Co-founder & Chairman",
+        "sector": "Fintech",
+        "start": 2010,
+        "end": null,
+        "note": "Platform for startups and investors"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "VC",
+        "year": 2007
+      },
+      {
+        "from": "VC",
+        "to": "Fintech",
+        "year": 2010
+      }
+    ]
+  },
+  {
+    "name": "Vitalik Buterin",
+    "id": "vitalik-buterin",
+    "born": 1994,
+    "source": "https://en.wikipedia.org/wiki/Vitalik_Buterin",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Bitcoin Magazine",
+        "role": "Co-founder",
+        "sector": "Crypto",
+        "start": 2011,
+        "end": 2014
+      },
+      {
+        "company": "Ethereum",
+        "role": "Co-founder",
+        "sector": "Crypto",
+        "start": 2015,
+        "end": null,
+        "note": "Smart contract platform. Thiel Fellow."
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Dylan Field",
+    "id": "dylan-field",
+    "born": 1992,
+    "source": "https://en.wikipedia.org/wiki/Dylan_Field",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Figma",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise SaaS",
+        "start": 2012,
+        "end": null,
+        "note": "Web-based design tool. Thiel Fellow. Adobe acquisition blocked."
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Sahil Lavingia",
+    "id": "sahil-lavingia",
+    "born": 1992,
+    "source": "https://en.wikipedia.org/wiki/Gumroad",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Pinterest",
+        "role": "Designer (#2 employee)",
+        "sector": "Social Media",
+        "start": 2010,
+        "end": 2011
+      },
+      {
+        "company": "Gumroad",
+        "role": "Founder & CEO",
+        "sector": "Fintech",
+        "start": 2011,
+        "end": null,
+        "note": "Creator e-commerce platform"
+      },
+      {
+        "company": "DOGE",
+        "role": "Software Engineer",
+        "sector": "Government / Policy",
+        "start": 2025,
+        "end": 2025,
+        "note": "Dept of Government Efficiency under Musk. Let go after 55 days"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social Media",
+        "to": "Fintech",
+        "year": 2011
+      },
+      {
+        "from": "Fintech",
+        "to": "Government / Policy",
+        "year": 2025
+      }
+    ]
+  },
+  {
+    "name": "Ilya Sutskever",
+    "id": "ilya-sutskever",
+    "born": 1986,
+    "source": "https://en.wikipedia.org/wiki/Ilya_Sutskever",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Google Brain",
+        "role": "Research Scientist",
+        "sector": "AI Research",
+        "start": 2012,
+        "end": 2015
+      },
+      {
+        "company": "OpenAI",
+        "role": "Co-founder & Chief Scientist",
+        "sector": "AI",
+        "start": 2015,
+        "end": 2024
+      },
+      {
+        "company": "Safe Superintelligence (SSI)",
+        "role": "Co-founder & Chief Scientist",
+        "sector": "AI Safety",
+        "start": 2024,
+        "end": null,
+        "note": "$1B raised Sep 2024. Valued at $32B by Apr 2025."
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Daniela Amodei",
+    "id": "daniela-amodei",
+    "born": 1987,
+    "source": "https://en.wikipedia.org/wiki/Daniela_Amodei",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Stripe",
+        "role": "VP of Operations",
+        "sector": "Fintech",
+        "start": 2014,
+        "end": 2018
+      },
+      {
+        "company": "OpenAI",
+        "role": "VP of Operations",
+        "sector": "AI",
+        "start": 2018,
+        "end": 2021
+      },
+      {
+        "company": "Anthropic",
+        "role": "Co-founder & President",
+        "sector": "AI Safety",
+        "start": 2021,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Fintech",
+        "to": "AI",
+        "year": 2018
+      }
+    ]
+  },
+  {
+    "name": "Andrej Karpathy",
+    "id": "andrej-karpathy",
+    "born": 1986,
+    "source": "https://en.wikipedia.org/wiki/Andrej_Karpathy",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "OpenAI",
+        "role": "Research Scientist",
+        "sector": "AI",
+        "start": 2015,
+        "end": 2017
+      },
+      {
+        "company": "Tesla",
+        "role": "Sr Director of AI",
+        "sector": "Automotive / Clean Energy",
+        "start": 2017,
+        "end": 2022,
+        "note": "Led Autopilot / FSD vision"
+      },
+      {
+        "company": "OpenAI",
+        "role": "Researcher",
+        "sector": "AI",
+        "start": 2023,
+        "end": 2024
+      },
+      {
+        "company": "Eureka Labs",
+        "role": "Founder",
+        "sector": "AI",
+        "start": 2024,
+        "end": null,
+        "note": "AI-native education"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "AI",
+        "to": "Automotive / Clean Energy",
+        "year": 2017
+      },
+      {
+        "from": "Automotive / Clean Energy",
+        "to": "AI",
+        "year": 2023
+      }
+    ]
+  },
+  {
+    "name": "Changpeng Zhao",
+    "id": "cz-binance",
+    "born": 1977,
+    "source": "https://en.wikipedia.org/wiki/Changpeng_Zhao",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Bloomberg",
+        "role": "Developer",
+        "sector": "Finance",
+        "start": 2001,
+        "end": 2005
+      },
+      {
+        "company": "OKCoin",
+        "role": "CTO",
+        "sector": "Crypto",
+        "start": 2014,
+        "end": 2015
+      },
+      {
+        "company": "Binance",
+        "role": "Founder & CEO",
+        "sector": "Crypto",
+        "start": 2017,
+        "end": 2023,
+        "note": "Stepped down Nov 2023, pled guilty to AML violations"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Finance",
+        "to": "Crypto",
+        "year": 2014
+      }
+    ]
+  },
+  {
+    "name": "Palmer Luckey",
+    "id": "palmer-luckey",
+    "born": 1992,
+    "source": "https://en.wikipedia.org/wiki/Palmer_Luckey",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Oculus VR",
+        "role": "Founder",
+        "sector": "Consumer Tech",
+        "start": 2012,
+        "end": 2017,
+        "note": "Acquired by Facebook/Meta for $2B (2014)"
+      },
+      {
+        "company": "Anduril Industries",
+        "role": "Founder",
+        "sector": "Defense Tech",
+        "start": 2017,
+        "end": null,
+        "note": "AI-powered defense. Valued at $14B+"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Defense Tech",
+        "year": 2017
+      }
     ]
   }
 ]
