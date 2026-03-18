@@ -148,11 +148,19 @@
   }
   .restore-btn:hover { color: #ccc; border-color: #555; }
 
-  .name-remove {
-    cursor: pointer; opacity: 0; transition: opacity 0.15s; fill: #666;
+  .prompt-btn {
+    background: #2a2a3a; border: 1px solid #3a3a5a; color: #ccc; padding: 6px 12px;
+    border-radius: 6px; font-size: 12px; cursor: pointer; white-space: nowrap;
   }
-  .name-remove:hover { fill: #ff6b6b; }
-  .name-group:hover .name-remove { opacity: 1; }
+  .prompt-btn:hover { background: #3a3a5a; color: #fff; }
+  .prompt-btn.loading { opacity: 0.5; pointer-events: none; }
+
+  .tt-remove-btn {
+    display: inline-block; margin-top: 8px; padding: 4px 10px; font-size: 11px;
+    background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 5px; cursor: pointer; transition: all 0.15s;
+  }
+  .tt-remove-btn:hover { background: rgba(239,68,68,0.3); color: #fff; }
 </style>
 </head>
 <body>
@@ -171,8 +179,12 @@
   </div>
   <div style="flex:1"></div>
   <div class="add-person-wrap">
-    <input type="text" id="add-person" placeholder="Add person..." autocomplete="off">
+    <input type="text" id="add-person" placeholder="Add person (searches web)..." autocomplete="off">
     <div class="add-suggestions" id="add-suggestions"></div>
+  </div>
+  <div class="add-person-wrap">
+    <input type="text" id="prompt-input" placeholder="e.g. PayPal Mafia, YC batch W24..." autocomplete="off">
+    <button id="prompt-go" class="prompt-btn">Generate</button>
   </div>
   <button id="restore-all" class="restore-btn" style="display:none">Restore removed</button>
   <label>Sector:</label>
@@ -347,15 +359,34 @@ function refresh() { computeStats(); renderAlluvial(); renderCards(); }
 // TOOLTIP
 // =====================================================
 const tooltip = document.getElementById('tooltip');
-function showTooltip(e, html) { tooltip.innerHTML = html; tooltip.style.display = 'block'; moveTooltip(e); }
+let tooltipLocked = false;
+let hideTimer = null;
+
+function showTooltip(e, html) {
+  clearTimeout(hideTimer);
+  tooltip.innerHTML = html;
+  tooltip.style.display = 'block';
+  tooltip.style.pointerEvents = 'auto';
+  moveTooltip(e);
+}
 function moveTooltip(e) {
+  if (tooltipLocked) return;
   let x = e.clientX + 14, y = e.clientY + 14;
   const r = tooltip.getBoundingClientRect();
   if (x + 400 > window.innerWidth) x = e.clientX - r.width - 14;
   if (y + r.height > window.innerHeight) y = e.clientY - r.height - 14;
   tooltip.style.left = x + 'px'; tooltip.style.top = y + 'px';
 }
-function hideTooltip() { tooltip.style.display = 'none'; }
+function hideTooltip() {
+  hideTimer = setTimeout(() => {
+    if (!tooltipLocked) {
+      tooltip.style.display = 'none';
+      tooltip.style.pointerEvents = 'none';
+    }
+  }, 200);
+}
+tooltip.addEventListener('mouseenter', () => { clearTimeout(hideTimer); tooltipLocked = true; });
+tooltip.addEventListener('mouseleave', () => { tooltipLocked = false; hideTooltip(); highlightedPerson = null; updateHighlights(); });
 
 function founderTooltipHTML(founder, highlightEraIdx) {
   let html = `<div class="tt-name">${founder.name}</div><div class="tt-detail">`;
@@ -372,6 +403,7 @@ function founderTooltipHTML(founder, highlightEraIdx) {
     </div>`;
   });
   if (founder.sectorSwitches?.length > 0) html += `<div class="tt-switch-label">${founder.sectorSwitches.length} sector switch${founder.sectorSwitches.length > 1 ? 'es' : ''}</div>`;
+  html += `<div class="tt-remove-btn" onclick="event.stopPropagation(); removePerson('${founder.id}')">Remove from chart</div>`;
   return html + '</div>';
 }
 
@@ -738,11 +770,6 @@ function renderAlluvial() {
   allNames.forEach(({ founder, fi, nameY }) => {
     const primaryColor = BROAD_COLORS[founder.primarySector] || '#777';
 
-    // Group container for name + X button
-    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    g.setAttribute('class', 'name-group');
-    g.setAttribute('data-founder', founder.id);
-
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', nameX);
     text.setAttribute('y', nameY + 4);
@@ -753,18 +780,6 @@ function renderAlluvial() {
     text.style.cursor = 'pointer';
     text.style.transition = 'fill 0.15s, opacity 0.15s';
     text.textContent = founder.name;
-
-    // X button
-    const xBtn = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    xBtn.setAttribute('x', nameX - 10);
-    xBtn.setAttribute('y', nameY + 4);
-    xBtn.setAttribute('font-size', '9');
-    xBtn.setAttribute('class', 'name-remove');
-    xBtn.textContent = '\u00d7';
-    xBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      removePerson(founder.id);
-    });
 
     text.addEventListener('mouseenter', (e) => {
       text.setAttribute('fill', '#fff');
@@ -782,9 +797,7 @@ function renderAlluvial() {
       hideTooltip();
     });
 
-    g.appendChild(xBtn);
-    g.appendChild(text);
-    svg.appendChild(g);
+    svg.appendChild(text);
   });
 }
 
@@ -882,51 +895,163 @@ function updateRestoreBtn() {
   }
 }
 
-// Add person search
+// Add person search — searches web via backend
 const addInput = document.getElementById('add-person');
 const suggestions = document.getElementById('add-suggestions');
+let searchTimeout = null;
 
 addInput.addEventListener('input', () => {
-  const q = addInput.value.toLowerCase().trim();
-  if (q.length < 1) { suggestions.classList.remove('show'); return; }
+  const q = addInput.value.trim();
+  if (q.length < 2) { suggestions.classList.remove('show'); return; }
 
-  // Only show removed people as suggestions (re-add them)
-  const matches = ALL_FOUNDERS.filter(f =>
-    removedIds.includes(f.id) && f.name.toLowerCase().includes(q)
-  );
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(async () => {
+    // First check if it's a removed person we can re-add
+    const removed = ALL_FOUNDERS.filter(f =>
+      removedIds.includes(f.id) && f.name.toLowerCase().includes(q.toLowerCase())
+    );
 
-  if (matches.length === 0) {
-    suggestions.innerHTML = `<div class="add-suggestion"><span class="sg-sub">No removed people match "${addInput.value}"</span></div>`;
+    // Then search Wikipedia
+    let wikiResults = [];
+    try {
+      const resp = await fetch(`/api/where-next/search?q=${encodeURIComponent(q)}`);
+      const data = await resp.json();
+      wikiResults = (data.results || []).filter(r =>
+        !ALL_FOUNDERS.some(f => f.name.toLowerCase() === r.name.toLowerCase())
+      );
+    } catch(e) { console.error('Search failed:', e); }
+
+    let html = '';
+
+    if (removed.length > 0) {
+      html += `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Restore removed</div>`;
+      html += removed.slice(0, 3).map(f => {
+        const color = BROAD_COLORS[f.primarySector] || '#6b7280';
+        return `<div class="add-suggestion" data-restore="${f.id}">
+          <span class="sg-dot" style="background:${color}"></span>
+          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">click to restore</span></span>
+        </div>`;
+      }).join('');
+    }
+
+    if (wikiResults.length > 0) {
+      html += `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Add from Wikipedia</div>`;
+      html += wikiResults.slice(0, 5).map(r => {
+        return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url}">
+          <span class="sg-dot" style="background:#555"></span>
+          <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${r.description?.slice(0,60) || ''}</span></span>
+        </div>`;
+      }).join('');
+    }
+
+    if (!html) {
+      html = `<div class="add-suggestion"><span class="sg-sub">No results for "${addInput.value}"</span></div>`;
+    }
+
+    suggestions.innerHTML = html;
     suggestions.classList.add('show');
-    return;
-  }
 
-  suggestions.innerHTML = matches.slice(0, 8).map(f => {
-    const color = BROAD_COLORS[f.primarySector] || '#6b7280';
-    const lastRole = f.roles[f.roles.length - 1];
-    return `<div class="add-suggestion" data-id="${f.id}">
-      <span class="sg-dot" style="background:${color}"></span>
-      <span><span class="sg-name">${f.name}</span> <span class="sg-sub">${lastRole ? lastRole.company : ''}</span></span>
-    </div>`;
-  }).join('');
-  suggestions.classList.add('show');
-
-  suggestions.querySelectorAll('.add-suggestion[data-id]').forEach(el => {
-    el.addEventListener('click', () => {
-      const id = el.dataset.id;
-      removedIds = removedIds.filter(r => r !== id);
-      localStorage.setItem('wn-removed', JSON.stringify(removedIds));
-      applyRemovals();
-      refresh();
-      updateRestoreBtn();
-      addInput.value = '';
-      suggestions.classList.remove('show');
+    // Restore handlers
+    suggestions.querySelectorAll('[data-restore]').forEach(el => {
+      el.addEventListener('click', () => {
+        removedIds = removedIds.filter(r => r !== el.dataset.restore);
+        localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+        applyRemovals(); refresh(); updateRestoreBtn();
+        addInput.value = ''; suggestions.classList.remove('show');
+      });
     });
-  });
+
+    // Wiki add handlers — adds a stub entry, user can edit later
+    suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
+      el.addEventListener('click', async () => {
+        const name = el.dataset.wikiName;
+        const url = el.dataset.wikiUrl;
+        const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+        // Create a minimal founder entry
+        const newFounder = {
+          name: name,
+          id: id,
+          source: url,
+          roles: [{ company: 'Unknown', role: 'Founder', sector: 'Other', start: 2020, end: null }],
+          sectorSwitches: [],
+          primarySector: 'Other'
+        };
+
+        // Save via API (persists to disk + rebuilds dashboard)
+        try {
+          const resp = await fetch('/api/where-next/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newFounder)
+          });
+          const result = await resp.json();
+          if (result.ok) {
+            // Add to local data and refresh
+            ALL_FOUNDERS.push(newFounder);
+            FOUNDERS_DATA.push(newFounder);
+            refresh();
+          }
+        } catch(e) { console.error('Add failed:', e); }
+
+        addInput.value = ''; suggestions.classList.remove('show');
+      });
+    });
+  }, 300);
 });
 
 addInput.addEventListener('blur', () => {
-  setTimeout(() => suggestions.classList.remove('show'), 200);
+  setTimeout(() => suggestions.classList.remove('show'), 300);
+});
+
+// Prompt-to-chart (placeholder — sends to backend which will use AI)
+document.getElementById('prompt-go').addEventListener('click', () => {
+  const input = document.getElementById('prompt-input');
+  const query = input.value.trim();
+  if (!query) return;
+
+  const btn = document.getElementById('prompt-go');
+  btn.textContent = 'Searching...';
+  btn.classList.add('loading');
+
+  // For now: search Wikipedia for the group name and show results
+  // Full AI-powered version will come later via OpenClaw gateway
+  fetch(`/api/where-next/search?q=${encodeURIComponent(query)}`)
+    .then(r => r.json())
+    .then(data => {
+      btn.textContent = 'Generate';
+      btn.classList.remove('loading');
+      if (data.results?.length > 0) {
+        // Show results in the add-person suggestions dropdown
+        const suggestions = document.getElementById('add-suggestions');
+        suggestions.innerHTML = `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Results for "${query}"</div>` +
+          data.results.map(r => `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url}">
+            <span class="sg-dot" style="background:#555"></span>
+            <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${r.description?.slice(0,60) || ''}</span></span>
+          </div>`).join('');
+        suggestions.classList.add('show');
+
+        suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
+          el.addEventListener('click', async () => {
+            const name = el.dataset.wikiName;
+            const url = el.dataset.wikiUrl;
+            const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            const newFounder = { name, id, source: url, roles: [{ company: 'Unknown', role: 'Founder', sector: 'Other', start: 2020, end: null }], sectorSwitches: [], primarySector: 'Other' };
+            try {
+              const resp = await fetch('/api/where-next/add', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newFounder) });
+              const result = await resp.json();
+              if (result.ok) { ALL_FOUNDERS.push(newFounder); FOUNDERS_DATA.push(newFounder); refresh(); }
+            } catch(e) { console.error('Add failed:', e); }
+            suggestions.classList.remove('show');
+          });
+        });
+      }
+    })
+    .catch(() => { btn.textContent = 'Generate'; btn.classList.remove('loading'); });
+});
+
+document.getElementById('prompt-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('prompt-go').click();
 });
 
 // Init: apply stored removals
