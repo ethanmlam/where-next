@@ -582,7 +582,7 @@ function renderAlluvial() {
     const last = entries[entries.length - 1];
     return last.y + last.blockH;
   }));
-  const H = maxY + 60;
+  let H = maxY + 60;
 
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   svg.setAttribute('width', W);
@@ -776,16 +776,31 @@ function renderAlluvial() {
   // Group by primarySector for visual grouping, add small gap between groups
   const groupedNames = [];
   let currentSector = null;
+  // Dynamic name spacing: shrink to fit all names in available height
+  const availH = Math.max(H - padTop - 30, 400);
+  const sectorGroups = new Set(allNames.map(n => n.founder.primarySector || 'Other')).size;
+  const gapSpace = (sectorGroups - 1) * 4;
+  const nameSpacing = Math.min(13, Math.max(9, (availH - gapSpace) / allNames.length));
+  const nameFontSize = nameSpacing >= 12 ? 10 : nameSpacing >= 10 ? 9 : 8;
+
   let nameY = padTop;
   allNames.forEach(item => {
     const ps = item.founder.primarySector || 'Other';
     if (currentSector !== null && currentSector !== ps) {
-      nameY += 6; // small gap between sector groups
+      nameY += 4; // small gap between sector groups
     }
     currentSector = ps;
     item.nameY = nameY;
-    nameY += 13;
+    nameY += nameSpacing;
   });
+
+  // Extend SVG if names need more room
+  const namesBottom = nameY + 20;
+  if (namesBottom > H) {
+    H = namesBottom;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('height', H);
+  }
 
   allNames.forEach(({ founder, fi, nameY }) => {
     const primaryColor = BROAD_COLORS[founder.primarySector] || '#777';
@@ -796,7 +811,7 @@ function renderAlluvial() {
     xBtn.setAttribute('y', nameY + 4);
     xBtn.setAttribute('text-anchor', 'end');
     xBtn.setAttribute('fill', '#444');
-    xBtn.setAttribute('font-size', '10');
+    xBtn.setAttribute('font-size', nameFontSize);
     xBtn.style.cursor = 'pointer';
     xBtn.textContent = '\u00d7';
     xBtn.addEventListener('mouseenter', () => xBtn.setAttribute('fill', '#f87171'));
@@ -808,7 +823,7 @@ function renderAlluvial() {
     text.setAttribute('x', nameX + 4);
     text.setAttribute('y', nameY + 4);
     text.setAttribute('fill', primaryColor);
-    text.setAttribute('font-size', '10');
+    text.setAttribute('font-size', nameFontSize);
     text.setAttribute('opacity', '0.7');
     text.setAttribute('data-founder', founder.id);
     text.style.cursor = 'pointer';
@@ -1097,64 +1112,53 @@ addInput.addEventListener('input', () => {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
     const ql = q.toLowerCase();
-    const existing = ALL_FOUNDERS.filter(f => f.name.toLowerCase().includes(ql));
-    const removed = existing.filter(f => removedIds.includes(f.id));
-
-    // Search Supabase for founders in DB but not on chart
-    let dbResults = [];
-    if (sb) {
-      try {
-        const { data: dbFounders } = await sb.from('founders').select('id, name, primary_sector, source_url').ilike('name', `%${q}%`).limit(10);
-        if (dbFounders) {
-          dbResults = dbFounders.filter(r =>
-            !ALL_FOUNDERS.some(f => f.id === r.id) && !removed.some(f => f.id === r.id)
-          );
-        }
-      } catch(e) { console.error('DB search failed:', e); }
-    }
-
-    // Wikipedia fallback for people not in DB at all
-    let wikiResults = [];
-    try {
-      const resp = await fetch(`/api/where-next/search?q=${encodeURIComponent(q)}`);
-      const wdata = await resp.json();
-      wikiResults = (wdata.results || []).filter(r =>
-        !ALL_FOUNDERS.some(f => f.name.toLowerCase() === r.name.toLowerCase()) &&
-        !dbResults.some(d => d.name.toLowerCase() === r.name.toLowerCase())
-      );
-    } catch(e) { /* wiki fallback failed, fine */ }
+    // Founders currently on chart that match
+    const onChart = founders.filter(f => f.name.toLowerCase().includes(ql));
+    // Founders removed from chart that match
+    const removed = ALL_FOUNDERS.filter(f => f.name.toLowerCase().includes(ql) && removedIds.includes(f.id));
 
     let html = '';
 
+    // Show removed founders (can restore)
     if (removed.length > 0) {
       html += removed.slice(0, 3).map(f => {
         const color = BROAD_COLORS[f.primarySector] || '#6b7280';
         return `<div class="add-suggestion" data-restore="${f.id}">
           <span class="sg-dot" style="background:${color}"></span>
-          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">restore</span></span>
+          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">removed \u2014 click to restore</span></span>
         </div>`;
       }).join('');
     }
 
-    if (dbResults.length > 0) {
-      html += `<div style="padding:4px 12px;color:#555;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From database</div>`;
-      html += dbResults.slice(0, 5).map(r => {
-        const color = BROAD_COLORS[r.primary_sector] || '#6b7280';
-        return `<div class="add-suggestion" data-db-id="${r.id}" data-db-name="${r.name}" data-db-sector="${r.primary_sector}">
+    // Show on-chart matches (for quick find/highlight)
+    if (onChart.length > 0 && onChart.length <= 5) {
+      html += onChart.slice(0, 3).map(f => {
+        const color = BROAD_COLORS[f.primarySector] || '#6b7280';
+        return `<div class="add-suggestion" data-highlight="${f.id}">
           <span class="sg-dot" style="background:${color}"></span>
-          <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${r.primary_sector}</span></span>
+          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">on chart</span></span>
         </div>`;
       }).join('');
     }
 
-    if (wikiResults.length > 0) {
-      html += `<div style="padding:4px 12px;color:#555;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From Wikipedia</div>`;
-      html += wikiResults.slice(0, 3).map(r => {
-        return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url || ''}">
-          <span class="sg-dot" style="background:#555"></span>
-          <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${(r.description || '').slice(0,60)}</span></span>
-        </div>`;
-      }).join('');
+    // Search Supabase for founders not in local data at all
+    if (sb) {
+      try {
+        const { data: dbFounders } = await sb.from('founders').select('id, name, primary_sector, source_url').ilike('name', `%${q}%`).limit(10);
+        if (dbFounders) {
+          const newFromDb = dbFounders.filter(r => !ALL_FOUNDERS.some(f => f.id === r.id));
+          if (newFromDb.length > 0) {
+            html += `<div style="padding:4px 12px;color:#555;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From database</div>`;
+            html += newFromDb.slice(0, 5).map(r => {
+              const color = BROAD_COLORS[r.primary_sector] || '#6b7280';
+              return `<div class="add-suggestion" data-db-id="${r.id}" data-db-name="${r.name}" data-db-sector="${r.primary_sector}">
+                <span class="sg-dot" style="background:${color}"></span>
+                <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${r.primary_sector}</span></span>
+              </div>`;
+            }).join('');
+          }
+        }
+      } catch(e) { console.error('DB search:', e); }
     }
 
     if (!html) html = `<div class="add-suggestion"><span class="sg-sub">No results for "${q}"</span></div>`;
@@ -1174,14 +1178,28 @@ addInput.addEventListener('input', () => {
       });
     });
 
-    // Add from Supabase DB — load full career data
+    // Highlight on-chart founder
+    suggestions.querySelectorAll('[data-highlight]').forEach(el => {
+      el.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        const fid = el.dataset.highlight;
+        // Flash the name on the chart
+        document.querySelectorAll(`[data-founder="${fid}"]`).forEach(t => {
+          t.setAttribute('opacity', '1');
+          t.setAttribute('font-weight', 'bold');
+          setTimeout(() => { t.setAttribute('opacity', '0.7'); t.setAttribute('font-weight', 'normal'); }, 2000);
+        });
+        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
+      });
+    });
+
+    // Add from Supabase DB
     suggestions.querySelectorAll('[data-db-id]').forEach(el => {
       el.addEventListener('mousedown', async (e) => {
         e.preventDefault();
         const fid = el.dataset.dbId;
         el.querySelector('.sg-sub').textContent = 'loading...';
         try {
-          // Fetch full founder data from Supabase
           const { data: roles } = await sb.from('roles').select('*').eq('founder_id', fid).order('sort_order');
           const { data: switches } = await sb.from('sector_switches').select('*').eq('founder_id', fid);
           const newFounder = {
@@ -1200,22 +1218,6 @@ addInput.addEventListener('input', () => {
           FOUNDERS_DATA.push(newFounder);
           refresh();
         } catch(e) { console.error('Failed to load founder:', e); }
-        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
-      });
-    });
-
-    // Add from Wikipedia (stub entry)
-    suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
-      el.addEventListener('mousedown', async (e) => {
-        e.preventDefault();
-        const name = el.dataset.wikiName;
-        const url = el.dataset.wikiUrl;
-        const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        el.querySelector('.sg-sub').textContent = 'adding...';
-        const newFounder = { name, id, source: url, roles: [{ company: 'Unknown', role: 'Founder', sector: 'Other', start: 2020, end: null }], sectorSwitches: [], primarySector: 'Other' };
-        ALL_FOUNDERS.push(newFounder);
-        FOUNDERS_DATA.push(newFounder);
-        refresh();
         addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
       });
     });
