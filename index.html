@@ -148,9 +148,25 @@
   }
   .restore-btn:hover { color: #ccc; border-color: #555; }
 
-  .presets-wrap { display: flex; align-items: center; gap: 6px; }
-  .presets-wrap label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
-  .presets-wrap select { background: #16161f; border: 1px solid #2a2a3a; color: #ccc; padding: 6px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  .presets-bar {
+    padding: 8px 40px 12px;
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .presets-label { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+  .preset-btn {
+    background: #16161f; border: 1px solid #2a2a3a; color: #999; padding: 5px 14px;
+    border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .preset-btn:hover { background: #22222f; border-color: #4a4a6a; color: #ddd; }
+  .preset-btn.active { background: #2a2a4a; border-color: #6366f1; color: #fff; }
+  .preset-btn-all {
+    background: transparent; border: 1px solid #2a2a3a; color: #666; padding: 5px 14px;
+    border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.15s;
+  }
+  .preset-btn-all:hover { border-color: #4a4a6a; color: #aaa; }
+  .preset-btn-all.active { border-color: #6366f1; color: #fff; }
 
   .tt-remove-btn {
     display: inline-block; margin-top: 8px; padding: 4px 10px; font-size: 11px;
@@ -176,17 +192,14 @@
   </div>
   <div style="flex:1"></div>
   <div class="add-person-wrap">
-    <input type="text" id="add-person" placeholder="Add anyone..." autocomplete="off">
+    <input type="text" id="add-person" placeholder="Search anyone to add..." autocomplete="off">
     <div class="add-suggestions" id="add-suggestions"></div>
   </div>
-  <div class="presets-wrap">
-    <label>Presets:</label>
-    <select id="preset-select">
-      <option value="">Load a group...</option>
-    </select>
-  </div>
-  <button id="restore-all" class="restore-btn" style="display:none">Restore removed</button>
-  <button id="clear-all" class="restore-btn">Clear all</button>
+  <button id="restore-all" class="restore-btn" style="display:none">Restore all</button>
+</div>
+
+<div class="presets-bar" id="presets-bar">
+  <span class="presets-label">Groups:</span>
   <label>Sector:</label>
   <select id="sector-filter"><option value="all">All</option></select>
   <label style="margin-left:8px">Switchers only:</label>
@@ -247,7 +260,7 @@ const SECTOR_COLORS = {
   'Government': '#f97316', 'Policy': '#f97316',
 };
 
-function getSectorColor(s) { return SECTOR_COLORS[s] || BROAD_COLORS[broadSector(s)] || '#6b7280'; }
+function getSectorColor(s) { return BROAD_COLORS[broadSector(s)] || '#6b7280'; }
 
 function broadSector(s) {
   if (!s) return 'Other';
@@ -935,15 +948,6 @@ const PRESETS = {
     { name: 'Balaji Srinivasan', id: 'balaji-srinivasan' },
     { name: 'Matt Huang', id: 'matt-huang' },
   ],
-  'Thiel Fellows': [
-    { name: 'Vitalik Buterin', id: 'vitalik-buterin' },
-    { name: 'Dylan Field', id: 'dylan-field' },
-    { name: 'Palmer Luckey', id: 'palmer-luckey' },
-    { name: 'Alexandr Wang', id: 'alexandr-wang' },
-    { name: 'Austin Russell', id: 'austin-russell', roles: [
-      { company: 'Luminar Technologies', role: 'Founder & CEO', sector: 'Automotive / Clean Energy', start: 2012, end: null, note: 'LiDAR for self-driving. IPO via SPAC 2020. Youngest self-made billionaire at 25.' },
-    ], sectorSwitches: [], primarySector: 'Deep Tech', source: 'https://en.wikipedia.org/wiki/Austin_Russell' },
-  ],
   'Social Founders': [
     { name: 'Jack Dorsey', id: 'jack-dorsey' },
     { name: 'Kevin Systrom', id: 'kevin-systrom' },
@@ -953,16 +957,6 @@ const PRESETS = {
     { name: 'Mark Zuckerberg', id: 'mark-zuckerberg', roles: [
       { company: 'Facebook / Meta', role: 'Co-founder & CEO', sector: 'Social Media', start: 2004, end: null },
     ], sectorSwitches: [], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Mark_Zuckerberg' },
-  ],
-  'Defense Tech': [
-    { name: 'Palmer Luckey', id: 'palmer-luckey' },
-    { name: 'Alex Karp', id: 'alex-karp' },
-    { name: 'Peter Thiel', id: 'peter-thiel' },
-    { name: 'Trae Stephens', id: 'trae-stephens', roles: [
-      { company: 'Palantir', role: 'Engineer', sector: 'Defense Tech / Data', start: 2010, end: 2016 },
-      { company: 'Anduril Industries', role: 'Co-founder & Chairman', sector: 'Defense Tech', start: 2017, end: null },
-      { company: 'Founders Fund', role: 'Partner', sector: 'VC', start: 2016, end: null },
-    ], sectorSwitches: [{ from: 'Defense', to: 'VC & Finance', year: 2016 }], primarySector: 'Defense', source: 'https://en.wikipedia.org/wiki/Trae_Stephens' },
   ],
   'YC Mafia': [
     { name: 'Sam Altman', id: 'sam-altman' },
@@ -1012,29 +1006,6 @@ const PRESETS = {
     { name: 'Emmett Shear', id: 'emmett-shear' },
     { name: 'Whitney Wolfe Herd', id: 'whitney-wolfe-herd' },
     { name: 'George Hotz', id: 'george-hotz' },
-  ],
-  'Stanford Mafia': [
-    { name: 'Kevin Systrom', id: 'kevin-systrom' },
-    { name: 'Evan Williams', id: 'ev-williams' },
-    { name: 'Reid Hoffman', id: 'reid-hoffman' },
-    { name: 'Peter Thiel', id: 'peter-thiel' },
-    { name: 'Elon Musk', id: 'elon-musk' },
-    { name: 'Sam Altman', id: 'sam-altman' },
-    { name: 'Sergey Brin', id: 'sergey-brin', roles: [
-      { company: 'Google / Alphabet', role: 'Co-founder & President', sector: 'Big Tech / AI', start: 1998, end: 2019 },
-      { company: 'Alphabet', role: 'Board / Special Projects', sector: 'Big Tech / AI', start: 2019, end: null, note: 'Returned to AI work post-ChatGPT' },
-    ], sectorSwitches: [], primarySector: 'AI', source: 'https://en.wikipedia.org/wiki/Sergey_Brin' },
-    { name: 'Larry Page', id: 'larry-page', roles: [
-      { company: 'Google / Alphabet', role: 'Co-founder & CEO', sector: 'Big Tech / AI', start: 1998, end: 2019 },
-    ], sectorSwitches: [], primarySector: 'AI', source: 'https://en.wikipedia.org/wiki/Larry_Page' },
-    { name: 'Jerry Yang', id: 'jerry-yang', roles: [
-      { company: 'Yahoo!', role: 'Co-founder & CEO', sector: 'Internet / Media', start: 1995, end: 2012 },
-      { company: 'AME Cloud Ventures', role: 'Founder', sector: 'VC', start: 2012, end: null },
-    ], sectorSwitches: [{ from: 'Social & Media', to: 'VC & Finance', year: 2012 }], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Jerry_Yang' },
-    { name: 'Mike Krieger', id: 'mike-krieger', roles: [
-      { company: 'Instagram', role: 'Co-founder & CTO', sector: 'Social Media', start: 2010, end: 2018, note: 'Acquired by Facebook for $1B' },
-      { company: 'Anthropic', role: 'Chief Product Officer', sector: 'AI Safety', start: 2024, end: null },
-    ], sectorSwitches: [{ from: 'Social & Media', to: 'AI', year: 2024 }], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Mike_Krieger' },
   ],
 };
 
@@ -1107,25 +1078,22 @@ function clearAll() {
   updateRestoreBtn();
 }
 
-// Add person search — searches Wikipedia for anyone + shows existing people
+// Add person search — searches Wikipedia for anyone
 const addInput = document.getElementById('add-person');
 const suggestions = document.getElementById('add-suggestions');
 let searchTimeout = null;
+let suggestionsOpen = false;
 
 addInput.addEventListener('input', () => {
   const q = addInput.value.trim();
-  if (q.length < 2) { suggestions.classList.remove('show'); return; }
+  if (q.length < 2) { suggestions.classList.remove('show'); suggestionsOpen = false; return; }
 
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
     const ql = q.toLowerCase();
-
-    // Check existing (removed or active)
     const existing = ALL_FOUNDERS.filter(f => f.name.toLowerCase().includes(ql));
     const removed = existing.filter(f => removedIds.includes(f.id));
-    const active = existing.filter(f => !removedIds.includes(f.id));
 
-    // Search Wikipedia for new people
     let wikiResults = [];
     try {
       const resp = await fetch(`/api/where-next/search?q=${encodeURIComponent(q)}`);
@@ -1137,30 +1105,17 @@ addInput.addEventListener('input', () => {
 
     let html = '';
 
-    if (active.length > 0) {
-      html += `<div style="padding:6px 12px;color:#444;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Already on chart</div>`;
-      html += active.slice(0, 3).map(f => {
-        const color = BROAD_COLORS[f.primarySector] || '#6b7280';
-        return `<div class="add-suggestion" style="opacity:0.5">
-          <span class="sg-dot" style="background:${color}"></span>
-          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">already added</span></span>
-        </div>`;
-      }).join('');
-    }
-
     if (removed.length > 0) {
-      html += `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Restore removed</div>`;
       html += removed.slice(0, 3).map(f => {
         const color = BROAD_COLORS[f.primarySector] || '#6b7280';
         return `<div class="add-suggestion" data-restore="${f.id}">
           <span class="sg-dot" style="background:${color}"></span>
-          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">click to restore</span></span>
+          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">restore</span></span>
         </div>`;
       }).join('');
     }
 
     if (wikiResults.length > 0) {
-      html += `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Add from Wikipedia</div>`;
       html += wikiResults.slice(0, 5).map(r => {
         return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url || ''}">
           <span class="sg-dot" style="background:#555"></span>
@@ -1173,52 +1128,91 @@ addInput.addEventListener('input', () => {
 
     suggestions.innerHTML = html;
     suggestions.classList.add('show');
+    suggestionsOpen = true;
 
-    // Restore handlers
+    // Use mousedown instead of click — fires before blur so dropdown doesn't vanish
     suggestions.querySelectorAll('[data-restore]').forEach(el => {
-      el.addEventListener('click', () => {
+      el.addEventListener('mousedown', (e) => {
+        e.preventDefault();
         removedIds = removedIds.filter(r => r !== el.dataset.restore);
         localStorage.setItem('wn-removed', JSON.stringify(removedIds));
-        applyRemovals(); refresh(); updateRestoreBtn();
-        addInput.value = ''; suggestions.classList.remove('show');
+        applyRemovals(); refresh(); updateRestoreBtn(); updatePresetBtns();
+        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
       });
     });
 
-    // Wiki add handlers
     suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
-      el.addEventListener('click', async () => {
+      el.addEventListener('mousedown', async (e) => {
+        e.preventDefault();
         const name = el.dataset.wikiName;
         const url = el.dataset.wikiUrl;
         const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        el.querySelector('.sg-sub').textContent = 'adding...';
         const newFounder = { name, id, source: url, roles: [{ company: 'Unknown', role: 'Founder', sector: 'Other', start: 2020, end: null }], sectorSwitches: [], primarySector: 'Other' };
         try {
           const resp = await fetch('/api/where-next/add', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newFounder) });
           const result = await resp.json();
           if (result.ok) { ALL_FOUNDERS.push(newFounder); FOUNDERS_DATA.push(newFounder); refresh(); }
         } catch(e) { console.error('Add failed:', e); }
-        addInput.value = ''; suggestions.classList.remove('show');
+        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
       });
     });
   }, 300);
 });
 
-addInput.addEventListener('blur', () => { setTimeout(() => suggestions.classList.remove('show'), 300); });
-
-// Presets
-const presetSelect = document.getElementById('preset-select');
-Object.keys(PRESETS).forEach(name => {
-  const opt = document.createElement('option');
-  opt.value = name;
-  opt.textContent = `${name} (${PRESETS[name].length})`;
-  presetSelect.appendChild(opt);
-});
-presetSelect.addEventListener('change', () => {
-  if (presetSelect.value) { loadPreset(presetSelect.value); presetSelect.value = ''; }
+addInput.addEventListener('blur', () => {
+  // Delay to allow mousedown on suggestions to fire first
+  setTimeout(() => { if (suggestionsOpen) { suggestions.classList.remove('show'); suggestionsOpen = false; } }, 250);
 });
 
-// Clear all / Restore all
-document.getElementById('clear-all').addEventListener('click', clearAll);
-document.getElementById('restore-all').addEventListener('click', restoreAll);
+// Preset buttons
+const presetsBar = document.getElementById('presets-bar');
+let activePreset = null;
+
+// "All" button
+const allBtn = document.createElement('button');
+allBtn.className = 'preset-btn-all active';
+allBtn.textContent = `All (${ALL_FOUNDERS.length})`;
+allBtn.addEventListener('click', () => {
+  activePreset = null;
+  restoreAll();
+  updatePresetBtns();
+});
+presetsBar.appendChild(allBtn);
+
+Object.entries(PRESETS).forEach(([name, people]) => {
+  const btn = document.createElement('button');
+  btn.className = 'preset-btn';
+  btn.textContent = name;
+  btn.dataset.preset = name;
+  btn.addEventListener('click', () => {
+    if (activePreset === name) {
+      // Toggle off — restore all
+      activePreset = null;
+      restoreAll();
+    } else {
+      activePreset = name;
+      loadPreset(name);
+    }
+    updatePresetBtns();
+  });
+  presetsBar.appendChild(btn);
+});
+
+function updatePresetBtns() {
+  allBtn.textContent = `All (${ALL_FOUNDERS.length})`;
+  allBtn.classList.toggle('active', activePreset === null);
+  presetsBar.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.preset === activePreset);
+  });
+}
+
+// Restore all
+document.getElementById('restore-all').addEventListener('click', () => {
+  activePreset = null;
+  restoreAll();
+  updatePresetBtns();
+});
 applyRemovals();
 updateRestoreBtn();
 </script>
