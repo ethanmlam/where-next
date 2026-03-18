@@ -148,12 +148,9 @@
   }
   .restore-btn:hover { color: #ccc; border-color: #555; }
 
-  .prompt-btn {
-    background: #2a2a3a; border: 1px solid #3a3a5a; color: #ccc; padding: 6px 12px;
-    border-radius: 6px; font-size: 12px; cursor: pointer; white-space: nowrap;
-  }
-  .prompt-btn:hover { background: #3a3a5a; color: #fff; }
-  .prompt-btn.loading { opacity: 0.5; pointer-events: none; }
+  .presets-wrap { display: flex; align-items: center; gap: 6px; }
+  .presets-wrap label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+  .presets-wrap select { background: #16161f; border: 1px solid #2a2a3a; color: #ccc; padding: 6px 10px; border-radius: 6px; font-size: 13px; outline: none; }
 
   .tt-remove-btn {
     display: inline-block; margin-top: 8px; padding: 4px 10px; font-size: 11px;
@@ -179,14 +176,17 @@
   </div>
   <div style="flex:1"></div>
   <div class="add-person-wrap">
-    <input type="text" id="add-person" placeholder="Add person (searches web)..." autocomplete="off">
+    <input type="text" id="add-person" placeholder="Add anyone..." autocomplete="off">
     <div class="add-suggestions" id="add-suggestions"></div>
   </div>
-  <div class="add-person-wrap">
-    <input type="text" id="prompt-input" placeholder="e.g. PayPal Mafia, YC batch W24..." autocomplete="off">
-    <button id="prompt-go" class="prompt-btn">Generate</button>
+  <div class="presets-wrap">
+    <label>Presets:</label>
+    <select id="preset-select">
+      <option value="">Load a group...</option>
+    </select>
   </div>
   <button id="restore-all" class="restore-btn" style="display:none">Restore removed</button>
+  <button id="clear-all" class="restore-btn">Clear all</button>
   <label>Sector:</label>
   <select id="sector-filter"><option value="all">All</option></select>
   <label style="margin-left:8px">Switchers only:</label>
@@ -403,7 +403,6 @@ function founderTooltipHTML(founder, highlightEraIdx) {
     </div>`;
   });
   if (founder.sectorSwitches?.length > 0) html += `<div class="tt-switch-label">${founder.sectorSwitches.length} sector switch${founder.sectorSwitches.length > 1 ? 'es' : ''}</div>`;
-  html += `<div class="tt-remove-btn" onclick="event.stopPropagation(); removePerson('${founder.id}')">Remove from chart</div>`;
   return html + '</div>';
 }
 
@@ -770,8 +769,22 @@ function renderAlluvial() {
   allNames.forEach(({ founder, fi, nameY }) => {
     const primaryColor = BROAD_COLORS[founder.primarySector] || '#777';
 
+    // X button before name
+    const xBtn = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    xBtn.setAttribute('x', nameX - 2);
+    xBtn.setAttribute('y', nameY + 4);
+    xBtn.setAttribute('text-anchor', 'end');
+    xBtn.setAttribute('fill', '#444');
+    xBtn.setAttribute('font-size', '9');
+    xBtn.style.cursor = 'pointer';
+    xBtn.textContent = '\u00d7';
+    xBtn.addEventListener('mouseenter', () => xBtn.setAttribute('fill', '#f87171'));
+    xBtn.addEventListener('mouseleave', () => xBtn.setAttribute('fill', '#444'));
+    xBtn.addEventListener('click', (e) => { e.stopPropagation(); removePerson(founder.id); });
+    svg.appendChild(xBtn);
+
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    text.setAttribute('x', nameX);
+    text.setAttribute('x', nameX + 4);
     text.setAttribute('y', nameY + 4);
     text.setAttribute('fill', primaryColor);
     text.setAttribute('font-size', '9');
@@ -854,13 +867,104 @@ function renderCards() {
 }
 
 // =====================================================
-// REMOVE / ADD PEOPLE
+// REMOVE / ADD / PRESETS
 // =====================================================
-const ALL_FOUNDERS = [...FOUNDERS_DATA]; // immutable copy of full dataset
+const ALL_FOUNDERS = [...FOUNDERS_DATA];
 let removedIds = JSON.parse(localStorage.getItem('wn-removed') || '[]');
 
+// Presets: curated founder groups
+const PRESETS = {
+  'PayPal Mafia': [
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Max Levchin', id: 'max-levchin', roles: [
+      { company: 'PayPal', role: 'Co-founder & CTO', sector: 'Fintech', start: 1998, end: 2002 },
+      { company: 'Slide', role: 'Founder & CEO', sector: 'Social Media', start: 2004, end: 2010, note: 'Acquired by Google' },
+      { company: 'Affirm', role: 'Co-founder & CEO', sector: 'Fintech', start: 2012, end: null },
+    ], sectorSwitches: [{ from: 'Fintech', to: 'Social & Media', year: 2004 }, { from: 'Social & Media', to: 'Fintech', year: 2012 }], primarySector: 'Fintech', source: 'https://en.wikipedia.org/wiki/Max_Levchin' },
+    { name: 'David Sacks', id: 'david-sacks', roles: [
+      { company: 'PayPal', role: 'COO', sector: 'Fintech', start: 1999, end: 2002 },
+      { company: 'Geni.com', role: 'Founder', sector: 'Consumer Tech', start: 2006, end: 2012 },
+      { company: 'Yammer', role: 'Founder & CEO', sector: 'Enterprise SaaS', start: 2008, end: 2012, note: 'Acquired by Microsoft for $1.2B' },
+      { company: 'Craft Ventures', role: 'Founder & GP', sector: 'VC', start: 2017, end: null },
+      { company: 'US State Dept (AI)', role: 'Special Advisor', sector: 'Government / Policy', start: 2025, end: null, note: 'White House AI & Crypto Czar' },
+    ], sectorSwitches: [{ from: 'Fintech', to: 'Enterprise', year: 2008 }, { from: 'Enterprise', to: 'VC & Finance', year: 2017 }], primarySector: 'VC & Finance', source: 'https://en.wikipedia.org/wiki/David_O._Sacks' },
+    { name: 'Chad Hurley', id: 'chad-hurley', roles: [
+      { company: 'PayPal', role: 'Designer', sector: 'Fintech', start: 1999, end: 2005 },
+      { company: 'YouTube', role: 'Co-founder & CEO', sector: 'Internet / Media', start: 2005, end: 2010, note: 'Acquired by Google for $1.65B' },
+      { company: 'MixBit/Avos', role: 'Founder', sector: 'Internet / Media', start: 2011, end: 2018 },
+    ], sectorSwitches: [{ from: 'Fintech', to: 'Social & Media', year: 2005 }], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Chad_Hurley' },
+    { name: 'Steve Chen', id: 'steve-chen', roles: [
+      { company: 'PayPal', role: 'Engineer', sector: 'Fintech', start: 1999, end: 2005 },
+      { company: 'YouTube', role: 'Co-founder & CTO', sector: 'Internet / Media', start: 2005, end: 2011, note: 'Acquired by Google for $1.65B' },
+    ], sectorSwitches: [{ from: 'Fintech', to: 'Social & Media', year: 2005 }], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Steve_Chen' },
+    { name: 'Jeremy Stoppelman', id: 'jeremy-stoppelman', roles: [
+      { company: 'PayPal', role: 'VP Engineering', sector: 'Fintech', start: 2000, end: 2004 },
+      { company: 'Yelp', role: 'Co-founder & CEO', sector: 'Consumer Tech', start: 2004, end: null },
+    ], sectorSwitches: [{ from: 'Fintech', to: 'Consumer', year: 2004 }], primarySector: 'Consumer', source: 'https://en.wikipedia.org/wiki/Jeremy_Stoppelman' },
+    { name: 'Keith Rabois', id: 'keith-rabois', roles: [
+      { company: 'PayPal', role: 'VP', sector: 'Fintech', start: 2000, end: 2002 },
+      { company: 'LinkedIn', role: 'VP', sector: 'Social Media', start: 2002, end: 2004 },
+      { company: 'Square', role: 'COO', sector: 'Fintech', start: 2010, end: 2013 },
+      { company: 'Khosla Ventures', role: 'Partner', sector: 'VC', start: 2013, end: 2019 },
+      { company: 'Founders Fund', role: 'Partner', sector: 'VC', start: 2019, end: null },
+    ], sectorSwitches: [{ from: 'Fintech', to: 'Social & Media', year: 2002 }, { from: 'Social & Media', to: 'Fintech', year: 2010 }, { from: 'Fintech', to: 'VC & Finance', year: 2013 }], primarySector: 'VC & Finance', source: 'https://en.wikipedia.org/wiki/Keith_Rabois' },
+    { name: 'Roelof Botha', id: 'roelof-botha', roles: [
+      { company: 'PayPal', role: 'CFO', sector: 'Fintech', start: 2000, end: 2003 },
+      { company: 'Sequoia Capital', role: 'Partner \u2192 Managing Partner', sector: 'VC', start: 2003, end: null, note: 'Led investments in YouTube, Instagram, MongoDB' },
+    ], sectorSwitches: [{ from: 'Fintech', to: 'VC & Finance', year: 2003 }], primarySector: 'VC & Finance', source: 'https://en.wikipedia.org/wiki/Roelof_Botha' },
+  ],
+  'AI Lab Founders': [
+    { name: 'Sam Altman', id: 'sam-altman' },
+    { name: 'Dario Amodei', id: 'dario-amodei' },
+    { name: 'Daniela Amodei', id: 'daniela-amodei' },
+    { name: 'Ilya Sutskever', id: 'ilya-sutskever' },
+    { name: 'Mustafa Suleyman', id: 'mustafa-suleyman' },
+    { name: 'Andrej Karpathy', id: 'andrej-karpathy' },
+    { name: 'Daniel Gross', id: 'daniel-gross' },
+    { name: 'Alexandr Wang', id: 'alexandr-wang' },
+  ],
+  'Crypto OGs': [
+    { name: 'Brian Armstrong', id: 'brian-armstrong' },
+    { name: 'Vitalik Buterin', id: 'vitalik-buterin' },
+    { name: 'Changpeng Zhao', id: 'cz-binance' },
+    { name: 'Fred Ehrsam', id: 'fred-ehrsam' },
+    { name: 'Balaji Srinivasan', id: 'balaji-srinivasan' },
+    { name: 'Matt Huang', id: 'matt-huang' },
+  ],
+  'Thiel Fellows': [
+    { name: 'Vitalik Buterin', id: 'vitalik-buterin' },
+    { name: 'Dylan Field', id: 'dylan-field' },
+    { name: 'Palmer Luckey', id: 'palmer-luckey' },
+    { name: 'Alexandr Wang', id: 'alexandr-wang' },
+    { name: 'Austin Russell', id: 'austin-russell', roles: [
+      { company: 'Luminar Technologies', role: 'Founder & CEO', sector: 'Automotive / Clean Energy', start: 2012, end: null, note: 'LiDAR for self-driving. IPO via SPAC 2020. Youngest self-made billionaire at 25.' },
+    ], sectorSwitches: [], primarySector: 'Deep Tech', source: 'https://en.wikipedia.org/wiki/Austin_Russell' },
+  ],
+  'Social Founders': [
+    { name: 'Jack Dorsey', id: 'jack-dorsey' },
+    { name: 'Kevin Systrom', id: 'kevin-systrom' },
+    { name: 'Evan Williams', id: 'ev-williams' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Whitney Wolfe Herd', id: 'whitney-wolfe-herd' },
+    { name: 'Mark Zuckerberg', id: 'mark-zuckerberg', roles: [
+      { company: 'Facebook / Meta', role: 'Co-founder & CEO', sector: 'Social Media', start: 2004, end: null },
+    ], sectorSwitches: [], primarySector: 'Social & Media', source: 'https://en.wikipedia.org/wiki/Mark_Zuckerberg' },
+  ],
+  'Defense Tech': [
+    { name: 'Palmer Luckey', id: 'palmer-luckey' },
+    { name: 'Alex Karp', id: 'alex-karp' },
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Trae Stephens', id: 'trae-stephens', roles: [
+      { company: 'Palantir', role: 'Engineer', sector: 'Defense Tech / Data', start: 2010, end: 2016 },
+      { company: 'Anduril Industries', role: 'Co-founder & Chairman', sector: 'Defense Tech', start: 2017, end: null },
+      { company: 'Founders Fund', role: 'Partner', sector: 'VC', start: 2016, end: null },
+    ], sectorSwitches: [{ from: 'Defense', to: 'VC & Finance', year: 2016 }], primarySector: 'Defense', source: 'https://en.wikipedia.org/wiki/Trae_Stephens' },
+  ],
+};
+
 function applyRemovals() {
-  // Filter FOUNDERS_DATA in place based on removedIds
   FOUNDERS_DATA.length = 0;
   ALL_FOUNDERS.forEach(f => {
     if (!removedIds.includes(f.id)) FOUNDERS_DATA.push(f);
@@ -895,7 +999,41 @@ function updateRestoreBtn() {
   }
 }
 
-// Add person search — searches web via backend
+function loadPreset(name) {
+  if (!PRESETS[name]) return;
+  const preset = PRESETS[name];
+
+  // Clear everything first
+  removedIds = ALL_FOUNDERS.map(f => f.id);
+
+  // For each person in preset: ensure they exist in ALL_FOUNDERS, then un-remove them
+  preset.forEach(p => {
+    if (!ALL_FOUNDERS.find(f => f.id === p.id)) {
+      // New person not in main dataset -- add them
+      const entry = p.roles ? p : null;
+      if (entry) {
+        entry.verified = entry.verified || '2026-03-18';
+        ALL_FOUNDERS.push(entry);
+      }
+    }
+    removedIds = removedIds.filter(r => r !== p.id);
+  });
+
+  localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+  applyRemovals();
+  refresh();
+  updateRestoreBtn();
+}
+
+function clearAll() {
+  removedIds = ALL_FOUNDERS.map(f => f.id);
+  localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+  applyRemovals();
+  refresh();
+  updateRestoreBtn();
+}
+
+// Add person search — searches Wikipedia for anyone + shows existing people
 const addInput = document.getElementById('add-person');
 const suggestions = document.getElementById('add-suggestions');
 let searchTimeout = null;
@@ -906,12 +1044,14 @@ addInput.addEventListener('input', () => {
 
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
-    // First check if it's a removed person we can re-add
-    const removed = ALL_FOUNDERS.filter(f =>
-      removedIds.includes(f.id) && f.name.toLowerCase().includes(q.toLowerCase())
-    );
+    const ql = q.toLowerCase();
 
-    // Then search Wikipedia
+    // Check existing (removed or active)
+    const existing = ALL_FOUNDERS.filter(f => f.name.toLowerCase().includes(ql));
+    const removed = existing.filter(f => removedIds.includes(f.id));
+    const active = existing.filter(f => !removedIds.includes(f.id));
+
+    // Search Wikipedia for new people
     let wikiResults = [];
     try {
       const resp = await fetch(`/api/where-next/search?q=${encodeURIComponent(q)}`);
@@ -922,6 +1062,17 @@ addInput.addEventListener('input', () => {
     } catch(e) { console.error('Search failed:', e); }
 
     let html = '';
+
+    if (active.length > 0) {
+      html += `<div style="padding:6px 12px;color:#444;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Already on chart</div>`;
+      html += active.slice(0, 3).map(f => {
+        const color = BROAD_COLORS[f.primarySector] || '#6b7280';
+        return `<div class="add-suggestion" style="opacity:0.5">
+          <span class="sg-dot" style="background:${color}"></span>
+          <span><span class="sg-name">${f.name}</span> <span class="sg-sub">already added</span></span>
+        </div>`;
+      }).join('');
+    }
 
     if (removed.length > 0) {
       html += `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Restore removed</div>`;
@@ -937,16 +1088,14 @@ addInput.addEventListener('input', () => {
     if (wikiResults.length > 0) {
       html += `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Add from Wikipedia</div>`;
       html += wikiResults.slice(0, 5).map(r => {
-        return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url}">
+        return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url || ''}">
           <span class="sg-dot" style="background:#555"></span>
-          <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${r.description?.slice(0,60) || ''}</span></span>
+          <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${(r.description || '').slice(0,60)}</span></span>
         </div>`;
       }).join('');
     }
 
-    if (!html) {
-      html = `<div class="add-suggestion"><span class="sg-sub">No results for "${addInput.value}"</span></div>`;
-    }
+    if (!html) html = `<div class="add-suggestion"><span class="sg-sub">No results for "${q}"</span></div>`;
 
     suggestions.innerHTML = html;
     suggestions.classList.add('show');
@@ -961,100 +1110,40 @@ addInput.addEventListener('input', () => {
       });
     });
 
-    // Wiki add handlers — adds a stub entry, user can edit later
+    // Wiki add handlers
     suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
       el.addEventListener('click', async () => {
         const name = el.dataset.wikiName;
         const url = el.dataset.wikiUrl;
         const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-
-        // Create a minimal founder entry
-        const newFounder = {
-          name: name,
-          id: id,
-          source: url,
-          roles: [{ company: 'Unknown', role: 'Founder', sector: 'Other', start: 2020, end: null }],
-          sectorSwitches: [],
-          primarySector: 'Other'
-        };
-
-        // Save via API (persists to disk + rebuilds dashboard)
+        const newFounder = { name, id, source: url, roles: [{ company: 'Unknown', role: 'Founder', sector: 'Other', start: 2020, end: null }], sectorSwitches: [], primarySector: 'Other' };
         try {
-          const resp = await fetch('/api/where-next/add', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newFounder)
-          });
+          const resp = await fetch('/api/where-next/add', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newFounder) });
           const result = await resp.json();
-          if (result.ok) {
-            // Add to local data and refresh
-            ALL_FOUNDERS.push(newFounder);
-            FOUNDERS_DATA.push(newFounder);
-            refresh();
-          }
+          if (result.ok) { ALL_FOUNDERS.push(newFounder); FOUNDERS_DATA.push(newFounder); refresh(); }
         } catch(e) { console.error('Add failed:', e); }
-
         addInput.value = ''; suggestions.classList.remove('show');
       });
     });
   }, 300);
 });
 
-addInput.addEventListener('blur', () => {
-  setTimeout(() => suggestions.classList.remove('show'), 300);
+addInput.addEventListener('blur', () => { setTimeout(() => suggestions.classList.remove('show'), 300); });
+
+// Presets
+const presetSelect = document.getElementById('preset-select');
+Object.keys(PRESETS).forEach(name => {
+  const opt = document.createElement('option');
+  opt.value = name;
+  opt.textContent = `${name} (${PRESETS[name].length})`;
+  presetSelect.appendChild(opt);
+});
+presetSelect.addEventListener('change', () => {
+  if (presetSelect.value) { loadPreset(presetSelect.value); presetSelect.value = ''; }
 });
 
-// Prompt-to-chart (placeholder — sends to backend which will use AI)
-document.getElementById('prompt-go').addEventListener('click', () => {
-  const input = document.getElementById('prompt-input');
-  const query = input.value.trim();
-  if (!query) return;
-
-  const btn = document.getElementById('prompt-go');
-  btn.textContent = 'Searching...';
-  btn.classList.add('loading');
-
-  // For now: search Wikipedia for the group name and show results
-  // Full AI-powered version will come later via OpenClaw gateway
-  fetch(`/api/where-next/search?q=${encodeURIComponent(query)}`)
-    .then(r => r.json())
-    .then(data => {
-      btn.textContent = 'Generate';
-      btn.classList.remove('loading');
-      if (data.results?.length > 0) {
-        // Show results in the add-person suggestions dropdown
-        const suggestions = document.getElementById('add-suggestions');
-        suggestions.innerHTML = `<div style="padding:6px 12px;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Results for "${query}"</div>` +
-          data.results.map(r => `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url}">
-            <span class="sg-dot" style="background:#555"></span>
-            <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${r.description?.slice(0,60) || ''}</span></span>
-          </div>`).join('');
-        suggestions.classList.add('show');
-
-        suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
-          el.addEventListener('click', async () => {
-            const name = el.dataset.wikiName;
-            const url = el.dataset.wikiUrl;
-            const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            const newFounder = { name, id, source: url, roles: [{ company: 'Unknown', role: 'Founder', sector: 'Other', start: 2020, end: null }], sectorSwitches: [], primarySector: 'Other' };
-            try {
-              const resp = await fetch('/api/where-next/add', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newFounder) });
-              const result = await resp.json();
-              if (result.ok) { ALL_FOUNDERS.push(newFounder); FOUNDERS_DATA.push(newFounder); refresh(); }
-            } catch(e) { console.error('Add failed:', e); }
-            suggestions.classList.remove('show');
-          });
-        });
-      }
-    })
-    .catch(() => { btn.textContent = 'Generate'; btn.classList.remove('loading'); });
-});
-
-document.getElementById('prompt-input').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') document.getElementById('prompt-go').click();
-});
-
-// Init: apply stored removals
+// Clear all / Restore all
+document.getElementById('clear-all').addEventListener('click', clearAll);
 document.getElementById('restore-all').addEventListener('click', restoreAll);
 applyRemovals();
 updateRestoreBtn();
