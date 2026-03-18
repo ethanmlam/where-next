@@ -369,7 +369,7 @@
         "sector": "Consumer AI",
         "start": 2022,
         "end": 2024,
-        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Kar\u00e9n Simonyan"
+        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Karén Simonyan"
       },
       {
         "company": "Microsoft AI",
@@ -564,7 +564,10 @@
         "year": 2022
       }
     ],
-    "primarySector": "Social & Media"
+    "primarySector": "Social & Media",
+    "eraPrefer": {
+      "1995-2001": "PayPal"
+    }
   },
   {
     "name": "Elon Musk",
@@ -3930,7 +3933,7 @@
       }
     ],
     "sectorSwitches": [],
-    "primarySector": "Research"
+    "primarySector": "AI"
   },
   {
     "name": "Yann LeCun",
@@ -3969,10 +3972,24 @@
         "start": 2013,
         "end": null,
         "note": "Founded FAIR; Turing Award 2018 with Hinton and Bengio"
+      },
+      {
+        "company": "AMI Labs",
+        "role": "Co-founder",
+        "sector": "AI",
+        "start": 2025,
+        "end": null,
+        "note": "AI model company. Co-founded while still Chief AI Scientist at Meta."
       }
     ],
-    "sectorSwitches": [],
-    "primarySector": "Research"
+    "sectorSwitches": [
+      {
+        "from": "Research / AI",
+        "to": "AI",
+        "year": 2025
+      }
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Andrew Ng",
@@ -4260,7 +4277,7 @@
         "note": "fMRI analysis, stochastic optimization"
       },
       {
-        "company": "\u00c9cole normale sup\u00e9rieure",
+        "company": "École normale supérieure",
         "role": "Postdoctoral Researcher",
         "sector": "AI",
         "start": 2018,
@@ -4281,7 +4298,7 @@
         "sector": "AI",
         "start": 2023,
         "end": null,
-        "note": "European open-weight LLM leader; \u20ac11.7B valuation (2025)"
+        "note": "European open-weight LLM leader; €11.7B valuation (2025)"
       }
     ],
     "sectorSwitches": [
@@ -5572,7 +5589,7 @@
         "sector": "Defense",
         "start": 2021,
         "end": null,
-        "note": "AI defense technology company; \u20ac209M raised"
+        "note": "AI defense technology company; €209M raised"
       },
       {
         "company": "Prima Materia",
@@ -6245,93 +6262,6 @@
     "primarySector": "VC & Finance"
   },
   {
-    "name": "Brian Brooks",
-    "id": "brian-brooks",
-    "born": 1969,
-    "source": "https://en.wikipedia.org/wiki/Brian_P._Brooks",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "O'Melveny & Myers",
-        "role": "Managing Partner (DC)",
-        "sector": "Other",
-        "start": 1995,
-        "end": 2011,
-        "note": "Global law firm; led financial services litigation"
-      },
-      {
-        "company": "OneWest Bank",
-        "role": "Vice Chairman & CLO",
-        "sector": "VC & Finance",
-        "start": 2011,
-        "end": 2014,
-        "note": "Steven Mnuchin's bank; oversaw mortgage servicing/foreclosure response"
-      },
-      {
-        "company": "Fannie Mae",
-        "role": "EVP & General Counsel",
-        "sector": "VC & Finance",
-        "start": 2014,
-        "end": 2018,
-        "note": "$3.2T in assets; senior advisor on legal and regulatory matters"
-      },
-      {
-        "company": "Coinbase",
-        "role": "Chief Legal Officer",
-        "sector": "Crypto",
-        "start": 2018,
-        "end": 2020,
-        "note": "Drove regulatory strategy ahead of IPO; left to join OCC"
-      },
-      {
-        "company": "OCC (US Treasury)",
-        "role": "Acting Comptroller of the Currency",
-        "sector": "Other",
-        "start": 2020,
-        "end": 2021,
-        "note": "Issued landmark crypto guidance; allowed banks to hold digital assets"
-      },
-      {
-        "company": "Bitfury Group",
-        "role": "CEO",
-        "sector": "Crypto",
-        "start": 2021,
-        "end": 2022,
-        "note": "Blockchain infrastructure and Bitcoin mining"
-      },
-      {
-        "company": "Valor Capital Group",
-        "role": "Managing Partner",
-        "sector": "VC & Finance",
-        "start": 2023,
-        "end": null
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "Other",
-        "to": "VC & Finance",
-        "year": 2011
-      },
-      {
-        "from": "VC & Finance",
-        "to": "Crypto",
-        "year": 2018
-      },
-      {
-        "from": "Crypto",
-        "to": "Other",
-        "year": 2020
-      },
-      {
-        "from": "Other",
-        "to": "Crypto",
-        "year": 2021
-      }
-    ],
-    "primarySector": "Crypto"
-  },
-  {
     "name": "Mikkel Svane",
     "id": "mikkel-svane",
     "born": 1971,
@@ -6731,60 +6661,6 @@
       }
     ],
     "primarySector": "Consumer"
-  },
-  {
-    "name": "Pat Gelsinger",
-    "id": "pat-gelsinger",
-    "born": 1961,
-    "source": "https://en.wikipedia.org/wiki/Pat_Gelsinger",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "Intel",
-        "role": "Quality Control Tech \u2192 CTO",
-        "sector": "Semiconductors",
-        "start": 1979,
-        "end": 2009,
-        "note": "Joined at 18; chief architect of i486 (1989); youngest VP in Intel history; CTO 2001-2009"
-      },
-      {
-        "company": "EMC Corporation",
-        "role": "President & COO",
-        "sector": "Enterprise",
-        "start": 2009,
-        "end": 2012,
-        "note": "Enterprise storage and cloud infra"
-      },
-      {
-        "company": "VMware",
-        "role": "CEO",
-        "sector": "Enterprise",
-        "start": 2012,
-        "end": 2021,
-        "note": "Grew from $2B to $12B+ revenue; cloud virtualization leader"
-      },
-      {
-        "company": "Intel",
-        "role": "CEO",
-        "sector": "Semiconductors",
-        "start": 2021,
-        "end": 2024,
-        "note": "Returned to lead IDM 2.0 manufacturing turnaround; stepped down Dec 2024"
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "Deep Tech",
-        "to": "Enterprise",
-        "year": 2009
-      },
-      {
-        "from": "Enterprise",
-        "to": "Deep Tech",
-        "year": 2021
-      }
-    ],
-    "primarySector": "Deep Tech"
   },
   {
     "name": "Martin Casado",
@@ -7568,92 +7444,6 @@
     "primarySector": "Fintech"
   },
   {
-    "name": "Dan Schulman",
-    "id": "dan-schulman",
-    "born": 1958,
-    "source": "https://en.wikipedia.org/wiki/Dan_Schulman",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "AT&T",
-        "role": "Executive \u2192 President",
-        "sector": "Telecom / Enterprise",
-        "start": 1982,
-        "end": 2000,
-        "note": "18+ years; rose to President managing 40K employees"
-      },
-      {
-        "company": "Priceline.com",
-        "role": "President & CEO",
-        "sector": "Consumer",
-        "start": 2000,
-        "end": 2001,
-        "note": "Grew revenue from $20M to ~$1B in 2 years"
-      },
-      {
-        "company": "Virgin Mobile USA",
-        "role": "Founding CEO",
-        "sector": "Telecom / Enterprise",
-        "start": 2002,
-        "end": 2009,
-        "note": "Built to 5M customers and $1.3B revenue; first 'no hidden fees' carrier; IPO 2007; sold to Sprint 2009"
-      },
-      {
-        "company": "Sprint Nextel",
-        "role": "President, Prepaid",
-        "sector": "Telecom / Enterprise",
-        "start": 2009,
-        "end": 2010
-      },
-      {
-        "company": "American Express",
-        "role": "Group President, Enterprise Growth",
-        "sector": "Fintech",
-        "start": 2010,
-        "end": 2014,
-        "note": "Led global mobile/online payment strategy"
-      },
-      {
-        "company": "PayPal",
-        "role": "President & CEO",
-        "sector": "Fintech",
-        "start": 2015,
-        "end": 2023,
-        "note": "Spun off from eBay; grew to $250B market cap peak; 400M+ users"
-      },
-      {
-        "company": "Verizon",
-        "role": "CEO",
-        "sector": "Telecom / Enterprise",
-        "start": 2025,
-        "end": null
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "Telecom",
-        "to": "Consumer",
-        "year": 2000
-      },
-      {
-        "from": "Consumer",
-        "to": "Telecom",
-        "year": 2002
-      },
-      {
-        "from": "Telecom",
-        "to": "Fintech",
-        "year": 2010
-      },
-      {
-        "from": "Fintech",
-        "to": "Telecom",
-        "year": 2025
-      }
-    ],
-    "primarySector": "Fintech"
-  },
-  {
     "name": "Baiju Bhatt",
     "id": "baiju-bhatt",
     "born": 1985,
@@ -7686,84 +7476,6 @@
     ],
     "sectorSwitches": [],
     "primarySector": "Fintech"
-  },
-  {
-    "name": "Brad Garlinghouse",
-    "id": "brad-garlinghouse",
-    "born": 1971,
-    "source": "https://en.wikipedia.org/wiki/Brad_Garlinghouse",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "Dialpad",
-        "role": "CEO",
-        "sector": "Enterprise",
-        "start": 2000,
-        "end": 2001,
-        "note": "VoIP startup"
-      },
-      {
-        "company": "Yahoo!",
-        "role": "SVP",
-        "sector": "Consumer",
-        "start": 2003,
-        "end": 2008,
-        "note": "Ran Homepage, Flickr, Mail, Messenger. Wrote 'Peanut Butter Manifesto' internal memo."
-      },
-      {
-        "company": "Silver Lake Partners",
-        "role": "Senior Advisor",
-        "sector": "VC & Finance",
-        "start": 2008,
-        "end": 2009
-      },
-      {
-        "company": "AOL",
-        "role": "President, Consumer Applications",
-        "sector": "Consumer",
-        "start": 2009,
-        "end": 2011
-      },
-      {
-        "company": "Hightail (YouSendIt)",
-        "role": "CEO",
-        "sector": "Enterprise",
-        "start": 2012,
-        "end": 2014,
-        "note": "File-sharing SaaS"
-      },
-      {
-        "company": "Ripple",
-        "role": "COO \u2192 CEO",
-        "sector": "Crypto",
-        "start": 2015,
-        "end": null,
-        "note": "Joined as COO Apr 2015; CEO Dec 2016. Led XRP and RippleNet. Won SEC lawsuit 2023."
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "Consumer",
-        "to": "Enterprise",
-        "year": 2000
-      },
-      {
-        "from": "Enterprise",
-        "to": "Consumer",
-        "year": 2003
-      },
-      {
-        "from": "Consumer",
-        "to": "Enterprise",
-        "year": 2012
-      },
-      {
-        "from": "Enterprise",
-        "to": "Crypto",
-        "year": 2015
-      }
-    ],
-    "primarySector": "Crypto"
   },
   {
     "name": "Michael Saylor",
@@ -7830,7 +7542,7 @@
       },
       {
         "company": "Amazon",
-        "role": "Marketing Manager \u2192 SVP",
+        "role": "Marketing Manager → SVP",
         "sector": "Consumer",
         "start": 1997,
         "end": 2003,
@@ -8035,7 +7747,7 @@
       },
       {
         "company": "Kleiner Perkins",
-        "role": "Partner \u2192 Chairman",
+        "role": "Partner → Chairman",
         "sector": "VC & Finance",
         "start": 1980,
         "end": null,
@@ -8068,7 +7780,7 @@
       },
       {
         "company": "Sequoia Capital",
-        "role": "Partner \u2192 Partner Emeritus",
+        "role": "Partner → Partner Emeritus",
         "sector": "VC & Finance",
         "start": 1986,
         "end": null,
@@ -8093,7 +7805,7 @@
     "roles": [
       {
         "company": "Euclid Partners",
-        "role": "Associate \u2192 General Partner",
+        "role": "Associate → General Partner",
         "sector": "VC & Finance",
         "start": 1987,
         "end": 1996
@@ -8167,67 +7879,6 @@
     "primarySector": "VC & Finance"
   },
   {
-    "name": "Shou Zi Chew",
-    "id": "shou-zi-chew",
-    "born": 1983,
-    "source": "https://en.wikipedia.org/wiki/Shou_Zi_Chew",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "Goldman Sachs",
-        "role": "Investment Banker",
-        "sector": "VC & Finance",
-        "start": 2006,
-        "end": 2008,
-        "note": "TMT banking in London"
-      },
-      {
-        "company": "DST Global",
-        "role": "Partner",
-        "sector": "VC & Finance",
-        "start": 2008,
-        "end": 2015,
-        "note": "Led investments in JD.com, Alibaba, Xiaomi; led early ByteDance investment 2013"
-      },
-      {
-        "company": "Xiaomi",
-        "role": "CFO \u2192 President International",
-        "sector": "Consumer",
-        "start": 2015,
-        "end": 2021,
-        "note": "CFO 2015; led international expansion; became President of International 2019"
-      },
-      {
-        "company": "ByteDance",
-        "role": "CFO",
-        "sector": "Social & Media",
-        "start": 2021,
-        "end": 2021
-      },
-      {
-        "company": "TikTok",
-        "role": "CEO",
-        "sector": "Social & Media",
-        "start": 2021,
-        "end": null,
-        "note": "Replaced Kevin Mayer; testified before US Congress March 2023; navigated US ban threats"
-      }
-    ],
-    "sectorSwitches": [
-      {
-        "from": "VC & Finance",
-        "to": "Consumer",
-        "year": 2015
-      },
-      {
-        "from": "Consumer",
-        "to": "Social & Media",
-        "year": 2021
-      }
-    ],
-    "primarySector": "Social & Media"
-  },
-  {
     "name": "Parag Agrawal",
     "id": "parag-agrawal",
     "born": 1984,
@@ -8236,7 +7887,7 @@
     "roles": [
       {
         "company": "Twitter",
-        "role": "Software Engineer \u2192 CTO",
+        "role": "Software Engineer → CTO",
         "sector": "Social & Media",
         "start": 2011,
         "end": 2021,
@@ -8277,7 +7928,7 @@
     "roles": [
       {
         "company": "Turner Broadcasting / NBCUniversal",
-        "role": "Ad Sales Executive \u2192 Chairman Global Advertising",
+        "role": "Ad Sales Executive → Chairman Global Advertising",
         "sector": "Social & Media",
         "start": 1992,
         "end": 2023,
@@ -8505,76 +8156,6 @@
     "primarySector": "Fintech"
   },
   {
-    "name": "Thomas Kurian",
-    "id": "thomas-kurian",
-    "born": 1966,
-    "source": "https://en.wikipedia.org/wiki/Thomas_Kurian",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "McKinsey & Company",
-        "role": "Consultant",
-        "sector": "Enterprise",
-        "start": 1988,
-        "end": 1994,
-        "note": "6 years consulting in software, telecom, financial services across London and Brussels"
-      },
-      {
-        "company": "Oracle",
-        "role": "VP \u2192 President of Product Development",
-        "sector": "Enterprise",
-        "start": 1996,
-        "end": 2018,
-        "note": "Joined 1996; led Oracle e-Business division, Fusion Middleware, Server Technologies; oversaw 35K-person R&D team; $4B R&D budget; 60 acquisitions; drove cloud transition. Left Nov 2018 after disagreements over cloud strategy."
-      },
-      {
-        "company": "Google Cloud",
-        "role": "CEO",
-        "sector": "Enterprise",
-        "start": 2019,
-        "end": null,
-        "note": "Hired by Alphabet to transform Google Cloud; grew from #3 to competitive cloud player; $36B+ ARR by 2024"
-      }
-    ],
-    "sectorSwitches": [],
-    "primarySector": "Enterprise"
-  },
-  {
-    "name": "Arvind Krishna",
-    "id": "arvind-krishna",
-    "born": 1962,
-    "source": "https://en.wikipedia.org/wiki/Arvind_Krishna",
-    "verified": "2026-03-18",
-    "roles": [
-      {
-        "company": "IBM Watson Research Center",
-        "role": "Researcher",
-        "sector": "Research / Enterprise",
-        "start": 1990,
-        "end": 2009,
-        "note": "18 years in research; networking, storage, and security"
-      },
-      {
-        "company": "IBM",
-        "role": "General Manager \u2192 SVP Cloud & Cognitive",
-        "sector": "Enterprise",
-        "start": 2009,
-        "end": 2020,
-        "note": "Led IBM Cloud & Cognitive Software; SVP IBM Research 2015; architect of $34B Red Hat acquisition 2019; championed AI, quantum, blockchain"
-      },
-      {
-        "company": "IBM",
-        "role": "Chairman & CEO",
-        "sector": "Enterprise",
-        "start": 2020,
-        "end": null,
-        "note": "Became CEO Apr 2020; chairman Jan 2021. Led pivot to hybrid cloud and AI (watsonx). Spun off managed infrastructure into Kyndryl 2021."
-      }
-    ],
-    "sectorSwitches": [],
-    "primarySector": "Enterprise"
-  },
-  {
     "name": "Yishan Wong",
     "id": "yishan-wong",
     "born": null,
@@ -8783,7 +8364,7 @@
     "born": 1975,
     "source": "https://en.wikipedia.org/wiki/Premal_Shah",
     "verified": "2026-03-18",
-    "primarySector": "Other",
+    "primarySector": "Fintech",
     "roles": [
       {
         "company": "PayPal",
@@ -8805,7 +8386,7 @@
     "sectorSwitches": [
       {
         "from": "Fintech",
-        "to": "Other",
+        "to": "Microfinance / Nonprofit",
         "year": 2005
       }
     ]
@@ -9080,6 +8661,1607 @@
         "from": "Fintech",
         "to": "VC & Finance",
         "year": 2005
+      }
+    ]
+  },
+  {
+    "name": "David Holz",
+    "id": "david-holz",
+    "born": 1987,
+    "source": "https://en.wikipedia.org/wiki/David_Holz",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "NASA",
+        "role": "Researcher",
+        "sector": "Aerospace / Research",
+        "start": 2008,
+        "end": 2011,
+        "note": "Worked on computational fluid dynamics"
+      },
+      {
+        "company": "Leap Motion",
+        "role": "Co-founder & CTO",
+        "sector": "Hardware / Gesture Control",
+        "start": 2010,
+        "end": 2019,
+        "note": "Hand-tracking hardware. Acquired by Ultrahaptics (now Ultraleap)"
+      },
+      {
+        "company": "Midjourney",
+        "role": "Founder & CEO",
+        "sector": "AI / Generative Art",
+        "start": 2021,
+        "end": null,
+        "note": "AI image generation. Self-funded, profitable, ~$200M+ ARR"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Aerospace / Research",
+        "to": "Hardware / Gesture Control",
+        "year": 2010
+      },
+      {
+        "from": "Hardware / Gesture Control",
+        "to": "AI / Generative Art",
+        "year": 2021
+      }
+    ]
+  },
+  {
+    "name": "Aravind Srinivas",
+    "id": "aravind-srinivas",
+    "born": 1993,
+    "source": "https://en.wikipedia.org/wiki/Aravind_Srinivas_(entrepreneur)",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "UC Berkeley",
+        "role": "PhD Researcher",
+        "sector": "Academia / AI",
+        "start": 2018,
+        "end": 2022
+      },
+      {
+        "company": "DeepMind",
+        "role": "Research Intern",
+        "sector": "AI Research",
+        "start": 2019,
+        "end": 2019
+      },
+      {
+        "company": "OpenAI",
+        "role": "Research Scientist",
+        "sector": "AI",
+        "start": 2021,
+        "end": 2022
+      },
+      {
+        "company": "Perplexity AI",
+        "role": "Co-founder & CEO",
+        "sector": "AI / Search",
+        "start": 2022,
+        "end": null,
+        "note": "AI-native search engine. Valued at $9B+ (2025). Ethan was campus ambassador at Perplexity."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Academia / AI",
+        "to": "AI / Search",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Chris Lattner",
+    "id": "chris-lattner",
+    "born": 1978,
+    "source": "https://en.wikipedia.org/wiki/Chris_Lattner",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Apple",
+        "role": "Senior Director",
+        "sector": "Consumer Tech",
+        "start": 2005,
+        "end": 2017,
+        "note": "Created Swift programming language, led Xcode and developer tools"
+      },
+      {
+        "company": "Tesla",
+        "role": "VP Autopilot Software",
+        "sector": "AI / Autonomous Vehicles",
+        "start": 2017,
+        "end": 2017,
+        "note": "Left after 6 months"
+      },
+      {
+        "company": "Google Brain",
+        "role": "Director",
+        "sector": "AI Research",
+        "start": 2017,
+        "end": 2020
+      },
+      {
+        "company": "SiFive",
+        "role": "President of Engineering",
+        "sector": "Semiconductors / RISC-V",
+        "start": 2020,
+        "end": 2022
+      },
+      {
+        "company": "Modular",
+        "role": "Co-founder & CEO",
+        "sector": "AI Infrastructure",
+        "start": 2022,
+        "end": null,
+        "note": "Built Mojo programming language for AI. $130M+ raised."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "AI / Autonomous Vehicles",
+        "year": 2017
+      },
+      {
+        "from": "AI Research",
+        "to": "Semiconductors / RISC-V",
+        "year": 2020
+      },
+      {
+        "from": "Semiconductors / RISC-V",
+        "to": "AI Infrastructure",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Harrison Chase",
+    "id": "harrison-chase",
+    "born": 1996,
+    "source": "https://www.langchain.com/about",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Kensho",
+        "role": "ML Engineer",
+        "sector": "AI / Finance",
+        "start": 2019,
+        "end": 2021,
+        "note": "S&P Global's AI division"
+      },
+      {
+        "company": "Robust Intelligence",
+        "role": "ML Engineer",
+        "sector": "AI / Security",
+        "start": 2021,
+        "end": 2022
+      },
+      {
+        "company": "LangChain",
+        "role": "Co-founder & CEO",
+        "sector": "AI Infrastructure",
+        "start": 2022,
+        "end": null,
+        "note": "Leading LLM application framework. $25M Series A from Sequoia."
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Matei Zaharia",
+    "id": "matei-zaharia",
+    "born": 1986,
+    "source": "https://en.wikipedia.org/wiki/Matei_Zaharia",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "UC Berkeley",
+        "role": "PhD / Postdoc",
+        "sector": "Academia / Computer Science",
+        "start": 2009,
+        "end": 2015,
+        "note": "Created Apache Spark"
+      },
+      {
+        "company": "Databricks",
+        "role": "Co-founder & CTO",
+        "sector": "Data / AI Infrastructure",
+        "start": 2013,
+        "end": null,
+        "note": "Valued at $62B (2024). Unified data + AI platform"
+      },
+      {
+        "company": "Stanford",
+        "role": "Professor",
+        "sector": "Academia / AI",
+        "start": 2015,
+        "end": null,
+        "note": "Associate Professor of CS"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Academia / Computer Science",
+        "to": "Data / AI Infrastructure",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "name": "Kevin Weil",
+    "id": "kevin-weil",
+    "born": 1981,
+    "source": "https://www.linkedin.com/in/kevinweil/",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Twitter",
+        "role": "VP Product",
+        "sector": "Social Media",
+        "start": 2009,
+        "end": 2016
+      },
+      {
+        "company": "Instagram",
+        "role": "VP Product",
+        "sector": "Social Media",
+        "start": 2016,
+        "end": 2018
+      },
+      {
+        "company": "Facebook",
+        "role": "VP Product (Calibra/Novi)",
+        "sector": "Crypto / Social",
+        "start": 2018,
+        "end": 2019,
+        "note": "Led Libra/Diem crypto wallet"
+      },
+      {
+        "company": "Planet Labs",
+        "role": "President of Product & Business",
+        "sector": "Aerospace / Earth Data",
+        "start": 2019,
+        "end": 2024
+      },
+      {
+        "company": "OpenAI",
+        "role": "Chief Product Officer",
+        "sector": "AI",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social Media",
+        "to": "Crypto / Social",
+        "year": 2018
+      },
+      {
+        "from": "Crypto / Social",
+        "to": "Aerospace / Earth Data",
+        "year": 2019
+      },
+      {
+        "from": "Aerospace / Earth Data",
+        "to": "AI",
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "name": "Ion Stoica",
+    "id": "ion-stoica",
+    "born": 1963,
+    "source": "https://en.wikipedia.org/wiki/Ion_Stoica",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "UC Berkeley",
+        "role": "Professor",
+        "sector": "Academia / Computer Science",
+        "start": 1999,
+        "end": null
+      },
+      {
+        "company": "Conviva",
+        "role": "Co-founder & CTO",
+        "sector": "Enterprise / Video Analytics",
+        "start": 2006,
+        "end": null,
+        "note": "Video streaming analytics"
+      },
+      {
+        "company": "Databricks",
+        "role": "Co-founder & Executive Chairman",
+        "sector": "Data / AI Infrastructure",
+        "start": 2013,
+        "end": null,
+        "note": "Co-founded with Matei Zaharia. $62B valuation"
+      },
+      {
+        "company": "Anyscale",
+        "role": "Co-founder & Executive Chairman",
+        "sector": "AI Infrastructure",
+        "start": 2019,
+        "end": null,
+        "note": "Commercial Ray platform for distributed AI"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Academia / Computer Science",
+        "to": "Enterprise / Video Analytics",
+        "year": 2006
+      },
+      {
+        "from": "Enterprise / Video Analytics",
+        "to": "Data / AI Infrastructure",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "name": "Andrew Feldman",
+    "id": "andrew-feldman",
+    "born": 1968,
+    "source": "https://www.cerebras.net/team",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Force10 Networks",
+        "role": "VP Marketing",
+        "sector": "Enterprise / Networking",
+        "start": 2001,
+        "end": 2006
+      },
+      {
+        "company": "SeaMicro",
+        "role": "Co-founder & CEO",
+        "sector": "Hardware / Servers",
+        "start": 2007,
+        "end": 2015,
+        "note": "Low-power servers. Acquired by AMD for $334M (2012)"
+      },
+      {
+        "company": "Cerebras Systems",
+        "role": "Co-founder & CEO",
+        "sector": "AI / Semiconductors",
+        "start": 2016,
+        "end": null,
+        "note": "World's largest chip (WSE). Valued at $4B+. IPO planned."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise / Networking",
+        "to": "Hardware / Servers",
+        "year": 2007
+      },
+      {
+        "from": "Hardware / Servers",
+        "to": "AI / Semiconductors",
+        "year": 2016
+      }
+    ]
+  },
+  {
+    "name": "Guillaume Lample",
+    "id": "guillaume-lample",
+    "born": 1990,
+    "source": "https://en.wikipedia.org/wiki/Mistral_AI",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Meta AI (FAIR)",
+        "role": "Research Scientist",
+        "sector": "AI Research",
+        "start": 2016,
+        "end": 2023,
+        "note": "Key contributor to LLaMA"
+      },
+      {
+        "company": "Mistral AI",
+        "role": "Co-founder & Chief Scientist",
+        "sector": "AI",
+        "start": 2023,
+        "end": null,
+        "note": "European AI lab. Valued at $6B+ (2025). Co-founded with Arthur Mensch and Timothee Lacroix"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Mike Schroepfer",
+    "id": "mike-schroepfer",
+    "born": 1975,
+    "source": "https://en.wikipedia.org/wiki/Mike_Schroepfer",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Sun Microsystems",
+        "role": "Engineer",
+        "sector": "Enterprise Tech",
+        "start": 1997,
+        "end": 2005
+      },
+      {
+        "company": "Mozilla",
+        "role": "VP Engineering",
+        "sector": "Open Source / Software",
+        "start": 2005,
+        "end": 2008,
+        "note": "Led Firefox development"
+      },
+      {
+        "company": "Meta (Facebook)",
+        "role": "CTO",
+        "sector": "Social Media / AI",
+        "start": 2008,
+        "end": 2022,
+        "note": "Oversaw AI research (FAIR), VR/AR pivot"
+      },
+      {
+        "company": "Gigascale Capital",
+        "role": "Founder",
+        "sector": "VC / Climate Tech",
+        "start": 2022,
+        "end": null,
+        "note": "Climate-focused VC fund"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise Tech",
+        "to": "Open Source / Software",
+        "year": 2005
+      },
+      {
+        "from": "Open Source / Software",
+        "to": "Social Media / AI",
+        "year": 2008
+      },
+      {
+        "from": "Social Media / AI",
+        "to": "VC / Climate Tech",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Geoffrey Hinton",
+    "id": "geoffrey-hinton",
+    "born": 1947,
+    "source": "https://en.wikipedia.org/wiki/Geoffrey_Hinton",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Carnegie Mellon",
+        "role": "Professor",
+        "sector": "Academia / Computer Science",
+        "start": 1982,
+        "end": 1987
+      },
+      {
+        "company": "University of Toronto",
+        "role": "Professor",
+        "sector": "Academia / Computer Science",
+        "start": 1987,
+        "end": null,
+        "note": "University Professor Emeritus. Pioneered backpropagation, deep learning, Boltzmann machines"
+      },
+      {
+        "company": "CIFAR",
+        "role": "Program Director",
+        "sector": "Research / AI",
+        "start": 2004,
+        "end": 2015,
+        "note": "Neural Computation & Adaptive Perception program"
+      },
+      {
+        "company": "Google Brain",
+        "role": "VP & Engineering Fellow",
+        "sector": "AI",
+        "start": 2013,
+        "end": 2023,
+        "note": "Left in 2023 citing AI safety concerns"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Academia / Computer Science",
+        "to": "AI",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "name": "Larry Ellison",
+    "id": "larry-ellison",
+    "born": 1944,
+    "source": "https://en.wikipedia.org/wiki/Larry_Ellison",
+    "verified": "2026-03-18",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Amdahl",
+        "role": "Programmer",
+        "sector": "Enterprise Tech",
+        "start": 1973,
+        "end": 1977
+      },
+      {
+        "company": "Oracle",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise / Database",
+        "start": 1977,
+        "end": 2014,
+        "note": "Built into world's largest database company. Became Executive Chairman & CTO after 2014"
+      },
+      {
+        "company": "Oracle",
+        "role": "Executive Chairman & CTO",
+        "sector": "Enterprise / Cloud",
+        "start": 2014,
+        "end": null,
+        "note": "Pivoted Oracle to cloud. Major investor in Tesla, key Elon ally"
+      },
+      {
+        "company": "Tesla",
+        "role": "Board Member",
+        "sector": "Automotive / Clean Energy",
+        "start": 2018,
+        "end": 2022
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Michael Dell",
+    "id": "michael-dell",
+    "born": 1965,
+    "source": "https://en.wikipedia.org/wiki/Michael_Dell",
+    "verified": "2026-03-18",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Dell Technologies",
+        "role": "Founder & CEO",
+        "sector": "Hardware / PCs",
+        "start": 1984,
+        "end": null,
+        "note": "Founded from dorm room at UT Austin. Took private 2013, re-IPO'd 2018. Now major AI server supplier"
+      },
+      {
+        "company": "MSD Capital",
+        "role": "Founder",
+        "sector": "VC / Investment",
+        "start": 1998,
+        "end": null,
+        "note": "Personal investment firm"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Pierre Omidyar",
+    "id": "pierre-omidyar",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Pierre_Omidyar",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "Claris",
+        "role": "Developer",
+        "sector": "Software",
+        "start": 1991,
+        "end": 1994,
+        "note": "Apple subsidiary"
+      },
+      {
+        "company": "eBay",
+        "role": "Founder & Chairman",
+        "sector": "E-commerce / Consumer Tech",
+        "start": 1995,
+        "end": 2015,
+        "note": "Created online auction marketplace. IPO 1998."
+      },
+      {
+        "company": "Omidyar Network",
+        "role": "Founder",
+        "sector": "Philanthropy / Impact Investing",
+        "start": 2004,
+        "end": null,
+        "note": "$1B+ deployed. Focus on financial inclusion, governance, property rights"
+      },
+      {
+        "company": "First Look Media",
+        "role": "Founder",
+        "sector": "Media / Journalism",
+        "start": 2013,
+        "end": null,
+        "note": "Founded The Intercept with Glenn Greenwald"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "E-commerce / Consumer Tech",
+        "to": "Philanthropy / Impact Investing",
+        "year": 2004
+      },
+      {
+        "from": "Philanthropy / Impact Investing",
+        "to": "Media / Journalism",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "name": "David Filo",
+    "id": "david-filo",
+    "born": 1966,
+    "source": "https://en.wikipedia.org/wiki/David_Filo",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "Yahoo!",
+        "role": "Co-founder & Chief Yahoo",
+        "sector": "Internet / Consumer Tech",
+        "start": 1994,
+        "end": 2017,
+        "note": "Co-founded with Jerry Yang. Acquired by Verizon for $4.5B (2017)"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Tim Berners-Lee",
+    "id": "tim-berners-lee",
+    "born": 1955,
+    "source": "https://en.wikipedia.org/wiki/Tim_Berners-Lee",
+    "verified": "2026-03-18",
+    "primarySector": "Research",
+    "roles": [
+      {
+        "company": "CERN",
+        "role": "Fellow / Researcher",
+        "sector": "Research / Physics",
+        "start": 1984,
+        "end": 1994,
+        "note": "Invented the World Wide Web (1989), HTML, HTTP, URLs"
+      },
+      {
+        "company": "W3C",
+        "role": "Founder & Director",
+        "sector": "Internet Standards",
+        "start": 1994,
+        "end": 2022
+      },
+      {
+        "company": "MIT",
+        "role": "Professor",
+        "sector": "Academia / Computer Science",
+        "start": 1994,
+        "end": null
+      },
+      {
+        "company": "Inrupt / Solid",
+        "role": "Co-founder & CTO",
+        "sector": "Decentralized Web",
+        "start": 2017,
+        "end": null,
+        "note": "Personal data pods. Decentralized web platform."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Research / Physics",
+        "to": "Internet Standards",
+        "year": 1994
+      },
+      {
+        "from": "Internet Standards",
+        "to": "Decentralized Web",
+        "year": 2017
+      }
+    ]
+  },
+  {
+    "name": "Lei Jun",
+    "id": "lei-jun",
+    "born": 1969,
+    "source": "https://en.wikipedia.org/wiki/Lei_Jun",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "Kingsoft",
+        "role": "CEO",
+        "sector": "Software",
+        "start": 1992,
+        "end": 2007,
+        "note": "Chinese software company. IPO on HKEX 2007"
+      },
+      {
+        "company": "UCWeb",
+        "role": "Angel Investor & Chairman",
+        "sector": "Mobile / Consumer",
+        "start": 2004,
+        "end": 2014,
+        "note": "Acquired by Alibaba for $4.4B"
+      },
+      {
+        "company": "Xiaomi",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Electronics / Mobile",
+        "start": 2010,
+        "end": null,
+        "note": "World's 3rd largest smartphone maker. Also EVs, IoT, smart home"
+      },
+      {
+        "company": "Shunwei Capital",
+        "role": "Founder",
+        "sector": "VC",
+        "start": 2011,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Software",
+        "to": "Mobile / Consumer",
+        "year": 2004
+      },
+      {
+        "from": "Mobile / Consumer",
+        "to": "Consumer Electronics / Mobile",
+        "year": 2010
+      }
+    ]
+  },
+  {
+    "name": "Zhang Yiming",
+    "id": "zhang-yiming",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Zhang_Yiming",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "Microsoft",
+        "role": "Engineer",
+        "sector": "Enterprise Tech",
+        "start": 2006,
+        "end": 2008
+      },
+      {
+        "company": "Fanfou",
+        "role": "Tech Lead",
+        "sector": "Social Media",
+        "start": 2008,
+        "end": 2009,
+        "note": "Chinese Twitter clone"
+      },
+      {
+        "company": "99fang",
+        "role": "Co-founder & CTO",
+        "sector": "Consumer Tech / Real Estate",
+        "start": 2009,
+        "end": 2011
+      },
+      {
+        "company": "ByteDance",
+        "role": "Founder & CEO",
+        "sector": "Consumer Tech / AI",
+        "start": 2012,
+        "end": 2021,
+        "note": "TikTok, Douyin, Toutiao. Valued at ~$220B. Stepped down as CEO May 2021"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise Tech",
+        "to": "Social Media",
+        "year": 2008
+      },
+      {
+        "from": "Social Media",
+        "to": "Consumer Tech / AI",
+        "year": 2012
+      }
+    ]
+  },
+  {
+    "name": "Sam Bankman-Fried",
+    "id": "sam-bankman-fried",
+    "born": 1992,
+    "source": "https://en.wikipedia.org/wiki/Sam_Bankman-Fried",
+    "verified": "2026-03-18",
+    "primarySector": "Crypto",
+    "roles": [
+      {
+        "company": "Jane Street",
+        "role": "Trader",
+        "sector": "Finance / Trading",
+        "start": 2014,
+        "end": 2017
+      },
+      {
+        "company": "Alameda Research",
+        "role": "Founder & CEO",
+        "sector": "Crypto / Trading",
+        "start": 2017,
+        "end": 2022
+      },
+      {
+        "company": "FTX",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto / Exchange",
+        "start": 2019,
+        "end": 2022,
+        "note": "Collapsed Nov 2022. Convicted of fraud, sentenced to 25 years"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Finance / Trading",
+        "to": "Crypto / Trading",
+        "year": 2017
+      }
+    ]
+  },
+  {
+    "name": "Do Kwon",
+    "id": "do-kwon",
+    "born": 1991,
+    "source": "https://en.wikipedia.org/wiki/Do_Kwon",
+    "verified": "2026-03-18",
+    "primarySector": "Crypto",
+    "roles": [
+      {
+        "company": "Microsoft",
+        "role": "Software Engineer",
+        "sector": "Enterprise Tech",
+        "start": 2015,
+        "end": 2016
+      },
+      {
+        "company": "Apple",
+        "role": "Software Engineer",
+        "sector": "Consumer Tech",
+        "start": 2016,
+        "end": 2017
+      },
+      {
+        "company": "Terraform Labs",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto / Stablecoin",
+        "start": 2018,
+        "end": 2022,
+        "note": "Created Terra/Luna. $40B collapse in May 2022. Convicted of fraud"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Crypto / Stablecoin",
+        "year": 2018
+      }
+    ]
+  },
+  {
+    "name": "Andre Cronje",
+    "id": "andre-cronje",
+    "born": 1987,
+    "source": "https://en.wikipedia.org/wiki/Andre_Cronje",
+    "verified": "2026-03-18",
+    "primarySector": "Crypto",
+    "roles": [
+      {
+        "company": "Various (South Africa)",
+        "role": "Fintech Developer",
+        "sector": "Fintech",
+        "start": 2010,
+        "end": 2018
+      },
+      {
+        "company": "Yearn Finance",
+        "role": "Founder",
+        "sector": "Crypto / DeFi",
+        "start": 2020,
+        "end": null,
+        "note": "Pioneered yield aggregation. Built multiple DeFi protocols"
+      },
+      {
+        "company": "Fantom / Sonic Labs",
+        "role": "Director of Technology",
+        "sector": "Crypto / L1 Blockchain",
+        "start": 2018,
+        "end": null,
+        "note": "Sonic is Fantom's next-gen L1"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Fintech",
+        "to": "Crypto / DeFi",
+        "year": 2018
+      }
+    ]
+  },
+  {
+    "name": "Stani Kulechov",
+    "id": "stani-kulechov",
+    "born": 1992,
+    "source": "https://en.wikipedia.org/wiki/Aave",
+    "verified": "2026-03-18",
+    "primarySector": "Crypto",
+    "roles": [
+      {
+        "company": "ETHLend / Aave",
+        "role": "Founder & CEO",
+        "sector": "Crypto / DeFi",
+        "start": 2017,
+        "end": null,
+        "note": "Leading DeFi lending protocol. Rebranded from ETHLend to Aave. TVL peaked at $30B+"
+      },
+      {
+        "company": "Avara (Lens Protocol)",
+        "role": "Founder",
+        "sector": "Crypto / Decentralized Social",
+        "start": 2022,
+        "end": null,
+        "note": "Decentralized social graph on Polygon/ZKSync"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Garrett Camp",
+    "id": "garrett-camp",
+    "born": 1978,
+    "source": "https://en.wikipedia.org/wiki/Garrett_Camp",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "StumbleUpon",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Tech / Discovery",
+        "start": 2001,
+        "end": 2012,
+        "note": "Web discovery tool. Acquired by eBay (2007), spun back out, shut down 2018"
+      },
+      {
+        "company": "Uber",
+        "role": "Co-founder & Chairman",
+        "sector": "Consumer Tech / Ride-sharing",
+        "start": 2009,
+        "end": null,
+        "note": "Co-founded with Travis Kalanick"
+      },
+      {
+        "company": "Expa",
+        "role": "Founder",
+        "sector": "Startup Studio",
+        "start": 2013,
+        "end": null,
+        "note": "Startup studio. Created Mix, Haus, Reserve"
+      },
+      {
+        "company": "Eco",
+        "role": "Founder",
+        "sector": "Crypto / Payments",
+        "start": 2018,
+        "end": null,
+        "note": "Crypto-powered payments/savings app"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech / Ride-sharing",
+        "to": "Startup Studio",
+        "year": 2013
+      },
+      {
+        "from": "Startup Studio",
+        "to": "Crypto / Payments",
+        "year": 2018
+      }
+    ]
+  },
+  {
+    "name": "Percy Liang",
+    "id": "percy-liang",
+    "born": 1983,
+    "source": "https://cs.stanford.edu/~pliang/",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Stanford",
+        "role": "Professor of Computer Science",
+        "sector": "Academia / AI",
+        "start": 2012,
+        "end": null,
+        "note": "Director of Stanford CRFM. Created HELM benchmark"
+      },
+      {
+        "company": "Together AI",
+        "role": "Co-founder",
+        "sector": "AI Infrastructure",
+        "start": 2022,
+        "end": null,
+        "note": "Open-source AI cloud. $228M Series A (2024). Valued at $1.25B"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Academia / AI",
+        "to": "AI Infrastructure",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Jason Citron",
+    "id": "jason-citron",
+    "born": 1985,
+    "source": "https://en.wikipedia.org/wiki/Jason_Citron",
+    "verified": "2026-03-18",
+    "primarySector": "Social & Media",
+    "roles": [
+      {
+        "company": "Aurora Feint",
+        "role": "Co-founder & CEO",
+        "sector": "Gaming",
+        "start": 2008,
+        "end": 2011,
+        "note": "Mobile game SDK. Acquired by OpenFeint"
+      },
+      {
+        "company": "OpenFeint",
+        "role": "Founder & CEO",
+        "sector": "Gaming",
+        "start": 2009,
+        "end": 2012,
+        "note": "Mobile gaming social platform. Acquired by GREE for $104M"
+      },
+      {
+        "company": "Discord",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media / Gaming",
+        "start": 2015,
+        "end": null,
+        "note": "200M+ MAU. Valued at $15B (2021). Turned down $12B Microsoft acquisition"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Gaming",
+        "to": "Social Media / Gaming",
+        "year": 2015
+      }
+    ]
+  },
+  {
+    "name": "Cristobal Valenzuela",
+    "id": "cristobal-valenzuela",
+    "born": 1994,
+    "source": "https://en.wikipedia.org/wiki/Runway_(company)",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Runway",
+        "role": "Co-founder & CEO",
+        "sector": "AI / Generative Video",
+        "start": 2018,
+        "end": null,
+        "note": "AI video generation (Gen-2, Gen-3). Valued at $4B+ (2024). Key contributor to Stable Diffusion"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Pieter Abbeel",
+    "id": "pieter-abbeel",
+    "born": 1977,
+    "source": "https://en.wikipedia.org/wiki/Pieter_Abbeel",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "UC Berkeley",
+        "role": "Professor",
+        "sector": "Academia / Robotics",
+        "start": 2008,
+        "end": null
+      },
+      {
+        "company": "Covariant",
+        "role": "Co-founder & Chief Scientist",
+        "sector": "AI / Robotics",
+        "start": 2017,
+        "end": 2024,
+        "note": "AI-powered robotic picking. Pivoted to foundation models"
+      },
+      {
+        "company": "Physical Intelligence",
+        "role": "Co-founder",
+        "sector": "AI / Robotics",
+        "start": 2024,
+        "end": null,
+        "note": "General-purpose robot foundation models. $400M raise at $2.4B valuation (Nov 2024)"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Academia / Robotics",
+        "to": "AI / Robotics",
+        "year": 2017
+      }
+    ]
+  },
+  {
+    "name": "Leopold Aschenbrenner",
+    "id": "leopold-aschenbrenner",
+    "born": 2000,
+    "source": "https://situational-awareness.ai/",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "OpenAI",
+        "role": "Researcher (Superalignment)",
+        "sector": "AI",
+        "start": 2023,
+        "end": 2024,
+        "note": "Fired for alleged leaks. Published 'Situational Awareness' essay series"
+      },
+      {
+        "company": "Unannounced AI Lab",
+        "role": "Founder",
+        "sector": "AI",
+        "start": 2024,
+        "end": null,
+        "note": "Reportedly raising $1B+ for new AI venture"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Jony Ive",
+    "id": "jony-ive",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Jony_Ive",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "Apple",
+        "role": "Chief Design Officer",
+        "sector": "Consumer Tech",
+        "start": 1992,
+        "end": 2019,
+        "note": "Designed iMac, iPod, iPhone, iPad. Knighted 2012"
+      },
+      {
+        "company": "LoveFrom",
+        "role": "Co-founder",
+        "sector": "Design",
+        "start": 2019,
+        "end": null,
+        "note": "Design firm. Working with OpenAI on AI hardware device. Also clients: Airbnb, Ferrari"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Design",
+        "year": 2019
+      }
+    ]
+  },
+  {
+    "name": "Sriram Krishnan",
+    "id": "sriram-krishnan",
+    "born": 1986,
+    "source": "https://en.wikipedia.org/wiki/Sriram_Krishnan",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Microsoft",
+        "role": "Product Manager",
+        "sector": "Enterprise Tech",
+        "start": 2007,
+        "end": 2013
+      },
+      {
+        "company": "Facebook",
+        "role": "Director of Product",
+        "sector": "Social Media",
+        "start": 2013,
+        "end": 2017
+      },
+      {
+        "company": "Snap",
+        "role": "VP Product",
+        "sector": "Social Media",
+        "start": 2017,
+        "end": 2018
+      },
+      {
+        "company": "Twitter",
+        "role": "VP Product",
+        "sector": "Social Media",
+        "start": 2018,
+        "end": 2019
+      },
+      {
+        "company": "a16z",
+        "role": "General Partner",
+        "sector": "VC",
+        "start": 2019,
+        "end": 2025
+      },
+      {
+        "company": "White House",
+        "role": "Senior Policy Advisor for AI",
+        "sector": "Government / AI Policy",
+        "start": 2025,
+        "end": null,
+        "note": "AI policy advisor to Trump administration"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise Tech",
+        "to": "Social Media",
+        "year": 2013
+      },
+      {
+        "from": "Social Media",
+        "to": "VC",
+        "year": 2019
+      },
+      {
+        "from": "VC",
+        "to": "Government / AI Policy",
+        "year": 2025
+      }
+    ]
+  },
+  {
+    "name": "Tom Brown",
+    "id": "tom-brown",
+    "born": 1990,
+    "source": "https://arxiv.org/abs/2005.14165",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Google Brain",
+        "role": "Research Scientist",
+        "sector": "AI Research",
+        "start": 2016,
+        "end": 2019
+      },
+      {
+        "company": "OpenAI",
+        "role": "Research Scientist",
+        "sector": "AI",
+        "start": 2019,
+        "end": 2021,
+        "note": "First author of GPT-3 paper"
+      },
+      {
+        "company": "Anthropic",
+        "role": "Researcher",
+        "sector": "AI Safety",
+        "start": 2021,
+        "end": 2022
+      },
+      {
+        "company": "Hive Intelligence",
+        "role": "Co-founder",
+        "sector": "AI",
+        "start": 2022,
+        "end": null
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Fidji Simo",
+    "id": "fidji-simo",
+    "born": 1985,
+    "source": "https://en.wikipedia.org/wiki/Fidji_Simo",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "eBay",
+        "role": "Product Manager",
+        "sector": "E-commerce / Consumer Tech",
+        "start": 2009,
+        "end": 2011
+      },
+      {
+        "company": "Facebook/Meta",
+        "role": "VP & Head of Facebook App",
+        "sector": "Social Media",
+        "start": 2011,
+        "end": 2021,
+        "note": "Ran the Facebook app (2.9B users)"
+      },
+      {
+        "company": "Instacart",
+        "role": "CEO",
+        "sector": "Consumer Tech / Delivery",
+        "start": 2021,
+        "end": null,
+        "note": "Led IPO in Sep 2023"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social Media",
+        "to": "Consumer Tech / Delivery",
+        "year": 2021
+      }
+    ]
+  },
+  {
+    "name": "Alexander Rives",
+    "id": "alexander-rives",
+    "born": 1992,
+    "source": "https://www.evolutionaryscale.ai/",
+    "verified": "2026-03-18",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Meta AI (FAIR)",
+        "role": "Research Scientist",
+        "sector": "AI Research",
+        "start": 2018,
+        "end": 2023,
+        "note": "Led ESM protein language model work"
+      },
+      {
+        "company": "EvolutionaryScale",
+        "role": "Co-founder & CEO",
+        "sector": "AI / Biotech",
+        "start": 2023,
+        "end": null,
+        "note": "Protein design AI. $142M Series A (Jun 2024). ESM3 model"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "AI Research",
+        "to": "AI / Biotech",
+        "year": 2023
+      }
+    ]
+  },
+  {
+    "name": "Sarah Guo",
+    "id": "sarah-guo",
+    "born": 1988,
+    "source": "https://www.conviction.com/",
+    "verified": "2026-03-18",
+    "primarySector": "VC & Finance",
+    "roles": [
+      {
+        "company": "Goldman Sachs",
+        "role": "Analyst",
+        "sector": "Finance",
+        "start": 2010,
+        "end": 2013
+      },
+      {
+        "company": "Greylock Partners",
+        "role": "General Partner",
+        "sector": "VC",
+        "start": 2013,
+        "end": 2022
+      },
+      {
+        "company": "Conviction",
+        "role": "Founder & Managing Partner",
+        "sector": "VC / AI",
+        "start": 2022,
+        "end": null,
+        "note": "AI-focused VC fund. Hosts No Priors podcast with Elad Gil"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Finance",
+        "to": "VC",
+        "year": 2013
+      }
+    ]
+  },
+  {
+    "name": "Marc Lore",
+    "id": "marc-lore",
+    "born": 1971,
+    "source": "https://en.wikipedia.org/wiki/Marc_Lore",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "The Pit (Diapers.com / Quidsi)",
+        "role": "Co-founder & CEO",
+        "sector": "E-commerce / Consumer Tech",
+        "start": 2005,
+        "end": 2011,
+        "note": "Sold to Amazon for $545M"
+      },
+      {
+        "company": "Jet.com",
+        "role": "Co-founder & CEO",
+        "sector": "E-commerce / Consumer Tech",
+        "start": 2014,
+        "end": 2016,
+        "note": "Sold to Walmart for $3.3B"
+      },
+      {
+        "company": "Walmart eCommerce",
+        "role": "CEO",
+        "sector": "E-commerce / Consumer Tech",
+        "start": 2016,
+        "end": 2021
+      },
+      {
+        "company": "Wonder",
+        "role": "Founder & CEO",
+        "sector": "Consumer Tech / Food",
+        "start": 2022,
+        "end": null,
+        "note": "Food delivery + restaurants. Acquired Blue Apron. Valued at $3.5B"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Brian Halligan",
+    "id": "brian-halligan",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Brian_Halligan",
+    "verified": "2026-03-18",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "PTC",
+        "role": "VP Sales",
+        "sector": "Enterprise Tech",
+        "start": 1994,
+        "end": 2005
+      },
+      {
+        "company": "HubSpot",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise SaaS / Marketing",
+        "start": 2006,
+        "end": 2024,
+        "note": "Coined 'inbound marketing'. IPO 2014. ~$30B market cap. Became Executive Chairman 2024"
+      },
+      {
+        "company": "Propeller Ventures",
+        "role": "VC",
+        "sector": "VC",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise SaaS / Marketing",
+        "to": "VC",
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "name": "Frank Slootman",
+    "id": "frank-slootman",
+    "born": 1958,
+    "source": "https://en.wikipedia.org/wiki/Frank_Slootman",
+    "verified": "2026-03-18",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Data Domain",
+        "role": "CEO",
+        "sector": "Enterprise Tech / Storage",
+        "start": 2003,
+        "end": 2009,
+        "note": "Took from near-dead to IPO. Acquired by EMC for $2.4B"
+      },
+      {
+        "company": "ServiceNow",
+        "role": "CEO",
+        "sector": "Enterprise SaaS",
+        "start": 2011,
+        "end": 2017,
+        "note": "Took from $100M to $1.4B revenue. IPO 2012"
+      },
+      {
+        "company": "Snowflake",
+        "role": "Chairman & CEO",
+        "sector": "Enterprise / Data Cloud",
+        "start": 2019,
+        "end": 2024,
+        "note": "Largest software IPO ever ($3.4B). Stepped down Feb 2024"
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Marc Randolph",
+    "id": "marc-randolph",
+    "born": 1958,
+    "source": "https://en.wikipedia.org/wiki/Marc_Randolph",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "MicroWarehouse",
+        "role": "VP Marketing",
+        "sector": "Consumer Tech / Mail Order",
+        "start": 1984,
+        "end": 1996
+      },
+      {
+        "company": "Borland / Pure Atria",
+        "role": "VP Corporate Marketing",
+        "sector": "Software",
+        "start": 1996,
+        "end": 1997
+      },
+      {
+        "company": "Netflix",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Tech / Streaming",
+        "start": 1997,
+        "end": 2003,
+        "note": "Co-founded with Reed Hastings. Started as DVD-by-mail. Stepped down as CEO 1999, left board 2003"
+      },
+      {
+        "company": "Various startups",
+        "role": "Mentor & Board Member",
+        "sector": "VC / Advisory",
+        "start": 2003,
+        "end": null,
+        "note": "Mentors early-stage startups. Author of 'That Will Never Work'"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech / Streaming",
+        "to": "VC / Advisory",
+        "year": 2003
       }
     ]
   }

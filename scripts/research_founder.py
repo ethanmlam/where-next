@@ -16,7 +16,7 @@ import urllib.parse
 # Config
 NIM_BASE = "https://integrate.api.nvidia.com/v1"
 NIM_MODEL = "moonshotai/kimi-k2.5"
-NIM_KEY = os.environ.get('NIM_API_KEY', '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')
+NIM_KEY = os.environ.get('NIM_API_KEY', '')
 
 SUPABASE_URL = os.environ.get('SUPABASE_URL', 'https://tnmbxxcdabecqknzxuus.supabase.co')
 SUPABASE_SERVICE_KEY = os.environ.get('SUPABASE_SERVICE_KEY', '')
