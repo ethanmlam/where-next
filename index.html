@@ -286,10 +286,14 @@ function broadSector(s) {
   // VC & Finance: VC, hedge funds, investing, crypto VC, startup accelerator
   if (l.includes('vc') || l.includes('venture') || l.includes('hedge') || l.includes('crypto vc') || l.includes('accelerator')) return 'VC & Finance';
   // Deep Tech: biotech, neurotech, clean energy, automotive, aerospace, space, semiconductors, hardware, tunneling, science, smart home
-  if (l.includes('biotech') || l.includes('neurotech') || l.includes('neuroscience') || l.includes('energy') || l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('longevity') || l.includes('science') || l.includes('academia') || l.includes('aerospace') || l.includes('space') || l.includes('semiconductor') || l.includes('smart home')) return 'Deep Tech';
-  // Consumer: consumer tech, consumer products, education, e-commerce, fashion, mobile apps
-  if (l.includes('consumer') || l.includes('photo') || l.includes('education') || l.includes('network state') || l.includes('e-commerce') || l.includes('fashion') || l.includes('mobile app')) return 'Consumer';
-  // Catch remaining: consulting, law, distribution -> Other
+  if (l.includes('biotech') || l.includes('neurotech') || l.includes('neuroscience') || l.includes('energy') || l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('longevity') || l.includes('science') || l.includes('academia') || l.includes('aerospace') || l.includes('space') || l.includes('semiconductor') || l.includes('smart home') || l.includes('deep tech') || l.includes('robotics') || l.includes('hardware') || l.includes('nuclear') || l.includes('climate') || l.includes('genomic') || l.includes('lidar') || l.includes('chip') || l.includes('autonomous')) return 'Deep Tech';
+  // Consumer: consumer tech, consumer products, education, e-commerce, fashion, mobile apps, food, travel, logistics, ride
+  if (l.includes('consumer') || l.includes('photo') || l.includes('education') || l.includes('network state') || l.includes('e-commerce') || l.includes('fashion') || l.includes('mobile app') || l.includes('food') || l.includes('travel') || l.includes('logistics') || l.includes('ride') || l.includes('delivery') || l.includes('music') || l.includes('streaming')) return 'Consumer';
+  // Enterprise catch-all: consulting, software, cloud, data, telecom, tech distribution
+  if (l.includes('consulting') || l.includes('software') || l.includes('cloud') || l.includes('data') || l.includes('telecom') || l.includes('distribution') || l.includes('security') || l.includes('open source')) return 'Enterprise';
+  // Fintech broader: banking, insurance, lending, trading
+  if (l.includes('banking') || l.includes('insurance') || l.includes('lending') || l.includes('trading')) return 'Fintech';
+  // Philanthropy -> Other but catch law -> Other
   return 'Other';
 }
 

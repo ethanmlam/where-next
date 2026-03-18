@@ -3208,7 +3208,8 @@
         "to": "VC & Finance",
         "year": 2017
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Keith Rabois",
@@ -3306,7 +3307,8 @@
         "to": "VC & Finance",
         "year": 2013
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Roelof Botha",
@@ -3359,7 +3361,8 @@
         "to": "VC & Finance",
         "year": 2003
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Chad Hurley",
@@ -3406,7 +3409,8 @@
         "to": "Social & Media",
         "year": 2005
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Steve Chen",
@@ -3478,7 +3482,8 @@
         "to": "Social & Media",
         "year": 2016
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Jeremy Stoppelman",
@@ -3531,7 +3536,8 @@
         "to": "Consumer",
         "year": 2004
       }
-    ]
+    ],
+    "primarySector": "Consumer"
   },
   {
     "name": "Jawed Karim",
@@ -3584,7 +3590,8 @@
         "to": "VC & Finance",
         "year": 2008
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Drew Houston",
@@ -3602,7 +3609,8 @@
         "note": "Cloud storage; YC W07; IPO 2018"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Dustin Moskovitz",
@@ -3649,7 +3657,8 @@
         "to": "Enterprise",
         "year": 2008
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Sean Parker",
@@ -3717,7 +3726,7 @@
       {
         "company": "Parker Foundation",
         "role": "Founder & Chairman",
-        "sector": "Other",
+        "sector": "Philanthropy",
         "start": 2015,
         "end": null,
         "note": "Life sciences, global health, civic engagement"
@@ -3744,7 +3753,8 @@
         "to": "Social & Media",
         "year": 2007
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Demis Hassabis",
@@ -3772,7 +3782,7 @@
       {
         "company": "University College London",
         "role": "PhD Student, Neuroscience",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2005,
         "end": 2009,
         "note": "Studied memory and the hippocampus; supervised by Eleanor Maguire"
@@ -3805,7 +3815,8 @@
         "to": "AI",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Fei-Fei Li",
@@ -3847,7 +3858,8 @@
         "note": "Spatial intelligence AI; $230M raised"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Yann LeCun",
@@ -3888,7 +3900,8 @@
         "note": "Founded FAIR; Turing Award 2018 with Hinton and Bengio"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Andrew Ng",
@@ -3964,7 +3977,8 @@
         "to": "AI",
         "year": 2014
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Greg Brockman",
@@ -3996,7 +4010,8 @@
         "to": "AI",
         "year": 2015
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Mira Murati",
@@ -4008,7 +4023,7 @@
       {
         "company": "Tesla",
         "role": "Senior Product Manager",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2013,
         "end": 2016,
         "note": "Product manager on Model X"
@@ -4016,7 +4031,7 @@
       {
         "company": "Leap Motion",
         "role": "VP Product & Engineering",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2016,
         "end": 2018,
         "note": "AR/gesture control startup (now Ultraleap)"
@@ -4044,7 +4059,8 @@
         "to": "AI",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Noam Shazeer",
@@ -4078,7 +4094,8 @@
         "note": "Returned as part of $2.7B Character.AI licensing deal"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Aidan Gomez",
@@ -4104,7 +4121,8 @@
         "note": "Enterprise LLM platform; $1.6B raised, $7B+ valuation (2025)"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Emad Mostaque",
@@ -4152,7 +4170,8 @@
         "to": "AI",
         "year": 2020
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Arthur Mensch",
@@ -4164,7 +4183,7 @@
       {
         "company": "Inria / NeuroSpin CEA",
         "role": "PhD Researcher",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2015,
         "end": 2018,
         "note": "fMRI analysis, stochastic optimization"
@@ -4200,7 +4219,8 @@
         "to": "AI",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Marc Andreessen",
@@ -4271,7 +4291,8 @@
         "to": "VC & Finance",
         "year": 2009
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Chamath Palihapitiya",
@@ -4340,7 +4361,8 @@
         "to": "VC & Finance",
         "year": 2011
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Steve Jobs",
@@ -4401,7 +4423,8 @@
         "to": "Consumer",
         "year": 1997
       }
-    ]
+    ],
+    "primarySector": "Consumer"
   },
   {
     "name": "Larry Page",
@@ -4450,7 +4473,8 @@
         "end": null
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Bill Gates",
@@ -4478,7 +4502,7 @@
       {
         "company": "Bill & Melinda Gates Foundation",
         "role": "Co-Chair",
-        "sector": "Other",
+        "sector": "Philanthropy",
         "start": 2000,
         "end": 2024,
         "note": "World's largest private charity; global health, polio eradication"
@@ -4486,7 +4510,7 @@
       {
         "company": "TerraPower",
         "role": "Founder & Chairman",
-        "sector": "Deep Tech",
+        "sector": "Nuclear Energy",
         "start": 2008,
         "end": null,
         "note": "Advanced nuclear reactor company (traveling wave reactor)"
@@ -4494,7 +4518,7 @@
       {
         "company": "Breakthrough Energy",
         "role": "Founder",
-        "sector": "Deep Tech",
+        "sector": "Climate Tech",
         "start": 2015,
         "end": null,
         "note": "$2B+ climate tech fund and ventures platform"
@@ -4502,7 +4526,7 @@
       {
         "company": "Gates Foundation",
         "role": "Chair",
-        "sector": "Other",
+        "sector": "Philanthropy",
         "start": 2024,
         "end": null,
         "note": "Renamed after Melinda French Gates resigned as co-chair"
@@ -4519,7 +4543,8 @@
         "to": "Deep Tech",
         "year": 2008
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Joe Lonsdale",
@@ -4608,7 +4633,8 @@
         "to": "VC & Finance",
         "year": 2011
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Trae Stephens",
@@ -4652,7 +4678,7 @@
       {
         "company": "Varda Space Industries",
         "role": "Co-founder",
-        "sector": "Deep Tech",
+        "sector": "Aerospace",
         "start": 2021,
         "end": null,
         "note": "In-space manufacturing using microgravity"
@@ -4674,7 +4700,8 @@
         "to": "Deep Tech",
         "year": 2021
       }
-    ]
+    ],
+    "primarySector": "Defense"
   },
   {
     "name": "John Carmack",
@@ -4702,7 +4729,7 @@
       {
         "company": "Armadillo Aerospace",
         "role": "Founder",
-        "sector": "Deep Tech",
+        "sector": "Aerospace",
         "start": 2000,
         "end": 2013,
         "note": "Amateur rocketry / VTVL spacecraft. Concurrent with id Software"
@@ -4760,7 +4787,7 @@
       {
         "company": "Bain & Company",
         "role": "Consultant",
-        "sector": "Other",
+        "sector": "Consulting",
         "start": 1981,
         "end": 1989,
         "note": "Management consulting"
@@ -4807,7 +4834,7 @@
       {
         "company": "US Embassy Kenya",
         "role": "US Ambassador to Kenya",
-        "sector": "Other",
+        "sector": "Government / Policy",
         "start": 2022,
         "end": 2024,
         "note": "Appointed by Biden; resigned Nov 2024"
@@ -4900,7 +4927,7 @@
       {
         "company": "Relativity Space",
         "role": "CEO",
-        "sector": "Deep Tech",
+        "sector": "Aerospace",
         "start": 2025,
         "end": null,
         "note": "3D-printed rocket manufacturing company"
@@ -5095,7 +5122,7 @@
       {
         "company": "K-12 Education initiatives",
         "role": "Educator / Philanthropist",
-        "sector": "Other",
+        "sector": "Philanthropy",
         "start": 1990,
         "end": 2010,
         "note": "Donated computers to schools; taught 5th grade; major philanthropy focus"
@@ -5103,7 +5130,7 @@
       {
         "company": "Wheels of Zeus (wOz)",
         "role": "Founder",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2002,
         "end": 2006,
         "note": "GPS-based location technology startup"
@@ -5212,7 +5239,8 @@
         "to": "VC & Finance",
         "year": 2009
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Sergey Brin",
@@ -5259,7 +5287,8 @@
         "to": "AI",
         "year": 2023
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Marc Benioff",
@@ -5312,7 +5341,8 @@
         "to": "Social & Media",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Jeff Dean",
@@ -5373,7 +5403,8 @@
         "to": "AI",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Linus Torvalds",
@@ -5407,7 +5438,8 @@
         "note": "Full-time Linux kernel development; also created Git in 2005"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Daniel Ek",
@@ -5458,7 +5490,7 @@
       {
         "company": "Neko Health",
         "role": "Co-founder",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2018,
         "end": null,
         "note": "AI-powered full-body health scanning clinics; $65M raised"
@@ -5501,7 +5533,8 @@
         "to": "VC & Finance",
         "year": 2021
       }
-    ]
+    ],
+    "primarySector": "Consumer"
   },
   {
     "name": "Brian Acton",
@@ -5537,7 +5570,7 @@
       {
         "company": "Signal Foundation",
         "role": "Co-founder & Executive Chairman",
-        "sector": "Other",
+        "sector": "Philanthropy",
         "start": 2018,
         "end": null,
         "note": "Nonprofit encrypted messaging; donated $50M to launch; widely used by journalists/activists"
@@ -5554,7 +5587,8 @@
         "to": "Other",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Mike Moritz",
@@ -5669,7 +5703,7 @@
       {
         "company": "23andMe",
         "role": "Co-founder & CEO",
-        "sector": "Deep Tech",
+        "sector": "Genomics / Biotech",
         "start": 2006,
         "end": 2023,
         "note": "Direct-to-consumer genetics. $6B valuation peak. Filed Chapter 11 2025; Wojcicki tried to take it private."
@@ -5677,7 +5711,7 @@
       {
         "company": "23andMe (private buyout attempt)",
         "role": "Investor / CEO",
-        "sector": "Deep Tech",
+        "sector": "Genomics / Biotech",
         "start": 2025,
         "end": null,
         "note": "Attempted to buy back company assets post-bankruptcy"
@@ -5734,7 +5768,7 @@
       {
         "company": "Zennstrom Philanthropies",
         "role": "Founder",
-        "sector": "Other",
+        "sector": "Philanthropy",
         "start": 2007,
         "end": null,
         "note": "Climate change and sustainability philanthropy"
@@ -5856,7 +5890,8 @@
         "to": "Social & Media",
         "year": 2011
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Mike Krieger",
@@ -5896,7 +5931,8 @@
         "to": "AI",
         "year": 2023
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Austin Russell",
@@ -5908,13 +5944,14 @@
       {
         "company": "Luminar Technologies",
         "role": "Founder & CEO",
-        "sector": "Deep Tech",
+        "sector": "Lidar / Autonomous Vehicles",
         "start": 2012,
         "end": 2025,
         "note": "LiDAR for autonomous vehicles; Thiel Fellow; IPO Dec 2020 made him youngest self-made billionaire; resigned May 2025 after ethics inquiry"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Deep Tech"
   },
   {
     "name": "Alfred Lin",
@@ -5980,7 +6017,8 @@
         "to": "VC & Finance",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Anatoly Yakovenko",
@@ -5992,7 +6030,7 @@
       {
         "company": "Qualcomm",
         "role": "Senior Engineer",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2003,
         "end": 2016,
         "note": "Wireless and distributed systems; senior staff engineer"
@@ -6033,7 +6071,8 @@
         "to": "Crypto",
         "year": 2017
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Hayden Adams",
@@ -6045,7 +6084,7 @@
       {
         "company": "Siemens",
         "role": "Mechanical Engineer",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2016,
         "end": 2017,
         "note": "Laid off; learned Ethereum as a result"
@@ -6065,7 +6104,8 @@
         "to": "Crypto",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Sam Lessin",
@@ -6130,7 +6170,8 @@
         "to": "AI",
         "year": 2015
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Brian Brooks",
@@ -6209,7 +6250,8 @@
         "to": "Crypto",
         "year": 2021
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Mikkel Svane",
@@ -6243,7 +6285,8 @@
         "note": "Customer service SaaS; IPO 2014; acquired by Hellman & Friedman for $10.2B"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Girish Mathrubootham",
@@ -6276,7 +6319,8 @@
         "end": null
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Henrique Dubugras",
@@ -6302,7 +6346,8 @@
         "note": "Corporate cards for startups; expanded to full spend management; $12.3B valuation"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Fintech"
   },
   {
     "name": "Tomer London",
@@ -6320,7 +6365,8 @@
         "note": "Payroll, benefits, HR platform for SMBs; $9.5B valuation; YC W12"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Will Gaybrick",
@@ -6352,7 +6398,8 @@
         "to": "Fintech",
         "year": 2016
       }
-    ]
+    ],
+    "primarySector": "Fintech"
   },
   {
     "name": "Vlad Yatsenko",
@@ -6391,7 +6438,8 @@
         "to": "Fintech",
         "year": 2015
       }
-    ]
+    ],
+    "primarySector": "Fintech"
   },
   {
     "name": "Patrick McKenzie",
@@ -6436,7 +6484,8 @@
         "to": "Fintech",
         "year": 2020
       }
-    ]
+    ],
+    "primarySector": "Fintech"
   },
   {
     "name": "Sergey Nazarov",
@@ -6462,7 +6511,8 @@
         "note": "Decentralized oracle network connecting smart contracts to real-world data; LINK token $20B+ market cap"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Crypto"
   },
   {
     "name": "Masayoshi Son",
@@ -6482,7 +6532,7 @@
       {
         "company": "SoftBank Corp",
         "role": "Founder & CEO",
-        "sector": "Telecom",
+        "sector": "Telecom / Enterprise",
         "start": 1981,
         "end": 2006,
         "note": "Started as PC software distributor; expanded to telecom via Yahoo Japan JV (1996) and Vodafone Japan acquisition (2006)"
@@ -6514,7 +6564,7 @@
       {
         "company": "Arm Holdings",
         "role": "Chairman",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2016,
         "end": null,
         "note": "SoftBank acquired Arm $32B; re-IPO at ~$60B in 2023"
@@ -6544,7 +6594,8 @@
         "to": "AI",
         "year": 2025
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Reed Hastings",
@@ -6599,7 +6650,8 @@
         "to": "Social & Media",
         "year": 1997
       }
-    ]
+    ],
+    "primarySector": "Consumer"
   },
   {
     "name": "Pat Gelsinger",
@@ -6611,7 +6663,7 @@
       {
         "company": "Intel",
         "role": "Quality Control Tech \u2192 CTO",
-        "sector": "Deep Tech",
+        "sector": "Semiconductors",
         "start": 1979,
         "end": 2009,
         "note": "Joined at 18; chief architect of i486 (1989); youngest VP in Intel history; CTO 2001-2009"
@@ -6635,7 +6687,7 @@
       {
         "company": "Intel",
         "role": "CEO",
-        "sector": "Deep Tech",
+        "sector": "Semiconductors",
         "start": 2021,
         "end": 2024,
         "note": "Returned to lead IDM 2.0 manufacturing turnaround; stepped down Dec 2024"
@@ -6652,7 +6704,8 @@
         "to": "Deep Tech",
         "year": 2021
       }
-    ]
+    ],
+    "primarySector": "Deep Tech"
   },
   {
     "name": "Martin Casado",
@@ -6713,7 +6766,8 @@
         "to": "VC & Finance",
         "year": 2016
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Daphne Koller",
@@ -6749,7 +6803,7 @@
       {
         "company": "Calico (Alphabet)",
         "role": "Chief Computing Officer",
-        "sector": "Deep Tech",
+        "sector": "Genomics / Biotech",
         "start": 2016,
         "end": 2018,
         "note": "Applied ML to longevity biology at Google's aging research subsidiary"
@@ -6757,7 +6811,7 @@
       {
         "company": "insitro",
         "role": "Founder & CEO",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2018,
         "end": null,
         "note": "AI-driven drug discovery; raised $400M+"
@@ -6774,7 +6828,8 @@
         "to": "Deep Tech",
         "year": 2016
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Jim Keller",
@@ -6786,14 +6841,14 @@
       {
         "company": "Harris Corporation",
         "role": "Microprocessor Engineer",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 1980,
         "end": 1982
       },
       {
         "company": "Digital Equipment Corporation",
         "role": "Chip Architect",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 1982,
         "end": 1998,
         "note": "VAX 8800, Alpha 21164, Alpha 21264 processors"
@@ -6801,7 +6856,7 @@
       {
         "company": "AMD",
         "role": "Lead Architect",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 1998,
         "end": 1999,
         "note": "Led Athlon K7; co-authored x86-64 and HyperTransport"
@@ -6809,7 +6864,7 @@
       {
         "company": "SiByte / Broadcom",
         "role": "Chief Architect",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 1999,
         "end": 2004,
         "note": "MIPS-based network processors; SiByte acquired by Broadcom 2000"
@@ -6817,7 +6872,7 @@
       {
         "company": "P.A. Semi",
         "role": "VP Engineering",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2004,
         "end": 2008,
         "note": "Low-power mobile processors; Apple acquired P.A. Semi 2008"
@@ -6833,7 +6888,7 @@
       {
         "company": "AMD",
         "role": "SVP Architecture",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2012,
         "end": 2015,
         "note": "Led Zen microarchitecture; saved AMD from near-bankruptcy"
@@ -6841,7 +6896,7 @@
       {
         "company": "Tesla",
         "role": "VP Autopilot Hardware",
-        "sector": "Deep Tech",
+        "sector": "Autonomous Vehicles",
         "start": 2016,
         "end": 2018,
         "note": "Designed Tesla HW3 Full Self-Driving chip"
@@ -6849,7 +6904,7 @@
       {
         "company": "Intel",
         "role": "SVP & Chief Architect",
-        "sector": "Deep Tech",
+        "sector": "Semiconductors",
         "start": 2018,
         "end": 2020
       },
@@ -6878,7 +6933,8 @@
         "to": "AI",
         "year": 2021
       }
-    ]
+    ],
+    "primarySector": "Deep Tech"
   },
   {
     "name": "Jack Ma",
@@ -6952,7 +7008,8 @@
         "to": "VC & Finance",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "Consumer"
   },
   {
     "name": "Pony Ma",
@@ -6964,7 +7021,7 @@
       {
         "company": "China Motion Telecom Development",
         "role": "Software Engineer",
-        "sector": "Telecom",
+        "sector": "Telecom / Enterprise",
         "start": 1993,
         "end": 1998,
         "note": "Developed pager software"
@@ -6972,7 +7029,7 @@
       {
         "company": "Shenzhen Runxun Communications",
         "role": "R&D Engineer",
-        "sector": "Telecom",
+        "sector": "Telecom / Enterprise",
         "start": 1996,
         "end": 1998,
         "note": "Internet calling R&D"
@@ -6992,7 +7049,8 @@
         "to": "Social & Media",
         "year": 1998
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Robin Li",
@@ -7032,7 +7090,8 @@
         "to": "Consumer",
         "year": 1997
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Ritesh Agarwal",
@@ -7058,7 +7117,8 @@
         "note": "1M+ rooms globally; raised $3B+. Rebranded to PRISM; first profit FY24. IPO prep 2025-26."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Consumer"
   },
   {
     "name": "Clement Delangue",
@@ -7084,7 +7144,8 @@
         "note": "Started as AI chatbot app; pivoted to ML model hub. GitHub for AI with 500K+ repos and $4.5B valuation."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Richard Socher",
@@ -7142,7 +7203,8 @@
         "to": "AI",
         "year": 2020
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Connor Leahy",
@@ -7168,7 +7230,8 @@
         "note": "AI safety research; advocates compute caps and frontier AI moratorium"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Mitchell Hashimoto",
@@ -7194,7 +7257,8 @@
         "note": "Stepped back from leadership; departed after IBM acquisition ($6.4B) announced 2023"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Solomon Hykes",
@@ -7220,7 +7284,8 @@
         "note": "Programmable CI/CD pipelines using DAGs"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "David Heinemeier Hansson",
@@ -7252,7 +7317,8 @@
         "to": "Enterprise",
         "year": 2001
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Joel Spolsky",
@@ -7306,7 +7372,8 @@
         "to": "Enterprise",
         "year": 2000
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Sid Sijbrandij",
@@ -7331,7 +7398,8 @@
         "note": "World's largest all-remote company; DevSecOps platform; IPO 2021 at $11B valuation"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Melanie Perkins",
@@ -7357,7 +7425,8 @@
         "note": "Online graphic design platform; $40B valuation; profitable. Met first investor at kitesurfing event."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Consumer"
   },
   {
     "name": "Jose Neves",
@@ -7383,7 +7452,8 @@
         "note": "Luxury fashion marketplace; NYSE IPO 2018; acquired by Coupang for $500M out of near-bankruptcy 2024"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Consumer"
   },
   {
     "name": "John Collison",
@@ -7415,7 +7485,8 @@
         "to": "Fintech",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "Fintech"
   },
   {
     "name": "Dan Schulman",
@@ -7427,7 +7498,7 @@
       {
         "company": "AT&T",
         "role": "Executive \u2192 President",
-        "sector": "Telecom",
+        "sector": "Telecom / Enterprise",
         "start": 1982,
         "end": 2000,
         "note": "18+ years; rose to President managing 40K employees"
@@ -7443,7 +7514,7 @@
       {
         "company": "Virgin Mobile USA",
         "role": "Founding CEO",
-        "sector": "Telecom",
+        "sector": "Telecom / Enterprise",
         "start": 2002,
         "end": 2009,
         "note": "Built to 5M customers and $1.3B revenue; first 'no hidden fees' carrier; IPO 2007; sold to Sprint 2009"
@@ -7451,7 +7522,7 @@
       {
         "company": "Sprint Nextel",
         "role": "President, Prepaid",
-        "sector": "Telecom",
+        "sector": "Telecom / Enterprise",
         "start": 2009,
         "end": 2010
       },
@@ -7474,7 +7545,7 @@
       {
         "company": "Verizon",
         "role": "CEO",
-        "sector": "Telecom",
+        "sector": "Telecom / Enterprise",
         "start": 2025,
         "end": null
       }
@@ -7500,7 +7571,8 @@
         "to": "Telecom",
         "year": 2025
       }
-    ]
+    ],
+    "primarySector": "Fintech"
   },
   {
     "name": "Baiju Bhatt",
@@ -7533,7 +7605,8 @@
         "end": 2023
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Fintech"
   },
   {
     "name": "Brad Garlinghouse",
@@ -7610,7 +7683,8 @@
         "to": "Crypto",
         "year": 2015
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Michael Saylor",
@@ -7657,7 +7731,8 @@
         "to": "Crypto",
         "year": 2020
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Andy Jassy",
@@ -7710,7 +7785,8 @@
         "to": "Consumer",
         "year": 2021
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Chris Urmson",
@@ -7730,7 +7806,7 @@
       {
         "company": "Google X (Waymo)",
         "role": "CTO, Self-Driving Car",
-        "sector": "Deep Tech",
+        "sector": "Autonomous Vehicles",
         "start": 2009,
         "end": 2016,
         "note": "Led Google's autonomous vehicle project for 7 years; 1.8M miles of test driving"
@@ -7738,7 +7814,7 @@
       {
         "company": "Aurora Innovation",
         "role": "Co-founder & CEO",
-        "sector": "Deep Tech",
+        "sector": "Autonomous Vehicles",
         "start": 2017,
         "end": null,
         "note": "Self-driving truck tech; SPAC IPO 2021; commercial Dallas-Houston route launched 2024"
@@ -7750,7 +7826,8 @@
         "to": "Deep Tech",
         "year": 2009
       }
-    ]
+    ],
+    "primarySector": "Deep Tech"
   },
   {
     "name": "Marc Raibert",
@@ -7778,7 +7855,7 @@
       {
         "company": "Boston Dynamics",
         "role": "Founder & CEO",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 1992,
         "end": 2019,
         "note": "Spun out of MIT; BigDog, Atlas, Spot. Sold to Google 2013, SoftBank 2017, Hyundai 2020."
@@ -7786,7 +7863,7 @@
       {
         "company": "Boston Dynamics",
         "role": "Chairman",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2019,
         "end": 2023
       },
@@ -7810,7 +7887,8 @@
         "to": "AI",
         "year": 2023
       }
-    ]
+    ],
+    "primarySector": "Deep Tech"
   },
   {
     "name": "Mary Meeker",
@@ -7858,7 +7936,8 @@
         "note": "SF growth-stage VC; backed Figma, Canva, Stripe"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "John Doerr",
@@ -7870,7 +7949,7 @@
       {
         "company": "Intel",
         "role": "Sales Engineer",
-        "sector": "Deep Tech",
+        "sector": "Semiconductors",
         "start": 1974,
         "end": 1980,
         "note": "One of Intel's most successful salespeople; holds memory device patents"
@@ -7890,7 +7969,8 @@
         "to": "VC & Finance",
         "year": 1980
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Michael Moritz",
@@ -7922,7 +8002,8 @@
         "to": "VC & Finance",
         "year": 1986
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Fred Wilson",
@@ -7955,7 +8036,8 @@
         "note": "NYC VC; early backer of Twitter, Kickstarter, Etsy, Coinbase. Famous AVC blog."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Bill Gurley",
@@ -7967,7 +8049,7 @@
       {
         "company": "AMD / Compaq",
         "role": "Engineer",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 1989,
         "end": 1993,
         "note": "Technical marketing at AMD; design engineer at Compaq (486/50, multiprocessor server)"
@@ -8002,7 +8084,8 @@
         "to": "VC & Finance",
         "year": 1993
       }
-    ]
+    ],
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Shou Zi Chew",
@@ -8062,7 +8145,8 @@
         "to": "Social & Media",
         "year": 2021
       }
-    ]
+    ],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Parag Agrawal",
@@ -8088,7 +8172,8 @@
         "note": "Replaced Jack Dorsey Nov 2021; fired by Elon Musk at acquisition close Oct 2022; $42M severance"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Linda Yaccarino",
@@ -8114,7 +8199,8 @@
         "note": "Hired by Elon Musk to lead X; focus on rebuilding advertiser relationships and 'everything app' strategy"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Social & Media"
   },
   {
     "name": "Apoorva Mehta",
@@ -8126,7 +8212,7 @@
       {
         "company": "Qualcomm",
         "role": "Design Engineer",
-        "sector": "Deep Tech",
+        "sector": "Deep Tech / Hardware",
         "start": 2008,
         "end": 2010
       },
@@ -8160,7 +8246,8 @@
         "to": "Consumer",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "Consumer"
   },
   {
     "name": "Nikhil Kamath",
@@ -8200,7 +8287,8 @@
         "to": "Fintech",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "Fintech"
   },
   {
     "name": "Amjad Masad",
@@ -8239,7 +8327,8 @@
         "to": "Enterprise",
         "year": 2016
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Guillermo Rauch",
@@ -8279,7 +8368,8 @@
         "to": "Enterprise",
         "year": 2015
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "David Velez",
@@ -8318,7 +8408,8 @@
         "to": "Fintech",
         "year": 2013
       }
-    ]
+    ],
+    "primarySector": "Fintech"
   },
   {
     "name": "Thomas Kurian",
@@ -8352,7 +8443,8 @@
         "note": "Hired by Alphabet to transform Google Cloud; grew from #3 to competitive cloud player; $36B+ ARR by 2024"
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Arvind Krishna",
@@ -8386,6 +8478,7 @@
         "note": "Became CEO Apr 2020; chairman Jan 2021. Led pivot to hybrid cloud and AI (watsonx). Spun off managed infrastructure into Kyndryl 2021."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   }
 ]
