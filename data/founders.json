@@ -407,10 +407,10 @@
       {
         "company": "Bluesky",
         "role": "Founder",
-        "sector": "Decentralized Social",
+        "sector": "Social Media",
         "start": 2019,
         "end": null,
-        "note": "Decentralized social protocol, later departed from board"
+        "note": "Decentralized social protocol. Dorsey later departed from board"
       }
     ],
     "sectorSwitches": [
@@ -418,11 +418,6 @@
         "from": "Social Media",
         "to": "Fintech",
         "year": 2009
-      },
-      {
-        "from": "Fintech",
-        "to": "Crypto / Decentralized Social",
-        "year": 2019
       }
     ]
   },
@@ -1191,6 +1186,482 @@
         "from": "Consumer Tech",
         "to": "Defense Tech",
         "year": 2017
+      }
+    ]
+  },
+  {
+    "name": "Kevin Systrom",
+    "id": "kevin-systrom",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Kevin_Systrom",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Google",
+        "role": "Associate Product Manager",
+        "sector": "Consumer Tech",
+        "start": 2006,
+        "end": 2008
+      },
+      {
+        "company": "Instagram",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2010,
+        "end": 2018,
+        "note": "Acquired by Facebook for $1B (2012)"
+      },
+      {
+        "company": "Artifact",
+        "role": "Co-founder",
+        "sector": "AI",
+        "start": 2022,
+        "end": 2024,
+        "note": "AI-powered news app. Shut down 2024."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Social Media",
+        "year": 2010
+      },
+      {
+        "from": "Social Media",
+        "to": "AI",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Ev Williams",
+    "id": "ev-williams",
+    "born": 1972,
+    "source": "https://en.wikipedia.org/wiki/Ev_Williams",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Blogger",
+        "role": "Founder",
+        "sector": "Internet / Media",
+        "start": 1999,
+        "end": 2003,
+        "note": "Acquired by Google"
+      },
+      {
+        "company": "Twitter",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media",
+        "start": 2006,
+        "end": 2010
+      },
+      {
+        "company": "Medium",
+        "role": "Founder & CEO",
+        "sector": "Internet / Media",
+        "start": 2012,
+        "end": 2024
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Internet / Media",
+        "to": "Social Media",
+        "year": 2006
+      },
+      {
+        "from": "Social Media",
+        "to": "Internet / Media",
+        "year": 2012
+      }
+    ]
+  },
+  {
+    "name": "Alex Karp",
+    "id": "alex-karp",
+    "born": 1967,
+    "source": "https://en.wikipedia.org/wiki/Alex_Karp",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Palantir",
+        "role": "Co-founder & CEO",
+        "sector": "Defense Tech / Data",
+        "start": 2003,
+        "end": null
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Brian Chesky",
+    "id": "brian-chesky",
+    "born": 1981,
+    "source": "https://en.wikipedia.org/wiki/Brian_Chesky",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Airbnb",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer Tech",
+        "start": 2008,
+        "end": null
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Daniel Gross",
+    "id": "daniel-gross",
+    "born": 1991,
+    "source": "https://en.wikipedia.org/wiki/Daniel_Gross_(entrepreneur)",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Cue",
+        "role": "Co-founder",
+        "sector": "Consumer Tech",
+        "start": 2010,
+        "end": 2013,
+        "note": "AI search engine. Acquired by Apple."
+      },
+      {
+        "company": "Apple",
+        "role": "Director of ML",
+        "sector": "Consumer Tech",
+        "start": 2013,
+        "end": 2017
+      },
+      {
+        "company": "Y Combinator",
+        "role": "Partner",
+        "sector": "VC",
+        "start": 2017,
+        "end": 2019
+      },
+      {
+        "company": "Pioneer",
+        "role": "Founder",
+        "sector": "Education / Network States",
+        "start": 2018,
+        "end": null,
+        "note": "Global talent search for ambitious people"
+      },
+      {
+        "company": "Safe Superintelligence (SSI)",
+        "role": "Co-founder",
+        "sector": "AI Safety",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "VC",
+        "year": 2017
+      },
+      {
+        "from": "VC",
+        "to": "AI Safety",
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "name": "Alexandr Wang",
+    "id": "alexandr-wang",
+    "born": 2000,
+    "source": "https://en.wikipedia.org/wiki/Alexandr_Wang",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Scale AI",
+        "role": "Founder & CEO",
+        "sector": "AI Infrastructure",
+        "start": 2016,
+        "end": null,
+        "note": "Data labeling for AI. Youngest self-made billionaire (age 25)."
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Garry Tan",
+    "id": "garry-tan",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Garry_Tan",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Posterous",
+        "role": "Co-founder & CTO",
+        "sector": "Social Media",
+        "start": 2008,
+        "end": 2012,
+        "note": "Blogging platform. Acquired by Twitter."
+      },
+      {
+        "company": "Y Combinator",
+        "role": "Partner",
+        "sector": "VC",
+        "start": 2011,
+        "end": 2015
+      },
+      {
+        "company": "Initialized Capital",
+        "role": "Co-founder & Managing Partner",
+        "sector": "VC",
+        "start": 2012,
+        "end": 2022
+      },
+      {
+        "company": "Y Combinator",
+        "role": "President & CEO",
+        "sector": "VC",
+        "start": 2023,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Social Media",
+        "to": "VC",
+        "year": 2011
+      }
+    ]
+  },
+  {
+    "name": "Tobi Lutke",
+    "id": "tobi-lutke",
+    "born": 1981,
+    "source": "https://en.wikipedia.org/wiki/Tobias_L%C3%BCtke",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Shopify",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise SaaS",
+        "start": 2006,
+        "end": null
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "George Hotz",
+    "id": "george-hotz",
+    "born": 1989,
+    "source": "https://en.wikipedia.org/wiki/George_Hotz",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "iPhone jailbreak",
+        "role": "Hacker",
+        "sector": "Consumer Tech",
+        "start": 2007,
+        "end": 2010,
+        "note": "First person to jailbreak the iPhone"
+      },
+      {
+        "company": "comma.ai",
+        "role": "Founder & CEO",
+        "sector": "Automotive / Clean Energy",
+        "start": 2015,
+        "end": 2024,
+        "note": "Open-source self-driving. 10K+ users."
+      },
+      {
+        "company": "Tiny Corp (tinygrad)",
+        "role": "Founder",
+        "sector": "AI Infrastructure",
+        "start": 2023,
+        "end": null,
+        "note": "Building neural net hardware/compiler"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Consumer Tech",
+        "to": "Automotive / Clean Energy",
+        "year": 2015
+      },
+      {
+        "from": "Automotive / Clean Energy",
+        "to": "AI Infrastructure",
+        "year": 2023
+      }
+    ]
+  },
+  {
+    "name": "Nat Friedman",
+    "id": "nat-friedman",
+    "born": 1977,
+    "source": "https://en.wikipedia.org/wiki/Nat_Friedman",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Ximian",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise Tech",
+        "start": 1999,
+        "end": 2003,
+        "note": "Linux desktop. Acquired by Novell."
+      },
+      {
+        "company": "Xamarin",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise Tech",
+        "start": 2011,
+        "end": 2016,
+        "note": "Cross-platform mobile dev. Acquired by Microsoft."
+      },
+      {
+        "company": "GitHub",
+        "role": "CEO",
+        "sector": "Enterprise SaaS",
+        "start": 2018,
+        "end": 2021
+      },
+      {
+        "company": "AI Grant / Investor",
+        "role": "Investor",
+        "sector": "VC",
+        "start": 2022,
+        "end": null,
+        "note": "Active AI investor with Daniel Gross"
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Enterprise Tech",
+        "to": "VC",
+        "year": 2022
+      }
+    ]
+  },
+  {
+    "name": "Whitney Wolfe Herd",
+    "id": "whitney-wolfe-herd",
+    "born": 1989,
+    "source": "https://en.wikipedia.org/wiki/Whitney_Wolfe_Herd",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Tinder",
+        "role": "Co-founder & VP Marketing",
+        "sector": "Social / Dating",
+        "start": 2012,
+        "end": 2014
+      },
+      {
+        "company": "Bumble",
+        "role": "Founder & CEO",
+        "sector": "Social / Dating",
+        "start": 2014,
+        "end": null,
+        "note": "IPO 2021. Youngest female self-made billionaire at time."
+      }
+    ],
+    "sectorSwitches": []
+  },
+  {
+    "name": "Emmett Shear",
+    "id": "emmett-shear",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Emmett_Shear",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "Justin.tv",
+        "role": "Co-founder",
+        "sector": "Internet / Media",
+        "start": 2007,
+        "end": 2011
+      },
+      {
+        "company": "Twitch",
+        "role": "Co-founder & CEO",
+        "sector": "Gaming",
+        "start": 2011,
+        "end": 2023,
+        "note": "Spun off from Justin.tv. Acquired by Amazon for $970M."
+      },
+      {
+        "company": "OpenAI",
+        "role": "Interim CEO",
+        "sector": "AI",
+        "start": 2023,
+        "end": 2023,
+        "note": "Brief interim CEO during Altman ouster (3 days)"
+      },
+      {
+        "company": "Y Combinator",
+        "role": "Partner",
+        "sector": "VC",
+        "start": 2024,
+        "end": null
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Internet / Media",
+        "to": "Gaming",
+        "year": 2011
+      },
+      {
+        "from": "Gaming",
+        "to": "AI",
+        "year": 2023
+      },
+      {
+        "from": "AI",
+        "to": "VC",
+        "year": 2024
+      }
+    ]
+  },
+  {
+    "name": "Logan Paul",
+    "id": "logan-paul",
+    "born": 1995,
+    "source": "https://en.wikipedia.org/wiki/Logan_Paul",
+    "verified": "2026-03-18",
+    "roles": [
+      {
+        "company": "YouTube",
+        "role": "Creator",
+        "sector": "Internet / Media",
+        "start": 2013,
+        "end": null
+      },
+      {
+        "company": "CryptoZoo",
+        "role": "Founder",
+        "sector": "Crypto / NFTs",
+        "start": 2021,
+        "end": 2023,
+        "note": "NFT game. Lawsuit settled."
+      },
+      {
+        "company": "PRIME",
+        "role": "Co-founder",
+        "sector": "Consumer Tech",
+        "start": 2022,
+        "end": null,
+        "note": "Energy drink brand with KSI. $1.2B+ revenue."
+      }
+    ],
+    "sectorSwitches": [
+      {
+        "from": "Internet / Media",
+        "to": "Crypto / NFTs",
+        "year": 2021
+      },
+      {
+        "from": "Crypto / NFTs",
+        "to": "Consumer Tech",
+        "year": 2022
       }
     ]
   }

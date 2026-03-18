@@ -168,7 +168,7 @@ const BROAD_COLORS = {
   'Finance / Fintech': '#f59e0b', 'VC': '#a78bfa', 'Defense / Aerospace': '#ef4444',
   'Social': '#ec4899', 'Consumer Tech': '#f472b6', 'Enterprise': '#3b82f6',
   'Gaming': '#84cc16', 'Education / Science': '#2dd4bf', 'Professional Services': '#6b7280',
-  'Internet / Media': '#fb923c', 'Hardware / Energy': '#facc15', 'Other': '#4b5563',
+  'Internet / Media': '#fb923c', 'Hardware / Energy': '#facc15', 'Government': '#94a3b8', 'Other': '#4b5563',
 };
 
 const SECTOR_COLORS = {
@@ -195,20 +195,21 @@ function getSectorColor(s) { return SECTOR_COLORS[s] || '#6b7280'; }
 function broadSector(s) {
   if (!s) return 'Other';
   const l = s.toLowerCase();
-  if (l.includes('crypto') || l.includes('nft') || l.includes('decentralized social')) return 'Crypto';
+  if (l.includes('crypto') || l.includes('nft')) return 'Crypto';
   if (l.includes('ai') || l.includes('artificial')) return 'AI';
   if (l.includes('biotech') || l.includes('longevity') || l.includes('neurotech') || l.includes('neuroscience')) return 'Bio / Neurotech';
   if (l.includes('fintech') || l.includes('finance') || l.includes('hedge')) return 'Finance / Fintech';
   if (l.includes('vc') || l.includes('venture')) return 'VC';
   if (l.includes('defense') || l.includes('aerospace')) return 'Defense / Aerospace';
-  if (l.includes('social') || l.includes('professional social')) return 'Social';
+  if (l.includes('social') || l.includes('dating') || l.includes('decentralized social') || l.includes('professional social')) return 'Social';
   if (l.includes('consumer') || l.includes('photo')) return 'Consumer Tech';
   if (l.includes('enterprise') || l.includes('saas')) return 'Enterprise';
   if (l.includes('gaming')) return 'Gaming';
   if (l.includes('education') || l.includes('network state') || l.includes('science')) return 'Education / Science';
+  if (l.includes('government') || l.includes('policy')) return 'Government';
   if (l.includes('law') || l.includes('consulting') || l.includes('conflict')) return 'Professional Services';
   if (l.includes('internet') || l.includes('media')) return 'Internet / Media';
-  if (l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('energy')) return 'Hardware / Energy';
+  if (l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('energy') || l.includes('clean energy')) return 'Hardware / Energy';
   return 'Other';
 }
 
