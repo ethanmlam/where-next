@@ -1247,35 +1247,67 @@ addInput.addEventListener('input', () => {
       });
     });
 
-    // Add from Wikipedia — fetch career data then add to chart
+    // Add from Wikipedia — trigger research, poll Supabase until ready
     suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
       el.addEventListener('mousedown', async (e) => {
         e.preventDefault();
         const name = el.dataset.wikiName;
         const wikiTitle = el.dataset.wikiTitle || name;
-        const id = name.split('(')[0].trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        const cleanName = name.split('(')[0].trim();
+        const id = cleanName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         if (ALL_FOUNDERS.some(f => f.id === id)) return;
-        el.querySelector('.sg-sub').textContent = 'loading career...';
+        
+        el.querySelector('.sg-sub').textContent = 'researching...';
+        
+        // Trigger research
         try {
-          const resp = await fetch(`/dashboard/api/where-next/wiki-career?title=${encodeURIComponent(wikiTitle)}`);
-          const data = await resp.json();
-          if (data.name) {
-            const newFounder = {
-              name: data.name,
-              id: data.id || id,
-              source: data.source,
-              roles: data.roles || [],
-              sectorSwitches: data.sectorSwitches || [],
-              primarySector: data.primarySector || 'Other',
-            };
-            ALL_FOUNDERS.push(newFounder);
-            FOUNDERS_DATA.push(newFounder);
-            refresh();
-          }
-        } catch(err) {
-          console.error('Wiki career fetch failed:', err);
+          await fetch(`/dashboard/api/where-next/wiki-career?title=${encodeURIComponent(wikiTitle)}`);
+        } catch(err) { /* fire and forget */ }
+        
+        suggestions.classList.remove('show'); suggestionsOpen = false;
+        addInput.value = '';
+        addInput.placeholder = `Researching ${cleanName}...`;
+        addInput.disabled = true;
+        
+        // Poll Supabase every 5s for up to 90s
+        if (sb) {
+          let attempts = 0;
+          const poll = setInterval(async () => {
+            attempts++;
+            try {
+              const { data: found } = await sb.from('founders').select('id, name, primary_sector').eq('id', id).limit(1);
+              if (found && found.length > 0) {
+                clearInterval(poll);
+                // Load full data
+                const { data: roles } = await sb.from('roles').select('*').eq('founder_id', id).order('sort_order');
+                const { data: switches } = await sb.from('sector_switches').select('*').eq('founder_id', id);
+                const newFounder = {
+                  name: found[0].name,
+                  id: id,
+                  primarySector: found[0].primary_sector,
+                  roles: (roles || []).map(r => ({
+                    company: r.company, role: r.role, sector: r.sector,
+                    start: r.start_year, end: r.end_year, note: r.note
+                  })),
+                  sectorSwitches: (switches || []).map(s => ({
+                    from: s.from_sector, to: s.to_sector, year: s.year
+                  }))
+                };
+                ALL_FOUNDERS.push(newFounder);
+                FOUNDERS_DATA.push(newFounder);
+                addInput.placeholder = 'Add person...';
+                addInput.disabled = false;
+                refresh();
+              }
+            } catch(err) { /* keep polling */ }
+            if (attempts >= 18) { // 90 seconds
+              clearInterval(poll);
+              addInput.placeholder = `${cleanName} not ready yet. Try again later.`;
+              addInput.disabled = false;
+              setTimeout(() => { addInput.placeholder = 'Add person...'; }, 5000);
+            }
+          }, 5000);
         }
-        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
       });
     });
   }, 300);
