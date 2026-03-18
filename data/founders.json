@@ -8573,5 +8573,180 @@
     ],
     "sectorSwitches": [],
     "primarySector": "Enterprise"
+  },
+  {
+    "name": "Yishan Wong",
+    "id": "yishan-wong",
+    "born": null,
+    "source": "https://en.wikipedia.org/wiki/Yishan_Wong",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {"company": "PayPal", "role": "Senior Engineering Manager", "sector": "Fintech / Payments", "start": 2001, "end": 2005, "note": "Member of PayPal Mafia, early employee"},
+      {"company": "Facebook", "role": "Director of Engineering", "sector": "Social & Media Platform", "start": 2005, "end": 2010, "note": "Led crowd translation and other projects"},
+      {"company": "Reddit", "role": "CEO", "sector": "Consumer Social Media", "start": 2012, "end": 2014, "note": "Grew platform; resigned over office location dispute"},
+      {"company": "Terraformation", "role": "Founder & CEO", "sector": "Climate Tech / Reforestation", "start": 2020, "end": null, "note": "Reforestation startup to combat global warming"}
+    ],
+    "sectorSwitches": [
+      {"from": "Fintech", "to": "Social & Media", "year": 2005},
+      {"from": "Social & Media", "to": "Consumer", "year": 2012},
+      {"from": "Consumer", "to": "Deep Tech", "year": 2020}
+    ]
+  },
+  {
+    "name": "Michael Seibel",
+    "id": "michael-seibel",
+    "born": 1982,
+    "source": "https://en.wikipedia.org/wiki/Michael_Seibel",
+    "verified": "2026-03-18",
+    "primarySector": "VC & Finance",
+    "roles": [
+      {"company": "Justin.tv / Twitch", "role": "Co-founder & CEO", "sector": "Social & Media Streaming", "start": 2007, "end": 2014, "note": "Co-founded live streaming platform; Twitch sold to Amazon for $970M in 2014"},
+      {"company": "Socialcam", "role": "Co-founder & CEO", "sector": "Social & Media Video", "start": 2011, "end": 2012, "note": "Social video app sold to Autodesk for $60M"},
+      {"company": "Y Combinator", "role": "Partner / CEO of Startup Accelerator", "sector": "Startup VC & Accelerator", "start": 2013, "end": null, "note": "First Black partner at YC; CEO 2016-2024, stepped back to partner role in 2024"}
+    ],
+    "sectorSwitches": [
+      {"from": "Social & Media", "to": "VC & Finance", "year": 2013}
+    ]
+  },
+  {
+    "name": "Ken Howery",
+    "id": "ken-howery",
+    "born": 1975,
+    "source": "https://en.wikipedia.org/wiki/Ken_Howery",
+    "verified": "2026-03-18",
+    "primarySector": "VC & Finance",
+    "roles": [
+      {"company": "PayPal", "role": "Co-founder & CFO", "sector": "Fintech / Payments", "start": 1998, "end": 2002, "note": "Co-founded with Thiel, Musk, Levchin, Nosek"},
+      {"company": "eBay", "role": "Director of Corporate Development", "sector": "Enterprise E-commerce", "start": 2002, "end": 2003, "note": "Post-PayPal acquisition role"},
+      {"company": "Clarium Capital Management", "role": "VP of Private Equity", "sector": "VC & Finance / Hedge Fund", "start": 2004, "end": 2005, "note": "Rejoined Thiel at macro hedge fund"},
+      {"company": "Founders Fund", "role": "Co-founder & Partner", "sector": "Venture Capital", "start": 2005, "end": 2019, "note": "With Thiel and Nosek; $3B+ AUM"},
+      {"company": "US Ambassador to Sweden", "role": "Ambassador", "sector": "Government / Diplomacy", "start": 2019, "end": 2021, "note": "Appointed by President Trump"},
+      {"company": "US Ambassador to Denmark", "role": "Ambassador", "sector": "Government / Diplomacy", "start": 2025, "end": null, "note": "Nominated by Trump, confirmed Oct 2025"}
+    ],
+    "sectorSwitches": [
+      {"from": "Fintech", "to": "VC & Finance", "year": 2005},
+      {"from": "VC & Finance", "to": "Other", "year": 2019}
+    ]
+  },
+  {
+    "name": "Tony Xu",
+    "id": "tony-xu",
+    "born": 1983,
+    "source": "https://en.wikipedia.org/wiki/Tony_Xu",
+    "verified": "2026-03-18",
+    "primarySector": "Consumer",
+    "roles": [
+      {"company": "McKinsey & Company", "role": "Business Analyst", "sector": "Enterprise Consulting", "start": 2011, "end": 2013, "note": "Also did corporate strategy for eBay and PayPal"},
+      {"company": "DoorDash", "role": "Co-founder & CEO", "sector": "Consumer Logistics / Food Delivery", "start": 2013, "end": null, "note": "Co-founded with Stanford classmates; IPO 2020 at ~$32B valuation"}
+    ],
+    "sectorSwitches": [
+      {"from": "Enterprise", "to": "Consumer", "year": 2013}
+    ]
+  },
+  {
+    "name": "Premal Shah",
+    "id": "premal-shah",
+    "born": 1975,
+    "source": "https://en.wikipedia.org/wiki/Premal_Shah",
+    "verified": "2026-03-18",
+    "primarySector": "Other",
+    "roles": [
+      {"company": "PayPal", "role": "Principal Product Manager", "sector": "Fintech / Payments", "start": 1999, "end": 2005, "note": "Early employee; took sabbatical in 2004 to research microfinance in India"},
+      {"company": "Kiva", "role": "Co-founder & President", "sector": "Microfinance / Nonprofit", "start": 2005, "end": null, "note": "Global poverty-alleviation nonprofit; $2B+ in loans to 5M+ entrepreneurs in 62 countries"}
+    ],
+    "sectorSwitches": [
+      {"from": "Fintech", "to": "Other", "year": 2005}
+    ]
+  },
+  {
+    "name": "Dalton Caldwell",
+    "id": "dalton-caldwell",
+    "born": 1980,
+    "source": "https://en.wikipedia.org/wiki/Dalton_Caldwell",
+    "verified": "2026-03-18",
+    "primarySector": "VC & Finance",
+    "roles": [
+      {"company": "imeem", "role": "Co-founder & CEO", "sector": "Social Music Streaming", "start": 2003, "end": 2009, "note": "Social music platform; acquired by MySpace"},
+      {"company": "Mixed Media Labs / App.net", "role": "Founder & CEO", "sector": "Social & Media Platform", "start": 2010, "end": 2014, "note": "picplz photo app and App.net Twitter alternative"},
+      {"company": "Y Combinator", "role": "Managing Director & Partner", "sector": "Startup VC & Accelerator", "start": 2013, "end": null, "note": "Long-running YC partner; hosts podcast with Michael Seibel"}
+    ],
+    "sectorSwitches": [
+      {"from": "Social & Media", "to": "VC & Finance", "year": 2013}
+    ]
+  },
+  {
+    "name": "Qasar Younis",
+    "id": "qasar-younis",
+    "born": 1982,
+    "source": "https://en.wikipedia.org/wiki/Qasar_Younis",
+    "verified": "2026-03-18",
+    "primarySector": "Deep Tech",
+    "roles": [
+      {"company": "General Motors / Bosch", "role": "Engineer", "sector": "Enterprise Automotive Engineering", "start": 2002, "end": 2007, "note": "Managed V6 engine line at GM; worked at Bosch in Japan"},
+      {"company": "Cameesa", "role": "Founder & CEO", "sector": "Consumer Crowdfunding", "start": 2007, "end": 2010, "note": "Consumer crowdfunding startup"},
+      {"company": "TalkBin", "role": "Co-founder & CEO", "sector": "Enterprise SaaS / Customer Feedback", "start": 2010, "end": 2011, "note": "YC-backed; acquired by Google 2011"},
+      {"company": "Google", "role": "Product Lead, Google Maps", "sector": "Consumer Tech / Mapping", "start": 2011, "end": 2014, "note": "Post-acquisition role; 3.5 years"},
+      {"company": "Y Combinator", "role": "COO", "sector": "Startup VC & Accelerator", "start": 2013, "end": 2017, "note": "Partner 2013, COO 2015-2017; helped launch $700M Continuity Fund"},
+      {"company": "Applied Intuition", "role": "Co-founder & CEO", "sector": "Autonomous Vehicle Simulation / Defense Tech", "start": 2017, "end": null, "note": "Physical AI platform for vehicles, industrial and defense systems; $15B valuation (2025)"}
+    ],
+    "sectorSwitches": [
+      {"from": "Enterprise", "to": "Consumer", "year": 2007},
+      {"from": "Consumer", "to": "VC & Finance", "year": 2013},
+      {"from": "VC & Finance", "to": "Deep Tech", "year": 2017}
+    ]
+  },
+  {
+    "name": "Ali Partovi",
+    "id": "ali-partovi",
+    "born": 1972,
+    "source": "https://en.wikipedia.org/wiki/Ali_Partovi",
+    "verified": "2026-03-18",
+    "primarySector": "VC & Finance",
+    "roles": [
+      {"company": "LinkExchange", "role": "Co-founder", "sector": "Consumer Internet Advertising", "start": 1996, "end": 1998, "note": "Co-founded with Tony Hsieh; acquired by Microsoft for $265M"},
+      {"company": "Microsoft", "role": "Lead Project Manager, MSN Keywords", "sector": "Enterprise / Consumer Tech", "start": 1998, "end": 2002, "note": "Post-acquisition role; worked on paid search"},
+      {"company": "GarageBand.com / iLike", "role": "Co-founder & CEO", "sector": "Social Music Discovery", "start": 2002, "end": 2009, "note": "Bought GarageBand assets 2002; refounded as iLike 2006; acquired by MySpace for $20M"},
+      {"company": "Code.org", "role": "Co-founder", "sector": "Research / Education Technology", "start": 2013, "end": null, "note": "CS education nonprofit co-founded with brother Hadi Partovi"},
+      {"company": "Neo", "role": "Founder & CEO", "sector": "Venture Capital / University VC", "start": 2017, "end": null, "note": "University-focused VC fund; $200M AUM; first investor in Cursor"}
+    ],
+    "sectorSwitches": [
+      {"from": "Consumer", "to": "Social & Media", "year": 2002},
+      {"from": "Social & Media", "to": "Research", "year": 2013},
+      {"from": "Research", "to": "VC & Finance", "year": 2017}
+    ]
+  },
+  {
+    "name": "Luke Nosek",
+    "id": "luke-nosek",
+    "born": 1975,
+    "source": "https://en.wikipedia.org/wiki/Luke_Nosek",
+    "verified": "2026-03-18",
+    "primarySector": "VC & Finance",
+    "roles": [
+      {"company": "SponsorNet New Media", "role": "Co-founder", "sector": "Consumer Internet Advertising", "start": 1995, "end": 1997, "note": "Co-founded with Max Levchin and Scott Banister while in college"},
+      {"company": "Netscape", "role": "Employee", "sector": "Enterprise / Consumer Internet", "start": 1997, "end": 1998, "note": "Brief role before PayPal"},
+      {"company": "PayPal", "role": "Co-founder & VP Marketing", "sector": "Fintech / Payments", "start": 1998, "end": 2002, "note": "Co-founded with Thiel, Musk, Levchin, Howery; built instant transfer product"},
+      {"company": "Founders Fund", "role": "Co-founder & Partner", "sector": "Venture Capital", "start": 2005, "end": 2017, "note": "With Thiel and Howery; $1B+ AUM; first institutional SpaceX investor"},
+      {"company": "Gigafund", "role": "Founder & Managing Partner", "sector": "Space-Focused Venture Capital", "start": 2017, "end": null, "note": "Investment fund focused on space exploration; SpaceX board member"}
+    ],
+    "sectorSwitches": [
+      {"from": "Fintech", "to": "VC & Finance", "year": 2005}
+    ]
+  },
+  {
+    "name": "Jessica Livingston",
+    "id": "jessica-livingston",
+    "born": 1971,
+    "source": "https://en.wikipedia.org/wiki/Jessica_Livingston",
+    "verified": "2026-03-18",
+    "primarySector": "VC & Finance",
+    "roles": [
+      {"company": "Adams Harkness Financial Group", "role": "VP of Marketing", "sector": "Investment Banking / Finance", "start": 2002, "end": 2005, "note": "VP of Marketing at boutique investment bank"},
+      {"company": "Y Combinator", "role": "Co-founder & Partner", "sector": "Startup VC & Accelerator", "start": 2005, "end": null, "note": "Co-founded with Paul Graham, Robert Morris, Trevor Blackwell; integral to YC culture and operations"}
+    ],
+    "sectorSwitches": [
+      {"from": "Fintech", "to": "VC & Finance", "year": 2005}
+    ]
   }
 ]
