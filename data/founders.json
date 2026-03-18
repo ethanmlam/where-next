@@ -292,21 +292,21 @@
       {
         "company": "Stanford Medicine",
         "role": "Postdoc",
-        "sector": "Academia / Neuroscience",
+        "sector": "Research / Academia / Neuroscience",
         "start": 2011,
         "end": 2014
       },
       {
         "company": "Baidu",
         "role": "Researcher",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2014,
         "end": 2015
       },
       {
         "company": "Google",
         "role": "Researcher",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2015,
         "end": 2016
       },
@@ -1028,7 +1028,7 @@
       {
         "company": "Google Brain",
         "role": "Research Scientist",
-        "sector": "AI Research",
+        "sector": "Research / AI",
         "start": 2012,
         "end": 2015
       },
@@ -1114,7 +1114,7 @@
       {
         "company": "OpenAI",
         "role": "Researcher",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2023,
         "end": 2024
       },
@@ -1380,18 +1380,27 @@
         "role": "Co-founder",
         "sector": "AI Safety",
         "start": 2024,
-        "end": null
+        "end": 2025,
+        "note": "Co-founded with Ilya Sutskever. Left July 2025."
+      },
+      {
+        "company": "Meta Superintelligence Labs",
+        "role": "VP of Product",
+        "sector": "AI",
+        "start": 2025,
+        "end": null,
+        "note": "Joined Meta MSL with Nat Friedman"
       }
     ],
     "sectorSwitches": [
       {
-        "from": "Consumer Tech",
-        "to": "VC",
+        "from": "Consumer",
+        "to": "VC & Finance",
         "year": 2017
       },
       {
-        "from": "VC",
-        "to": "AI Safety",
+        "from": "VC & Finance",
+        "to": "AI",
         "year": 2024
       }
     ],
@@ -1561,8 +1570,16 @@
         "role": "Investor",
         "sector": "VC",
         "start": 2022,
-        "end": null,
+        "end": 2025,
         "note": "Active AI investor with Daniel Gross"
+      },
+      {
+        "company": "Meta Superintelligence Labs",
+        "role": "Co-Lead",
+        "sector": "AI",
+        "start": 2025,
+        "end": null,
+        "note": "Co-leads MSL with Daniel Gross"
       }
     ],
     "sectorSwitches": [
@@ -1570,6 +1587,11 @@
         "from": "Enterprise Tech",
         "to": "VC",
         "year": 2022
+      },
+      {
+        "from": "VC & Finance",
+        "to": "AI",
+        "year": 2025
       }
     ],
     "primarySector": "VC & Finance"
@@ -3565,7 +3587,7 @@
       {
         "company": "Stanford University",
         "role": "Graduate Student (CS)",
-        "sector": "Other",
+        "sector": "Research",
         "start": 2005,
         "end": 2008,
         "note": "MS in Computer Science"
@@ -3782,7 +3804,7 @@
       {
         "company": "University College London",
         "role": "PhD Student, Neuroscience",
-        "sector": "Deep Tech / Hardware",
+        "sector": "Research / Deep Tech / Hardware",
         "start": 2005,
         "end": 2009,
         "note": "Studied memory and the hippocampus; supervised by Eleanor Maguire"
@@ -3828,7 +3850,7 @@
       {
         "company": "Stanford University",
         "role": "Professor & Director, Stanford AI Lab",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2009,
         "end": null,
         "note": "Created ImageNet (2009); co-director HAI"
@@ -3859,7 +3881,7 @@
       }
     ],
     "sectorSwitches": [],
-    "primarySector": "AI"
+    "primarySector": "Research"
   },
   {
     "name": "Yann LeCun",
@@ -3871,7 +3893,7 @@
       {
         "company": "AT&T Bell Labs",
         "role": "Researcher",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 1988,
         "end": 1996,
         "note": "Invented convolutional neural networks (LeNet); handwriting recognition for checks"
@@ -3879,14 +3901,14 @@
       {
         "company": "AT&T Labs / Bell Labs Lucent",
         "role": "Researcher",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 1996,
         "end": 2002
       },
       {
         "company": "New York University",
         "role": "Professor",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2003,
         "end": null,
         "note": "Jacob T. Schwartz Professor at Courant Institute"
@@ -3901,7 +3923,7 @@
       }
     ],
     "sectorSwitches": [],
-    "primarySector": "AI"
+    "primarySector": "Research"
   },
   {
     "name": "Andrew Ng",
@@ -3913,14 +3935,14 @@
       {
         "company": "Stanford University",
         "role": "Associate Professor & SAIL Director",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2002,
         "end": 2017
       },
       {
         "company": "Google Brain",
         "role": "Co-founder & Head",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2011,
         "end": 2012,
         "note": "Founded Google's deep learning research division"
@@ -4072,7 +4094,7 @@
       {
         "company": "Google",
         "role": "Software Engineer & Researcher",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2000,
         "end": 2021,
         "note": "Co-authored Attention Is All You Need (2017); built Meena chatbot"
@@ -4183,7 +4205,7 @@
       {
         "company": "Inria / NeuroSpin CEA",
         "role": "PhD Researcher",
-        "sector": "Deep Tech / Hardware",
+        "sector": "Research / Deep Tech / Hardware",
         "start": 2015,
         "end": 2018,
         "note": "fMRI analysis, stochastic optimization"
@@ -4232,7 +4254,7 @@
       {
         "company": "NCSA / University of Illinois",
         "role": "Software Engineer",
-        "sector": "Enterprise",
+        "sector": "Research / Enterprise",
         "start": 1992,
         "end": 1994,
         "note": "Co-created Mosaic, the first widely-used graphical web browser"
@@ -4967,7 +4989,7 @@
       {
         "company": "IBM Research",
         "role": "Researcher",
-        "sector": "Enterprise",
+        "sector": "Research / Enterprise",
         "start": 1996,
         "end": 1998,
         "note": "Internet-related research"
@@ -5275,7 +5297,7 @@
       {
         "company": "Google DeepMind",
         "role": "AI Researcher (returned)",
-        "sector": "AI",
+        "sector": "Research / AI",
         "start": 2023,
         "end": null,
         "note": "Came out of retirement to work on AI after ChatGPT launch"
@@ -5362,7 +5384,7 @@
       {
         "company": "DEC / Compaq Western Research Lab",
         "role": "Research Scientist",
-        "sector": "Enterprise",
+        "sector": "Research / Enterprise",
         "start": 1996,
         "end": 1999,
         "note": "Profiling tools, microprocessor architecture, information retrieval"
@@ -5378,7 +5400,7 @@
       {
         "company": "Google",
         "role": "Senior Fellow & Head of AI",
-        "sector": "Enterprise",
+        "sector": "Research / Enterprise",
         "start": 1999,
         "end": 2018,
         "note": "30th employee; co-created MapReduce, Bigtable, Spanner, TensorFlow, Google Brain"
@@ -5404,7 +5426,7 @@
         "year": 2018
       }
     ],
-    "primarySector": "AI"
+    "primarySector": "Research"
   },
   {
     "name": "Linus Torvalds",
@@ -5416,7 +5438,7 @@
       {
         "company": "University of Helsinki",
         "role": "Student & Creator of Linux",
-        "sector": "Enterprise",
+        "sector": "Research / Enterprise",
         "start": 1991,
         "end": 1996,
         "note": "Released Linux kernel in 1991; MS in CS"
@@ -5641,7 +5663,7 @@
       {
         "company": "Stanford University",
         "role": "PhD Student (EE)",
-        "sector": "Other",
+        "sector": "Research",
         "start": 1990,
         "end": 1995,
         "note": "Dropped PhD to build Yahoo! full-time"
@@ -6717,7 +6739,7 @@
       {
         "company": "Lawrence Livermore National Laboratory",
         "role": "Researcher",
-        "sector": "Defense",
+        "sector": "Research / Defense",
         "start": 1998,
         "end": 2003,
         "note": "Large-scale computer simulations for US DoD"
@@ -6725,7 +6747,7 @@
       {
         "company": "Stanford University",
         "role": "PhD Researcher",
-        "sector": "Defense",
+        "sector": "Research / Defense",
         "start": 2003,
         "end": 2007,
         "note": "Developed OpenFlow protocol; pioneered SDN. PhD CS 2007."
@@ -6787,7 +6809,7 @@
       {
         "company": "Stanford University",
         "role": "Professor of Computer Science",
-        "sector": "Other",
+        "sector": "Research",
         "start": 1995,
         "end": 2012,
         "note": "MacArthur Fellow 2004; NAE member 2011; Bayesian ML research"
@@ -6829,7 +6851,7 @@
         "year": 2016
       }
     ],
-    "primarySector": "AI"
+    "primarySector": "Research"
   },
   {
     "name": "Jim Keller",
@@ -6946,7 +6968,7 @@
       {
         "company": "Hangzhou Dianzi University",
         "role": "English Lecturer",
-        "sector": "Other",
+        "sector": "Research",
         "start": 1988,
         "end": 1995
       },
@@ -7157,7 +7179,7 @@
       {
         "company": "Stanford University",
         "role": "PhD Researcher (NLP)",
-        "sector": "Other",
+        "sector": "Research",
         "start": 2010,
         "end": 2014,
         "note": "PhD under Christopher Manning; GloVe word vectors, Stanford Sentiment Treebank"
@@ -7798,7 +7820,7 @@
       {
         "company": "Carnegie Mellon University",
         "role": "PhD Researcher & Faculty",
-        "sector": "Other",
+        "sector": "Research",
         "start": 2000,
         "end": 2009,
         "note": "Robotics Institute; led DARPA Grand Challenge team; won DARPA Urban Challenge 2007"
@@ -7839,7 +7861,7 @@
       {
         "company": "Carnegie Mellon University",
         "role": "Associate Professor of CS & Robotics",
-        "sector": "Other",
+        "sector": "Research",
         "start": 1980,
         "end": 1986,
         "note": "Founded Leg Laboratory; developed first self-balancing hopping robots"
@@ -7847,7 +7869,7 @@
       {
         "company": "MIT",
         "role": "Professor of EECS",
-        "sector": "Other",
+        "sector": "Research",
         "start": 1986,
         "end": 1992,
         "note": "Continued legged robotics research"
@@ -7888,7 +7910,7 @@
         "year": 2023
       }
     ],
-    "primarySector": "Deep Tech"
+    "primarySector": "Research"
   },
   {
     "name": "Mary Meeker",
@@ -8456,7 +8478,7 @@
       {
         "company": "IBM Watson Research Center",
         "role": "Researcher",
-        "sector": "Enterprise",
+        "sector": "Research / Enterprise",
         "start": 1990,
         "end": 2009,
         "note": "18 years in research; networking, storage, and security"

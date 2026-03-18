@@ -242,6 +242,7 @@ const BROAD_COLORS = {
   'Defense': '#ef4444',      // red
   'Deep Tech': '#10b981',    // emerald green
   'VC & Finance': '#c084fc', // light violet (distinct from crypto purple)
+  'Research': '#a3e635',     // lime green (distinct from emerald Deep Tech)
   'Other': '#6b7280',        // gray
 };
 
@@ -271,7 +272,9 @@ function getSectorColor(s) { return BROAD_COLORS[broadSector(s)] || '#6b7280'; }
 function broadSector(s) {
   if (!s) return 'Other';
   const l = s.toLowerCase();
-  // AI: anything AI, ML, AI safety, AI infra
+  // Research: academia, professors, PhD, national labs, pure research (check EARLY so "Research / AI" → Research, not AI)
+  if (l.startsWith('research') || l.includes('academia') || l.includes('professor') || l.includes('university') || l.includes('phd') || l.includes('postdoc') || l.includes('national lab') || l.includes('bell labs')) return 'Research';
+  // AI: anything AI, ML, AI safety, AI infra (but NOT "AI Research" — caught above)
   if (l.includes('ai') || l.includes('artificial') || l.includes('machine learning')) return 'AI';
   // Crypto: blockchain, NFTs, crypto exchanges (but NOT crypto VC — that's VC)
   if ((l.includes('crypto') || l.includes('nft') || l.includes('blockchain')) && !l.includes('vc')) return 'Crypto';
