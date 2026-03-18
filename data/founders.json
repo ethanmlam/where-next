@@ -49,7 +49,8 @@
         "to": "Neurotech",
         "year": 2024
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Balaji Srinivasan",
@@ -121,7 +122,8 @@
         "to": "Education / Network States",
         "year": 2024
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Alex Atallah",
@@ -164,7 +166,8 @@
         "to": "AI Infrastructure",
         "year": 2024
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Brian Armstrong",
@@ -230,7 +233,8 @@
         "year": 2022,
         "note": "Side venture while still CEO of Coinbase"
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Matt Huang",
@@ -275,7 +279,8 @@
         "to": "Crypto VC",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Dario Amodei",
@@ -326,7 +331,8 @@
         "to": "AI",
         "year": 2014
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Mustafa Suleyman",
@@ -379,7 +385,8 @@
         "to": "AI Research",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Jack Dorsey",
@@ -419,7 +426,8 @@
         "to": "Fintech",
         "year": 2009
       }
-    ]
+    ],
+    "primarySector": "Social"
   },
   {
     "name": "Stewart Butterfield",
@@ -477,7 +485,8 @@
         "to": "Enterprise SaaS",
         "year": 2013
       }
-    ]
+    ],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Reid Hoffman",
@@ -554,7 +563,8 @@
         "to": "Consumer AI",
         "year": 2022
       }
-    ]
+    ],
+    "primarySector": "Social"
   },
   {
     "name": "Elon Musk",
@@ -658,7 +668,8 @@
         "to": "Social Media",
         "year": 2022
       }
-    ]
+    ],
+    "primarySector": "Hardware / Energy"
   },
   {
     "name": "Peter Thiel",
@@ -716,7 +727,8 @@
         "to": "Defense Tech / Data",
         "year": 2003
       }
-    ]
+    ],
+    "primarySector": "VC"
   },
   {
     "name": "Devin Finzer",
@@ -760,7 +772,8 @@
         "to": "Crypto / NFTs",
         "year": 2017
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Sam Altman",
@@ -812,7 +825,8 @@
         "to": "AI",
         "year": 2019
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Patrick Collison",
@@ -865,7 +879,8 @@
         "year": 2021,
         "note": "Side venture while still CEO of Stripe"
       }
-    ]
+    ],
+    "primarySector": "Finance / Fintech"
   },
   {
     "name": "Naval Ravikant",
@@ -910,7 +925,8 @@
         "to": "Fintech",
         "year": 2010
       }
-    ]
+    ],
+    "primarySector": "Finance / Fintech"
   },
   {
     "name": "Vitalik Buterin",
@@ -935,7 +951,8 @@
         "note": "Smart contract platform. Thiel Fellow."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Crypto"
   },
   {
     "name": "Dylan Field",
@@ -953,7 +970,8 @@
         "note": "Web-based design tool. Thiel Fellow. Adobe acquisition blocked."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "Sahil Lavingia",
@@ -997,7 +1015,8 @@
         "to": "Government / Policy",
         "year": 2025
       }
-    ]
+    ],
+    "primarySector": "Finance / Fintech"
   },
   {
     "name": "Ilya Sutskever",
@@ -1029,7 +1048,8 @@
         "note": "$1B raised Sep 2024. Valued at $32B by Apr 2025."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Daniela Amodei",
@@ -1066,7 +1086,8 @@
         "to": "AI",
         "year": 2018
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Andrej Karpathy",
@@ -1117,7 +1138,8 @@
         "to": "AI",
         "year": 2023
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Changpeng Zhao",
@@ -1155,7 +1177,8 @@
         "to": "Crypto",
         "year": 2014
       }
-    ]
+    ],
+    "primarySector": "Crypto"
   },
   {
     "name": "Palmer Luckey",
@@ -1187,7 +1210,8 @@
         "to": "Defense Tech",
         "year": 2017
       }
-    ]
+    ],
+    "primarySector": "Defense / Aerospace"
   },
   {
     "name": "Kevin Systrom",
@@ -1231,7 +1255,8 @@
         "to": "AI",
         "year": 2022
       }
-    ]
+    ],
+    "primarySector": "Social"
   },
   {
     "name": "Ev Williams",
@@ -1274,7 +1299,8 @@
         "to": "Internet / Media",
         "year": 2012
       }
-    ]
+    ],
+    "primarySector": "Social"
   },
   {
     "name": "Alex Karp",
@@ -1291,7 +1317,8 @@
         "end": null
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Defense / Aerospace"
   },
   {
     "name": "Brian Chesky",
@@ -1308,7 +1335,8 @@
         "end": null
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Consumer Tech"
   },
   {
     "name": "Daniel Gross",
@@ -1366,7 +1394,8 @@
         "to": "AI Safety",
         "year": 2024
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Alexandr Wang",
@@ -1384,7 +1413,8 @@
         "note": "Data labeling for AI. Youngest self-made billionaire (age 25)."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "AI"
   },
   {
     "name": "Garry Tan",
@@ -1429,7 +1459,8 @@
         "to": "VC",
         "year": 2011
       }
-    ]
+    ],
+    "primarySector": "VC"
   },
   {
     "name": "Tobi Lutke",
@@ -1446,7 +1477,8 @@
         "end": null
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Enterprise"
   },
   {
     "name": "George Hotz",
@@ -1491,7 +1523,8 @@
         "to": "AI Infrastructure",
         "year": 2023
       }
-    ]
+    ],
+    "primarySector": "AI"
   },
   {
     "name": "Nat Friedman",
@@ -1538,7 +1571,8 @@
         "to": "VC",
         "year": 2022
       }
-    ]
+    ],
+    "primarySector": "VC"
   },
   {
     "name": "Whitney Wolfe Herd",
@@ -1563,7 +1597,8 @@
         "note": "IPO 2021. Youngest female self-made billionaire at time."
       }
     ],
-    "sectorSwitches": []
+    "sectorSwitches": [],
+    "primarySector": "Social"
   },
   {
     "name": "Emmett Shear",
@@ -1619,7 +1654,8 @@
         "to": "VC",
         "year": 2024
       }
-    ]
+    ],
+    "primarySector": "VC"
   },
   {
     "name": "Logan Paul",
@@ -1663,6 +1699,7 @@
         "to": "Consumer Tech",
         "year": 2022
       }
-    ]
+    ],
+    "primarySector": "Consumer Tech"
   }
 ]

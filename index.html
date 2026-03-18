@@ -650,47 +650,59 @@ function renderAlluvial() {
     });
   });
 
-  // Names on right side — positioned in the reserved name column
+  // Names on right side — grouped by primarySector (what they're MOST known for)
   const nameX = vizW + 8;
-  // Group by last era's sector for neat labeling
-  const lastEraGroups = {};
+  const primaryGroups = {};
   founders.forEach((founder, fi) => {
     const dotPos = founderDotPos[fi];
     if (!dotPos) return;
-    // Find last era they appear in
     let lastEra = -1;
     ERAS.forEach((_, i) => { if (dotPos[i]) lastEra = i; });
     if (lastEra < 0) return;
-    const sector = founderEras[fi][lastEra].broad;
-    if (!lastEraGroups[sector]) lastEraGroups[sector] = [];
-    lastEraGroups[sector].push({ founder, fi, y: dotPos[lastEra].y });
+    // Use primarySector if set, otherwise fall back to last era's broad sector
+    const sector = founder.primarySector || founderEras[fi][lastEra].broad;
+    if (!primaryGroups[sector]) primaryGroups[sector] = [];
+    primaryGroups[sector].push({ founder, fi, y: dotPos[lastEra].y });
   });
 
-  // Sort within each sector group by y position
-  Object.values(lastEraGroups).forEach(group => group.sort((a, b) => a.y - b.y));
+  // Sort within each group, then lay out names sequentially to avoid overlap
+  Object.values(primaryGroups).forEach(group => group.sort((a, b) => a.y - b.y));
   const allNames = [];
-  sectorOrder.forEach(s => { if (lastEraGroups[s]) allNames.push(...lastEraGroups[s]); });
+  sectorOrder.forEach(s => { if (primaryGroups[s]) allNames.push(...primaryGroups[s]); });
+  // Also catch any sectors not in sectorOrder
+  Object.keys(primaryGroups).forEach(s => { if (!sectorOrder.includes(s) && primaryGroups[s]) allNames.push(...primaryGroups[s]); });
 
-  allNames.forEach(({ founder, fi, y }) => {
+  // Space names vertically so they don't overlap (min 14px apart)
+  let lastNameY = 0;
+  allNames.forEach(item => {
+    item.nameY = Math.max(item.y, lastNameY + 14);
+    lastNameY = item.nameY;
+  });
+
+  allNames.forEach(({ founder, fi, nameY }) => {
+    const primaryColor = BROAD_COLORS[founder.primarySector] || '#777';
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', nameX);
-    text.setAttribute('y', y + 4);
-    text.setAttribute('fill', '#777');
+    text.setAttribute('y', nameY + 4);
+    text.setAttribute('fill', primaryColor);
     text.setAttribute('font-size', '11');
+    text.setAttribute('opacity', '0.7');
     text.setAttribute('data-founder', founder.id);
     text.style.cursor = 'pointer';
-    text.style.transition = 'fill 0.15s';
+    text.style.transition = 'fill 0.15s, opacity 0.15s';
     text.textContent = founder.name;
 
     text.addEventListener('mouseenter', (e) => {
       text.setAttribute('fill', '#fff');
+      text.setAttribute('opacity', '1');
       highlightedPerson = founder.id;
       updateHighlights();
       showTooltip(e, founderTooltipHTML(founder));
     });
     text.addEventListener('mousemove', moveTooltip);
     text.addEventListener('mouseleave', () => {
-      text.setAttribute('fill', '#777');
+      text.setAttribute('fill', primaryColor);
+      text.setAttribute('opacity', '0.7');
       highlightedPerson = null;
       updateHighlights();
       hideTooltip();
