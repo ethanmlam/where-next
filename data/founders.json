@@ -427,7 +427,7 @@
         "year": 2009
       }
     ],
-    "primarySector": "Social"
+    "primarySector": "Social & Media"
   },
   {
     "name": "Stewart Butterfield",
@@ -564,7 +564,7 @@
         "year": 2022
       }
     ],
-    "primarySector": "Social"
+    "primarySector": "Social & Media"
   },
   {
     "name": "Elon Musk",
@@ -669,7 +669,7 @@
         "year": 2022
       }
     ],
-    "primarySector": "Hardware / Energy"
+    "primarySector": "Deep Tech"
   },
   {
     "name": "Peter Thiel",
@@ -728,7 +728,7 @@
         "year": 2003
       }
     ],
-    "primarySector": "VC"
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Devin Finzer",
@@ -880,7 +880,7 @@
         "note": "Side venture while still CEO of Stripe"
       }
     ],
-    "primarySector": "Finance / Fintech"
+    "primarySector": "Fintech"
   },
   {
     "name": "Naval Ravikant",
@@ -926,7 +926,7 @@
         "year": 2010
       }
     ],
-    "primarySector": "Finance / Fintech"
+    "primarySector": "Fintech"
   },
   {
     "name": "Vitalik Buterin",
@@ -1016,7 +1016,7 @@
         "year": 2025
       }
     ],
-    "primarySector": "Finance / Fintech"
+    "primarySector": "Fintech"
   },
   {
     "name": "Ilya Sutskever",
@@ -1211,7 +1211,7 @@
         "year": 2017
       }
     ],
-    "primarySector": "Defense / Aerospace"
+    "primarySector": "Defense"
   },
   {
     "name": "Kevin Systrom",
@@ -1256,7 +1256,7 @@
         "year": 2022
       }
     ],
-    "primarySector": "Social"
+    "primarySector": "Social & Media"
   },
   {
     "name": "Ev Williams",
@@ -1300,7 +1300,7 @@
         "year": 2012
       }
     ],
-    "primarySector": "Social"
+    "primarySector": "Social & Media"
   },
   {
     "name": "Alex Karp",
@@ -1318,7 +1318,7 @@
       }
     ],
     "sectorSwitches": [],
-    "primarySector": "Defense / Aerospace"
+    "primarySector": "Defense"
   },
   {
     "name": "Brian Chesky",
@@ -1336,7 +1336,7 @@
       }
     ],
     "sectorSwitches": [],
-    "primarySector": "Consumer Tech"
+    "primarySector": "Consumer"
   },
   {
     "name": "Daniel Gross",
@@ -1460,7 +1460,7 @@
         "year": 2011
       }
     ],
-    "primarySector": "VC"
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Tobi Lutke",
@@ -1572,7 +1572,7 @@
         "year": 2022
       }
     ],
-    "primarySector": "VC"
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Whitney Wolfe Herd",
@@ -1598,7 +1598,7 @@
       }
     ],
     "sectorSwitches": [],
-    "primarySector": "Social"
+    "primarySector": "Social & Media"
   },
   {
     "name": "Emmett Shear",
@@ -1655,7 +1655,7 @@
         "year": 2024
       }
     ],
-    "primarySector": "VC"
+    "primarySector": "VC & Finance"
   },
   {
     "name": "Logan Paul",
@@ -1700,6 +1700,6 @@
         "year": 2022
       }
     ],
-    "primarySector": "Consumer Tech"
+    "primarySector": "Consumer"
   }
 ]
