@@ -1176,9 +1176,11 @@ addInput.addEventListener('input', () => {
       if (wikiResults.length > 0) {
         html += `<div style="padding:4px 12px;color:#555;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Add from Wikipedia</div>`;
         html += wikiResults.slice(0, 5).map(r => {
-          return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-url="${r.url || ''}">
+          const displayName = r.name.split('(')[0].trim();
+          const qualifier = r.name.includes('(') ? r.name.match(/\(([^)]+)\)/)?.[1] || '' : '';
+          return `<div class="add-suggestion" data-wiki-name="${r.name}" data-wiki-title="${r.name}" data-wiki-url="${r.url || ''}">
             <span class="sg-dot" style="background:#555"></span>
-            <span><span class="sg-name">${r.name}</span> <span class="sg-sub">${(r.description || r.url || '').slice(0,60)}</span></span>
+            <span><span class="sg-name">${displayName}</span> <span class="sg-sub">${qualifier || (r.description || '').slice(0,60)}</span></span>
           </div>`;
         }).join('');
       }
@@ -1245,25 +1247,34 @@ addInput.addEventListener('input', () => {
       });
     });
 
-    // Add from Wikipedia — adds a stub entry to chart
+    // Add from Wikipedia — fetch career data then add to chart
     suggestions.querySelectorAll('[data-wiki-name]').forEach(el => {
       el.addEventListener('mousedown', async (e) => {
         e.preventDefault();
         const name = el.dataset.wikiName;
-        const url = el.dataset.wikiUrl;
-        const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        if (ALL_FOUNDERS.some(f => f.id === id)) return; // already exists
-        el.querySelector('.sg-sub').textContent = 'adding...';
-        const newFounder = {
-          name, id, source: url,
-          roles: [{ company: 'Career data pending', role: 'Added from Wikipedia', sector: 'Other', start: 2020, end: null }],
-          sectorSwitches: [],
-          primarySector: 'Other',
-          verified: null
-        };
-        ALL_FOUNDERS.push(newFounder);
-        FOUNDERS_DATA.push(newFounder);
-        refresh();
+        const wikiTitle = el.dataset.wikiTitle || name;
+        const id = name.split('(')[0].trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        if (ALL_FOUNDERS.some(f => f.id === id)) return;
+        el.querySelector('.sg-sub').textContent = 'loading career...';
+        try {
+          const resp = await fetch(`/dashboard/api/where-next/wiki-career?title=${encodeURIComponent(wikiTitle)}`);
+          const data = await resp.json();
+          if (data.name) {
+            const newFounder = {
+              name: data.name,
+              id: data.id || id,
+              source: data.source,
+              roles: data.roles || [],
+              sectorSwitches: data.sectorSwitches || [],
+              primarySector: data.primarySector || 'Other',
+            };
+            ALL_FOUNDERS.push(newFounder);
+            FOUNDERS_DATA.push(newFounder);
+            refresh();
+          }
+        } catch(err) {
+          console.error('Wiki career fetch failed:', err);
+        }
         addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
       });
     });
