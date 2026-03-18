@@ -281,10 +281,10 @@ function broadSector(s) {
   if (l.includes('social') || l.includes('dating') || l.includes('media') || l.includes('internet') || l.includes('gaming') || l.includes('ad tech')) return 'Social & Media';
   // Enterprise: SaaS, enterprise tools, HR, developer tools, video conferencing, workforce
   if (l.includes('enterprise') || l.includes('saas') || l.includes('hr ') || l.includes('workforce') || l.includes('developer tool') || l.includes('video conferenc')) return 'Enterprise';
-  // Fintech: payments, fintech, finance (not hedge/VC)
-  if (l.includes('fintech') || l.includes('payment') || (l.includes('finance') && !l.includes('hedge'))) return 'Fintech';
-  // VC & Finance: VC, hedge funds, investing, crypto VC, startup accelerator
-  if (l.includes('vc') || l.includes('venture') || l.includes('hedge') || l.includes('crypto vc') || l.includes('accelerator')) return 'VC & Finance';
+  // VC & Finance: VC, hedge funds, investing, crypto VC, startup accelerator (check BEFORE fintech to avoid "VC & Finance" matching "finance")
+  if (l.includes('vc') || l.includes('venture') || l.includes('hedge') || l.includes('accelerator') || l.includes('angel invest') || l.includes('private equity')) return 'VC & Finance';
+  // Fintech: payments, fintech, finance
+  if (l.includes('fintech') || l.includes('payment') || l.includes('finance')) return 'Fintech';
   // Deep Tech: biotech, neurotech, clean energy, automotive, aerospace, space, semiconductors, hardware, tunneling, science, smart home
   if (l.includes('biotech') || l.includes('neurotech') || l.includes('neuroscience') || l.includes('energy') || l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('longevity') || l.includes('science') || l.includes('academia') || l.includes('aerospace') || l.includes('space') || l.includes('semiconductor') || l.includes('smart home') || l.includes('deep tech') || l.includes('robotics') || l.includes('hardware') || l.includes('nuclear') || l.includes('climate') || l.includes('genomic') || l.includes('lidar') || l.includes('chip') || l.includes('autonomous')) return 'Deep Tech';
   // Consumer: consumer tech, consumer products, education, e-commerce, fashion, mobile apps, food, travel, logistics, ride
