@@ -275,22 +275,21 @@ function broadSector(s) {
   if (l.includes('ai') || l.includes('artificial') || l.includes('machine learning')) return 'AI';
   // Crypto: blockchain, NFTs, crypto exchanges (but NOT crypto VC — that's VC)
   if ((l.includes('crypto') || l.includes('nft') || l.includes('blockchain')) && !l.includes('vc')) return 'Crypto';
-  // Defense: defense tech, aerospace, military
-  if (l.includes('defense') || l.includes('aerospace') || l.includes('military') || l.includes('government') || l.includes('policy')) return 'Defense';
-  // Social & Media: social networks, dating, media, internet/media, gaming, content
-  if (l.includes('social') || l.includes('dating') || l.includes('media') || l.includes('internet') || l.includes('gaming')) return 'Social & Media';
-  // Enterprise: SaaS, enterprise tools
-  if (l.includes('enterprise') || l.includes('saas')) return 'Enterprise';
+  // Defense: defense tech, military (NOT aerospace/space — that's Deep Tech)
+  if (l.includes('defense') || l.includes('military') || l.includes('government') || l.includes('policy')) return 'Defense';
+  // Social & Media: social networks, dating, media, internet/media, gaming, content, ad tech
+  if (l.includes('social') || l.includes('dating') || l.includes('media') || l.includes('internet') || l.includes('gaming') || l.includes('ad tech')) return 'Social & Media';
+  // Enterprise: SaaS, enterprise tools, HR, developer tools, video conferencing, workforce
+  if (l.includes('enterprise') || l.includes('saas') || l.includes('hr ') || l.includes('workforce') || l.includes('developer tool') || l.includes('video conferenc')) return 'Enterprise';
   // Fintech: payments, fintech, finance (not hedge/VC)
-  if (l.includes('fintech') || (l.includes('finance') && !l.includes('hedge'))) return 'Fintech';
-  // VC & Finance: VC, hedge funds, investing, crypto VC
-  if (l.includes('vc') || l.includes('venture') || l.includes('hedge') || l.includes('crypto vc')) return 'VC & Finance';
-  // Deep Tech: biotech, neurotech, clean energy, automotive, hardware, aerospace, tunneling, science
-  if (l.includes('biotech') || l.includes('neurotech') || l.includes('neuroscience') || l.includes('energy') || l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('longevity') || l.includes('science') || l.includes('academia')) return 'Deep Tech';
-  // Consumer: consumer tech, consumer products, education
-  if (l.includes('consumer') || l.includes('photo') || l.includes('education') || l.includes('network state')) return 'Consumer';
-  // Other: law, consulting, government, etc.
-  
+  if (l.includes('fintech') || l.includes('payment') || (l.includes('finance') && !l.includes('hedge'))) return 'Fintech';
+  // VC & Finance: VC, hedge funds, investing, crypto VC, startup accelerator
+  if (l.includes('vc') || l.includes('venture') || l.includes('hedge') || l.includes('crypto vc') || l.includes('accelerator')) return 'VC & Finance';
+  // Deep Tech: biotech, neurotech, clean energy, automotive, aerospace, space, semiconductors, hardware, tunneling, science, smart home
+  if (l.includes('biotech') || l.includes('neurotech') || l.includes('neuroscience') || l.includes('energy') || l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('longevity') || l.includes('science') || l.includes('academia') || l.includes('aerospace') || l.includes('space') || l.includes('semiconductor') || l.includes('smart home')) return 'Deep Tech';
+  // Consumer: consumer tech, consumer products, education, e-commerce, fashion, mobile apps
+  if (l.includes('consumer') || l.includes('photo') || l.includes('education') || l.includes('network state') || l.includes('e-commerce') || l.includes('fashion') || l.includes('mobile app')) return 'Consumer';
+  // Catch remaining: consulting, law, distribution -> Other
   return 'Other';
 }
 
@@ -1131,8 +1130,8 @@ addInput.addEventListener('input', () => {
     }
 
     // Show on-chart matches (for quick find/highlight)
-    if (onChart.length > 0 && onChart.length <= 5) {
-      html += onChart.slice(0, 3).map(f => {
+    if (onChart.length > 0) {
+      html += onChart.slice(0, 5).map(f => {
         const color = BROAD_COLORS[f.primarySector] || '#6b7280';
         return `<div class="add-suggestion" data-highlight="${f.id}">
           <span class="sg-dot" style="background:${color}"></span>
