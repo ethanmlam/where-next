@@ -369,7 +369,7 @@
         "sector": "Consumer AI",
         "start": 2022,
         "end": 2024,
-        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Karén Simonyan"
+        "note": "Built Pi chatbot. Co-founded with Reid Hoffman and Kar\u00e9n Simonyan"
       },
       {
         "company": "Microsoft AI",
@@ -4277,7 +4277,7 @@
         "note": "fMRI analysis, stochastic optimization"
       },
       {
-        "company": "École normale supérieure",
+        "company": "\u00c9cole normale sup\u00e9rieure",
         "role": "Postdoctoral Researcher",
         "sector": "AI",
         "start": 2018,
@@ -4298,7 +4298,7 @@
         "sector": "AI",
         "start": 2023,
         "end": null,
-        "note": "European open-weight LLM leader; €11.7B valuation (2025)"
+        "note": "European open-weight LLM leader; \u20ac11.7B valuation (2025)"
       }
     ],
     "sectorSwitches": [
@@ -5589,7 +5589,7 @@
         "sector": "Defense",
         "start": 2021,
         "end": null,
-        "note": "AI defense technology company; €209M raised"
+        "note": "AI defense technology company; \u20ac209M raised"
       },
       {
         "company": "Prima Materia",
@@ -7542,7 +7542,7 @@
       },
       {
         "company": "Amazon",
-        "role": "Marketing Manager → SVP",
+        "role": "Marketing Manager \u2192 SVP",
         "sector": "Consumer",
         "start": 1997,
         "end": 2003,
@@ -7747,7 +7747,7 @@
       },
       {
         "company": "Kleiner Perkins",
-        "role": "Partner → Chairman",
+        "role": "Partner \u2192 Chairman",
         "sector": "VC & Finance",
         "start": 1980,
         "end": null,
@@ -7780,7 +7780,7 @@
       },
       {
         "company": "Sequoia Capital",
-        "role": "Partner → Partner Emeritus",
+        "role": "Partner \u2192 Partner Emeritus",
         "sector": "VC & Finance",
         "start": 1986,
         "end": null,
@@ -7805,7 +7805,7 @@
     "roles": [
       {
         "company": "Euclid Partners",
-        "role": "Associate → General Partner",
+        "role": "Associate \u2192 General Partner",
         "sector": "VC & Finance",
         "start": 1987,
         "end": 1996
@@ -7887,7 +7887,7 @@
     "roles": [
       {
         "company": "Twitter",
-        "role": "Software Engineer → CTO",
+        "role": "Software Engineer \u2192 CTO",
         "sector": "Social & Media",
         "start": 2011,
         "end": 2021,
@@ -7928,7 +7928,7 @@
     "roles": [
       {
         "company": "Turner Broadcasting / NBCUniversal",
-        "role": "Ad Sales Executive → Chairman Global Advertising",
+        "role": "Ad Sales Executive \u2192 Chairman Global Advertising",
         "sector": "Social & Media",
         "start": 1992,
         "end": 2023,
@@ -8438,7 +8438,7 @@
     "born": 1982,
     "source": "https://en.wikipedia.org/wiki/Qasar_Younis",
     "verified": "2026-03-18",
-    "primarySector": "Deep Tech",
+    "primarySector": "Defense",
     "roles": [
       {
         "company": "General Motors / Bosch",
@@ -8483,7 +8483,7 @@
       {
         "company": "Applied Intuition",
         "role": "Co-founder & CEO",
-        "sector": "Autonomous Vehicle Simulation / Defense Tech",
+        "sector": "Defense Tech / Autonomous Simulation",
         "start": 2017,
         "end": null,
         "note": "Physical AI platform for vehicles, industrial and defense systems; $15B valuation (2025)"
@@ -9853,12 +9853,12 @@
     "born": 1967,
     "source": "https://en.wikipedia.org/wiki/Jony_Ive",
     "verified": "2026-03-18",
-    "primarySector": "Consumer",
+    "primarySector": "Deep Tech",
     "roles": [
       {
         "company": "Apple",
         "role": "Chief Design Officer",
-        "sector": "Consumer Tech",
+        "sector": "Consumer Tech / Hardware",
         "start": 1992,
         "end": 2019,
         "note": "Designed iMac, iPod, iPhone, iPad. Knighted 2012"
@@ -9866,17 +9866,30 @@
       {
         "company": "LoveFrom",
         "role": "Co-founder",
-        "sector": "Design",
+        "sector": "Hardware / Design",
         "start": 2019,
+        "end": 2025,
+        "note": "Design firm. Clients: Airbnb, Ferrari"
+      },
+      {
+        "company": "OpenAI (io)",
+        "role": "Co-founder",
+        "sector": "AI / Hardware",
+        "start": 2025,
         "end": null,
-        "note": "Design firm. Working with OpenAI on AI hardware device. Also clients: Airbnb, Ferrari"
+        "note": "LoveFrom acquired by OpenAI. Building AI hardware device"
       }
     ],
     "sectorSwitches": [
       {
         "from": "Consumer Tech",
-        "to": "Design",
+        "to": "Hardware / Design",
         "year": 2019
+      },
+      {
+        "from": "Hardware / Design",
+        "to": "AI",
+        "year": 2025
       }
     ]
   },
@@ -10262,6 +10275,917 @@
         "from": "Consumer Tech / Streaming",
         "to": "VC / Advisory",
         "year": 2003
+      }
+    ]
+  },
+  {
+    "id": "bob-iger",
+    "name": "Bob Iger",
+    "primarySector": "Social & Media",
+    "roles": [
+      {
+        "company": "ABC Television",
+        "role": "President",
+        "sector": "Media / Entertainment",
+        "start": 1994,
+        "end": 1999
+      },
+      {
+        "company": "Disney",
+        "role": "CEO",
+        "sector": "Media / Entertainment",
+        "start": 2005,
+        "end": 2020
+      },
+      {
+        "company": "Disney",
+        "role": "CEO (return)",
+        "sector": "Media / Entertainment + Streaming",
+        "start": 2022,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "phil-libin",
+    "name": "Phil Libin",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Engine 5",
+        "role": "Co-founder",
+        "sector": "Enterprise Software",
+        "start": 2000,
+        "end": 2002
+      },
+      {
+        "company": "Evernote",
+        "role": "Co-founder & CEO",
+        "sector": "Productivity / SaaS",
+        "start": 2007,
+        "end": 2015
+      },
+      {
+        "company": "General Catalyst",
+        "role": "Managing Director",
+        "sector": "VC",
+        "start": 2016,
+        "end": 2018
+      },
+      {
+        "company": "All Turtles / mmhmm",
+        "role": "CEO",
+        "sector": "AI / Productivity",
+        "start": 2018,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "mike-cannon-brookes",
+    "name": "Mike Cannon-Brookes",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Atlassian",
+        "role": "Co-founder & Co-CEO",
+        "sector": "Enterprise Software / DevTools",
+        "start": 2002,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "scott-farquhar",
+    "name": "Scott Farquhar",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Atlassian",
+        "role": "Co-founder & Co-CEO",
+        "sector": "Enterprise Software / DevTools",
+        "start": 2002,
+        "end": 2024
+      },
+      {
+        "company": "Skip Capital",
+        "role": "Co-founder",
+        "sector": "VC / Family Office",
+        "start": 2017,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "aaron-patzer",
+    "name": "Aaron Patzer",
+    "primarySector": "Fintech",
+    "roles": [
+      {
+        "company": "Mint.com",
+        "role": "Founder & CEO",
+        "sector": "Fintech / Personal Finance",
+        "start": 2006,
+        "end": 2009,
+        "note": "Sold to Intuit for $170M"
+      },
+      {
+        "company": "Intuit",
+        "role": "VP & GM, Personal Finance",
+        "sector": "Fintech / Enterprise",
+        "start": 2009,
+        "end": 2012
+      },
+      {
+        "company": "Vital Connect",
+        "role": "CEO",
+        "sector": "HealthTech / Wearables",
+        "start": 2013,
+        "end": 2015
+      }
+    ]
+  },
+  {
+    "id": "pedro-franceschi",
+    "name": "Pedro Franceschi",
+    "primarySector": "Fintech",
+    "roles": [
+      {
+        "company": "Brex",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech / Corporate Cards",
+        "start": 2017,
+        "end": null,
+        "note": "YC W17, valued at $12B+"
+      }
+    ]
+  },
+  {
+    "id": "shishir-mehrotra",
+    "name": "Shishir Mehrotra",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Microsoft",
+        "role": "Group PM",
+        "sector": "Enterprise Software",
+        "start": 2003,
+        "end": 2008
+      },
+      {
+        "company": "YouTube",
+        "role": "VP Product",
+        "sector": "Social Media / Video",
+        "start": 2008,
+        "end": 2014
+      },
+      {
+        "company": "Coda",
+        "role": "Co-founder & CEO",
+        "sector": "Productivity / SaaS",
+        "start": 2014,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "ivan-zhao",
+    "name": "Ivan Zhao",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Inkling",
+        "role": "Designer",
+        "sector": "Enterprise / Publishing",
+        "start": 2012,
+        "end": 2013
+      },
+      {
+        "company": "Notion",
+        "role": "Co-founder & CEO",
+        "sector": "Productivity / SaaS",
+        "start": 2013,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "peter-diamandis",
+    "name": "Peter Diamandis",
+    "primarySector": "Deep Tech",
+    "roles": [
+      {
+        "company": "XPRIZE Foundation",
+        "role": "Founder & Chairman",
+        "sector": "Nonprofit / Innovation",
+        "start": 1994,
+        "end": null
+      },
+      {
+        "company": "Singularity University",
+        "role": "Co-founder & Chairman",
+        "sector": "Education / Deep Tech",
+        "start": 2008,
+        "end": 2020
+      },
+      {
+        "company": "Celularity / Fountain Life",
+        "role": "Co-founder",
+        "sector": "Biotech / Longevity",
+        "start": 2017,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "nat-turner",
+    "name": "Nat Turner",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Invite Media",
+        "role": "Co-founder & CEO",
+        "sector": "AdTech / Programmatic",
+        "start": 2007,
+        "end": 2010,
+        "note": "Sold to Google for $81M"
+      },
+      {
+        "company": "Flatiron Health",
+        "role": "Co-founder & CEO",
+        "sector": "HealthTech / Oncology Data",
+        "start": 2012,
+        "end": 2021,
+        "note": "Sold to Roche for $1.9B"
+      },
+      {
+        "company": "Collective Health Capital",
+        "role": "Managing Partner",
+        "sector": "VC / HealthTech",
+        "start": 2022,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "trent-mcconaghy",
+    "name": "Trent McConaghy",
+    "primarySector": "Crypto",
+    "roles": [
+      {
+        "company": "Solido Design Automation",
+        "role": "Co-founder & CTO",
+        "sector": "EDA / Semiconductor",
+        "start": 2004,
+        "end": 2017,
+        "note": "Sold to Siemens"
+      },
+      {
+        "company": "BigchainDB / Ocean Protocol",
+        "role": "Co-founder",
+        "sector": "Crypto / Data Marketplace",
+        "start": 2016,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "luis-von-ahn",
+    "name": "Luis von Ahn",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "reCAPTCHA",
+        "role": "Co-creator",
+        "sector": "Internet / Security",
+        "start": 2007,
+        "end": 2009,
+        "note": "Sold to Google"
+      },
+      {
+        "company": "Duolingo",
+        "role": "Co-founder & CEO",
+        "sector": "EdTech / Consumer",
+        "start": 2011,
+        "end": null,
+        "note": "IPO 2021, $6B+ market cap"
+      }
+    ]
+  },
+  {
+    "id": "david-risher",
+    "name": "David Risher",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "Amazon",
+        "role": "SVP Retail",
+        "sector": "E-commerce",
+        "start": 1997,
+        "end": 2002
+      },
+      {
+        "company": "Worldreader",
+        "role": "Co-founder & CEO",
+        "sector": "Nonprofit / EdTech",
+        "start": 2010,
+        "end": 2023
+      },
+      {
+        "company": "Lyft",
+        "role": "CEO",
+        "sector": "Ride-hailing / Mobility",
+        "start": 2023,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "andrew-houston",
+    "name": "Arash Ferdowsi",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "Dropbox",
+        "role": "Co-founder & CTO",
+        "sector": "Cloud Storage / SaaS",
+        "start": 2007,
+        "end": 2020
+      }
+    ]
+  },
+  {
+    "id": "daniel-dines",
+    "name": "Daniel Dines",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Microsoft",
+        "role": "Software Engineer",
+        "sector": "Enterprise Software",
+        "start": 2001,
+        "end": 2005
+      },
+      {
+        "company": "UiPath",
+        "role": "Co-founder & CEO",
+        "sector": "Enterprise / RPA / AI",
+        "start": 2005,
+        "end": null,
+        "note": "IPO 2021, $35B peak valuation"
+      }
+    ]
+  },
+  {
+    "id": "julia-hartz",
+    "name": "Julia Hartz",
+    "primarySector": "Consumer",
+    "roles": [
+      {
+        "company": "FX Networks",
+        "role": "Development Executive",
+        "sector": "Media / Entertainment",
+        "start": 2003,
+        "end": 2008
+      },
+      {
+        "company": "Eventbrite",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer / Events Platform",
+        "start": 2006,
+        "end": null,
+        "note": "IPO 2018"
+      }
+    ]
+  },
+  {
+    "id": "rene-lacerte",
+    "name": "Ren\u00e9 Lacerte",
+    "primarySector": "Fintech",
+    "roles": [
+      {
+        "company": "PayCycle",
+        "role": "Co-founder & CEO",
+        "sector": "Fintech / Payroll",
+        "start": 1999,
+        "end": 2009,
+        "note": "Sold to Intuit"
+      },
+      {
+        "company": "BILL (Bill.com)",
+        "role": "Founder & CEO",
+        "sector": "Fintech / B2B Payments",
+        "start": 2006,
+        "end": null,
+        "note": "IPO 2019, $25B+ peak"
+      }
+    ]
+  },
+  {
+    "id": "jay-chaudhry",
+    "name": "Jay Chaudhry",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "SecureIT",
+        "role": "Founder & CEO",
+        "sector": "Cybersecurity",
+        "start": 1996,
+        "end": 1998,
+        "note": "Sold to VeriSign"
+      },
+      {
+        "company": "CipherTrust",
+        "role": "Founder & CEO",
+        "sector": "Cybersecurity / Email",
+        "start": 2000,
+        "end": 2006,
+        "note": "Sold to Secure Computing"
+      },
+      {
+        "company": "Zscaler",
+        "role": "Founder, Chairman & CEO",
+        "sector": "Cybersecurity / Cloud",
+        "start": 2007,
+        "end": null,
+        "note": "IPO 2018, $25B+ market cap"
+      }
+    ]
+  },
+  {
+    "id": "meredith-whittaker",
+    "name": "Meredith Whittaker",
+    "primarySector": "Deep Tech",
+    "roles": [
+      {
+        "company": "Google",
+        "role": "Research Scientist & AI Ethics Lead",
+        "sector": "Internet / AI",
+        "start": 2006,
+        "end": 2019
+      },
+      {
+        "company": "AI Now Institute",
+        "role": "Co-founder & Faculty Director",
+        "sector": "Research / AI Policy",
+        "start": 2017,
+        "end": 2022
+      },
+      {
+        "company": "Signal",
+        "role": "President",
+        "sector": "Consumer / Privacy Tech",
+        "start": 2022,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "frank-wang",
+    "name": "Frank Wang",
+    "primarySector": "Deep Tech",
+    "roles": [
+      {
+        "company": "DJI",
+        "role": "Founder & CEO",
+        "sector": "Robotics / Drones",
+        "start": 2006,
+        "end": null,
+        "note": "70%+ global drone market share, $15B+ valuation"
+      }
+    ]
+  },
+  {
+    "id": "david-marcus",
+    "name": "David Marcus",
+    "primarySector": "Fintech",
+    "roles": [
+      {
+        "company": "Zong",
+        "role": "Founder & CEO",
+        "sector": "Mobile Payments",
+        "start": 2008,
+        "end": 2011,
+        "note": "Sold to PayPal for $240M"
+      },
+      {
+        "company": "PayPal",
+        "role": "President",
+        "sector": "Fintech / Payments",
+        "start": 2012,
+        "end": 2014
+      },
+      {
+        "company": "Meta (Facebook)",
+        "role": "VP Messaging & Novi/Libra Lead",
+        "sector": "Crypto / Social",
+        "start": 2014,
+        "end": 2021
+      },
+      {
+        "company": "Lightspark",
+        "role": "Co-founder & CEO",
+        "sector": "Crypto / Bitcoin Lightning",
+        "start": 2022,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "eric-lefkofsky",
+    "name": "Eric Lefkofsky",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "InnerWorkings",
+        "role": "Co-founder",
+        "sector": "Enterprise / Marketing",
+        "start": 2001,
+        "end": 2006
+      },
+      {
+        "company": "Groupon",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer / E-commerce",
+        "start": 2008,
+        "end": 2015
+      },
+      {
+        "company": "Tempus AI",
+        "role": "Founder & CEO",
+        "sector": "AI / HealthTech",
+        "start": 2015,
+        "end": null,
+        "note": "IPO 2024, precision medicine AI"
+      }
+    ]
+  },
+  {
+    "id": "noubar-afeyan",
+    "name": "Noubar Afeyan",
+    "primarySector": "Deep Tech",
+    "roles": [
+      {
+        "company": "PerSeptive Biosystems",
+        "role": "Founder & CEO",
+        "sector": "Biotech / Instruments",
+        "start": 1987,
+        "end": 1998
+      },
+      {
+        "company": "Flagship Pioneering",
+        "role": "Founder & CEO",
+        "sector": "VC / Biotech Incubator",
+        "start": 2000,
+        "end": null,
+        "note": "Incubated Moderna"
+      },
+      {
+        "company": "Moderna",
+        "role": "Co-founder & Chairman",
+        "sector": "Biotech / mRNA",
+        "start": 2010,
+        "end": null,
+        "note": "COVID vaccine, $100B+ peak"
+      }
+    ]
+  },
+  {
+    "id": "tope-awotona",
+    "name": "Tope Awotona",
+    "primarySector": "Enterprise",
+    "roles": [
+      {
+        "company": "Various startups",
+        "role": "Founder (3 failed attempts)",
+        "sector": "Consumer / E-commerce",
+        "start": 2011,
+        "end": 2013
+      },
+      {
+        "company": "Calendly",
+        "role": "Founder & CEO",
+        "sector": "Productivity / SaaS",
+        "start": 2013,
+        "end": null,
+        "note": "$3B+ valuation, bootstrapped then raised"
+      }
+    ]
+  },
+  {
+    "id": "bryan-johnson",
+    "name": "Bryan Johnson",
+    "primarySector": "Deep Tech",
+    "roles": [
+      {
+        "company": "Braintree",
+        "role": "Founder & CEO",
+        "sector": "Fintech / Payments",
+        "start": 2007,
+        "end": 2013,
+        "note": "Sold to PayPal/eBay for $800M"
+      },
+      {
+        "company": "OS Fund",
+        "role": "Founder",
+        "sector": "VC / Deep Tech",
+        "start": 2014,
+        "end": 2019,
+        "note": "$100M fund backing Kernel, Planetary Resources"
+      },
+      {
+        "company": "Kernel",
+        "role": "Founder & CEO",
+        "sector": "Neuroscience / Hardware",
+        "start": 2016,
+        "end": 2022
+      },
+      {
+        "company": "Blueprint (Don't Die)",
+        "role": "Founder",
+        "sector": "Longevity / BioTech",
+        "start": 2021,
+        "end": null,
+        "note": "Age reversal protocol, 2M+ YouTube subscribers"
+      }
+    ]
+  },
+  {
+    "id": "david-luan",
+    "name": "David Luan",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Axon (Taser)",
+        "role": "VP Engineering, AI",
+        "sector": "AI / Defense Tech",
+        "start": 2016,
+        "end": 2018
+      },
+      {
+        "company": "OpenAI",
+        "role": "VP Engineering",
+        "sector": "AI / Research",
+        "start": 2018,
+        "end": 2020
+      },
+      {
+        "company": "Adept AI",
+        "role": "Co-founder & CEO",
+        "sector": "AI / Agents",
+        "start": 2022,
+        "end": null,
+        "note": "AI agent company, raised $415M"
+      }
+    ]
+  },
+  {
+    "id": "jason-wei",
+    "name": "Jason Wei",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Google Brain",
+        "role": "Research Scientist",
+        "sector": "AI / Research",
+        "start": 2020,
+        "end": 2023,
+        "note": "Pioneered chain-of-thought prompting"
+      },
+      {
+        "company": "OpenAI",
+        "role": "Research Scientist",
+        "sector": "AI / Research",
+        "start": 2023,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "romain-huet",
+    "name": "Noam Brown",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Carnegie Mellon",
+        "role": "PhD Researcher",
+        "sector": "Research / AI",
+        "start": 2013,
+        "end": 2018,
+        "note": "Libratus poker AI"
+      },
+      {
+        "company": "Meta FAIR",
+        "role": "Research Scientist",
+        "sector": "AI / Research",
+        "start": 2018,
+        "end": 2024,
+        "note": "Cicero diplomacy AI, NIPS best paper"
+      },
+      {
+        "company": "OpenAI",
+        "role": "Research Lead (o1/o3)",
+        "sector": "AI / Reasoning",
+        "start": 2024,
+        "end": null,
+        "note": "Led reasoning/chain-of-thought models"
+      }
+    ]
+  },
+  {
+    "id": "alex-albert",
+    "name": "Alex Albert",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Anthropic",
+        "role": "Head of Claude Relations",
+        "sector": "AI / Safety",
+        "start": 2023,
+        "end": null,
+        "note": "Built the prompt engineering + model behavior team"
+      }
+    ]
+  },
+  {
+    "id": "teknium",
+    "name": "Teknium",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "NousResearch",
+        "role": "Co-founder",
+        "sector": "AI / Open Source Models",
+        "start": 2023,
+        "end": null,
+        "note": "Hermes, Capybara fine-tunes; leading open-source AI lab"
+      }
+    ]
+  },
+  {
+    "id": "tri-dao",
+    "name": "Tri Dao",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Stanford",
+        "role": "PhD (Christopher Re lab)",
+        "sector": "Research / AI",
+        "start": 2018,
+        "end": 2023,
+        "note": "Invented FlashAttention"
+      },
+      {
+        "company": "Together AI",
+        "role": "Chief Scientist",
+        "sector": "AI / Infrastructure",
+        "start": 2023,
+        "end": 2024
+      },
+      {
+        "company": "Cartesia AI",
+        "role": "Co-founder",
+        "sector": "AI / Efficient Models",
+        "start": 2024,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "aman-sanger",
+    "name": "Aman Sanger",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "MIT",
+        "role": "CS Student",
+        "sector": "Research / AI",
+        "start": 2018,
+        "end": 2022
+      },
+      {
+        "company": "Anysphere (Cursor)",
+        "role": "Co-founder & CEO",
+        "sector": "AI / Developer Tools",
+        "start": 2022,
+        "end": null,
+        "note": "AI code editor, fastest-growing dev tool"
+      }
+    ]
+  },
+  {
+    "id": "michael-truell",
+    "name": "Michael Truell",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "MIT",
+        "role": "CS Student",
+        "sector": "Research / AI",
+        "start": 2018,
+        "end": 2022
+      },
+      {
+        "company": "Anysphere (Cursor)",
+        "role": "Co-founder",
+        "sector": "AI / Developer Tools",
+        "start": 2022,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "lenny-bogdonoff",
+    "name": "Dennis Xu",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Stripe",
+        "role": "Product Engineer",
+        "sector": "Fintech / Payments",
+        "start": 2019,
+        "end": 2023
+      },
+      {
+        "company": "Lovable",
+        "role": "Co-founder & CEO",
+        "sector": "AI / Developer Tools",
+        "start": 2023,
+        "end": null,
+        "note": "AI app builder, viral growth"
+      }
+    ]
+  },
+  {
+    "id": "siqi-chen",
+    "name": "Siqi Chen",
+    "primarySector": "AI",
+    "roles": [
+      {
+        "company": "Zynga",
+        "role": "GM / VP",
+        "sector": "Gaming / Social",
+        "start": 2009,
+        "end": 2013
+      },
+      {
+        "company": "Sandbox VR",
+        "role": "Co-founder & CEO",
+        "sector": "Consumer / VR",
+        "start": 2016,
+        "end": 2020
+      },
+      {
+        "company": "Runway (finops)",
+        "role": "Founder & CEO",
+        "sector": "Fintech / SaaS",
+        "start": 2020,
+        "end": null
+      }
+    ]
+  },
+  {
+    "id": "justin-kan",
+    "name": "Justin Kan",
+    "primarySector": "Social & Media",
+    "roles": [
+      {
+        "company": "Kiko",
+        "role": "Co-founder",
+        "sector": "Internet / Calendar",
+        "start": 2005,
+        "end": 2006,
+        "note": "YC S05, sold on eBay"
+      },
+      {
+        "company": "Justin.tv",
+        "role": "Co-founder & CEO",
+        "sector": "Social Media / Livestreaming",
+        "start": 2007,
+        "end": 2011
+      },
+      {
+        "company": "Twitch",
+        "role": "Co-founder",
+        "sector": "Social Media / Gaming",
+        "start": 2011,
+        "end": 2014,
+        "note": "Sold to Amazon for $970M"
+      },
+      {
+        "company": "Atrium",
+        "role": "Founder & CEO",
+        "sector": "LegalTech / SaaS",
+        "start": 2017,
+        "end": 2020,
+        "note": "Legal services startup, shut down"
+      },
+      {
+        "company": "Fractal",
+        "role": "Co-founder",
+        "sector": "Gaming / NFT",
+        "start": 2021,
+        "end": null
       }
     ]
   }
