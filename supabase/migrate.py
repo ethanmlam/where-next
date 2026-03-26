@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# NOTE: Supabase is now the source of truth. This script is for historical reference
+# and can be used to re-seed the database if needed. founders.json has been removed.
 """Migrate founders.json -> Supabase"""
 import json
 import os
@@ -45,6 +47,13 @@ for founder in founders:
         print(f"  Error inserting founder {fid}: {e}")
         continue
     
+    # Delete existing roles & switches before re-inserting
+    try:
+        supabase.table('roles').delete().eq('founder_id', fid).execute()
+        supabase.table('sector_switches').delete().eq('founder_id', fid).execute()
+    except Exception as e:
+        print(f"  Error clearing old data for {fid}: {e}")
+
     # Insert roles
     for i, role in enumerate(founder.get('roles', [])):
         role_row = {
