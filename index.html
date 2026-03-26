@@ -31,12 +31,19 @@
   }
 
   header {
-    padding: 32px 40px 16px;
+    padding: 16px 40px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 32px;
   }
 
-  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: #fff; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: #fff; white-space: nowrap; }
   header p { font-size: 14px; color: #888; margin-top: 4px; }
+  .header-left { flex-shrink: 0; }
+  .header-stats { display: flex; gap: 28px; align-items: center; margin-left: auto; }
+  .header-stats .stat-value { color: #fff; font-weight: 600; font-size: 16px; display: block; }
+  .header-stats .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; color: #666; margin-top: 1px; }
 
   .controls {
     padding: 16px 40px;
@@ -107,12 +114,7 @@
   }
   .tooltip .tt-person-company { color: #888; font-size: 10px; }
 
-  .stats-bar {
-    padding: 12px 40px; display: flex; gap: 32px; font-size: 13px; color: #666;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-  .stats-bar .stat-value { color: #fff; font-weight: 600; font-size: 18px; display: block; }
-  .stats-bar .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2px; }
+  .stats-bar { display: none; }
 
   .sector-legend { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 40px 12px; }
   .legend-item {
@@ -195,8 +197,11 @@
 <body>
 
 <header>
-  <h1>Where Next</h1>
-  <p>Tracking where proven founders go after they leave. Sector switches = signal.</p>
+  <div class="header-left">
+    <h1>Where Next</h1>
+    <p>Tracking where proven founders go after they leave. Sector switches = signal.</p>
+  </div>
+  <div class="header-stats" id="header-stats"></div>
 </header>
 
 <div class="stats-bar" id="stats-bar"></div>
@@ -327,6 +332,7 @@ let sectorFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('stats-bar').innerHTML = '<div style="color:#888">Loading founders from database...</div>';
+  document.getElementById('header-stats').innerHTML = '<div style="color:#888;font-size:13px">Loading...</div>';
   if (sb) {
     try {
       const { data: dbFounders, error: fErr } = await sb.from('founders').select('id, name, primary_sector, source_url, verified');
@@ -411,12 +417,14 @@ function computeStats() {
     }
   });
   const hottest = Object.entries(destCounts).sort((a, b) => b[1] - a[1])[0];
-  document.getElementById('stats-bar').innerHTML = founders.length === 0 ? '' : `
+  const statsHtml = founders.length === 0 ? '' : `
     <div><span class="stat-value">${founders.length}</span><span class="stat-label">Founders</span></div>
     <div><span class="stat-value">${switches}</span><span class="stat-label">Sector switches</span></div>
     <div><span class="stat-value">${allSectors.size}</span><span class="stat-label">Sectors</span></div>
     <div><span class="stat-value" style="color:${BROAD_COLORS[hottest?.[0]] || '#666'}">${hottest?.[0] || '—'}</span><span class="stat-label">Hottest destination</span></div>
   `;
+  document.getElementById('stats-bar').innerHTML = statsHtml;
+  document.getElementById('header-stats').innerHTML = statsHtml;
 }
 
 function populateFilters() {
