@@ -192,9 +192,90 @@
     border-radius: 5px; cursor: pointer; transition: all 0.15s;
   }
   .tt-remove-btn:hover { background: rgba(239,68,68,0.3); color: #fff; }
+
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.welcome-overlay.visible { opacity: 1; pointer-events: auto; }
+.welcome-overlay.hidden { pointer-events: none; opacity: 0; }
+
+.welcome-card {
+  background: #14141e;
+  border: 1px solid #222233;
+  border-radius: 16px;
+  padding: 48px 44px 40px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  transform: translateY(12px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+.welcome-overlay.visible .welcome-card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.welcome-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.welcome-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #b0b0bc;
+  margin-bottom: 32px;
+}
+.welcome-body em {
+  color: #e0e0e8;
+  font-style: italic;
+}
+
+.welcome-cta {
+  background: #2a2a4a;
+  border: 1px solid #6366f1;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.welcome-cta:hover {
+  background: #3a3a5a;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
 </style>
 </head>
 <body>
+
+<div id="welcome-modal" class="welcome-overlay">
+  <div class="welcome-card">
+    <h2 class="welcome-title">Where Next</h2>
+    <p class="welcome-body">
+      I indexed ~300 founders and charted their career progressions.
+      <br><br>
+      Because founders don't just build one company and disappear. They leave, start again, switch sectors entirely — and <em>that's</em> what's interesting. Where proven founders go next is the signal.
+      <br><br>
+      Start with the PayPal Mafia, then explore.
+    </p>
+    <button class="welcome-cta" id="welcome-close">Explore the map &rarr;</button>
+  </div>
+</div>
 
 <header>
   <div class="header-left">
@@ -205,6 +286,10 @@
 </header>
 
 <div class="stats-bar" id="stats-bar"></div>
+
+<div class="presets-bar" id="presets-bar">
+  <span class="presets-label">Groups:</span>
+</div>
 
 <div class="controls">
   <div class="view-tabs">
@@ -223,10 +308,6 @@
     <div class="add-suggestions" id="add-suggestions"></div>
   </div>
   <button id="restore-all" class="restore-btn" style="display:none">Restore all</button>
-</div>
-
-<div class="presets-bar" id="presets-bar">
-  <span class="presets-label">Groups:</span>
 </div>
 
 <div class="sector-legend" id="sector-legend"></div>
@@ -337,7 +418,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const { data: dbFounders, error: fErr } = await sb.from('founders').select('id, name, primary_sector, source_url, verified');
       if (!fErr && dbFounders && dbFounders.length > 0) {
-        const { data: dbRoles, error: rErr } = await sb.from('roles').select('*').order('sort_order');
+        // Supabase caps at 1000 rows — paginate to get all roles
+        let dbRoles = [], rErr = null, page = 0;
+        while (true) {
+          const { data, error } = await sb.from('roles').select('*').order('sort_order').range(page * 1000, (page + 1) * 1000 - 1);
+          if (error) { rErr = error; break; }
+          dbRoles = dbRoles.concat(data || []);
+          if (!data || data.length < 1000) break;
+          page++;
+        }
         const { data: dbSwitches, error: sErr } = await sb.from('sector_switches').select('*');
         if (!rErr && !sErr) {
           const rolesByFounder = {};
@@ -383,7 +472,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderAlluvial(); renderCards(); setupEvents();
   document.getElementById('cards-container').classList.add('view-hidden');
 
-  // Auto-load preset from URL param
+  // Auto-load preset from URL param or show welcome modal
   const urlParams = new URLSearchParams(window.location.search);
   const presetParam = urlParams.get('preset');
   if (presetParam) {
@@ -394,8 +483,50 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (window.posthog) posthog.capture('preset_url_loaded', { preset_name: presetName });
       loadPreset(presetName);
     }
+  } else {
+    const hasSeenWelcome = localStorage.getItem('wn-welcome-seen');
+    if (!hasSeenWelcome) {
+      showWelcomeModal();
+    }
+    // Returning visitors: existing wn-removed state restores naturally, no override needed
   }
 });
+
+function showWelcomeModal() {
+  const modal = document.getElementById('welcome-modal');
+  if (!modal) return;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      modal.classList.add('visible');
+    });
+  });
+
+  if (window.posthog) posthog.capture('welcome_modal_shown');
+
+  function closeModal() {
+    modal.classList.remove('visible');
+    modal.classList.add('hidden');
+    modal.addEventListener('transitionend', function handler() {
+      modal.removeEventListener('transitionend', handler);
+      modal.remove();
+      loadPreset('PayPal Mafia');
+      activePreset = 'PayPal Mafia';
+      updatePresetBtns();
+      localStorage.setItem('wn-welcome-seen', '1');
+      if (window.posthog) posthog.capture('welcome_modal_closed');
+    });
+  }
+
+  document.getElementById('welcome-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function escHandler(e) {
+    if (e.key === 'Escape') {
+      document.removeEventListener('keydown', escHandler);
+      closeModal();
+    }
+  });
+}
 
 function getFiltered() {
   let data = [...FOUNDERS_DATA];
@@ -1212,7 +1343,6 @@ const PRESETS = {
     { name: 'Clement Delangue', id: 'clement-delangue' },
     { name: 'Emad Mostaque', id: 'emad-mostaque' },
     { name: 'Richard Socher', id: 'richard-socher' },
-    { name: 'Daphne Koller', id: 'daphne-koller' },
   ],
   'Crypto OGs': [
     { name: 'Brian Armstrong', id: 'brian-armstrong' },
@@ -1263,6 +1393,7 @@ const PRESETS = {
     { name: 'Dalton Caldwell', id: 'dalton-caldwell' },
     { name: 'Brian Chesky', id: 'brian-chesky' },
     { name: 'Patrick Collison', id: 'patrick-collison' },
+    { name: 'John Collison', id: 'john-collison' },
     { name: 'Drew Houston', id: 'drew-houston' },
     { name: 'Justin Kan', id: 'justin-kan' },
     { name: 'Emmett Shear', id: 'emmett-shear' },
@@ -1375,47 +1506,16 @@ function removePerson(id) {
     localStorage.setItem('wn-removed', JSON.stringify(removedIds));
   }
   applyRemovals();
-
-  // Hide the removed person's dots, paths without full re-layout
-  document.querySelectorAll(`[data-founder="${id}"]`).forEach(el => {
-    if (el.closest('.founder-name-row')) return; // handle name rows separately
-    el.style.transition = 'opacity 0.15s';
-    el.style.opacity = '0';
-    el.style.pointerEvents = 'none';
-  });
-
-  // Slide name labels up: removed row collapses, everything below shifts up
-  const svg = document.getElementById('alluvial-svg');
-  if (svg) {
-    const rows = [...svg.querySelectorAll('.founder-name-row')];
-    const sorted = rows.sort((a, b) => parseFloat(a.dataset.nameY) - parseFloat(b.dataset.nameY));
-    
-    // Detect spacing
-    const visible = sorted.filter(el => el.dataset.removed !== 'true');
-    let spacing = 10;
-    if (visible.length >= 2) {
-      spacing = parseFloat(visible[1].dataset.nameY) - parseFloat(visible[0].dataset.nameY);
-    }
-
-    // Mark removed, then shift everything below up
-    let found = false;
-    sorted.forEach(el => {
-      if (el.dataset.founderId === id) {
-        el.dataset.removed = 'true';
-        el.style.opacity = '0';
-        el.style.pointerEvents = 'none';
-        found = true;
-      } else if (found && el.dataset.removed !== 'true') {
-        // Shift this row up by spacing
-        const rid = el.dataset.founderId;
-        _removeShifts[rid] = (_removeShifts[rid] || 0) - spacing;
-        el.style.transform = `translate(0, ${_removeShifts[rid]}px)`;
-      }
-    });
-  }
-
+  refresh();
   updateRestoreBtn();
   if (typeof updateMyoCounter === 'function') updateMyoCounter();
+  // Sync MYO suggestion chip styles
+  document.querySelectorAll('#myo-suggestions button[data-founder-id]').forEach(chip => {
+    const on = !removedIds.includes(chip.dataset.founderId);
+    chip.style.background = on ? '#1d9bf0' : '#2a2a3e';
+    chip.style.color = on ? '#fff' : '#ddd';
+    chip.style.borderColor = on ? '#1d9bf0' : '#444';
+  });
 }
 
 function restoreAll() {
@@ -1709,15 +1809,23 @@ function showMakeYourOwn() {
   myoSuggestions.forEach(s => {
     const isAdded = !removedIds.includes(s.id);
     const chip = document.createElement('button');
-    chip.style.cssText = `background:${isAdded ? '#1d9bf0' : '#2a2a3e'};color:${isAdded ? '#fff' : '#ddd'};border:1px solid ${isAdded ? '#1d9bf0' : '#444'};padding:4px 12px;border-radius:16px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.15s;`;
+    function updateChipStyle() {
+      const on = !removedIds.includes(s.id);
+      chip.style.cssText = `background:${on ? '#1d9bf0' : '#2a2a3e'};color:${on ? '#fff' : '#ddd'};border:1px solid ${on ? '#1d9bf0' : '#444'};padding:4px 12px;border-radius:16px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.15s;`;
+    }
+    updateChipStyle();
     chip.textContent = s.name;
-    if (isAdded) chip.disabled = true;
+    chip.dataset.founderId = s.id;
     chip.addEventListener('click', () => {
-      removedIds = removedIds.filter(r => r !== s.id);
+      const isCurrentlyAdded = !removedIds.includes(s.id);
+      if (isCurrentlyAdded) {
+        removedIds.push(s.id);
+      } else {
+        removedIds = removedIds.filter(r => r !== s.id);
+      }
       localStorage.setItem('wn-removed', JSON.stringify(removedIds));
       applyRemovals(); refresh(); updateRestoreBtn();
-      chip.style.background = '#1d9bf0'; chip.style.color = '#fff'; chip.style.borderColor = '#1d9bf0';
-      chip.disabled = true;
+      updateChipStyle();
       updateMyoCounter();
     });
     container.appendChild(chip);
@@ -1813,7 +1921,9 @@ document.getElementById('restore-all').addEventListener('click', () => {
   updatePresetBtns();
 });
 applyRemovals();
+refresh();
 updateRestoreBtn();
+updatePresetBtns();
 </script>
 </body>
 </html>
