@@ -5,7 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_4UBpgVKXxxShujjUAhahIH5CmKQ5Av696uGY7J36Ps9', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'anonymous'
+  });
+</script>
 <title>Where Next — Founder Migration Tracker</title>
+<meta property="og:title" content="Where Next — Founder Migration Tracker">
+<meta property="og:description" content="Track ~300 tech founders across 5 eras. See how they switched sectors — from dot-com boom to the AI era.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://where-next.vercel.app">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where Next — Founder Migration Tracker">
+<meta name="twitter:description" content="Track ~300 tech founders across 5 eras. The sector switch is the signal.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
@@ -362,6 +376,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   computeStats(); populateFilters(); buildLegend();
   renderAlluvial(); renderCards(); setupEvents();
   document.getElementById('cards-container').classList.add('view-hidden');
+
+  // Auto-load preset from URL param
+  const urlParams = new URLSearchParams(window.location.search);
+  const presetParam = urlParams.get('preset');
+  if (presetParam) {
+    const presetName = Object.keys(PRESETS).find(k =>
+      k.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '') === presetParam.toLowerCase()
+    );
+    if (presetName) {
+      if (window.posthog) posthog.capture('preset_url_loaded', { preset_name: presetName });
+      loadPreset(presetName);
+    }
+  }
 });
 
 function getFiltered() {
@@ -424,11 +451,12 @@ function setupEvents() {
       document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       currentView = tab.dataset.view;
+      if (window.posthog) posthog.capture('view_switched', { view: currentView });
       document.getElementById('alluvial-container').classList.toggle('view-hidden', currentView !== 'alluvial');
       document.getElementById('cards-container').classList.toggle('view-hidden', currentView !== 'cards');
     });
   });
-  document.getElementById('sector-filter').addEventListener('change', e => { sectorFilter = e.target.value; refresh(); });
+  document.getElementById('sector-filter').addEventListener('change', e => { sectorFilter = e.target.value; if (window.posthog) posthog.capture('filter_changed', { sector: sectorFilter, switchers_only: switchersOnly }); refresh(); });
   document.getElementById('switchers-only').addEventListener('change', e => { switchersOnly = e.target.checked; refresh(); });
   document.getElementById('show-secondaries').addEventListener('change', e => { showSecondaries = e.target.checked; refresh(); });
 }
@@ -1112,6 +1140,8 @@ const PRESETS = {
     { name: 'Luke Nosek', id: 'luke-nosek' },
     { name: 'Premal Shah', id: 'premal-shah' },
     { name: 'Jawed Karim', id: 'jawed-karim' },
+    { name: 'Russel Simmons', id: 'russel-simmons' },
+    { name: 'Dave McClure', id: 'dave-mcclure' },
   ],
   'Epstein Files': [
     { name: 'Elon Musk', id: 'elon-musk' },
@@ -1148,6 +1178,7 @@ const PRESETS = {
     { name: 'Vinay Hiremath', id: 'vinay-hiremath' },
     { name: 'Steve Davis', id: 'steve-davis' },
     { name: 'Nikita Bier', id: 'nikita-bier' },
+    { name: 'George Hotz', id: 'george-hotz' },
   ],
   'AI Lab Founders': [
     { name: 'Sam Altman', id: 'sam-altman' },
@@ -1168,6 +1199,12 @@ const PRESETS = {
     { name: 'Andrew Ng', id: 'andrew-ng' },
     { name: 'Geoffrey Hinton', id: 'geoffrey-hinton' },
     { name: 'Guillaume Lample', id: 'guillaume-lample' },
+    { name: 'Yoshua Bengio', id: 'yoshua-bengio' },
+    { name: 'Liang Wenfeng', id: 'liang-wenfeng' },
+    { name: 'Clement Delangue', id: 'clement-delangue' },
+    { name: 'Emad Mostaque', id: 'emad-mostaque' },
+    { name: 'Richard Socher', id: 'richard-socher' },
+    { name: 'Daphne Koller', id: 'daphne-koller' },
   ],
   'Crypto OGs': [
     { name: 'Brian Armstrong', id: 'brian-armstrong' },
@@ -1184,6 +1221,8 @@ const PRESETS = {
     { name: 'Chris Dixon', id: 'chris-dixon' },
     { name: 'Devin Finzer', id: 'devin-finzer' },
     { name: 'Jack Dorsey', id: 'jack-dorsey' },
+    { name: 'Cameron Winklevoss', id: 'cameron-winklevoss' },
+    { name: 'Tyler Winklevoss', id: 'tyler-winklevoss' },
   ],
   'Social Founders': [
     { name: 'Mark Zuckerberg', id: 'mark-zuckerberg' },
@@ -1201,6 +1240,11 @@ const PRESETS = {
     { name: 'Dennis Crowley', id: 'dennis-crowley' },
     { name: 'Caterina Fake', id: 'caterina-fake' },
     { name: 'Jason Citron', id: 'jason-citron' },
+    { name: 'Dustin Moskovitz', id: 'dustin-moskovitz' },
+    { name: 'Eduardo Saverin', id: 'eduardo-saverin' },
+    { name: 'Tom Anderson', id: 'tom-anderson' },
+    { name: 'Chris Hughes', id: 'chris-hughes' },
+    { name: 'Biz Stone', id: 'biz-stone' },
   ],
   'YC Mafia': [
     { name: 'Paul Graham', id: 'paul-graham' },
@@ -1220,15 +1264,15 @@ const PRESETS = {
     { name: 'Henrique Dubugras', id: 'henrique-dubugras' },
     { name: 'Pedro Franceschi', id: 'pedro-franceschi' },
     { name: 'Alexandr Wang', id: 'alexandr-wang' },
-    { name: 'Aravind Srinivas', id: 'aravind-srinivas' },
-    { name: 'Amjad Masad', id: 'amjad-masad' },
-    { name: 'Guillermo Rauch', id: 'guillermo-rauch' },
-    { name: 'Eric Yuan', id: 'eric-yuan' },
-    { name: 'Katrina Lake', id: 'katrina-lake' },
     { name: 'Parker Conrad', id: 'parker-conrad' },
     { name: 'Solomon Hykes', id: 'solomon-hykes' },
     { name: 'Qasar Younis', id: 'qasar-younis' },
-    { name: 'Harrison Chase', id: 'harrison-chase' },
+    { name: 'Joe Gebbia', id: 'joe-gebbia' },
+    { name: 'Nathan Blecharczyk', id: 'nathan-blecharczyk' },
+    { name: 'Tracy Young', id: 'tracy-young' },
+    { name: 'Mathilde Collin', id: 'mathilde-collin' },
+    { name: 'Calvin French-Owen', id: 'calvin-french-owen' },
+    { name: 'Austen Allred', id: 'austen-allred' },
   ],
   'Polymaths': [
     { name: 'Elon Musk', id: 'elon-musk' },
@@ -1244,6 +1288,16 @@ const PRESETS = {
     { name: 'Patrick Collison', id: 'patrick-collison' },
     { name: 'Qi Lu', id: 'qi-lu' },
     { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Jensen Huang', id: 'jensen-huang' },
+    { name: 'Dustin Moskovitz', id: 'dustin-moskovitz' },
+    { name: 'Daphne Koller', id: 'daphne-koller' },
+    { name: 'Anne Wojcicki', id: 'anne-wojcicki' },
+    { name: 'Nat Friedman', id: 'nat-friedman' },
+    { name: 'Mike Cannon-Brookes', id: 'mike-cannon-brookes' },
+    { name: 'Nikesh Arora', id: 'nikesh-arora' },
+    { name: 'George Hotz', id: 'george-hotz' },
+    { name: 'Adam D\'Angelo', id: 'adam-dangelo' },
+    { name: 'Jaan Tallinn', id: 'jaan-tallinn' },
   ],
 'Epstein Files': [
     { name: 'Elon Musk', id: 'elon-musk' },
@@ -1307,6 +1361,7 @@ function applyRemovals() {
 let _removeShifts = {}; // track cumulative Y shifts per name row
 
 function removePerson(id) {
+  if (window.posthog) posthog.capture('founder_removed', { founder_id: id });
   if (!removedIds.includes(id)) {
     removedIds.push(id);
     localStorage.setItem('wn-removed', JSON.stringify(removedIds));
@@ -1376,6 +1431,7 @@ function updateRestoreBtn() {
 
 function loadPreset(name) {
   if (!PRESETS[name]) return;
+  if (window.posthog) posthog.capture('preset_loaded', { preset_name: name });
   const preset = PRESETS[name];
 
   // Clear everything first
@@ -1420,6 +1476,7 @@ addInput.addEventListener('input', () => {
 
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
+    if (window.posthog) posthog.capture('founder_searched', { query: q });
     const ql = q.toLowerCase();
     // Founders currently on chart that match
     const onChart = getFiltered().filter(f => f.name.toLowerCase().includes(ql));
