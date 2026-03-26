@@ -16,7 +16,7 @@
 <meta property="og:title" content="Where Next — Founder Migration Tracker">
 <meta property="og:description" content="Track ~300 tech founders across 5 eras. See how they switched sectors — from dot-com boom to the AI era.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://where-next.vercel.app">
+<meta property="og:url" content="https://esofast.com/where-next">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Where Next — Founder Migration Tracker">
 <meta name="twitter:description" content="Track ~300 tech founders across 5 eras. The sector switch is the signal.">
@@ -1724,7 +1724,7 @@ function showMakeYourOwn() {
     const active = ALL_FOUNDERS.filter(f => !removedIds.includes(f.id));
     const count = active.length;
     const names = active.slice(0, 5).map(f => f.name).join(', ') + (count > 5 ? ` + ${count - 5} more` : '');
-    const tweetText = `${names} — where do tech founders go next?\n\nmake your own: https://where-next.vercel.app`;
+    const tweetText = `${names} — where do tech founders go next?\n\nmake your own: https://esofast.com/where-next`;
 
     newShare.textContent = 'Capturing...';
     newShare.style.opacity = '0.6';
