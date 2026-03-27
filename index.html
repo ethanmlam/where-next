@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
@@ -1854,8 +1856,71 @@ function showMakeYourOwn() {
         logging: false,
       });
 
+      // Build branded card around the raw screenshot
+      const padding = { sides: 60, top: 80, bottom: 70 };
+      const brandedCanvas = document.createElement('canvas');
+      brandedCanvas.width = cvs.width + padding.sides * 2;
+      brandedCanvas.height = cvs.height + padding.top + padding.bottom;
+      const ctx = brandedCanvas.getContext('2d');
+      const font = 'Inter, -apple-system, BlinkMacSystemFont, sans-serif';
+
+      // Background
+      ctx.fillStyle = '#0d0d14';
+      ctx.fillRect(0, 0, brandedCanvas.width, brandedCanvas.height);
+
+      // Title: "WHERE NEXT"
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = `bold 32px ${font}`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('WHERE NEXT', brandedCanvas.width / 2, 18);
+
+      // Subtitle: "Founder Migration Tracker"
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.font = `16px ${font}`;
+      ctx.fillText('Founder Migration Tracker', brandedCanvas.width / 2, 18 + 32 + 8);
+
+      // Subtle border around diagram area
+      const diagX = padding.sides;
+      const diagY = padding.top;
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.lineWidth = 1;
+      if (ctx.roundRect) {
+        ctx.beginPath();
+        ctx.roundRect(diagX, diagY, cvs.width, cvs.height, 8);
+        ctx.stroke();
+      } else {
+        ctx.strokeRect(diagX, diagY, cvs.width, cvs.height);
+      }
+
+      // Draw captured diagram
+      ctx.drawImage(cvs, diagX, diagY);
+
+      // Footer
+      const footerY = brandedCanvas.height - padding.bottom / 2 - 7;
+      ctx.textBaseline = 'middle';
+
+      // Left: founder names
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.font = `14px ${font}`;
+      ctx.textAlign = 'left';
+      // Truncate names string if too wide
+      const maxNamesWidth = brandedCanvas.width * 0.65;
+      let displayNames = names;
+      ctx.font = `14px ${font}`;
+      while (ctx.measureText(displayNames).width > maxNamesWidth && displayNames.length > 0) {
+        displayNames = displayNames.slice(0, -1);
+      }
+      if (displayNames !== names) displayNames = displayNames.trimEnd() + '…';
+      ctx.fillText(displayNames, diagX, footerY);
+
+      // Right: URL
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.textAlign = 'right';
+      ctx.fillText('esofast.com/where-next', diagX + cvs.width, footerY);
+
       // Convert canvas to Blob
-      const blob = await new Promise(res => cvs.toBlob(res, 'image/png'));
+      const blob = await new Promise(res => brandedCanvas.toBlob(res, 'image/png'));
       const file = new File([blob], 'where-next.png', { type: 'image/png' });
 
       // Try Web Share API with file (works on mobile, macOS Safari)
@@ -1879,7 +1944,7 @@ function showMakeYourOwn() {
       else {
         const link = document.createElement('a');
         link.download = 'where-next.png';
-        link.href = cvs.toDataURL('image/png');
+        link.href = brandedCanvas.toDataURL('image/png');
         link.click();
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
         newShare.textContent = '✓ Image saved, compose opened';
