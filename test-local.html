@@ -266,37 +266,28 @@
   .era-stepper {
     display: none;
     align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    padding: 8px 12px;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
   }
   .era-step-btn {
-    background: #1a1a28;
+    background: none;
     border: 1px solid #333;
     color: #aaa;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
     transition: all 0.15s;
     flex-shrink: 0;
-    white-space: nowrap;
+    line-height: 1;
   }
-  .era-step-btn:hover { border-color: #555; color: #fff; background: #22222f; }
-  .era-step-btn:disabled { opacity: 0; pointer-events: none; }
-  .era-step-btn .arrow { font-size: 14px; line-height: 1; }
-  .era-step-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    flex: 1;
-    min-width: 0;
-  }
+  .era-step-btn:hover { border-color: #666; color: #fff; }
+  .era-step-btn:disabled { opacity: 0.2; pointer-events: none; }
   .era-step-labels {
     display: flex;
     align-items: center;
@@ -322,6 +313,7 @@
     display: flex;
     gap: 6px;
     justify-content: center;
+    padding: 0 16px 8px;
   }
   .era-step-dot {
     width: 6px;
@@ -403,27 +395,20 @@
     header p { display: none; }
     .header-stats { display: none !important; }
 
-    /* Presets: wrapping chip grid — all visible at a glance */
+    /* Presets: the main way people navigate — keep prominent, horizontal scroll */
     .presets-bar {
       padding: 8px 12px;
       gap: 6px;
-      flex-wrap: wrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+      scrollbar-width: none;
       border-bottom: none;
-      overflow-x: visible;
     }
-    .presets-label { display: none; }
-    .preset-btn, .preset-btn-all {
-      font-size: 12px;
-      padding: 7px 12px;
-      flex-shrink: 0;
-      border-radius: 16px;
-    }
-    /* MYO button: show as a chip like the rest */
-    .preset-btn[data-preset="__myo__"] { border-style: dashed; }
-    /* MYO panel: full-width on mobile */
-    #myo-panel { margin: 0 12px 12px !important; padding: 12px 14px !important; }
-    #myo-panel > div:first-child { flex-wrap: wrap; gap: 8px; }
-    #myo-share { width: 100%; margin-top: 4px; }
+    .presets-bar::-webkit-scrollbar { display: none; }
+    .preset-btn, .preset-btn-all { font-size: 12px; padding: 6px 12px; flex-shrink: 0; }
+    /* Hide "Make Your Own" on mobile — too complex */
+    .preset-btn[data-preset="__myo__"] { display: none; }
 
     /* Controls: hide everything except search behind toggle */
     .controls-toggle { display: block; }
@@ -524,8 +509,8 @@
 
   @media (max-width: 480px) {
     header h1 { font-size: 18px; }
-    .preset-btn, .preset-btn-all { font-size: 11px; padding: 6px 10px; }
-    .presets-bar { padding: 6px 10px; gap: 5px; }
+    .preset-btn, .preset-btn-all { font-size: 11px; padding: 5px 10px; }
+    .presets-bar { padding: 6px 10px; }
   }
 </style>
 </head>
@@ -582,12 +567,9 @@
 <div class="sector-legend" id="sector-legend"></div>
 
 <div id="era-stepper" class="era-stepper">
-  <button class="era-step-btn" id="era-prev" aria-label="Previous era"><span class="arrow">&#8249;</span> <span id="era-prev-label"></span></button>
-  <div class="era-step-center">
-    <div class="era-step-labels" id="era-step-labels"></div>
-    <div class="era-step-dots" id="era-step-dots"></div>
-  </div>
-  <button class="era-step-btn" id="era-next" aria-label="Next era"><span id="era-next-label"></span> <span class="arrow">&#8250;</span></button>
+  <button class="era-step-btn" id="era-prev" aria-label="Previous era">&#8249;</button>
+  <div class="era-step-labels" id="era-step-labels"></div>
+  <button class="era-step-btn" id="era-next" aria-label="Next era">&#8250;</button>
 </div>
 
 <div id="main-viz">
@@ -643,9 +625,6 @@ function updateEraStepper() {
   const labels = document.getElementById('era-step-labels');
   const prevBtn = document.getElementById('era-prev');
   const nextBtn = document.getElementById('era-next');
-  const prevLabel = document.getElementById('era-prev-label');
-  const nextLabel = document.getElementById('era-next-label');
-  const dotsEl = document.getElementById('era-step-dots');
   if (!labels) return;
 
   const leftEra = ERAS[mobileEraIdx];
@@ -663,29 +642,8 @@ function updateEraStepper() {
     </div>
   `;
 
-  // Update prev/next button labels with destination era names
   prevBtn.disabled = mobileEraIdx === 0;
   nextBtn.disabled = mobileEraIdx >= MAX_ERA_PAIR;
-  if (mobileEraIdx > 0) {
-    prevLabel.textContent = ERAS[mobileEraIdx - 1].label;
-  } else {
-    prevLabel.textContent = '';
-  }
-  if (mobileEraIdx < MAX_ERA_PAIR) {
-    nextLabel.textContent = ERAS[mobileEraIdx + 2].label;
-  } else {
-    nextLabel.textContent = '';
-  }
-
-  // Render progress dots
-  if (dotsEl) {
-    dotsEl.innerHTML = '';
-    for (let i = 0; i <= MAX_ERA_PAIR; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'era-step-dot' + (i === mobileEraIdx ? ' active' : '');
-      dotsEl.appendChild(dot);
-    }
-  }
 }
 
 function stepEra(dir) {
@@ -1138,27 +1096,21 @@ function renderAlluvial() {
   const svg = document.getElementById('alluvial-svg');
   svg.innerHTML = '';
 
-  // Tap empty SVG space to clear highlights
-  svg.addEventListener('touchend', (e) => {
-    if (e.target === svg) {
-      highlightedPerson = null;
-      updateHighlights();
-      hideMobileToast();
-    }
-  });
+  // Tap empty SVG space to clear highlights on touch devices
+  if (isTouchDevice) {
+    svg.addEventListener('touchstart', (e) => {
+      if (e.target === svg) {
+        highlightedPerson = null;
+        updateHighlights();
+        hideMobileToast();
+      }
+    }, { passive: true });
+  }
 
   const founders = getFiltered();
   if (founders.length === 0) {
-    const mobile = isMobile();
-    const emptyW = mobile ? 390 : 1200;
-    const emptyH = mobile ? 200 : 300;
-    svg.setAttribute('viewBox', `0 0 ${emptyW} ${emptyH}`);
-    svg.setAttribute('width', emptyW);
-    svg.setAttribute('height', emptyH);
-    svg.innerHTML = `
-      <text x="50%" y="${emptyH * 0.4}" text-anchor="middle" fill="#666" font-size="${mobile ? 18 : 20}" font-family="Inter,sans-serif" font-weight="500">No founders selected</text>
-      <text x="50%" y="${emptyH * 0.4 + (mobile ? 28 : 32)}" text-anchor="middle" fill="#444" font-size="${mobile ? 13 : 14}" font-family="Inter,sans-serif">Use the search bar or suggestions above to add founders</text>
-    `;
+    svg.innerHTML = '<text x="50%" y="200" text-anchor="middle" fill="#555" font-size="16" font-family="Inter,sans-serif">Use the search bar or suggestions above to add founders</text>';
+    svg.setAttribute('viewBox', `0 0 1200 400`);
     return;
   }
 
@@ -1374,15 +1326,18 @@ function renderAlluvial() {
       });
       rect.addEventListener('mousemove', moveTooltip);
       rect.addEventListener('mouseleave', hideTooltip);
-      rect.addEventListener('touchend', (e) => {
-        const toast = document.getElementById('mobile-toast');
-        if (toast) {
-          clearTimeout(mobileToastTimer);
-          toast.innerHTML = `<span style="color:${color}">${sector}</span><span class="toast-sector">${pos.people.length} founder${pos.people.length !== 1 ? 's' : ''}</span>`;
-          toast.classList.add('show');
-          mobileToastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-      });
+      if (isTouchDevice) {
+        rect.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          const toast = document.getElementById('mobile-toast');
+          if (toast) {
+            clearTimeout(mobileToastTimer);
+            toast.innerHTML = `<span style="color:${color}">${sector}</span><span class="toast-sector">${pos.people.length} founder${pos.people.length !== 1 ? 's' : ''}</span>`;
+            toast.classList.add('show');
+            mobileToastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+          }
+        }, { passive: false });
+      }
 
       svg.appendChild(rect);
 
@@ -1457,11 +1412,14 @@ function renderAlluvial() {
       });
       path.addEventListener('mousemove', moveTooltip);
       path.addEventListener('mouseleave', () => { highlightedPerson = null; updateHighlights(); hideTooltip(); });
-      path.addEventListener('touchend', (e) => {
-        highlightedPerson = founder.id;
-        updateHighlights();
-        showTooltip(e, founderTooltipHTML(founder, j));
-      });
+      if (isTouchDevice) {
+        path.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          highlightedPerson = founder.id;
+          updateHighlights();
+          showMobileToast(founder);
+        }, { passive: false });
+      }
 
       svg.appendChild(path);
     }
@@ -1503,11 +1461,14 @@ function renderAlluvial() {
         updateHighlights();
         hideTooltip();
       });
-      circle.addEventListener('touchend', (e) => {
-        highlightedPerson = founder.id;
-        updateHighlights();
-        showTooltip(e, founderTooltipHTML(founder, eraIdx));
-      });
+      if (isTouchDevice) {
+        circle.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          highlightedPerson = founder.id;
+          updateHighlights();
+          showMobileToast(founder);
+        }, { passive: false });
+      }
 
       svg.appendChild(circle);
     });
@@ -1560,39 +1521,46 @@ function renderAlluvial() {
         updateHighlights();
         hideTooltip();
       });
-      circle.addEventListener('touchend', (e) => {
-        highlightedPerson = founder.id;
-        updateHighlights();
-        showTooltip(e, founderTooltipHTML(founder, sd.eraIdx));
-      });
+      if (isTouchDevice) {
+        circle.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          highlightedPerson = founder.id;
+          updateHighlights();
+          showMobileToast(founder);
+        }, { passive: false });
+      }
 
       svg.appendChild(circle);
     });
   }
 
-  // Names on right side — grouped by last visible era's sector (matches dot + name color)
+  // Names on right side — grouped by primarySector (what they're MOST known for)
   const nameX = vizW + 8;
-  const lastEraIdx = visibleEraIndices[visibleEraIndices.length - 1];
-  const nameGroups = {};
+  const primaryGroups = {};
   founders.forEach((founder, fi) => {
     const dotPos = founderDotPos[fi];
     if (!dotPos) return;
     let lastEra = -1;
     visibleEraIndices.forEach(i => { if (dotPos[i]) lastEra = i; });
     if (lastEra < 0) return;
-    const sector = founder.primarySector || (founderEras[fi][lastEra] ? founderEras[fi][lastEra].broad : 'Other');
-    if (!nameGroups[sector]) nameGroups[sector] = [];
-    nameGroups[sector].push({ founder, fi, y: dotPos[lastEra].y, lastSector: sector });
+    // Use primarySector if set, otherwise fall back to last era's broad sector
+    const sector = founder.primarySector || founderEras[fi][lastEra].broad;
+    if (!primaryGroups[sector]) primaryGroups[sector] = [];
+    primaryGroups[sector].push({ founder, fi, y: dotPos[lastEra].y });
   });
 
   // Sort within each group, then lay out names sequentially to avoid overlap
-  Object.values(nameGroups).forEach(group => group.sort((a, b) => a.y - b.y));
+  Object.values(primaryGroups).forEach(group => group.sort((a, b) => a.y - b.y));
   const allNames = [];
-  sectorOrder.forEach(s => { if (nameGroups[s]) allNames.push(...nameGroups[s]); });
-  Object.keys(nameGroups).forEach(s => { if (!sectorOrder.includes(s) && nameGroups[s]) allNames.push(...nameGroups[s]); });
+  sectorOrder.forEach(s => { if (primaryGroups[s]) allNames.push(...primaryGroups[s]); });
+  // Also catch any sectors not in sectorOrder
+  Object.keys(primaryGroups).forEach(s => { if (!sectorOrder.includes(s) && primaryGroups[s]) allNames.push(...primaryGroups[s]); });
 
-  // Stack names from top, with small gap between sector groups
+  // Stack names continuously from the top, ignore dot Y positions
+  // Group by primarySector for visual grouping, add small gap between groups
+  const groupedNames = [];
   let currentSector = null;
+  // Dynamic name sizing: scale font + spacing based on how many founders are showing
   const n = allNames.length;
   let nameFontSize, nameSpacing;
   if (n <= 20)      { nameFontSize = 13; nameSpacing = 18; }
@@ -1603,10 +1571,11 @@ function renderAlluvial() {
 
   let nameY = padTop;
   allNames.forEach(item => {
-    if (currentSector !== null && currentSector !== item.lastSector) {
+    const ps = item.founder.primarySector || 'Other';
+    if (currentSector !== null && currentSector !== ps) {
       nameY += 4; // small gap between sector groups
     }
-    currentSector = item.lastSector;
+    currentSector = ps;
     item.nameY = nameY;
     nameY += nameSpacing;
   });
@@ -1619,9 +1588,8 @@ function renderAlluvial() {
     svg.setAttribute('height', H);
   }
 
-  allNames.forEach(({ founder, fi, nameY, lastSector }) => {
-    // Color name by last visible era's sector (matches the dot right next to the name)
-    const primaryColor = BROAD_COLORS[lastSector] || '#777';
+  allNames.forEach(({ founder, fi, nameY }) => {
+    const primaryColor = BROAD_COLORS[founder.primarySector] || '#777';
 
     // Wrap name row in a group for easy manipulation during removal
     const nameRow = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -1671,11 +1639,14 @@ function renderAlluvial() {
       updateHighlights();
       hideTooltip();
     });
-    text.addEventListener('touchend', (e) => {
-      highlightedPerson = founder.id;
-      updateHighlights();
-      showTooltip(e, founderTooltipHTML(founder));
-    });
+    if (isTouchDevice) {
+      text.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        highlightedPerson = founder.id;
+        updateHighlights();
+        showMobileToast(founder);
+      }, { passive: false });
+    }
 
     nameRow.appendChild(text);
     svg.appendChild(nameRow);
@@ -2261,13 +2232,6 @@ const myoSuggestions = [
 
 function showMakeYourOwn() {
   myoPanel.style.display = 'block';
-  // On mobile, expand the controls panel so search is visible
-  const ctrlPanel = document.getElementById('controls-panel');
-  const ctrlToggle = document.getElementById('controls-toggle');
-  if (ctrlPanel && window.innerWidth <= 768) {
-    ctrlPanel.classList.remove('collapsed');
-    if (ctrlToggle) ctrlToggle.classList.add('open');
-  }
   const searchInput = document.getElementById('add-person');
   searchInput.focus();
   searchInput.style.borderColor = '#1d9bf0';
