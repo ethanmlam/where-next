@@ -332,6 +332,17 @@
   }
   .era-step-dot.active { background: #6366f1; }
 
+  /* Mobile tap hint — hidden on desktop, fades out after interaction */
+  .mobile-tap-hint {
+    display: none;
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+    padding: 8px 0 4px;
+    transition: opacity 0.5s;
+  }
+  .mobile-tap-hint.hidden { opacity: 0; pointer-events: none; }
+
   /* Mobile toast — lightweight name display */
   .mobile-toast {
     display: none;
@@ -457,6 +468,9 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
+
+    /* Show tap hint on mobile */
+    .mobile-tap-hint { display: block; }
 
     /* Tooltip: bottom sheet */
     .tooltip {
@@ -592,6 +606,7 @@
 
 <div id="main-viz">
   <div id="alluvial-container"><svg id="alluvial-svg"></svg></div>
+  <div id="mobile-tap-hint" class="mobile-tap-hint">Tap any dot or name to explore</div>
   <div id="cards-container" class="view-hidden"></div>
 </div>
 
@@ -700,7 +715,15 @@ document.getElementById('era-prev').addEventListener('click', () => stepEra(-1))
 document.getElementById('era-next').addEventListener('click', () => stepEra(1));
 updateEraStepper();
 
+function dismissTapHint() {
+  const hint = document.getElementById('mobile-tap-hint');
+  if (hint && !hint.classList.contains('hidden')) {
+    hint.classList.add('hidden');
+  }
+}
+
 function showMobileToast(founder) {
+  dismissTapHint();
   const toast = document.getElementById('mobile-toast');
   if (!toast) return;
   clearTimeout(mobileToastTimer);
@@ -1570,7 +1593,7 @@ function renderAlluvial() {
     });
   }
 
-  // Names on right side — grouped by last visible era's sector (matches dot + name color)
+  // Names on right side — grouped by last visible era's sector (color matches last dot)
   const nameX = vizW + 8;
   const lastEraIdx = visibleEraIndices[visibleEraIndices.length - 1];
   const nameGroups = {};
@@ -1580,7 +1603,7 @@ function renderAlluvial() {
     let lastEra = -1;
     visibleEraIndices.forEach(i => { if (dotPos[i]) lastEra = i; });
     if (lastEra < 0) return;
-    const sector = founder.primarySector || (founderEras[fi][lastEra] ? founderEras[fi][lastEra].broad : 'Other');
+    const sector = (founderEras[fi][lastEra] ? founderEras[fi][lastEra].broad : null) || founder.primarySector || 'Other';
     if (!nameGroups[sector]) nameGroups[sector] = [];
     nameGroups[sector].push({ founder, fi, y: dotPos[lastEra].y, lastSector: sector });
   });
@@ -1619,8 +1642,8 @@ function renderAlluvial() {
     svg.setAttribute('height', H);
   }
 
+
   allNames.forEach(({ founder, fi, nameY, lastSector }) => {
-    // Color name by last visible era's sector (matches the dot right next to the name)
     const primaryColor = BROAD_COLORS[lastSector] || '#777';
 
     // Wrap name row in a group for easy manipulation during removal
