@@ -1037,6 +1037,8 @@ let hideTimer = null;
 
 function showTooltip(e, html) {
   clearTimeout(hideTimer);
+  // Prevent re-opening immediately after closing (tap-through on mobile)
+  if (Date.now() - tooltipClosedAt < 400) return;
   if (isMobile()) {
     // Mobile: show as bottom sheet
     tooltip.innerHTML = '<div class="tt-close">&times;</div>' + html;
@@ -1073,8 +1075,10 @@ function hideTooltip() {
     }
   }, 200);
 }
+let tooltipClosedAt = 0;
 function closeMobileTooltip(e) {
   if (e) { e.stopPropagation(); e.preventDefault(); }
+  tooltipClosedAt = Date.now();
   tooltip.style.display = 'none';
   tooltip.style.pointerEvents = 'none';
   tooltip.classList.remove('mobile-tooltip');
@@ -1083,6 +1087,8 @@ function closeMobileTooltip(e) {
   updateHighlights();
 }
 tooltipOverlay.addEventListener('click', function(e) { e.stopPropagation(); closeMobileTooltip(e); });
+tooltipOverlay.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: false });
+tooltipOverlay.addEventListener('touchend', function(e) { e.stopPropagation(); e.preventDefault(); closeMobileTooltip(e); });
 tooltip.addEventListener('mouseenter', () => { clearTimeout(hideTimer); tooltipLocked = true; });
 tooltip.addEventListener('mouseleave', () => { tooltipLocked = false; hideTooltip(); highlightedPerson = null; updateHighlights(); });
 
