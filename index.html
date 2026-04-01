@@ -322,6 +322,8 @@
     display: flex;
     gap: 6px;
     justify-content: center;
+    flex: 1;
+    align-items: center;
   }
   .era-step-dot {
     width: 6px;
@@ -597,11 +599,11 @@
 
 <div id="era-stepper" class="era-stepper">
   <button class="era-step-btn" id="era-prev" aria-label="Previous era"><span class="arrow">&#8249;</span> <span id="era-prev-label"></span></button>
-  <div class="era-step-center">
-    <div class="era-step-labels" id="era-step-labels"></div>
-    <div class="era-step-dots" id="era-step-dots"></div>
-  </div>
+  <div class="era-step-dots" id="era-step-dots"></div>
   <button class="era-step-btn" id="era-next" aria-label="Next era"><span id="era-next-label"></span> <span class="arrow">&#8250;</span></button>
+  <div class="era-step-center" style="display:none">
+    <div class="era-step-labels" id="era-step-labels"></div>
+  </div>
 </div>
 
 <div id="main-viz">
@@ -1045,6 +1047,7 @@ function showTooltip(e, html) {
     tooltip.style.top = '';
     tooltipOverlay.classList.add('show');
     tooltip.querySelector('.tt-close').addEventListener('click', closeMobileTooltip);
+    tooltip.querySelector('.tt-close').addEventListener('touchend', function(ev) { ev.stopPropagation(); ev.preventDefault(); closeMobileTooltip(ev); });
   } else {
     tooltip.classList.remove('mobile-tooltip');
     tooltip.innerHTML = html;
@@ -1070,7 +1073,8 @@ function hideTooltip() {
     }
   }, 200);
 }
-function closeMobileTooltip() {
+function closeMobileTooltip(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
   tooltip.style.display = 'none';
   tooltip.style.pointerEvents = 'none';
   tooltip.classList.remove('mobile-tooltip');
@@ -1078,7 +1082,7 @@ function closeMobileTooltip() {
   highlightedPerson = null;
   updateHighlights();
 }
-tooltipOverlay.addEventListener('click', closeMobileTooltip);
+tooltipOverlay.addEventListener('click', function(e) { e.stopPropagation(); closeMobileTooltip(e); });
 tooltip.addEventListener('mouseenter', () => { clearTimeout(hideTimer); tooltipLocked = true; });
 tooltip.addEventListener('mouseleave', () => { tooltipLocked = false; hideTooltip(); highlightedPerson = null; updateHighlights(); });
 
