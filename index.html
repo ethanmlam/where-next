@@ -26,40 +26,40 @@
   
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: #0a0a0f;
-    color: #e0e0e8;
+    background: #ffffff;
+    color: #1a1a2e;
     overflow-x: hidden;
   }
 
   header {
     padding: 16px 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
     display: flex;
     align-items: center;
     gap: 32px;
   }
 
-  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: #fff; white-space: nowrap; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: #111; white-space: nowrap; }
   header p { font-size: 14px; color: #888; margin-top: 4px; }
   .header-left { flex-shrink: 0; }
   .header-stats { display: flex; gap: 28px; align-items: center; margin-left: auto; }
-  .header-stats .stat-value { color: #fff; font-weight: 600; font-size: 16px; display: block; }
-  .header-stats .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; color: #666; margin-top: 1px; }
+  .header-stats .stat-value { color: #111; font-weight: 600; font-size: 16px; display: block; }
+  .header-stats .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; color: #888; margin-top: 1px; }
 
   .controls {
     padding: 16px 40px;
     display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
 
-  .controls label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+  .controls label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
 
-  .controls select { background: #16161f; border: 1px solid #2a2a3a; color: #ccc; padding: 6px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  .controls select { background: #f8f9fa; border: 1px solid #d0d0d0; color: #555; padding: 6px 10px; border-radius: 6px; font-size: 13px; outline: none; }
 
-  .view-tabs { display: flex; gap: 4px; background: #16161f; border-radius: 8px; padding: 2px; }
+  .view-tabs { display: flex; gap: 4px; background: #f0f0f0; border-radius: 8px; padding: 2px; }
   .view-tab { padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; color: #888; transition: all 0.15s; border: none; background: none; }
-  .view-tab.active { background: #2a2a3a; color: #fff; }
-  .view-tab:hover { color: #ccc; }
+  .view-tab.active { background: #ffffff; color: #111; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .view-tab:hover { color: #555; }
 
   #alluvial-container { width: 100%; padding: 20px 20px 20px 40px; overflow-x: auto; }
 
@@ -69,49 +69,49 @@
   }
 
   .founder-card {
-    background: #14141e; border: 1px solid #222233; border-radius: 12px; padding: 20px;
+    background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px;
     cursor: pointer; transition: all 0.2s;
   }
-  .founder-card:hover { border-color: #3a3a5a; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-  .founder-card .name { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .founder-card:hover { border-color: #b0b0c0; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .founder-card .name { font-size: 16px; font-weight: 600; color: #111; margin-bottom: 8px; }
 
   .switch-badge {
     display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 3px 8px;
-    border-radius: 8px; background: rgba(85,102,255,0.12); color: #8899ff; margin: 2px 4px 2px 0;
+    border-radius: 8px; background: rgba(85,102,255,0.08); color: #5566dd; margin: 2px 4px 2px 0;
   }
-  .switch-badge .arrow { color: #555; }
+  .switch-badge .arrow { color: #aaa; }
 
   .timeline-row { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
 
   .role-chip {
     display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 6px;
-    font-size: 12px; color: #ccc; border: 1px solid rgba(255,255,255,0.08); white-space: nowrap;
+    font-size: 12px; color: #555; border: 1px solid rgba(0,0,0,0.08); white-space: nowrap;
   }
   .role-chip .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .role-chip .years { color: #666; font-size: 10px; }
+  .role-chip .years { color: #aaa; font-size: 10px; }
 
   .tooltip {
-    position: fixed; background: #1a1a28; border: 1px solid #333; border-radius: 8px;
+    position: fixed; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px;
     padding: 10px 14px; font-size: 11px; pointer-events: none; z-index: 1000;
-    max-width: 360px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); display: none; line-height: 1.5;
+    max-width: 360px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); display: none; line-height: 1.5;
   }
-  .tooltip .tt-name { font-weight: 700; color: #fff; font-size: 13px; margin-bottom: 4px; }
-  .tooltip .tt-detail { color: #bbb; font-size: 10px; }
+  .tooltip .tt-name { font-weight: 700; color: #111; font-size: 13px; margin-bottom: 4px; }
+  .tooltip .tt-detail { color: #555; font-size: 10px; }
   .tooltip .tt-role { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
   .tooltip .tt-role-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .tooltip .tt-role-company { color: #fff; font-weight: 500; }
-  .tooltip .tt-role-title { color: #999; font-size: 10px; }
-  .tooltip .tt-role-years { color: #666; font-size: 9px; margin-left: auto; }
+  .tooltip .tt-role-company { color: #111; font-weight: 500; }
+  .tooltip .tt-role-title { color: #888; font-size: 10px; }
+  .tooltip .tt-role-years { color: #aaa; font-size: 9px; margin-left: auto; }
   .tooltip .tt-switch-label {
-    display: inline-block; background: rgba(251,191,36,0.15); color: #fbbf24;
+    display: inline-block; background: rgba(251,191,36,0.12); color: #d97706;
     padding: 1px 6px; border-radius: 4px; font-size: 9px; font-weight: 600;
     margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;
   }
   .tooltip .tt-sector-title {
-    font-weight: 700; color: #fff; font-size: 12px; margin-bottom: 6px;
+    font-weight: 700; color: #111; font-size: 12px; margin-bottom: 6px;
   }
   .tooltip .tt-person-row {
-    display: flex; align-items: center; gap: 6px; margin: 2px 0; color: #ccc; font-size: 10px;
+    display: flex; align-items: center; gap: 6px; margin: 2px 0; color: #555; font-size: 10px;
   }
   .tooltip .tt-person-company { color: #888; font-size: 10px; }
 
@@ -119,10 +119,10 @@
 
   .sector-legend { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 40px 12px; }
   .legend-item {
-    display: flex; align-items: center; gap: 5px; font-size: 11px; color: #888;
+    display: flex; align-items: center; gap: 5px; font-size: 11px; color: #666;
     cursor: pointer; padding: 3px 8px; border-radius: 6px; transition: background 0.15s;
   }
-  .legend-item:hover { background: rgba(255,255,255,0.05); }
+  .legend-item:hover { background: rgba(0,0,0,0.04); }
   .legend-item.dimmed { opacity: 0.3; }
   .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
@@ -138,54 +138,54 @@
   .sector-block:hover { opacity: 0.2 !important; }
 
   .view-hidden { display: none !important; }
-  .switch-highlight { background: rgba(255,170,0,0.06); border-color: rgba(255,170,0,0.2); }
+  .switch-highlight { background: rgba(255,170,0,0.04); border-color: rgba(255,170,0,0.25); }
 
   .add-person-wrap { position: relative; }
   #add-person {
-    background: #16161f; border: 1px solid #2a2a3a; color: #ccc; padding: 6px 10px;
+    background: #f8f9fa; border: 1px solid #d0d0d0; color: #555; padding: 6px 10px;
     border-radius: 6px; font-size: 13px; outline: none; width: 180px;
   }
-  #add-person:focus { border-color: #4a4a6a; }
+  #add-person:focus { border-color: #9090b0; }
   .add-suggestions {
-    position: absolute; top: 100%; left: 0; width: 260px; background: #1a1a28;
-    border: 1px solid #333; border-radius: 8px; max-height: 200px; overflow-y: auto;
-    z-index: 100; display: none; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    position: absolute; top: 100%; left: 0; width: 260px; background: #ffffff;
+    border: 1px solid #e0e0e0; border-radius: 8px; max-height: 200px; overflow-y: auto;
+    z-index: 100; display: none; box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   }
   .add-suggestions.show { display: block; }
   .add-suggestion {
-    padding: 8px 12px; cursor: pointer; font-size: 12px; color: #ccc;
+    padding: 8px 12px; cursor: pointer; font-size: 12px; color: #555;
     display: flex; align-items: center; gap: 8px;
   }
-  .add-suggestion:hover { background: rgba(255,255,255,0.06); }
+  .add-suggestion:hover { background: rgba(0,0,0,0.04); }
   .add-suggestion .sg-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .add-suggestion .sg-name { color: #fff; font-weight: 500; }
-  .add-suggestion .sg-sub { color: #666; font-size: 10px; }
+  .add-suggestion .sg-name { color: #111; font-weight: 500; }
+  .add-suggestion .sg-sub { color: #aaa; font-size: 10px; }
 
   .restore-btn {
-    background: #1e1e2e; border: 1px solid #333; color: #888; padding: 5px 10px;
+    background: #f8f9fa; border: 1px solid #d0d0d0; color: #888; padding: 5px 10px;
     border-radius: 6px; font-size: 11px; cursor: pointer;
   }
-  .restore-btn:hover { color: #ccc; border-color: #555; }
+  .restore-btn:hover { color: #444; border-color: #aaa; }
 
   .presets-bar {
     padding: 8px 40px 12px;
     display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
-  .presets-label { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+  .presets-label { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
   .preset-btn {
-    background: #16161f; border: 1px solid #2a2a3a; color: #999; padding: 5px 14px;
+    background: #f8f9fa; border: 1px solid #d0d0d0; color: #666; padding: 5px 14px;
     border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.15s;
     white-space: nowrap;
   }
-  .preset-btn:hover { background: #22222f; border-color: #4a4a6a; color: #ddd; }
-  .preset-btn.active { background: #2a2a4a; border-color: #6366f1; color: #fff; }
+  .preset-btn:hover { background: #f0f0f0; border-color: #b0b0c0; color: #333; }
+  .preset-btn.active { background: #eeeeff; border-color: #6366f1; color: #4448cc; }
   .preset-btn-all {
-    background: transparent; border: 1px solid #2a2a3a; color: #666; padding: 5px 14px;
+    background: transparent; border: 1px solid #d0d0d0; color: #888; padding: 5px 14px;
     border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.15s;
   }
-  .preset-btn-all:hover { border-color: #4a4a6a; color: #aaa; }
-  .preset-btn-all.active { border-color: #6366f1; color: #fff; }
+  .preset-btn-all:hover { border-color: #b0b0c0; color: #555; }
+  .preset-btn-all.active { border-color: #6366f1; color: #4448cc; }
 
   .tt-remove-btn {
     display: inline-block; margin-top: 8px; padding: 4px 10px; font-size: 11px;
@@ -197,7 +197,7 @@
 .welcome-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 15, 0.85);
+  background: rgba(240, 240, 248, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,8 +210,8 @@
 .welcome-overlay.hidden { pointer-events: none; opacity: 0; }
 
 .welcome-card {
-  background: #14141e;
-  border: 1px solid #222233;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 16px;
   padding: 48px 44px 40px;
   max-width: 480px;
@@ -220,6 +220,7 @@
   transform: translateY(12px);
   transition: transform 0.4s ease, opacity 0.4s ease;
   opacity: 0;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
 }
 .welcome-overlay.visible .welcome-card {
   transform: translateY(0);
@@ -230,23 +231,23 @@
   font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.5px;
-  color: #fff;
+  color: #111;
   margin-bottom: 20px;
 }
 
 .welcome-body {
   font-size: 15px;
   line-height: 1.7;
-  color: #b0b0bc;
+  color: #555;
   margin-bottom: 32px;
 }
 .welcome-body em {
-  color: #e0e0e8;
+  color: #1a1a2e;
   font-style: italic;
 }
 
 .welcome-cta {
-  background: #2a2a4a;
+  background: #6366f1;
   border: 1px solid #6366f1;
   color: #fff;
   padding: 12px 32px;
@@ -257,7 +258,7 @@
   transition: all 0.2s;
 }
 .welcome-cta:hover {
-  background: #3a3a5a;
+  background: #4f52d9;
   box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
 }
 
@@ -270,9 +271,9 @@
     padding: 8px 12px;
   }
   .era-step-btn {
-    background: #1a1a28;
-    border: 1px solid #333;
-    color: #aaa;
+    background: #f8f9fa;
+    border: 1px solid #d0d0d0;
+    color: #666;
     padding: 8px 14px;
     border-radius: 20px;
     font-size: 12px;
@@ -285,7 +286,7 @@
     flex-shrink: 0;
     white-space: nowrap;
   }
-  .era-step-btn:hover { border-color: #555; color: #fff; background: #22222f; }
+  .era-step-btn:hover { border-color: #b0b0c0; color: #333; background: #f0f0f0; }
   .era-step-btn:disabled { opacity: 0; pointer-events: none; }
   .era-step-btn .arrow { font-size: 14px; line-height: 1; }
   .era-step-center {
@@ -305,16 +306,16 @@
   .era-step-label {
     font-size: 13px;
     font-weight: 600;
-    color: #fff;
+    color: #111;
     white-space: nowrap;
   }
   .era-step-sub {
     font-size: 10px;
-    color: #555;
+    color: #aaa;
     display: block;
   }
   .era-step-arrow {
-    color: #444;
+    color: #bbb;
     font-size: 16px;
   }
   .era-step-dots {
@@ -328,7 +329,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #333;
+    background: #d0d0d0;
     transition: background 0.2s;
   }
   .era-step-dot.active { background: #6366f1; }
@@ -337,7 +338,7 @@
   .mobile-tap-hint {
     display: none;
     text-align: center;
-    color: #555;
+    color: #aaa;
     font-size: 12px;
     padding: 8px 0 4px;
     transition: opacity 0.5s;
@@ -351,15 +352,15 @@
     bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
-    background: #1a1a28;
-    border: 1px solid #333;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 8px 16px;
-    color: #fff;
+    color: #111;
     font-size: 13px;
     font-weight: 500;
     z-index: 999;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
     white-space: nowrap;
     max-width: calc(100vw - 32px);
     overflow: hidden;
@@ -387,9 +388,9 @@
   /* Mobile controls toggle */
   .controls-toggle {
     display: none;
-    background: #16161f;
-    border: 1px solid #2a2a3a;
-    color: #ccc;
+    background: #f8f9fa;
+    border: 1px solid #d0d0d0;
+    color: #555;
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 13px;
@@ -398,7 +399,7 @@
     margin: 8px 12px 0;
     text-align: left;
   }
-  .controls-toggle:hover { border-color: #4a4a6a; }
+  .controls-toggle:hover { border-color: #b0b0c0; }
   .controls-toggle .toggle-arrow { float: right; transition: transform 0.2s; }
   .controls-toggle.open .toggle-arrow { transform: rotate(180deg); }
 
@@ -490,7 +491,7 @@
       padding: 16px 18px 24px;
       max-height: 50vh;
       overflow-y: auto;
-      box-shadow: 0 -8px 40px rgba(0,0,0,0.7);
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
       z-index: 1001;
       border: none;
     }
@@ -498,7 +499,7 @@
       position: absolute;
       top: 10px;
       right: 14px;
-      color: #666;
+      color: #aaa;
       font-size: 22px;
       cursor: pointer;
       padding: 4px 8px;
@@ -509,7 +510,7 @@
     .tooltip-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.2);
       z-index: 1000;
       display: none;
     }
@@ -1146,7 +1147,7 @@ function founderTooltipHTML(founder, highlightEraIdx) {
     const years = `${r.start || '?'}\u2013${r.end || 'now'}`;
     const isInEra = highlightEraIdx !== undefined && r.start &&
       r.start <= ERAS[highlightEraIdx].range[1] && (r.end || 2026) >= ERAS[highlightEraIdx].range[0];
-    const bold = isInEra ? 'font-weight:700;color:#fff;font-size:11px' : '';
+    const bold = isInEra ? 'font-weight:700;color:#111;font-size:11px' : '';
     html += `<div class="tt-role" style="${bold}">
       <span class="tt-role-dot" style="background:${color}"></span>
       <span><span class="tt-role-company">${r.company}</span> <span class="tt-role-title">${r.role}</span></span>
@@ -1160,7 +1161,7 @@ function founderTooltipHTML(founder, highlightEraIdx) {
 function sectorBlockTooltipHTML(sector, eraIdx, peopleInBlock) {
   const era = ERAS[eraIdx];
   let html = `<div class="tt-sector-title" style="color:${BROAD_COLORS[sector]}">${sector}</div>`;
-  html += `<div style="color:#666;font-size:11px;margin-bottom:8px">${era.label} (${era.sub})</div>`;
+  html += `<div style="color:#aaa;font-size:11px;margin-bottom:8px">${era.label} (${era.sub})</div>`;
   html += `<div class="tt-detail">`;
   peopleInBlock.forEach(p => {
     // Find the role active in this era
@@ -1171,7 +1172,7 @@ function sectorBlockTooltipHTML(sector, eraIdx, peopleInBlock) {
     const company = role ? role.company : '';
     const title = role ? role.role : '';
     html += `<div class="tt-person-row">
-      <span style="color:#fff;font-weight:500">${p.founder.name}</span>
+      <span style="color:#111;font-weight:500">${p.founder.name}</span>
       <span class="tt-person-company">${title}${company ? ' @ ' + company : ''}</span>
     </div>`;
   });
@@ -1236,8 +1237,8 @@ function renderAlluvial() {
     svg.setAttribute('width', emptyW);
     svg.setAttribute('height', emptyH);
     svg.innerHTML = `
-      <text x="50%" y="${emptyH * 0.4}" text-anchor="middle" fill="#666" font-size="${mobile ? 18 : 20}" font-family="Inter,sans-serif" font-weight="500">No founders selected</text>
-      <text x="50%" y="${emptyH * 0.4 + (mobile ? 28 : 32)}" text-anchor="middle" fill="#444" font-size="${mobile ? 13 : 14}" font-family="Inter,sans-serif">Use the search bar or suggestions above to add founders</text>
+      <text x="50%" y="${emptyH * 0.4}" text-anchor="middle" fill="#888" font-size="${mobile ? 18 : 20}" font-family="Inter,sans-serif" font-weight="500">No founders selected</text>
+      <text x="50%" y="${emptyH * 0.4 + (mobile ? 28 : 32)}" text-anchor="middle" fill="#bbb" font-size="${mobile ? 13 : 14}" font-family="Inter,sans-serif">Use the search bar or suggestions above to add founders</text>
     `;
     return;
   }
@@ -1409,14 +1410,14 @@ function renderAlluvial() {
     const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     label.setAttribute('x', x); label.setAttribute('y', 24);
     label.setAttribute('text-anchor', 'middle');
-    label.setAttribute('fill', '#777'); label.setAttribute('font-size', '13'); label.setAttribute('font-weight', '600');
+    label.setAttribute('fill', '#444'); label.setAttribute('font-size', '13'); label.setAttribute('font-weight', '600');
     label.textContent = era.label;
     svg.appendChild(label);
 
     const sub = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     sub.setAttribute('x', x); sub.setAttribute('y', 42);
     sub.setAttribute('text-anchor', 'middle');
-    sub.setAttribute('fill', '#444'); sub.setAttribute('font-size', '11');
+    sub.setAttribute('fill', '#aaa'); sub.setAttribute('font-size', '11');
     sub.textContent = era.sub;
     svg.appendChild(sub);
 
@@ -1424,7 +1425,7 @@ function renderAlluvial() {
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     line.setAttribute('x1', x); line.setAttribute('y1', padTop - 10);
     line.setAttribute('x2', x); line.setAttribute('y2', H - 20);
-    line.setAttribute('stroke', 'rgba(255,255,255,0.03)'); line.setAttribute('stroke-width', '1');
+    line.setAttribute('stroke', 'rgba(0,0,0,0.06)'); line.setAttribute('stroke-width', '1');
     svg.appendChild(line);
   });
 
@@ -1562,7 +1563,7 @@ function renderAlluvial() {
       circle.setAttribute('cx', x); circle.setAttribute('cy', y);
       circle.setAttribute('r', dotRadius);
       circle.setAttribute('fill', color);
-      circle.setAttribute('stroke', '#0a0a0f');
+      circle.setAttribute('stroke', '#ffffff');
       circle.setAttribute('stroke-width', '2');
       circle.setAttribute('data-founder', founder.id);
       circle.style.cursor = 'pointer';
@@ -1570,7 +1571,7 @@ function renderAlluvial() {
 
       circle.addEventListener('mouseenter', (e) => {
         circle.setAttribute('r', dotRadius + 2);
-        circle.setAttribute('stroke', '#fff');
+        circle.setAttribute('stroke', '#333');
         highlightedPerson = founder.id;
         updateHighlights();
         showTooltip(e, founderTooltipHTML(founder, eraIdx));
@@ -1578,7 +1579,7 @@ function renderAlluvial() {
       circle.addEventListener('mousemove', moveTooltip);
       circle.addEventListener('mouseleave', () => {
         circle.setAttribute('r', dotRadius);
-        circle.setAttribute('stroke', '#0a0a0f');
+        circle.setAttribute('stroke', '#ffffff');
         highlightedPerson = null;
         updateHighlights();
         hideTooltip();
@@ -1715,12 +1716,12 @@ function renderAlluvial() {
     xBtn.setAttribute('x', nameX - 2);
     xBtn.setAttribute('y', nameY + 4);
     xBtn.setAttribute('text-anchor', 'end');
-    xBtn.setAttribute('fill', '#444');
+    xBtn.setAttribute('fill', '#ccc');
     xBtn.setAttribute('font-size', nameFontSize);
     xBtn.style.cursor = 'pointer';
     xBtn.textContent = '\u00d7';
     xBtn.addEventListener('mouseenter', () => xBtn.setAttribute('fill', '#f87171'));
-    xBtn.addEventListener('mouseleave', () => xBtn.setAttribute('fill', '#444'));
+    xBtn.addEventListener('mouseleave', () => xBtn.setAttribute('fill', '#ccc'));
     xBtn.addEventListener('click', (e) => { e.stopPropagation(); removePerson(founder.id); });
     nameRow.appendChild(xBtn);
 
@@ -1737,7 +1738,7 @@ function renderAlluvial() {
     text.textContent = founder.name;
 
     text.addEventListener('mouseenter', (e) => {
-      text.setAttribute('fill', '#fff');
+      text.setAttribute('fill', '#111');
       text.setAttribute('opacity', '1');
       highlightedPerson = founder.id;
       updateHighlights();
@@ -2055,9 +2056,9 @@ function removePerson(id) {
   // Sync MYO suggestion chip styles
   document.querySelectorAll('#myo-suggestions button[data-founder-id]').forEach(chip => {
     const on = !removedIds.includes(chip.dataset.founderId);
-    chip.style.background = on ? '#1d9bf0' : '#2a2a3e';
-    chip.style.color = on ? '#fff' : '#ddd';
-    chip.style.borderColor = on ? '#1d9bf0' : '#444';
+    chip.style.background = on ? '#1d9bf0' : '#f0f0f0';
+    chip.style.color = on ? '#fff' : '#666';
+    chip.style.borderColor = on ? '#1d9bf0' : '#d0d0d0';
   });
 }
 
@@ -2165,7 +2166,7 @@ addInput.addEventListener('input', () => {
         if (dbFounders) {
           const newFromDb = dbFounders.filter(r => !ALL_FOUNDERS.some(f => f.id === r.id));
           if (newFromDb.length > 0) {
-            html += `<div style="padding:4px 12px;color:#555;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From database</div>`;
+            html += `<div style="padding:4px 12px;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From database</div>`;
             html += newFromDb.slice(0, 5).map(r => {
               const color = BROAD_COLORS[r.primary_sector] || '#6b7280';
               return `<div class="add-suggestion" data-db-id="${r.id}" data-db-name="${r.name}" data-db-sector="${r.primary_sector}">
@@ -2307,10 +2308,10 @@ presetsBar.appendChild(myoBtn);
 // Make Your Own panel
 const myoPanel = document.createElement('div');
 myoPanel.id = 'myo-panel';
-myoPanel.style.cssText = 'display:none;margin:0 40px 12px;padding:14px 18px;background:linear-gradient(135deg,#1a1a2e,#1e1e36);border:1px solid #333;border-radius:10px;';
+myoPanel.style.cssText = 'display:none;margin:0 40px 12px;padding:14px 18px;background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;';
 myoPanel.innerHTML = `
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-    <div style="color:#fff;font-size:13px;">Search to add founders.</div>
+    <div style="color:#333;font-size:13px;">Search to add founders.</div>
     <div style="flex:1"></div>
     <span id="myo-counter" style="color:#888;font-size:12px;">0 selected</span>
     <button id="myo-share" style="background:#1d9bf0;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;opacity:0.5;pointer-events:none;transition:all 0.2s;">Share on 𝕏</button>
@@ -2352,7 +2353,7 @@ function showMakeYourOwn() {
   searchInput.focus();
   searchInput.style.borderColor = '#1d9bf0';
   searchInput.placeholder = 'Type a name to add...';
-  setTimeout(() => { searchInput.style.borderColor = '#3a3a5a'; }, 2000);
+  setTimeout(() => { searchInput.style.borderColor = '#d0d0d0'; }, 2000);
 
   const container = document.getElementById('myo-suggestions');
   container.innerHTML = '';
@@ -2361,7 +2362,7 @@ function showMakeYourOwn() {
     const chip = document.createElement('button');
     function updateChipStyle() {
       const on = !removedIds.includes(s.id);
-      chip.style.cssText = `background:${on ? '#1d9bf0' : '#2a2a3e'};color:${on ? '#fff' : '#ddd'};border:1px solid ${on ? '#1d9bf0' : '#444'};padding:4px 12px;border-radius:16px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.15s;`;
+      chip.style.cssText = `background:${on ? '#1d9bf0' : '#f0f0f0'};color:${on ? '#fff' : '#666'};border:1px solid ${on ? '#1d9bf0' : '#d0d0d0'};padding:4px 12px;border-radius:16px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.15s;`;
     }
     updateChipStyle();
     chip.textContent = s.name;
@@ -2406,7 +2407,7 @@ function showMakeYourOwn() {
       }
       const container = document.getElementById('alluvial-container');
       const cvs = await html2canvas(container, {
-        backgroundColor: '#0d0d14',
+        backgroundColor: '#ffffff',
         scale: 2,
         useCORS: true,
         logging: false,
@@ -2421,25 +2422,25 @@ function showMakeYourOwn() {
       const font = 'Inter, -apple-system, BlinkMacSystemFont, sans-serif';
 
       // Background
-      ctx.fillStyle = '#0d0d14';
+      ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, brandedCanvas.width, brandedCanvas.height);
 
       // Title: "WHERE NEXT"
-      ctx.fillStyle = '#e0e0e0';
+      ctx.fillStyle = '#111111';
       ctx.font = `bold 32px ${font}`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       ctx.fillText('WHERE NEXT', brandedCanvas.width / 2, 18);
 
       // Subtitle: "Founder Migration Tracker"
-      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.fillStyle = 'rgba(0,0,0,0.4)';
       ctx.font = `16px ${font}`;
       ctx.fillText('Founder Migration Tracker', brandedCanvas.width / 2, 18 + 32 + 8);
 
       // Subtle border around diagram area
       const diagX = padding.sides;
       const diagY = padding.top;
-      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.strokeStyle = 'rgba(0,0,0,0.1)';
       ctx.lineWidth = 1;
       if (ctx.roundRect) {
         ctx.beginPath();
@@ -2457,7 +2458,7 @@ function showMakeYourOwn() {
       ctx.textBaseline = 'middle';
 
       // Left: founder names
-      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
       ctx.font = `14px ${font}`;
       ctx.textAlign = 'left';
       // Truncate names string if too wide
@@ -2471,7 +2472,7 @@ function showMakeYourOwn() {
       ctx.fillText(displayNames, diagX, footerY);
 
       // Right: URL
-      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.fillStyle = 'rgba(0,0,0,0.35)';
       ctx.textAlign = 'right';
       ctx.fillText('esofast.com/where-next', diagX + cvs.width, footerY);
 
