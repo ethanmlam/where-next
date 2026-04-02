@@ -10,7 +10,7 @@ Where did Elon Musk, Sam Altman, and Reid Hoffman end up?
 
 355 sector switches. One clear signal: everyone's heading to AI.
 
-Explore the interactive map: wherenext.fivew.co
+Explore the interactive map: esofast.com/where-next
 
 ---
 
@@ -30,6 +30,6 @@ The biggest signal? AI is the hottest destination by far — pulling founders fr
 
 This isn't a static chart. You can search any founder, toggle preset groups (PayPal Mafia, YC Mafia, Crypto OGs), or build your own custom view.
 
-Check it out: wherenext.fivew.co
+Check it out: esofast.com/where-next
 
 Would love to hear what patterns you spot.

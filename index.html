@@ -61,7 +61,7 @@
   .view-tab.active { background: #ffffff; color: #111; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
   .view-tab:hover { color: #555; }
 
-  #alluvial-container { width: 100%; padding: 20px 20px 20px 40px; overflow-x: auto; }
+  #alluvial-container { width: 100%; padding: 20px 20px 20px 40px; overflow-x: hidden; }
 
   #cards-container {
     padding: 20px 40px;
@@ -1320,7 +1320,8 @@ function renderAlluvial() {
   // Layout — compact columns, leave room for names on right
   const nameColW = mobile ? 100 : 180;
   const minW = mobile ? 340 : 1000;
-  const W = mobile ? Math.max(minW, window.innerWidth - 10) : Math.max(minW, window.innerWidth - 20);
+  const containerW = document.getElementById('alluvial-container').clientWidth;
+  const W = mobile ? Math.max(minW, containerW) : Math.max(minW, containerW);
   const vizW = W - nameColW;
   const padX = mobile ? 50 : 60;
   const padTop = mobile ? 55 : 75;
@@ -1444,7 +1445,7 @@ function renderAlluvial() {
       rect.setAttribute('height', r * 2);
       rect.setAttribute('rx', r);
       rect.setAttribute('fill', color);
-      rect.setAttribute('opacity', '0.07');
+      rect.setAttribute('opacity', '0.22');
       rect.setAttribute('class', 'sector-block');
       rect.setAttribute('data-sector', sector);
       rect.setAttribute('data-era', eraIdx);
@@ -1474,7 +1475,8 @@ function renderAlluvial() {
       label.setAttribute('text-anchor', 'middle');
       label.setAttribute('fill', color);
       label.setAttribute('font-size', '10');
-      label.setAttribute('opacity', '0.6');
+      label.setAttribute('opacity', '0.9');
+      label.setAttribute('font-weight', '600');
       label.textContent = `${sector} (${pos.people.length})`;
       svg.appendChild(label);
     });
@@ -1730,7 +1732,7 @@ function renderAlluvial() {
     text.setAttribute('y', nameY + 4);
     text.setAttribute('fill', primaryColor);
     text.setAttribute('font-size', nameFontSize);
-    text.setAttribute('opacity', '0.7');
+    text.setAttribute('opacity', '0.85');
     text.setAttribute('data-founder', founder.id);
     text.classList.add('founder-name');
     text.style.cursor = 'pointer';
@@ -1738,7 +1740,7 @@ function renderAlluvial() {
     text.textContent = founder.name;
 
     text.addEventListener('mouseenter', (e) => {
-      text.setAttribute('fill', '#111');
+      text.setAttribute('fill', primaryColor);
       text.setAttribute('opacity', '1');
       highlightedPerson = founder.id;
       updateHighlights();
@@ -1747,7 +1749,7 @@ function renderAlluvial() {
     text.addEventListener('mousemove', moveTooltip);
     text.addEventListener('mouseleave', () => {
       text.setAttribute('fill', primaryColor);
-      text.setAttribute('opacity', '0.7');
+      text.setAttribute('opacity', '0.85');
       highlightedPerson = null;
       updateHighlights();
       hideTooltip();
