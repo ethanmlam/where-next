@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
   posthog.init('phc_4UBpgVKXxxShujjUAhahIH5CmKQ5Av696uGY7J36Ps9', {
@@ -620,7 +619,7 @@
 // Supabase config
 const SUPABASE_URL = 'https://tnmbxxcdabecqknzxuus.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRubWJ4eGNkYWJlY3Frbnp4dXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTE5MTcsImV4cCI6MjA4OTM2NzkxN30.xL4gRw-_JXifwFu4L7g3rZigSAqK9z8cs7YuMlQD28w';
-const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+let sb = null; // initialized in DOMContentLoaded after deferred supabase script loads
 
 let FOUNDERS_DATA = [];
 
@@ -836,68 +835,63 @@ let switchersOnly = false;
 let showSecondaries = false;
 let sectorFilter = 'all';
 
-document.addEventListener('DOMContentLoaded', async () => {
-  document.getElementById('stats-bar').innerHTML = '<div style="color:#888">Loading founders from database...</div>';
-  document.getElementById('header-stats').innerHTML = '<div style="color:#888;font-size:13px">Loading...</div>';
-  if (sb) {
-    try {
-      const { data: dbFounders, error: fErr } = await sb.from('founders').select('id, name, primary_sector, source_url, verified');
-      if (!fErr && dbFounders && dbFounders.length > 0) {
-        // Supabase caps at 1000 rows — paginate to get all roles
-        let dbRoles = [], rErr = null, page = 0;
-        while (true) {
-          const { data, error } = await sb.from('roles').select('*').order('sort_order').range(page * 1000, (page + 1) * 1000 - 1);
-          if (error) { rErr = error; break; }
-          dbRoles = dbRoles.concat(data || []);
-          if (!data || data.length < 1000) break;
-          page++;
-        }
-        const { data: dbSwitches, error: sErr } = await sb.from('sector_switches').select('*');
-        if (!rErr && !sErr) {
-          const rolesByFounder = {};
-          (dbRoles || []).forEach(r => {
-            if (!rolesByFounder[r.founder_id]) rolesByFounder[r.founder_id] = [];
-            rolesByFounder[r.founder_id].push({
-              company: r.company, role: r.role, sector: r.sector,
-              start: r.start_year, end: r.end_year, note: r.note
-            });
-          });
-          const switchesByFounder = {};
-          (dbSwitches || []).forEach(s => {
-            if (!switchesByFounder[s.founder_id]) switchesByFounder[s.founder_id] = [];
-            switchesByFounder[s.founder_id].push({
-              from: s.from_sector, to: s.to_sector, year: s.year
-            });
-          });
-          const loaded = dbFounders.map(f => ({
-            name: f.name, id: f.id,
-            primarySector: f.primary_sector || 'Other',
-            source: f.source_url || '',
-            verified: f.verified,
-            roles: rolesByFounder[f.id] || [],
-            sectorSwitches: switchesByFounder[f.id] || []
-          }));
-          FOUNDERS_DATA.length = 0;
-          loaded.forEach(f => FOUNDERS_DATA.push(f));
-          ALL_FOUNDERS.length = 0;
-          FOUNDERS_DATA.forEach(f => ALL_FOUNDERS.push(f));
-          console.log(`Loaded ${FOUNDERS_DATA.length} founders from Supabase`);
-        }
-      }
-    } catch (e) {
-      console.error('Supabase load failed:', e);
-      document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
-      return;
-    }
-  } else {
-    document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
-    return;
+async function fetchAllRoles() {
+  let allRoles = [], page = 0;
+  while (true) {
+    const { data, error } = await sb.from('roles').select('*').order('sort_order').range(page * 1000, (page + 1) * 1000 - 1);
+    if (error) throw error;
+    allRoles = allRoles.concat(data || []);
+    if (!data || data.length < 1000) break;
+    page++;
   }
-  computeStats(); populateFilters(); buildLegend();
-  renderAlluvial(); renderCards(); setupEvents();
-  document.getElementById('cards-container').classList.add('view-hidden');
+  return allRoles;
+}
 
-  // Auto-load preset from URL param or show welcome modal
+async function fetchFromSupabase() {
+  const [
+    { data: dbFounders, error: fErr },
+    dbRoles,
+    { data: dbSwitches, error: sErr }
+  ] = await Promise.all([
+    sb.from('founders').select('id, name, primary_sector, source_url, verified'),
+    fetchAllRoles(),
+    sb.from('sector_switches').select('*')
+  ]);
+  if (fErr || sErr) throw fErr || sErr;
+  const rolesByFounder = {};
+  (dbRoles || []).forEach(r => {
+    if (!rolesByFounder[r.founder_id]) rolesByFounder[r.founder_id] = [];
+    rolesByFounder[r.founder_id].push({
+      company: r.company, role: r.role, sector: r.sector,
+      start: r.start_year, end: r.end_year, note: r.note
+    });
+  });
+  const switchesByFounder = {};
+  (dbSwitches || []).forEach(s => {
+    if (!switchesByFounder[s.founder_id]) switchesByFounder[s.founder_id] = [];
+    switchesByFounder[s.founder_id].push({
+      from: s.from_sector, to: s.to_sector, year: s.year
+    });
+  });
+  const loaded = dbFounders.map(f => ({
+    name: f.name, id: f.id,
+    primarySector: f.primary_sector || 'Other',
+    source: f.source_url || '',
+    verified: f.verified,
+    roles: rolesByFounder[f.id] || [],
+    sectorSwitches: switchesByFounder[f.id] || []
+  }));
+  FOUNDERS_DATA.length = 0;
+  loaded.forEach(f => FOUNDERS_DATA.push(f));
+  ALL_FOUNDERS.length = 0;
+  FOUNDERS_DATA.forEach(f => ALL_FOUNDERS.push(f));
+  console.log(`Loaded ${FOUNDERS_DATA.length} founders from Supabase`);
+  try {
+    sessionStorage.setItem('wn-data', JSON.stringify({ data: loaded, ts: Date.now() }));
+  } catch(e) { /* sessionStorage full, ignore */ }
+}
+
+function applyPresetOrWelcome() {
   const urlParams = new URLSearchParams(window.location.search);
   const presetParam = urlParams.get('preset');
   if (presetParam) {
@@ -915,6 +909,59 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     // Returning visitors: existing wn-removed state restores naturally, no override needed
   }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Initialize Supabase client now that the deferred script has loaded
+  sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+  document.getElementById('stats-bar').innerHTML = '<div style="color:#888">Loading founders from database...</div>';
+  document.getElementById('header-stats').innerHTML = '<div style="color:#888;font-size:13px">Loading...</div>';
+
+  // Check sessionStorage cache first
+  const cachedRaw = sessionStorage.getItem('wn-data');
+  if (cachedRaw) {
+    try {
+      const { data, ts } = JSON.parse(cachedRaw);
+      FOUNDERS_DATA.length = 0;
+      data.forEach(f => FOUNDERS_DATA.push(f));
+      ALL_FOUNDERS.length = 0;
+      FOUNDERS_DATA.forEach(f => ALL_FOUNDERS.push(f));
+      console.log(`Loaded ${FOUNDERS_DATA.length} founders from cache`);
+
+      // Render immediately with cached data
+      computeStats(); populateFilters(); buildLegend();
+      renderAlluvial(); renderCards(); setupEvents();
+      document.getElementById('cards-container').classList.add('view-hidden');
+      applyPresetOrWelcome();
+
+      // Background refresh if stale (> 5 min)
+      if (sb && Date.now() - ts > 5 * 60 * 1000) {
+        fetchFromSupabase().then(() => { refresh(); }).catch(e => console.error('Background refresh failed:', e));
+      }
+      return; // skip the normal fetch flow below
+    } catch(e) {
+      // Cache parse error, fall through to normal fetch
+      sessionStorage.removeItem('wn-data');
+    }
+  }
+
+  if (sb) {
+    try {
+      await fetchFromSupabase();
+    } catch (e) {
+      console.error('Supabase load failed:', e);
+      document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
+      return;
+    }
+  } else {
+    document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
+    return;
+  }
+  computeStats(); populateFilters(); buildLegend();
+  renderAlluvial(); renderCards(); setupEvents();
+  document.getElementById('cards-container').classList.add('view-hidden');
+  applyPresetOrWelcome();
 });
 
 function showWelcomeModal() {
@@ -2349,6 +2396,14 @@ function showMakeYourOwn() {
     newShare.style.opacity = '0.6';
     newShare.style.pointerEvents = 'none';
     try {
+      if (!window.html2canvas) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+          s.onload = resolve; s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
       const container = document.getElementById('alluvial-container');
       const cvs = await html2canvas(container, {
         backgroundColor: '#0d0d14',
