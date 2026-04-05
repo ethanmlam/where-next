@@ -1,0 +1,1947 @@
+// Supabase config
+const SUPABASE_URL = 'https://tnmbxxcdabecqknzxuus.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRubWJ4eGNkYWJlY3Frbnp4dXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTE5MTcsImV4cCI6MjA4OTM2NzkxN30.xL4gRw-_JXifwFu4L7g3rZigSAqK9z8cs7YuMlQD28w';
+let sb = null; // initialized in DOMContentLoaded after deferred supabase script loads
+
+let FOUNDERS_DATA = [];
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Mobile detection
+const isMobile = () => window.innerWidth <= 768;
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+// Controls toggle for mobile
+(function initControls() {
+  const toggleBtn = document.getElementById('controls-toggle');
+  const panel = document.getElementById('controls-panel');
+  if (!toggleBtn || !panel) return;
+  toggleBtn.addEventListener('click', function() {
+    panel.classList.toggle('collapsed');
+    this.classList.toggle('open');
+  });
+  // On desktop, always show controls
+  if (!isMobile()) panel.classList.remove('collapsed');
+})();
+
+const ERAS = [
+  { label: 'Dot-com Boom',        sub: '1995\u20132001', range: [1995, 2001] },
+  { label: 'Web 2.0 / Social',    sub: '2002\u20132009', range: [2002, 2009] },
+  { label: 'Mobile & Cloud',      sub: '2010\u20132016', range: [2010, 2016] },
+  { label: 'Crypto & Late Growth', sub: '2017\u20132021', range: [2017, 2021] },
+  { label: 'AI Era',              sub: '2022\u2013present', range: [2022, 2026] },
+];
+
+// =====================================================
+// MOBILE ERA STEPPER
+// =====================================================
+let mobileEraIdx = 0;
+const MAX_ERA_PAIR = ERAS.length - 2; // max starting index for pairs
+let mobileToastTimer = null;
+
+function updateEraStepper() {
+  const labels = document.getElementById('era-step-labels');
+  const prevBtn = document.getElementById('era-prev');
+  const nextBtn = document.getElementById('era-next');
+  const prevLabel = document.getElementById('era-prev-label');
+  const nextLabel = document.getElementById('era-next-label');
+  const dotsEl = document.getElementById('era-step-dots');
+  if (!labels) return;
+
+  const leftEra = ERAS[mobileEraIdx];
+  const rightEra = ERAS[mobileEraIdx + 1];
+
+  labels.innerHTML = `
+    <div>
+      <span class="era-step-label">${leftEra.label}</span>
+      <span class="era-step-sub">${leftEra.sub}</span>
+    </div>
+    <span class="era-step-arrow">&rarr;</span>
+    <div>
+      <span class="era-step-label">${rightEra.label}</span>
+      <span class="era-step-sub">${rightEra.sub}</span>
+    </div>
+  `;
+
+  // Update prev/next button labels with destination era names
+  prevBtn.disabled = mobileEraIdx === 0;
+  nextBtn.disabled = mobileEraIdx >= MAX_ERA_PAIR;
+  if (mobileEraIdx > 0) {
+    prevLabel.textContent = ERAS[mobileEraIdx - 1].label;
+  } else {
+    prevLabel.textContent = '';
+  }
+  if (mobileEraIdx < MAX_ERA_PAIR) {
+    nextLabel.textContent = ERAS[mobileEraIdx + 2].label;
+  } else {
+    nextLabel.textContent = '';
+  }
+
+  // Render progress dots
+  if (dotsEl) {
+    dotsEl.innerHTML = '';
+    for (let i = 0; i <= MAX_ERA_PAIR; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'era-step-dot' + (i === mobileEraIdx ? ' active' : '');
+      dotsEl.appendChild(dot);
+    }
+  }
+}
+
+function stepEra(dir) {
+  const next = mobileEraIdx + dir;
+  if (next < 0 || next > MAX_ERA_PAIR) return;
+  mobileEraIdx = next;
+  updateEraStepper();
+  renderAlluvial();
+}
+
+document.getElementById('era-prev').addEventListener('click', () => stepEra(-1));
+document.getElementById('era-next').addEventListener('click', () => stepEra(1));
+updateEraStepper();
+
+function dismissTapHint() {
+  const hint = document.getElementById('mobile-tap-hint');
+  if (hint && !hint.classList.contains('hidden')) {
+    hint.classList.add('hidden');
+  }
+}
+
+function showMobileToast(founder) {
+  dismissTapHint();
+  const toast = document.getElementById('mobile-toast');
+  if (!toast) return;
+  clearTimeout(mobileToastTimer);
+  const switches = founder.sectorSwitches?.length || 0;
+  const sector = founder.primarySector || 'Other';
+  toast.innerHTML = `${founder.name}<span class="toast-sector">${sector}</span>${switches > 0 ? `<span class="toast-switches">${switches} switch${switches > 1 ? 'es' : ''}</span>` : ''}`;
+  toast.classList.add('show');
+  mobileToastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+function hideMobileToast() {
+  const toast = document.getElementById('mobile-toast');
+  if (toast) { clearTimeout(mobileToastTimer); toast.classList.remove('show'); }
+}
+
+// Swipe gesture for era stepper
+(function initSwipe() {
+  const container = document.getElementById('alluvial-container');
+  let touchStartX = 0;
+  let touchStartY = 0;
+  container.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', (e) => {
+    if (!isMobile()) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) stepEra(1);
+      else stepEra(-1);
+    }
+  }, { passive: true });
+})();
+
+const BROAD_COLORS = {
+  'AI': '#06b6d4',           // cyan
+  'Crypto': '#8b5cf6',       // purple
+  'Fintech': '#fbbf24',      // gold/yellow
+  'Social & Media': '#ec4899', // pink
+  'Consumer': '#f97316',     // deep orange
+  'Enterprise': '#3b82f6',   // blue
+  'Defense': '#ef4444',      // red
+  'Deep Tech': '#10b981',    // emerald green
+  'VC & Finance': '#c084fc', // light violet (distinct from crypto purple)
+  'Research': '#a3e635',     // lime green (distinct from emerald Deep Tech)
+  'Other': '#6b7280',        // gray
+};
+
+const SECTOR_COLORS = {
+  'Finance': '#f59e0b', 'Crypto': '#8b5cf6', 'Crypto VC': '#9d6dfc',
+  'Crypto / NFTs': '#8b5cf6', 'Crypto / Decentralized Social': '#7c3aed',
+  'AI': '#06b6d4', 'AI Safety': '#0ea5e9', 'AI Research': '#22d3ee',
+  'AI Infrastructure': '#0891b2', 'Consumer AI': '#38bdf8', 'Big Tech / AI': '#0284c7',
+  'Biotech': '#10b981', 'Biotech / Longevity': '#34d399', 'Neurotech': '#14b8a6',
+  'Consumer Tech': '#f472b6', 'Consumer Tech / Photo Sharing': '#f472b6',
+  'Enterprise Tech': '#3b82f6', 'Enterprise SaaS': '#6366f1',
+  'Social Media': '#ec4899', 'Social / Dating': '#f43f5e',
+  'Professional Social Network': '#e879f9', 'Decentralized Social': '#d946ef',
+  'Defense Tech': '#ef4444', 'Defense Tech / Data': '#dc2626',
+  'VC': '#a78bfa', 'Hedge Fund': '#c084fc', 'Aerospace': '#f97316',
+  'Automotive / Clean Energy': '#facc15', 'Fintech': '#fbbf24', 'Law': '#9ca3af',
+  'Consulting': '#6b7280', 'Consulting / Conflict Resolution': '#6b7280',
+  'Academia / Neuroscience': '#818cf8', 'Internet / Media': '#fb923c',
+  'Infrastructure / Tunneling': '#a3a3a3', 'Gaming': '#84cc16',
+  'Education / Network States': '#2dd4bf', 'Science / Open Access': '#4ade80',
+  'Clean Energy': '#10b981', 'Government / Policy': '#f97316',
+  'Government': '#f97316', 'Policy': '#f97316',
+};
+
+function getSectorColor(s) { return BROAD_COLORS[broadSector(s)] || '#6b7280'; }
+
+function broadSector(s) {
+  if (!s) return 'Other';
+  const l = s.toLowerCase();
+  // Research: academia, professors, PhD, national labs, pure research (check EARLY so "Research / AI" → Research, not AI)
+  if (l.startsWith('research') || l.includes('academia') || l.includes('professor') || l.includes('university') || l.includes('phd') || l.includes('postdoc') || l.includes('national lab') || l.includes('bell labs')) return 'Research';
+  // AI: anything AI, ML, AI safety, AI infra (but NOT "AI Research" — caught above)
+  if (l.includes('ai') || l.includes('artificial') || l.includes('machine learning')) return 'AI';
+  // Crypto: blockchain, NFTs, crypto exchanges (but NOT crypto VC — that's VC)
+  if ((l.includes('crypto') || l.includes('nft') || l.includes('blockchain')) && !l.includes('vc')) return 'Crypto';
+  // Defense: defense tech, military (NOT aerospace/space — that's Deep Tech, NOT government/policy — that's Other)
+  if (l.includes('defense') || l.includes('military')) return 'Defense';
+  // Social & Media: social networks, dating, media, internet/media, gaming, content, ad tech
+  if (l.includes('social') || l.includes('dating') || l.includes('media') || l.includes('internet') || l.includes('gaming') || l.includes('ad tech') || l.includes('adtech')) return 'Social & Media';
+  // Enterprise: SaaS, enterprise tools, HR, developer tools, video conferencing, workforce, big tech
+  if (l.includes('enterprise') || l.includes('saas') || l.includes('hr ') || l.includes('workforce') || l.includes('developer tool') || l.includes('video conferenc') || l.includes('big tech')) return 'Enterprise';
+  // VC & Finance: VC, hedge funds, investing, crypto VC, startup accelerator (check BEFORE fintech to avoid "VC & Finance" matching "finance")
+  if (l.includes('vc') || l.includes('venture') || l.includes('hedge') || l.includes('accelerator') || l.includes('angel invest') || l.includes('private equity')) return 'VC & Finance';
+  // Fintech: payments, fintech, finance, microfinance, lending
+  if (l.includes('fintech') || l.includes('payment') || l.includes('finance') || l.includes('microfinance')) return 'Fintech';
+  // Deep Tech: biotech, neurotech, clean energy, automotive, aerospace, space, semiconductors, hardware, tunneling, science, smart home, healthtech
+  if (l.includes('biotech') || l.includes('neurotech') || l.includes('neuroscience') || l.includes('energy') || l.includes('automotive') || l.includes('infrastructure') || l.includes('tunneling') || l.includes('longevity') || l.includes('science') || l.includes('academia') || l.includes('aerospace') || l.includes('space') || l.includes('semiconductor') || l.includes('smart home') || l.includes('deep tech') || l.includes('robotics') || l.includes('hardware') || l.includes('nuclear') || l.includes('climate') || l.includes('genomic') || l.includes('lidar') || l.includes('chip') || l.includes('autonomous') || l.includes('healthtech') || l.includes('health tech') || l.includes('wearable')) return 'Deep Tech';
+  // Consumer: consumer tech, consumer products, education, e-commerce, fashion, mobile apps, food, travel, logistics, ride, nonprofit, edtech
+  if (l.includes('consumer') || l.includes('photo') || l.includes('education') || l.includes('network state') || l.includes('e-commerce') || l.includes('fashion') || l.includes('mobile app') || l.includes('food') || l.includes('travel') || l.includes('logistics') || l.includes('ride') || l.includes('delivery') || l.includes('music') || l.includes('streaming') || l.includes('nonprofit') || l.includes('edtech')) return 'Consumer';
+  // Enterprise catch-all: consulting, software, cloud, data, telecom, tech distribution
+  if (l.includes('consulting') || l.includes('software') || l.includes('cloud') || l.includes('data') || l.includes('telecom') || l.includes('distribution') || l.includes('security') || l.includes('open source')) return 'Enterprise';
+  // Fintech broader: banking, insurance, lending, trading
+  if (l.includes('banking') || l.includes('insurance') || l.includes('lending') || l.includes('trading')) return 'Fintech';
+  // Philanthropy -> Other but catch law -> Other
+  return 'Other';
+}
+
+let currentView = 'alluvial';
+let highlightedSector = null;
+let highlightedPerson = null;
+let switchersOnly = false;
+let showSecondaries = false;
+let sectorFilter = 'all';
+
+async function fetchAllRoles() {
+  let allRoles = [], page = 0;
+  while (true) {
+    const { data, error } = await sb.from('roles').select('*').order('sort_order').range(page * 1000, (page + 1) * 1000 - 1);
+    if (error) throw error;
+    allRoles = allRoles.concat(data || []);
+    if (!data || data.length < 1000) break;
+    page++;
+  }
+  return allRoles;
+}
+
+async function fetchFromSupabase() {
+  const [
+    { data: dbFounders, error: fErr },
+    dbRoles,
+    { data: dbSwitches, error: sErr }
+  ] = await Promise.all([
+    sb.from('founders').select('id, name, primary_sector, source_url, verified'),
+    fetchAllRoles(),
+    sb.from('sector_switches').select('*')
+  ]);
+  if (fErr || sErr) throw fErr || sErr;
+  const rolesByFounder = {};
+  (dbRoles || []).forEach(r => {
+    if (!rolesByFounder[r.founder_id]) rolesByFounder[r.founder_id] = [];
+    rolesByFounder[r.founder_id].push({
+      company: r.company, role: r.role, sector: r.sector,
+      start: r.start_year, end: r.end_year, note: r.note
+    });
+  });
+  const switchesByFounder = {};
+  (dbSwitches || []).forEach(s => {
+    if (!switchesByFounder[s.founder_id]) switchesByFounder[s.founder_id] = [];
+    switchesByFounder[s.founder_id].push({
+      from: s.from_sector, to: s.to_sector, year: s.year
+    });
+  });
+  const loaded = dbFounders.map(f => ({
+    name: f.name, id: f.id,
+    primarySector: f.primary_sector || 'Other',
+    source: f.source_url || '',
+    verified: f.verified,
+    roles: rolesByFounder[f.id] || [],
+    sectorSwitches: switchesByFounder[f.id] || []
+  }));
+  FOUNDERS_DATA.length = 0;
+  loaded.forEach(f => FOUNDERS_DATA.push(f));
+  ALL_FOUNDERS.length = 0;
+  FOUNDERS_DATA.forEach(f => ALL_FOUNDERS.push(f));
+  try {
+    sessionStorage.setItem('wn-data', JSON.stringify({ data: loaded, ts: Date.now() }));
+  } catch(e) { /* sessionStorage full, ignore */ }
+}
+
+function applyPresetOrWelcome() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const presetParam = urlParams.get('preset');
+  if (presetParam) {
+    const presetName = Object.keys(PRESETS).find(k =>
+      k.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '') === presetParam.toLowerCase()
+    );
+    if (presetName) {
+      if (window.posthog) posthog.capture('preset_url_loaded', { preset_name: presetName });
+      loadPreset(presetName);
+    }
+  } else {
+    const hasSeenWelcome = localStorage.getItem('wn-welcome-seen');
+    if (!hasSeenWelcome) {
+      showWelcomeModal();
+    }
+    // Returning visitors: existing wn-removed state restores naturally, no override needed
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Initialize Supabase client now that the deferred script has loaded
+  sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+  document.getElementById('stats-bar').innerHTML = '<div style="color:#888">Loading founders from database...</div>';
+  document.getElementById('header-stats').innerHTML = '<div style="color:#888;font-size:13px">Loading...</div>';
+
+  // Check sessionStorage cache first
+  const cachedRaw = sessionStorage.getItem('wn-data');
+  if (cachedRaw) {
+    try {
+      const { data, ts } = JSON.parse(cachedRaw);
+      FOUNDERS_DATA.length = 0;
+      data.forEach(f => FOUNDERS_DATA.push(f));
+      ALL_FOUNDERS.length = 0;
+      FOUNDERS_DATA.forEach(f => ALL_FOUNDERS.push(f));
+
+      // Render immediately with cached data
+      computeStats(); populateFilters(); buildLegend();
+      renderAlluvial(); renderCards(); setupEvents();
+      document.getElementById('cards-container').classList.add('view-hidden');
+      applyPresetOrWelcome();
+
+      // Background refresh if stale (> 5 min)
+      if (sb && Date.now() - ts > 5 * 60 * 1000) {
+        fetchFromSupabase().then(() => { refresh(); }).catch(() => {});
+      }
+      return; // skip the normal fetch flow below
+    } catch(e) {
+      // Cache parse error, fall through to normal fetch
+      sessionStorage.removeItem('wn-data');
+    }
+  }
+
+  if (sb) {
+    try {
+      await fetchFromSupabase();
+    } catch (e) {
+      document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
+      return;
+    }
+  } else {
+    document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
+    return;
+  }
+  computeStats(); populateFilters(); buildLegend();
+  renderAlluvial(); renderCards(); setupEvents();
+  document.getElementById('cards-container').classList.add('view-hidden');
+  applyPresetOrWelcome();
+});
+
+function showWelcomeModal() {
+  const modal = document.getElementById('welcome-modal');
+  if (!modal) return;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      modal.classList.add('visible');
+    });
+  });
+
+  if (window.posthog) posthog.capture('welcome_modal_shown');
+
+  function closeModal() {
+    modal.classList.remove('visible');
+    modal.classList.add('hidden');
+    modal.addEventListener('transitionend', function handler() {
+      modal.removeEventListener('transitionend', handler);
+      modal.remove();
+      loadPreset('PayPal Mafia');
+      activePreset = 'PayPal Mafia';
+      updatePresetBtns();
+      localStorage.setItem('wn-welcome-seen', '1');
+      if (window.posthog) posthog.capture('welcome_modal_closed');
+    });
+  }
+
+  document.getElementById('welcome-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function escHandler(e) {
+    if (e.key === 'Escape') {
+      document.removeEventListener('keydown', escHandler);
+      closeModal();
+    }
+  });
+}
+
+function getFiltered() {
+  let data = [...FOUNDERS_DATA];
+  if (switchersOnly) data = data.filter(f => f.sectorSwitches && f.sectorSwitches.length > 0);
+  if (sectorFilter !== 'all') data = data.filter(f => f.roles.some(r => broadSector(r.sector) === sectorFilter));
+  return data;
+}
+
+function computeStats() {
+  const founders = getFiltered();
+  const switches = founders.reduce((s, f) => s + (f.sectorSwitches?.length || 0), 0);
+  const allSectors = new Set();
+  founders.forEach(f => f.roles.forEach(r => allSectors.add(broadSector(r.sector))));
+  const destCounts = {};
+  founders.forEach(f => {
+    if (f.roles.length > 0) {
+      const bs = broadSector(f.roles[f.roles.length - 1].sector);
+      destCounts[bs] = (destCounts[bs] || 0) + 1;
+    }
+  });
+  const hottest = Object.entries(destCounts).sort((a, b) => b[1] - a[1])[0];
+  const statsHtml = founders.length === 0 ? '' : `
+    <div><span class="stat-value">${founders.length}</span><span class="stat-label">Founders</span></div>
+    <div><span class="stat-value">${switches}</span><span class="stat-label">Sector switches</span></div>
+    <div><span class="stat-value">${allSectors.size}</span><span class="stat-label">Sectors</span></div>
+    <div><span class="stat-value" style="color:${BROAD_COLORS[hottest?.[0]] || '#666'}">${hottest?.[0] || '—'}</span><span class="stat-label">Hottest destination</span></div>
+  `;
+  document.getElementById('stats-bar').innerHTML = statsHtml;
+  document.getElementById('header-stats').innerHTML = statsHtml;
+}
+
+function populateFilters() {
+  const sectors = new Set();
+  FOUNDERS_DATA.forEach(f => f.roles.forEach(r => sectors.add(broadSector(r.sector))));
+  const sel = document.getElementById('sector-filter');
+  [...sectors].sort().forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
+}
+
+function buildLegend() {
+  const container = document.getElementById('sector-legend');
+  container.innerHTML = '';
+  const seen = new Set();
+  FOUNDERS_DATA.forEach(f => f.roles.forEach(r => seen.add(broadSector(r.sector))));
+  Object.entries(BROAD_COLORS).forEach(([sector, color]) => {
+    if (!seen.has(sector)) return;
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="legend-dot" style="background:${color}"></span>${sector}`;
+    item.addEventListener('click', () => {
+      if (highlightedSector === sector) { highlightedSector = null; document.querySelectorAll('.legend-item').forEach(i => i.classList.remove('dimmed')); }
+      else { highlightedSector = sector; document.querySelectorAll('.legend-item').forEach(i => i.classList.toggle('dimmed', !i.textContent.includes(sector))); }
+      updateHighlights();
+    });
+    container.appendChild(item);
+  });
+}
+
+function setupEvents() {
+  document.querySelectorAll('.view-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentView = tab.dataset.view;
+      if (window.posthog) posthog.capture('view_switched', { view: currentView });
+      document.getElementById('alluvial-container').classList.toggle('view-hidden', currentView !== 'alluvial');
+      document.getElementById('cards-container').classList.toggle('view-hidden', currentView !== 'cards');
+    });
+  });
+  document.getElementById('sector-filter').addEventListener('change', e => { sectorFilter = e.target.value; if (window.posthog) posthog.capture('filter_changed', { sector: sectorFilter, switchers_only: switchersOnly }); refresh(); });
+  document.getElementById('switchers-only').addEventListener('change', e => { switchersOnly = e.target.checked; refresh(); });
+  document.getElementById('show-secondaries').addEventListener('change', e => { showSecondaries = e.target.checked; refresh(); });
+}
+
+function refresh() { computeStats(); renderAlluvial(); renderCards(); }
+
+// =====================================================
+// TOOLTIP
+// =====================================================
+const tooltip = document.getElementById('tooltip');
+const tooltipOverlay = document.getElementById('tooltip-overlay');
+let tooltipLocked = false;
+let hideTimer = null;
+
+function showTooltip(e, html) {
+  clearTimeout(hideTimer);
+  // Prevent re-opening immediately after closing (tap-through on mobile)
+  if (Date.now() - tooltipClosedAt < 400) return;
+  if (isMobile()) {
+    // Mobile: show as bottom sheet
+    tooltip.innerHTML = '<div class="tt-close">&times;</div>' + html;
+    tooltip.classList.add('mobile-tooltip');
+    tooltip.style.display = 'block';
+    tooltip.style.pointerEvents = 'auto';
+    tooltip.style.left = '0';
+    tooltip.style.top = '';
+    tooltipOverlay.classList.add('show');
+    tooltip.querySelector('.tt-close').addEventListener('click', closeMobileTooltip);
+    tooltip.querySelector('.tt-close').addEventListener('touchend', function(ev) { ev.stopPropagation(); ev.preventDefault(); closeMobileTooltip(ev); });
+  } else {
+    tooltip.classList.remove('mobile-tooltip');
+    tooltip.innerHTML = html;
+    tooltip.style.display = 'block';
+    tooltip.style.pointerEvents = 'auto';
+    moveTooltip(e);
+  }
+}
+function moveTooltip(e) {
+  if (tooltipLocked || isMobile()) return;
+  let x = e.clientX + 14, y = e.clientY + 14;
+  const r = tooltip.getBoundingClientRect();
+  if (x + 400 > window.innerWidth) x = e.clientX - r.width - 14;
+  if (y + r.height > window.innerHeight) y = e.clientY - r.height - 14;
+  tooltip.style.left = x + 'px'; tooltip.style.top = y + 'px';
+}
+function hideTooltip() {
+  if (isMobile()) return; // On mobile, only close via tap
+  hideTimer = setTimeout(() => {
+    if (!tooltipLocked) {
+      tooltip.style.display = 'none';
+      tooltip.style.pointerEvents = 'none';
+    }
+  }, 200);
+}
+let tooltipClosedAt = 0;
+function closeMobileTooltip(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  tooltipClosedAt = Date.now();
+  tooltip.style.display = 'none';
+  tooltip.style.pointerEvents = 'none';
+  tooltip.classList.remove('mobile-tooltip');
+  tooltipOverlay.classList.remove('show');
+  highlightedPerson = null;
+  updateHighlights();
+}
+tooltipOverlay.addEventListener('click', function(e) { e.stopPropagation(); closeMobileTooltip(e); });
+tooltipOverlay.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: false });
+tooltipOverlay.addEventListener('touchend', function(e) { e.stopPropagation(); e.preventDefault(); closeMobileTooltip(e); });
+tooltip.addEventListener('mouseenter', () => { clearTimeout(hideTimer); tooltipLocked = true; });
+tooltip.addEventListener('mouseleave', () => { tooltipLocked = false; hideTooltip(); highlightedPerson = null; updateHighlights(); });
+
+function founderTooltipHTML(founder, highlightEraIdx) {
+  let html = `<div class="tt-name">${founder.name}</div><div class="tt-detail">`;
+  founder.roles.forEach(r => {
+    const color = getSectorColor(r.sector);
+    const years = `${r.start || '?'}\u2013${r.end || 'now'}`;
+    const isInEra = highlightEraIdx !== undefined && r.start &&
+      r.start <= ERAS[highlightEraIdx].range[1] && (r.end || 2026) >= ERAS[highlightEraIdx].range[0];
+    const bold = isInEra ? 'font-weight:700;color:#111;font-size:11px' : '';
+    html += `<div class="tt-role" style="${bold}">
+      <span class="tt-role-dot" style="background:${color}"></span>
+      <span><span class="tt-role-company">${r.company}</span> <span class="tt-role-title">${r.role}</span></span>
+      <span class="tt-role-years">${years}</span>
+    </div>`;
+  });
+  if (founder.sectorSwitches?.length > 0) html += `<div class="tt-switch-label">${founder.sectorSwitches.length} sector switch${founder.sectorSwitches.length > 1 ? 'es' : ''}</div>`;
+  return html + '</div>';
+}
+
+function sectorBlockTooltipHTML(sector, eraIdx, peopleInBlock) {
+  const era = ERAS[eraIdx];
+  let html = `<div class="tt-sector-title" style="color:${BROAD_COLORS[sector]}">${sector}</div>`;
+  html += `<div style="color:#aaa;font-size:11px;margin-bottom:8px">${era.label} (${era.sub})</div>`;
+  html += `<div class="tt-detail">`;
+  peopleInBlock.forEach(p => {
+    // Find the role active in this era
+    const role = p.founder.roles.filter(r => {
+      const start = r.start || 1990; const end = r.end || 2026;
+      return start <= era.range[1] && end >= era.range[0] && broadSector(r.sector) === sector;
+    }).pop();
+    const company = role ? role.company : '';
+    const title = role ? role.role : '';
+    html += `<div class="tt-person-row">
+      <span style="color:#111;font-weight:500">${p.founder.name}</span>
+      <span class="tt-person-company">${title}${company ? ' @ ' + company : ''}</span>
+    </div>`;
+  });
+  html += `</div>`;
+  return html;
+}
+
+// =====================================================
+// CONCENTRIC DOT POSITIONS
+// =====================================================
+function concentricPositions(cx, cy, count, baseRadius) {
+  if (count === 0) return [];
+  if (count === 1) return [{ x: cx, y: cy }];
+
+  const positions = [];
+  // Center dot first
+  positions.push({ x: cx, y: cy });
+  let placed = 1;
+  let ring = 1;
+
+  while (placed < count) {
+    const r = baseRadius * ring;
+    const circumference = 2 * Math.PI * r;
+    const maxInRing = Math.max(6, Math.floor(circumference / (baseRadius * 0.9)));
+    const inThisRing = Math.min(maxInRing, count - placed);
+
+    for (let i = 0; i < inThisRing; i++) {
+      const angle = (2 * Math.PI * i / inThisRing) - Math.PI / 2;
+      positions.push({
+        x: cx + r * Math.cos(angle),
+        y: cy + r * Math.sin(angle),
+      });
+      placed++;
+    }
+    ring++;
+  }
+  return positions;
+}
+
+// =====================================================
+// ALLUVIAL DIAGRAM
+// =====================================================
+function renderAlluvial() {
+  const svg = document.getElementById('alluvial-svg');
+  svg.innerHTML = '';
+
+  // Tap empty SVG space to clear highlights
+  svg.addEventListener('touchend', (e) => {
+    if (e.target === svg) {
+      highlightedPerson = null;
+      updateHighlights();
+      hideMobileToast();
+    }
+  });
+
+  const founders = getFiltered();
+  if (founders.length === 0) {
+    const mobile = isMobile();
+    const emptyW = mobile ? 390 : 1200;
+    const emptyH = mobile ? 200 : 300;
+    svg.setAttribute('viewBox', `0 0 ${emptyW} ${emptyH}`);
+    svg.setAttribute('width', emptyW);
+    svg.setAttribute('height', emptyH);
+    svg.innerHTML = `
+      <text x="50%" y="${emptyH * 0.4}" text-anchor="middle" fill="#888" font-size="${mobile ? 18 : 20}" font-family="Inter,sans-serif" font-weight="500">No founders selected</text>
+      <text x="50%" y="${emptyH * 0.4 + (mobile ? 28 : 32)}" text-anchor="middle" fill="#bbb" font-size="${mobile ? 13 : 14}" font-family="Inter,sans-serif">Use the search bar or suggestions above to add founders</text>
+    `;
+    return;
+  }
+
+  // On mobile: only show 2 adjacent eras
+  const mobile = isMobile();
+  const visibleEraIndices = mobile
+    ? [mobileEraIdx, mobileEraIdx + 1]
+    : ERAS.map((_, i) => i);
+  const visibleEras = visibleEraIndices.map(i => ERAS[i]);
+
+  // For each founder, find their primary broad sector per era + details
+  const founderEras = founders.map(f => {
+    return ERAS.map(era => {
+      const activeRoles = f.roles.filter(r => {
+        const start = r.start || 1990; const end = r.end || 2026;
+        return start <= era.range[1] && end >= era.range[0];
+      });
+      if (activeRoles.length === 0) return null;
+      // Prefer: 1) eraPrefer override, 2) role matching primarySector, 3) latest start
+      const role = activeRoles.reduce((best, r) => {
+        if (!best) return r;
+        if (f.eraPrefer) {
+          const eraKey = era.range[0] + '-' + era.range[1];
+          const preferred = f.eraPrefer[eraKey];
+          if (preferred) {
+            if (r.company === preferred) return r;
+            if (best.company === preferred) return best;
+          }
+        }
+        const bestMatchesPrimary = f.primarySector && broadSector(best.sector) === f.primarySector;
+        const rMatchesPrimary = f.primarySector && broadSector(r.sector) === f.primarySector;
+        if (rMatchesPrimary && !bestMatchesPrimary) return r;
+        if (bestMatchesPrimary && !rMatchesPrimary) return best;
+        return (r.start || 0) > (best.start || 0) ? r : best;
+      }, null);
+      return { broad: broadSector(role.sector), sector: role.sector, company: role.company, role: role.role };
+    });
+  });
+
+  // Compute secondary sectors per founder per era (for "Show Secondaries" toggle)
+  // secondaryEras[fi][eraIdx] = array of { broad, sector, company, role } for non-primary sectors
+  const secondaryEras = founders.map((f, fi) => {
+    return ERAS.map((era, ei) => {
+      if (!founderEras[fi][ei]) return [];
+      const primaryBroad = founderEras[fi][ei].broad;
+      const activeRoles = f.roles.filter(r => {
+        const start = r.start || 1990; const end = r.end || 2026;
+        return start <= era.range[1] && end >= era.range[0];
+      });
+      // Group by broad sector, skip primary and VC (noise)
+      const seen = new Set([primaryBroad]);
+      const extras = [];
+      activeRoles.forEach(r => {
+        const b = broadSector(r.sector);
+        if (seen.has(b)) return;
+        if (b === 'VC & Finance' && f.primarySector !== 'VC & Finance') return;
+        if (b === 'Other') return;
+        seen.add(b);
+        extras.push({ broad: b, sector: r.sector, company: r.company, role: r.role });
+      });
+      return extras;
+    });
+  });
+
+  // Get consistent sector ordering (biggest sectors first for visual weight)
+  const allBroads = new Set();
+  founderEras.forEach(fe => fe.forEach(e => { if (e) allBroads.add(e.broad); }));
+  // Also include secondary sectors in ordering if toggle is on
+  if (showSecondaries) {
+    secondaryEras.forEach(se => se.forEach(extras => extras.forEach(e => allBroads.add(e.broad))));
+  }
+  const sectorOrder = [...allBroads].sort((a, b) => {
+    const cA = founderEras.reduce((s, fe) => s + fe.filter(e => e && e.broad === a).length, 0);
+    const cB = founderEras.reduce((s, fe) => s + fe.filter(e => e && e.broad === b).length, 0);
+    return cB - cA;
+  });
+
+  // Layout — compact columns, leave room for names on right
+  const nameColW = mobile ? 100 : 180;
+  const minW = mobile ? 340 : 1000;
+  const containerW = document.getElementById('alluvial-container').clientWidth;
+  const W = mobile ? Math.max(minW, containerW) : Math.max(minW, containerW);
+  const vizW = W - nameColW;
+  const padX = mobile ? 50 : 60;
+  const padTop = mobile ? 55 : 75;
+  const numCols = visibleEras.length;
+  const colSpacing = (vizW - 2 * padX) / (numCols - 1);
+  const dotRadius = 5;
+  const ringSpacing = 13;
+
+  function clusterRadius(count) {
+    if (count <= 1) return dotRadius;
+    if (count <= 7) return ringSpacing;
+    if (count <= 19) return ringSpacing * 2;
+    return ringSpacing * 3;
+  }
+
+  // Compute column sector positions (only visible eras)
+  const colData = visibleEraIndices.map((eraIdx) => {
+    const groups = {};
+    founderEras.forEach((fe, fi) => {
+      if (!fe[eraIdx]) return;
+      const b = fe[eraIdx].broad;
+      if (!groups[b]) groups[b] = [];
+      groups[b].push({ founderIdx: fi, founder: founders[fi], detail: fe[eraIdx] });
+    });
+    // Add secondary dots when toggle is on
+    if (showSecondaries) {
+      secondaryEras.forEach((se, fi) => {
+        if (!se[eraIdx] || se[eraIdx].length === 0) return;
+        se[eraIdx].forEach(extra => {
+          const b = extra.broad;
+          if (!groups[b]) groups[b] = [];
+          groups[b].push({ founderIdx: fi, founder: founders[fi], detail: extra, isSecondary: true });
+        });
+      });
+    }
+    return groups;
+  });
+
+  // Place sector clusters vertically per column, keeping same sector order
+  const sectorGap = 24;
+  const clusterPadding = 16;
+
+  const colPositions = visibleEraIndices.map((eraIdx, colIdx) => {
+    const groups = colData[colIdx];
+    let y = padTop;
+    const positions = {};
+
+    sectorOrder.forEach(sector => {
+      const group = groups[sector];
+      if (!group || group.length === 0) return;
+      const cr = clusterRadius(group.length);
+      const blockH = cr * 2 + clusterPadding;
+      const cx = padX + colIdx * colSpacing;
+      const cy = y + cr + clusterPadding / 2;
+
+      // Get concentric dot positions
+      const dots = concentricPositions(cx, cy, group.length, ringSpacing);
+
+      positions[sector] = {
+        cx, cy, radius: cr, blockH,
+        y: y,
+        people: group,
+        dots: dots,
+      };
+
+      y += blockH + sectorGap;
+    });
+
+    return positions;
+  });
+
+  const maxY = Math.max(...colPositions.map(col => {
+    const entries = Object.values(col);
+    if (entries.length === 0) return padTop;
+    const last = entries[entries.length - 1];
+    return last.y + last.blockH;
+  }));
+  let H = maxY + 60;
+
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('width', W);
+  svg.setAttribute('height', H);
+
+  // Draw era labels
+  visibleEras.forEach((era, i) => {
+    const x = padX + i * colSpacing;
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', x); label.setAttribute('y', 24);
+    label.setAttribute('text-anchor', 'middle');
+    label.setAttribute('fill', '#444'); label.setAttribute('font-size', '13'); label.setAttribute('font-weight', '600');
+    label.textContent = era.label;
+    svg.appendChild(label);
+
+    const sub = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    sub.setAttribute('x', x); sub.setAttribute('y', 42);
+    sub.setAttribute('text-anchor', 'middle');
+    sub.setAttribute('fill', '#aaa'); sub.setAttribute('font-size', '11');
+    sub.textContent = era.sub;
+    svg.appendChild(sub);
+
+    // Vertical guide
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x); line.setAttribute('y1', padTop - 10);
+    line.setAttribute('x2', x); line.setAttribute('y2', H - 20);
+    line.setAttribute('stroke', 'rgba(0,0,0,0.06)'); line.setAttribute('stroke-width', '1');
+    svg.appendChild(line);
+  });
+
+  // Draw sector blocks (rounded rects behind clusters) + sector labels
+  visibleEraIndices.forEach((eraIdx, colIdx) => {
+    const positions = colPositions[colIdx];
+    Object.entries(positions).forEach(([sector, pos]) => {
+      const color = BROAD_COLORS[sector] || '#4b5563';
+      const r = pos.radius + 10;
+
+      // Background circle/pill for the cluster
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', pos.cx - r);
+      rect.setAttribute('y', pos.cy - r);
+      rect.setAttribute('width', r * 2);
+      rect.setAttribute('height', r * 2);
+      rect.setAttribute('rx', r);
+      rect.setAttribute('fill', color);
+      rect.setAttribute('opacity', '0.22');
+      rect.setAttribute('class', 'sector-block');
+      rect.setAttribute('data-sector', sector);
+      rect.setAttribute('data-era', eraIdx);
+
+      // Hover: show all people in this sector/era
+      rect.addEventListener('mouseenter', (e) => {
+        showTooltip(e, sectorBlockTooltipHTML(sector, eraIdx, pos.people));
+      });
+      rect.addEventListener('mousemove', moveTooltip);
+      rect.addEventListener('mouseleave', hideTooltip);
+      rect.addEventListener('touchend', (e) => {
+        const toast = document.getElementById('mobile-toast');
+        if (toast) {
+          clearTimeout(mobileToastTimer);
+          toast.innerHTML = `<span style="color:${color}">${sector}</span><span class="toast-sector">${pos.people.length} founder${pos.people.length !== 1 ? 's' : ''}</span>`;
+          toast.classList.add('show');
+          mobileToastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+      });
+
+      svg.appendChild(rect);
+
+      // Sector label below the cluster
+      const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      label.setAttribute('x', pos.cx);
+      label.setAttribute('y', pos.cy + r + 14);
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('fill', color);
+      label.setAttribute('font-size', '10');
+      label.setAttribute('opacity', '0.9');
+      label.setAttribute('font-weight', '600');
+      label.textContent = `${sector} (${pos.people.length})`;
+      svg.appendChild(label);
+    });
+  });
+
+  // Build a lookup: founderIdx -> { eraIdx -> dotPosition }
+  // Keys are REAL era indices (not visual column indices)
+  const founderDotPos = {};
+  const secondaryDotPos = [];
+  visibleEraIndices.forEach((eraIdx, colIdx) => {
+    const positions = colPositions[colIdx];
+    if (!positions) return;
+    Object.entries(positions).forEach(([sector, pos]) => {
+      pos.people.forEach((p, i) => {
+        if (p.isSecondary) {
+          secondaryDotPos.push({ founderIdx: p.founderIdx, eraIdx: eraIdx, x: pos.dots[i].x, y: pos.dots[i].y, broad: sector, detail: p.detail });
+          return;
+        }
+        if (!founderDotPos[p.founderIdx]) founderDotPos[p.founderIdx] = {};
+        founderDotPos[p.founderIdx][eraIdx] = pos.dots[i];
+      });
+    });
+  });
+
+  // Draw flow paths (only between consecutive VISIBLE eras)
+  founders.forEach((founder, fi) => {
+    const fe = founderEras[fi];
+    const dotPos = founderDotPos[fi];
+    if (!dotPos) return;
+
+    for (let vi = 0; vi < visibleEraIndices.length - 1; vi++) {
+      const i = visibleEraIndices[vi];
+      const j = visibleEraIndices[vi + 1];
+      if (!dotPos[i] || !dotPos[j]) continue;
+      if (!fe[i] || !fe[j]) continue;
+
+      const x1 = dotPos[i].x;
+      const y1 = dotPos[i].y;
+      const x2 = dotPos[j].x;
+      const y2 = dotPos[j].y;
+
+      const isSectorSwitch = fe[i].broad !== fe[j].broad;
+      const color = BROAD_COLORS[fe[j].broad] || '#6b7280';
+
+      const dx = x2 - x1;
+      const cx1 = x1 + dx * 0.35;
+      const cx2 = x1 + dx * 0.65;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', `M${x1},${y1} C${cx1},${y1} ${cx2},${y2} ${x2},${y2}`);
+      path.setAttribute('stroke', color);
+      path.setAttribute('class', 'alluvial-path' + (isSectorSwitch ? ' sector-switch' : ''));
+      path.setAttribute('data-founder', founder.id);
+      path.setAttribute('data-from-sector', fe[i].broad);
+      path.setAttribute('data-to-sector', fe[j].broad);
+
+      path.addEventListener('mouseenter', (e) => {
+        highlightedPerson = founder.id;
+        updateHighlights();
+        showTooltip(e, founderTooltipHTML(founder, j));
+      });
+      path.addEventListener('mousemove', moveTooltip);
+      path.addEventListener('mouseleave', () => { highlightedPerson = null; updateHighlights(); hideTooltip(); });
+      path.addEventListener('touchend', (e) => {
+        highlightedPerson = founder.id;
+        updateHighlights();
+        showTooltip(e, founderTooltipHTML(founder, j));
+      });
+
+      svg.appendChild(path);
+    }
+  });
+
+  // Draw dots (concentric within clusters)
+  founders.forEach((founder, fi) => {
+    const fe = founderEras[fi];
+    const dotPos = founderDotPos[fi];
+    if (!dotPos) return;
+
+    visibleEraIndices.forEach((eraIdx) => {
+      if (!fe[eraIdx] || !dotPos[eraIdx]) return;
+      const { x, y } = dotPos[eraIdx];
+      const color = BROAD_COLORS[fe[eraIdx].broad] || '#6b7280';
+
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', x); circle.setAttribute('cy', y);
+      circle.setAttribute('r', dotRadius);
+      circle.setAttribute('fill', color);
+      circle.setAttribute('stroke', '#ffffff');
+      circle.setAttribute('stroke-width', '2');
+      circle.setAttribute('data-founder', founder.id);
+      circle.style.cursor = 'pointer';
+      circle.style.transition = 'r 0.15s, stroke 0.15s';
+
+      circle.addEventListener('mouseenter', (e) => {
+        circle.setAttribute('r', dotRadius + 2);
+        circle.setAttribute('stroke', '#333');
+        highlightedPerson = founder.id;
+        updateHighlights();
+        showTooltip(e, founderTooltipHTML(founder, eraIdx));
+      });
+      circle.addEventListener('mousemove', moveTooltip);
+      circle.addEventListener('mouseleave', () => {
+        circle.setAttribute('r', dotRadius);
+        circle.setAttribute('stroke', '#ffffff');
+        highlightedPerson = null;
+        updateHighlights();
+        hideTooltip();
+      });
+      circle.addEventListener('touchend', (e) => {
+        highlightedPerson = founder.id;
+        updateHighlights();
+        showTooltip(e, founderTooltipHTML(founder, eraIdx));
+      });
+
+      svg.appendChild(circle);
+    });
+  });
+
+  // Draw secondary dots (when toggle is on): ring outlines + dashed connectors to primary dot
+  if (showSecondaries) {
+    secondaryDotPos.forEach(sd => {
+      const founder = founders[sd.founderIdx];
+      const color = BROAD_COLORS[sd.broad] || '#6b7280';
+
+      // Dashed line from primary dot to secondary dot
+      const primaryPos = founderDotPos[sd.founderIdx] && founderDotPos[sd.founderIdx][sd.eraIdx];
+      if (primaryPos) {
+        const conn = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        conn.setAttribute('x1', primaryPos.x); conn.setAttribute('y1', primaryPos.y);
+        conn.setAttribute('x2', sd.x); conn.setAttribute('y2', sd.y);
+        conn.setAttribute('stroke', color);
+        conn.setAttribute('stroke-width', '1');
+        conn.setAttribute('stroke-dasharray', '3,3');
+        conn.setAttribute('opacity', '0.4');
+        conn.setAttribute('data-founder', founder.id);
+        conn.classList.add('alluvial-path');
+        svg.appendChild(conn);
+      }
+
+      // Ring dot (not filled)
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', sd.x); circle.setAttribute('cy', sd.y);
+      circle.setAttribute('r', dotRadius - 1);
+      circle.setAttribute('fill', 'transparent');
+      circle.setAttribute('stroke', color);
+      circle.setAttribute('stroke-width', '1.5');
+      circle.setAttribute('data-founder', founder.id);
+      circle.style.cursor = 'pointer';
+      circle.style.transition = 'r 0.15s, fill 0.15s';
+
+      circle.addEventListener('mouseenter', (e) => {
+        circle.setAttribute('r', dotRadius + 1);
+        circle.setAttribute('fill', color);
+        highlightedPerson = founder.id;
+        updateHighlights();
+        showTooltip(e, founderTooltipHTML(founder, sd.eraIdx));
+      });
+      circle.addEventListener('mousemove', moveTooltip);
+      circle.addEventListener('mouseleave', () => {
+        circle.setAttribute('r', dotRadius - 1);
+        circle.setAttribute('fill', 'transparent');
+        highlightedPerson = null;
+        updateHighlights();
+        hideTooltip();
+      });
+      circle.addEventListener('touchend', (e) => {
+        highlightedPerson = founder.id;
+        updateHighlights();
+        showTooltip(e, founderTooltipHTML(founder, sd.eraIdx));
+      });
+
+      svg.appendChild(circle);
+    });
+  }
+
+  // Names on right side — grouped by last visible era's sector (color matches last dot)
+  const nameX = vizW + 8;
+  const lastEraIdx = visibleEraIndices[visibleEraIndices.length - 1];
+  const nameGroups = {};
+  founders.forEach((founder, fi) => {
+    const dotPos = founderDotPos[fi];
+    if (!dotPos) return;
+    let lastEra = -1;
+    visibleEraIndices.forEach(i => { if (dotPos[i]) lastEra = i; });
+    if (lastEra < 0) return;
+    const sector = (founderEras[fi][lastEra] ? founderEras[fi][lastEra].broad : null) || founder.primarySector || 'Other';
+    if (!nameGroups[sector]) nameGroups[sector] = [];
+    nameGroups[sector].push({ founder, fi, y: dotPos[lastEra].y, lastSector: sector });
+  });
+
+  // Sort within each group, then lay out names sequentially to avoid overlap
+  Object.values(nameGroups).forEach(group => group.sort((a, b) => a.y - b.y));
+  const allNames = [];
+  sectorOrder.forEach(s => { if (nameGroups[s]) allNames.push(...nameGroups[s]); });
+  Object.keys(nameGroups).forEach(s => { if (!sectorOrder.includes(s) && nameGroups[s]) allNames.push(...nameGroups[s]); });
+
+  // Stack names from top, with small gap between sector groups
+  let currentSector = null;
+  const n = allNames.length;
+  let nameFontSize, nameSpacing;
+  if (n <= 20)      { nameFontSize = 13; nameSpacing = 18; }
+  else if (n <= 35)  { nameFontSize = 11; nameSpacing = 15; }
+  else if (n <= 50)  { nameFontSize = 10; nameSpacing = 13; }
+  else if (n <= 70)  { nameFontSize = 9;  nameSpacing = 11; }
+  else               { nameFontSize = 8;  nameSpacing = 10; }
+
+  let nameY = padTop;
+  allNames.forEach(item => {
+    if (currentSector !== null && currentSector !== item.lastSector) {
+      nameY += 4; // small gap between sector groups
+    }
+    currentSector = item.lastSector;
+    item.nameY = nameY;
+    nameY += nameSpacing;
+  });
+
+  // Extend SVG if names need more room
+  const namesBottom = nameY + 20;
+  if (namesBottom > H) {
+    H = namesBottom;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('height', H);
+  }
+
+
+  allNames.forEach(({ founder, fi, nameY, lastSector }) => {
+    const primaryColor = BROAD_COLORS[lastSector] || '#777';
+
+    // Wrap name row in a group for easy manipulation during removal
+    const nameRow = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    nameRow.classList.add('founder-name-row');
+    nameRow.dataset.founderId = founder.id;
+    nameRow.dataset.nameY = nameY;
+    nameRow.style.transition = 'transform 0.15s ease';
+
+    // X button before name
+    const xBtn = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    xBtn.setAttribute('x', nameX - 2);
+    xBtn.setAttribute('y', nameY + 4);
+    xBtn.setAttribute('text-anchor', 'end');
+    xBtn.setAttribute('fill', '#ccc');
+    xBtn.setAttribute('font-size', nameFontSize);
+    xBtn.style.cursor = 'pointer';
+    xBtn.textContent = '\u00d7';
+    xBtn.addEventListener('mouseenter', () => xBtn.setAttribute('fill', '#f87171'));
+    xBtn.addEventListener('mouseleave', () => xBtn.setAttribute('fill', '#ccc'));
+    xBtn.addEventListener('click', (e) => { e.stopPropagation(); removePerson(founder.id); });
+    nameRow.appendChild(xBtn);
+
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', nameX + 4);
+    text.setAttribute('y', nameY + 4);
+    text.setAttribute('fill', primaryColor);
+    text.setAttribute('font-size', nameFontSize);
+    text.setAttribute('opacity', '0.85');
+    text.setAttribute('data-founder', founder.id);
+    text.classList.add('founder-name');
+    text.style.cursor = 'pointer';
+    text.style.transition = 'fill 0.15s, opacity 0.15s';
+    text.textContent = founder.name;
+
+    text.addEventListener('mouseenter', (e) => {
+      text.setAttribute('fill', primaryColor);
+      text.setAttribute('opacity', '1');
+      highlightedPerson = founder.id;
+      updateHighlights();
+      showTooltip(e, founderTooltipHTML(founder));
+    });
+    text.addEventListener('mousemove', moveTooltip);
+    text.addEventListener('mouseleave', () => {
+      text.setAttribute('fill', primaryColor);
+      text.setAttribute('opacity', '0.85');
+      highlightedPerson = null;
+      updateHighlights();
+      hideTooltip();
+    });
+    text.addEventListener('touchend', (e) => {
+      highlightedPerson = founder.id;
+      updateHighlights();
+      showTooltip(e, founderTooltipHTML(founder));
+    });
+
+    nameRow.appendChild(text);
+    svg.appendChild(nameRow);
+  });
+}
+
+function updateHighlights() {
+  document.querySelectorAll('.alluvial-path').forEach(path => {
+    const fid = path.getAttribute('data-founder');
+    const fromS = path.getAttribute('data-from-sector');
+    const toS = path.getAttribute('data-to-sector');
+    if (highlightedPerson) {
+      path.classList.toggle('highlight', fid === highlightedPerson);
+      path.classList.toggle('dimmed', fid !== highlightedPerson);
+    } else if (highlightedSector) {
+      const m = fromS === highlightedSector || toS === highlightedSector;
+      path.classList.toggle('highlight', m);
+      path.classList.toggle('dimmed', !m);
+    } else { path.classList.remove('highlight', 'dimmed'); }
+  });
+  document.querySelectorAll('circle[data-founder], text[data-founder]').forEach(el => {
+    const fid = el.getAttribute('data-founder');
+    if (highlightedPerson) { el.style.opacity = fid === highlightedPerson ? '1' : '0.15'; }
+    else { el.style.opacity = '1'; }
+  });
+}
+
+// =====================================================
+// CARDS VIEW
+// =====================================================
+function renderCards() {
+  const container = document.getElementById('cards-container');
+  container.innerHTML = '';
+  const sorted = [...getFiltered()].sort((a, b) => (b.sectorSwitches?.length || 0) - (a.sectorSwitches?.length || 0));
+  sorted.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'founder-card' + (f.sectorSwitches?.length > 0 ? ' switch-highlight' : '');
+    const switches = (f.sectorSwitches || []).map(s =>
+      `<span class="switch-badge">${s.from} <span class="arrow">\u2192</span> ${s.to} <span style="color:#555">(${s.year})</span></span>`
+    ).join('');
+    const roles = f.roles.map(r => {
+      const color = getSectorColor(r.sector);
+      return `<div class="role-chip" style="border-color:${color}33">
+        <span class="dot" style="background:${color}"></span>
+        <span>${r.company}</span>
+        <span style="color:#888;font-size:10px">${r.role}</span>
+        <span class="years">${r.start || '?'}\u2013${r.end || 'now'}</span>
+      </div>`;
+    }).join('');
+    card.innerHTML = `
+      <div class="name">${f.name} ${f.sectorSwitches?.length > 0 ? `<span style="color:#fbbf24;font-size:12px;font-weight:400">${f.sectorSwitches.length} switch${f.sectorSwitches.length > 1 ? 'es' : ''}</span>` : ''}</div>
+      ${switches ? `<div style="margin-bottom:8px">${switches}</div>` : ''}
+      <div class="timeline-row">${roles}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// =====================================================
+// REMOVE / ADD / PRESETS
+// =====================================================
+let ALL_FOUNDERS = [...FOUNDERS_DATA];
+let removedIds = JSON.parse(localStorage.getItem('wn-removed') || '[]');
+
+// Presets: curated founder groups
+const PRESETS = {
+  'PayPal Mafia': [
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Max Levchin', id: 'max-levchin' },
+    { name: 'David Sacks', id: 'david-sacks' },
+    { name: 'Chad Hurley', id: 'chad-hurley' },
+    { name: 'Steve Chen', id: 'steve-chen' },
+    { name: 'Jeremy Stoppelman', id: 'jeremy-stoppelman' },
+    { name: 'Keith Rabois', id: 'keith-rabois' },
+    { name: 'Roelof Botha', id: 'roelof-botha' },
+    { name: 'Ken Howery', id: 'ken-howery' },
+    { name: 'Luke Nosek', id: 'luke-nosek' },
+    { name: 'Premal Shah', id: 'premal-shah' },
+    { name: 'Jawed Karim', id: 'jawed-karim' },
+    { name: 'Russel Simmons', id: 'russel-simmons' },
+    { name: 'Dave McClure', id: 'dave-mcclure' },
+  ],
+  'Epstein Files': [
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Bill Gates', id: 'bill-gates' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Mark Zuckerberg', id: 'mark-zuckerberg' },
+    { name: 'Jeff Bezos', id: 'jeff-bezos' },
+    { name: 'Sergey Brin', id: 'sergey-brin' },
+    { name: 'Larry Page', id: 'larry-page' },
+    { name: 'Tim Cook', id: 'tim-cook' },
+    { name: 'Marissa Mayer', id: 'marissa-mayer' },
+    { name: 'Brian Armstrong', id: 'brian-armstrong' },
+    { name: 'Fred Ehrsam', id: 'fred-ehrsam' },
+    { name: 'Demis Hassabis', id: 'demis-hassabis' },
+  ],
+  'Elon Extended Universe': [
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Sam Altman', id: 'sam-altman' },
+    { name: 'David Sacks', id: 'david-sacks' },
+    { name: 'Palmer Luckey', id: 'palmer-luckey' },
+    { name: 'Gwynne Shotwell', id: 'gwynne-shotwell' },
+    { name: 'Tony Fadell', id: 'tony-fadell' },
+    { name: 'Kimbal Musk', id: 'kimbal-musk' },
+    { name: 'Joe Lonsdale', id: 'joe-lonsdale' },
+    { name: 'Trae Stephens', id: 'trae-stephens' },
+    { name: 'Andrej Karpathy', id: 'andrej-karpathy' },
+    { name: 'Jim Keller', id: 'jim-keller' },
+    { name: 'Larry Ellison', id: 'larry-ellison' },
+    { name: 'Luke Nosek', id: 'luke-nosek' },
+    { name: 'Keith Rabois', id: 'keith-rabois' },
+    { name: 'Max Levchin', id: 'max-levchin' },
+    { name: 'Vinay Hiremath', id: 'vinay-hiremath' },
+    { name: 'Steve Davis', id: 'steve-davis' },
+    { name: 'Nikita Bier', id: 'nikita-bier' },
+    { name: 'George Hotz', id: 'george-hotz' },
+  ],
+  'AI Lab Founders': [
+    { name: 'Sam Altman', id: 'sam-altman' },
+    { name: 'Dario Amodei', id: 'dario-amodei' },
+    { name: 'Daniela Amodei', id: 'daniela-amodei' },
+    { name: 'Ilya Sutskever', id: 'ilya-sutskever' },
+    { name: 'Mustafa Suleyman', id: 'mustafa-suleyman' },
+    { name: 'Demis Hassabis', id: 'demis-hassabis' },
+    { name: 'Andrej Karpathy', id: 'andrej-karpathy' },
+    { name: 'Greg Brockman', id: 'greg-brockman' },
+    { name: 'Alexandr Wang', id: 'alexandr-wang' },
+    { name: 'Mira Murati', id: 'mira-murati' },
+    { name: 'Arthur Mensch', id: 'arthur-mensch' },
+    { name: 'Aidan Gomez', id: 'aidan-gomez' },
+    { name: 'Noam Shazeer', id: 'noam-shazeer' },
+    { name: 'Fei-Fei Li', id: 'fei-fei-li' },
+    { name: 'Yann LeCun', id: 'yann-lecun' },
+    { name: 'Andrew Ng', id: 'andrew-ng' },
+    { name: 'Geoffrey Hinton', id: 'geoffrey-hinton' },
+    { name: 'Guillaume Lample', id: 'guillaume-lample' },
+    { name: 'Yoshua Bengio', id: 'yoshua-bengio' },
+    { name: 'Liang Wenfeng', id: 'liang-wenfeng' },
+    { name: 'Clement Delangue', id: 'clement-delangue' },
+    { name: 'Emad Mostaque', id: 'emad-mostaque' },
+    { name: 'Richard Socher', id: 'richard-socher' },
+  ],
+  'Crypto OGs': [
+    { name: 'Brian Armstrong', id: 'brian-armstrong' },
+    { name: 'Vitalik Buterin', id: 'vitalik-buterin' },
+    { name: 'Changpeng Zhao', id: 'cz-binance' },
+    { name: 'Fred Ehrsam', id: 'fred-ehrsam' },
+    { name: 'Balaji Srinivasan', id: 'balaji-srinivasan' },
+    { name: 'Matt Huang', id: 'matt-huang' },
+    { name: 'Hayden Adams', id: 'hayden-adams' },
+    { name: 'Sergey Nazarov', id: 'sergey-nazarov' },
+    { name: 'Anatoly Yakovenko', id: 'anatoly-yakovenko' },
+    { name: 'Andre Cronje', id: 'andre-cronje' },
+    { name: 'Michael Saylor', id: 'michael-saylor' },
+    { name: 'Chris Dixon', id: 'chris-dixon' },
+    { name: 'Devin Finzer', id: 'devin-finzer' },
+    { name: 'Jack Dorsey', id: 'jack-dorsey' },
+    { name: 'Cameron Winklevoss', id: 'cameron-winklevoss' },
+    { name: 'Tyler Winklevoss', id: 'tyler-winklevoss' },
+  ],
+  'Social Founders': [
+    { name: 'Mark Zuckerberg', id: 'mark-zuckerberg' },
+    { name: 'Jack Dorsey', id: 'jack-dorsey' },
+    { name: 'Kevin Systrom', id: 'kevin-systrom' },
+    { name: 'Mike Krieger', id: 'mike-krieger' },
+    { name: 'Evan Williams', id: 'ev-williams' },
+    { name: 'Evan Spiegel', id: 'evan-spiegel' },
+    { name: 'Bobby Murphy', id: 'bobby-murphy' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Whitney Wolfe Herd', id: 'whitney-wolfe-herd' },
+    { name: 'Ben Silbermann', id: 'ben-silbermann' },
+    { name: 'Jan Koum', id: 'jan-koum' },
+    { name: 'Kevin Rose', id: 'kevin-rose' },
+    { name: 'Dennis Crowley', id: 'dennis-crowley' },
+    { name: 'Caterina Fake', id: 'caterina-fake' },
+    { name: 'Jason Citron', id: 'jason-citron' },
+    { name: 'Dustin Moskovitz', id: 'dustin-moskovitz' },
+    { name: 'Eduardo Saverin', id: 'eduardo-saverin' },
+    { name: 'Tom Anderson', id: 'tom-anderson' },
+    { name: 'Chris Hughes', id: 'chris-hughes' },
+    { name: 'Biz Stone', id: 'biz-stone' },
+  ],
+  'YC Mafia': [
+    { name: 'Paul Graham', id: 'paul-graham' },
+    { name: 'Jessica Livingston', id: 'jessica-livingston' },
+    { name: 'Sam Altman', id: 'sam-altman' },
+    { name: 'Garry Tan', id: 'garry-tan' },
+    { name: 'Michael Seibel', id: 'michael-seibel' },
+    { name: 'Dalton Caldwell', id: 'dalton-caldwell' },
+    { name: 'Brian Chesky', id: 'brian-chesky' },
+    { name: 'Patrick Collison', id: 'patrick-collison' },
+    { name: 'John Collison', id: 'john-collison' },
+    { name: 'Drew Houston', id: 'drew-houston' },
+    { name: 'Justin Kan', id: 'justin-kan' },
+    { name: 'Emmett Shear', id: 'emmett-shear' },
+    { name: 'Alexis Ohanian', id: 'alexis-ohanian' },
+    { name: 'Tony Xu', id: 'tony-xu' },
+    { name: 'Apoorva Mehta', id: 'apoorva-mehta' },
+    { name: 'Henrique Dubugras', id: 'henrique-dubugras' },
+    { name: 'Pedro Franceschi', id: 'pedro-franceschi' },
+    { name: 'Alexandr Wang', id: 'alexandr-wang' },
+    { name: 'Parker Conrad', id: 'parker-conrad' },
+    { name: 'Solomon Hykes', id: 'solomon-hykes' },
+    { name: 'Qasar Younis', id: 'qasar-younis' },
+    { name: 'Joe Gebbia', id: 'joe-gebbia' },
+    { name: 'Nathan Blecharczyk', id: 'nathan-blecharczyk' },
+    { name: 'Tracy Young', id: 'tracy-young' },
+    { name: 'Mathilde Collin', id: 'mathilde-collin' },
+    { name: 'Calvin French-Owen', id: 'calvin-french-owen' },
+    { name: 'Austen Allred', id: 'austen-allred' },
+  ],
+  'Polymaths': [
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Steve Jobs', id: 'steve-jobs' },
+    { name: 'Bill Gates', id: 'bill-gates' },
+    { name: 'Stewart Butterfield', id: 'stewart-butterfield' },
+    { name: 'Marc Andreessen', id: 'marc-andreessen' },
+    { name: 'John Carmack', id: 'john-carmack' },
+    { name: 'Tony Fadell', id: 'tony-fadell' },
+    { name: 'Jack Dorsey', id: 'jack-dorsey' },
+    { name: 'Reid Hoffman', id: 'reid-hoffman' },
+    { name: 'Joe Lonsdale', id: 'joe-lonsdale' },
+    { name: 'Patrick Collison', id: 'patrick-collison' },
+    { name: 'Qi Lu', id: 'qi-lu' },
+    { name: 'Peter Thiel', id: 'peter-thiel' },
+    { name: 'Jensen Huang', id: 'jensen-huang' },
+    { name: 'Dustin Moskovitz', id: 'dustin-moskovitz' },
+    { name: 'Daphne Koller', id: 'daphne-koller' },
+    { name: 'Anne Wojcicki', id: 'anne-wojcicki' },
+    { name: 'Nat Friedman', id: 'nat-friedman' },
+    { name: 'Mike Cannon-Brookes', id: 'mike-cannon-brookes' },
+    { name: 'Nikesh Arora', id: 'nikesh-arora' },
+    { name: 'George Hotz', id: 'george-hotz' },
+    { name: 'Adam D\'Angelo', id: 'adam-dangelo' },
+    { name: 'Jaan Tallinn', id: 'jaan-tallinn' },
+  ],
+  'Cheeky Pint Guests': [
+    { name: 'John Collison', id: 'john-collison' },
+    { name: 'Greg Brockman', id: 'greg-brockman' },
+    { name: 'Susan Li', id: 'susan-li' },
+    { name: 'Kyle Vogt', id: 'kyle-vogt' },
+    { name: 'Pieter Levels', id: 'pieter-levels' },
+    { name: 'Dario Amodei', id: 'dario-amodei' },
+    { name: 'Vlad Tenev', id: 'vlad-tenev' },
+    { name: 'Brian Armstrong', id: 'brian-armstrong' },
+    { name: 'Scott Wu', id: 'scott-wu' },
+    { name: 'Keller Rinaudo Cliffton', id: 'keller-rinaudo-cliffton' },
+    { name: 'Des Traynor', id: 'des-traynor' },
+    { name: 'Mackenzie Burnett', id: 'mackenzie-burnett' },
+    { name: 'Marc Andreessen', id: 'marc-andreessen' },
+    { name: 'Charlie Songhurst', id: 'charlie-songhurst' },
+    { name: 'Tobi Lütke', id: 'tobi-lutke' },
+    { name: 'RJ Scaringe', id: 'rj-scaringe' },
+    { name: 'Dan Sundheim', id: 'dan-sundheim' },
+    { name: 'Casey Handmer', id: 'casey-handmer' },
+    { name: 'Zach Abrams', id: 'zach-abrams' },
+    { name: 'Henri Stern', id: 'henri-stern' },
+    { name: 'Dave Ricks', id: 'dave-ricks' },
+    { name: 'Satya Nadella', id: 'satya-nadella' },
+    { name: 'Julia DeWahl', id: 'julia-dewahl' },
+    { name: 'Elon Musk', id: 'elon-musk' },
+    { name: 'Ben Thompson', id: 'ben-thompson' },
+    { name: 'Eric Glyman', id: 'eric-glyman' },
+    { name: 'Reiner Pope', id: 'reiner-pope' },
+    { name: 'Garrett Langley', id: 'garrett-langley' },
+    { name: 'Bret Taylor', id: 'bret-taylor' },
+    { name: 'Tarek Mansour', id: 'tarek-mansour' },
+    { name: 'Luana Lopes Lara', id: 'luana-lopes-lara' },
+    { name: 'Dmitri Dolgov', id: 'dmitri-dolgov' },
+  ],
+
+};
+
+function applyRemovals() {
+  FOUNDERS_DATA.length = 0;
+  ALL_FOUNDERS.forEach(f => {
+    if (!removedIds.includes(f.id)) FOUNDERS_DATA.push(f);
+  });
+}
+
+let _removeShifts = {}; // track cumulative Y shifts per name row
+
+function removePerson(id) {
+  if (window.posthog) posthog.capture('founder_removed', { founder_id: id });
+  if (!removedIds.includes(id)) {
+    removedIds.push(id);
+    localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+  }
+  applyRemovals();
+  refresh();
+  updateRestoreBtn();
+  if (typeof updateMyoCounter === 'function') updateMyoCounter();
+  // Sync MYO suggestion chip styles
+  document.querySelectorAll('#myo-suggestions button[data-founder-id]').forEach(chip => {
+    const on = !removedIds.includes(chip.dataset.founderId);
+    chip.style.background = on ? '#1d9bf0' : '#f0f0f0';
+    chip.style.color = on ? '#fff' : '#666';
+    chip.style.borderColor = on ? '#1d9bf0' : '#d0d0d0';
+  });
+}
+
+function restoreAll() {
+  removedIds = [];
+  _removeShifts = {};
+  localStorage.setItem('wn-removed', '[]');
+  applyRemovals();
+  refresh();
+  updateRestoreBtn();
+}
+
+function updateRestoreBtn() {
+  const btn = document.getElementById('restore-all');
+  if (removedIds.length > 0) {
+    btn.style.display = 'inline-block';
+    btn.textContent = `Restore ${removedIds.length} removed`;
+  } else {
+    btn.style.display = 'none';
+  }
+}
+
+function loadPreset(name) {
+  if (!PRESETS[name]) return;
+  if (window.posthog) posthog.capture('preset_loaded', { preset_name: name });
+  const preset = PRESETS[name];
+
+  // Clear everything first
+  removedIds = ALL_FOUNDERS.map(f => f.id);
+
+  // For each person in preset: ensure they exist in ALL_FOUNDERS, then un-remove them
+  preset.forEach(p => {
+    if (!ALL_FOUNDERS.find(f => f.id === p.id)) {
+      // New person not in main dataset -- add them
+      const entry = p.roles ? p : null;
+      if (entry) {
+        entry.verified = entry.verified || '2026-03-18';
+        ALL_FOUNDERS.push(entry);
+      }
+    }
+    removedIds = removedIds.filter(r => r !== p.id);
+  });
+
+  localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+  applyRemovals();
+  refresh();
+  updateRestoreBtn();
+}
+
+function clearAll() {
+  removedIds = ALL_FOUNDERS.map(f => f.id);
+  localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+  applyRemovals();
+  refresh();
+  updateRestoreBtn();
+}
+
+// Add person search — searches Wikipedia for anyone
+const addInput = document.getElementById('add-person');
+const suggestions = document.getElementById('add-suggestions');
+let searchTimeout = null;
+let suggestionsOpen = false;
+
+addInput.addEventListener('input', () => {
+  const q = addInput.value.trim();
+  if (q.length < 2) { suggestions.classList.remove('show'); suggestionsOpen = false; return; }
+
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(async () => {
+    if (window.posthog) posthog.capture('founder_searched', { query: q });
+    const ql = q.toLowerCase();
+    // Founders currently on chart that match
+    const onChart = getFiltered().filter(f => f.name.toLowerCase().includes(ql));
+    // Founders removed from chart that match
+    const removed = ALL_FOUNDERS.filter(f => f.name.toLowerCase().includes(ql) && removedIds.includes(f.id));
+
+    let html = '';
+
+    // Show removed founders (can restore)
+    if (removed.length > 0) {
+      html += removed.slice(0, 3).map(f => {
+        const color = BROAD_COLORS[f.primarySector] || '#6b7280';
+        return `<div class="add-suggestion" data-restore="${f.id}">
+          <span class="sg-dot" style="background:${color}"></span>
+          <span><span class="sg-name">${escapeHtml(f.name)}</span> <span class="sg-sub">removed \u2014 click to restore</span></span>
+        </div>`;
+      }).join('');
+    }
+
+    // Show on-chart matches (for quick find/highlight)
+    if (onChart.length > 0) {
+      html += onChart.slice(0, 5).map(f => {
+        const color = BROAD_COLORS[f.primarySector] || '#6b7280';
+        return `<div class="add-suggestion" data-highlight="${f.id}">
+          <span class="sg-dot" style="background:${color}"></span>
+          <span><span class="sg-name">${escapeHtml(f.name)}</span> <span class="sg-sub">on chart</span></span>
+        </div>`;
+      }).join('');
+    }
+
+    // Search Supabase for founders not in local data at all
+    if (sb) {
+      try {
+        const { data: dbFounders } = await sb.from('founders').select('id, name, primary_sector, source_url').ilike('name', `%${q}%`).limit(10);
+        if (dbFounders) {
+          const newFromDb = dbFounders.filter(r => !ALL_FOUNDERS.some(f => f.id === r.id));
+          if (newFromDb.length > 0) {
+            html += `<div style="padding:4px 12px;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From database</div>`;
+            html += newFromDb.slice(0, 5).map(r => {
+              const color = BROAD_COLORS[r.primary_sector] || '#6b7280';
+              return `<div class="add-suggestion" data-db-id="${r.id}" data-db-name="${r.name}" data-db-sector="${r.primary_sector}">
+                <span class="sg-dot" style="background:${color}"></span>
+                <span><span class="sg-name">${escapeHtml(r.name)}</span> <span class="sg-sub">${escapeHtml(r.primary_sector)}</span></span>
+              </div>`;
+            }).join('');
+          }
+        }
+      } catch(e) { /* DB search error */ }
+    }
+
+    // DB-only search — no Wikipedia
+
+    if (!html) html = `<div class="add-suggestion"><span class="sg-sub">No results for "${escapeHtml(q)}"</span></div>`;
+
+    suggestions.innerHTML = html;
+    suggestions.classList.add('show');
+    suggestionsOpen = true;
+
+    // Restore handlers
+    suggestions.querySelectorAll('[data-restore]').forEach(el => {
+      el.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        removedIds = removedIds.filter(r => r !== el.dataset.restore);
+        localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+        applyRemovals(); refresh(); updateRestoreBtn(); updatePresetBtns();
+        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
+      });
+    });
+
+    // Highlight on-chart founder
+    suggestions.querySelectorAll('[data-highlight]').forEach(el => {
+      el.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        const fid = el.dataset.highlight;
+        // Flash the name on the chart
+        document.querySelectorAll(`[data-founder="${fid}"]`).forEach(t => {
+          t.setAttribute('opacity', '1');
+          t.setAttribute('font-weight', 'bold');
+          setTimeout(() => { t.setAttribute('opacity', '0.7'); t.setAttribute('font-weight', 'normal'); }, 2000);
+        });
+        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
+      });
+    });
+
+    // Add from Supabase DB
+    suggestions.querySelectorAll('[data-db-id]').forEach(el => {
+      el.addEventListener('mousedown', async (e) => {
+        e.preventDefault();
+        const fid = el.dataset.dbId;
+        el.querySelector('.sg-sub').textContent = 'loading...';
+        try {
+          const { data: roles } = await sb.from('roles').select('*').eq('founder_id', fid).order('sort_order');
+          const { data: switches } = await sb.from('sector_switches').select('*').eq('founder_id', fid);
+          const newFounder = {
+            name: el.dataset.dbName,
+            id: fid,
+            primarySector: el.dataset.dbSector,
+            roles: (roles || []).map(r => ({
+              company: r.company, role: r.role, sector: r.sector,
+              start: r.start_year, end: r.end_year, note: r.note
+            })),
+            sectorSwitches: (switches || []).map(s => ({
+              from: s.from_sector, to: s.to_sector, year: s.year
+            }))
+          };
+          ALL_FOUNDERS.push(newFounder);
+          FOUNDERS_DATA.push(newFounder);
+          refresh();
+        } catch(e) { /* load error */ }
+        addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
+      });
+    });
+
+    // Wikipedia search removed — DB only
+  }, 300);
+});
+
+addInput.addEventListener('blur', () => {
+  // Delay to allow mousedown on suggestions to fire first
+  setTimeout(() => { if (suggestionsOpen) { suggestions.classList.remove('show'); suggestionsOpen = false; } }, 250);
+});
+
+// Preset buttons
+const presetsBar = document.getElementById('presets-bar');
+let activePreset = null;
+
+// "All" button
+const allBtn = document.createElement('button');
+allBtn.className = 'preset-btn-all active';
+allBtn.textContent = `All (${ALL_FOUNDERS.length})`;
+allBtn.addEventListener('click', () => {
+  activePreset = null;
+  restoreAll();
+  updatePresetBtns();
+});
+presetsBar.appendChild(allBtn);
+
+Object.entries(PRESETS).forEach(([name, people]) => {
+  const btn = document.createElement('button');
+  btn.className = 'preset-btn';
+  btn.textContent = name;
+  btn.dataset.preset = name;
+  btn.addEventListener('click', () => {
+    if (activePreset === name) {
+      activePreset = null;
+      restoreAll();
+    } else {
+      activePreset = name;
+      loadPreset(name);
+    }
+    hideMakeYourOwn();
+    updatePresetBtns();
+  });
+  presetsBar.appendChild(btn);
+});
+
+// "Make Your Own" button
+const myoBtn = document.createElement('button');
+myoBtn.className = 'preset-btn';
+myoBtn.textContent = '+ Make Your Own';
+myoBtn.style.borderStyle = 'dashed';
+myoBtn.dataset.preset = '__myo__';
+myoBtn.addEventListener('click', () => {
+  if (activePreset === '__myo__') {
+    activePreset = null;
+    restoreAll();
+    hideMakeYourOwn();
+  } else {
+    activePreset = '__myo__';
+    clearAll();
+    showMakeYourOwn();
+  }
+  updatePresetBtns();
+});
+presetsBar.appendChild(myoBtn);
+
+// Make Your Own panel
+const myoPanel = document.createElement('div');
+myoPanel.id = 'myo-panel';
+myoPanel.style.cssText = 'display:none;margin:0 40px 12px;padding:14px 18px;background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;';
+myoPanel.innerHTML = `
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+    <div style="color:#333;font-size:13px;">Search to add founders.</div>
+    <div style="flex:1"></div>
+    <span id="myo-counter" style="color:#888;font-size:12px;">0 selected</span>
+    <button id="myo-share" style="background:#1d9bf0;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;opacity:0.5;pointer-events:none;transition:all 0.2s;">Share on 𝕏</button>
+  </div>
+  <div id="myo-suggestions" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+`;
+presetsBar.after(myoPanel);
+
+function updateMyoCounter() {
+  const count = ALL_FOUNDERS.filter(f => !removedIds.includes(f.id)).length;
+  const counter = document.getElementById('myo-counter');
+  const shareBtn = document.getElementById('myo-share');
+  if (counter) counter.textContent = `${count} selected`;
+  if (shareBtn) {
+    shareBtn.style.opacity = count > 0 ? '1' : '0.5';
+    shareBtn.style.pointerEvents = count > 0 ? 'auto' : 'none';
+  }
+}
+
+const myoSuggestions = [
+  { name: 'Elon Musk', id: 'elon-musk' },
+  { name: 'Sam Altman', id: 'sam-altman' },
+  { name: 'Bryan Johnson', id: 'bryan-johnson' },
+  { name: 'Mark Zuckerberg', id: 'mark-zuckerberg' },
+  { name: 'Jeff Bezos', id: 'jeff-bezos' },
+  { name: 'Steve Jobs', id: 'steve-jobs' },
+];
+
+function showMakeYourOwn() {
+  myoPanel.style.display = 'block';
+  // On mobile, expand the controls panel so search is visible
+  const ctrlPanel = document.getElementById('controls-panel');
+  const ctrlToggle = document.getElementById('controls-toggle');
+  if (ctrlPanel && window.innerWidth <= 768) {
+    ctrlPanel.classList.remove('collapsed');
+    if (ctrlToggle) ctrlToggle.classList.add('open');
+  }
+  const searchInput = document.getElementById('add-person');
+  searchInput.focus();
+  searchInput.style.borderColor = '#1d9bf0';
+  searchInput.placeholder = 'Type a name to add...';
+  setTimeout(() => { searchInput.style.borderColor = '#d0d0d0'; }, 2000);
+
+  const container = document.getElementById('myo-suggestions');
+  container.innerHTML = '';
+  myoSuggestions.forEach(s => {
+    const isAdded = !removedIds.includes(s.id);
+    const chip = document.createElement('button');
+    function updateChipStyle() {
+      const on = !removedIds.includes(s.id);
+      chip.style.cssText = `background:${on ? '#1d9bf0' : '#f0f0f0'};color:${on ? '#fff' : '#666'};border:1px solid ${on ? '#1d9bf0' : '#d0d0d0'};padding:4px 12px;border-radius:16px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.15s;`;
+    }
+    updateChipStyle();
+    chip.textContent = s.name;
+    chip.dataset.founderId = s.id;
+    chip.addEventListener('click', () => {
+      const isCurrentlyAdded = !removedIds.includes(s.id);
+      if (isCurrentlyAdded) {
+        removedIds.push(s.id);
+      } else {
+        removedIds = removedIds.filter(r => r !== s.id);
+      }
+      localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+      applyRemovals(); refresh(); updateRestoreBtn();
+      updateChipStyle();
+      updateMyoCounter();
+    });
+    container.appendChild(chip);
+  });
+
+  updateMyoCounter();
+
+  const oldShare = document.getElementById('myo-share');
+  const newShare = oldShare.cloneNode(true);
+  oldShare.parentNode.replaceChild(newShare, oldShare);
+  newShare.addEventListener('click', async () => {
+    const active = ALL_FOUNDERS.filter(f => !removedIds.includes(f.id));
+    const count = active.length;
+    const names = active.slice(0, 5).map(f => f.name).join(', ') + (count > 5 ? ` + ${count - 5} more` : '');
+    const tweetText = `${names} — where do tech founders go next?\n\nmake your own: https://esofast.com/where-next`;
+
+    newShare.textContent = 'Capturing...';
+    newShare.style.opacity = '0.6';
+    newShare.style.pointerEvents = 'none';
+    try {
+      if (!window.html2canvas) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+          s.onload = resolve; s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+      const container = document.getElementById('alluvial-container');
+      const cvs = await html2canvas(container, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+        useCORS: true,
+        logging: false,
+      });
+
+      // Build branded card around the raw screenshot
+      const padding = { sides: 60, top: 80, bottom: 70 };
+      const brandedCanvas = document.createElement('canvas');
+      brandedCanvas.width = cvs.width + padding.sides * 2;
+      brandedCanvas.height = cvs.height + padding.top + padding.bottom;
+      const ctx = brandedCanvas.getContext('2d');
+      const font = 'Inter, -apple-system, BlinkMacSystemFont, sans-serif';
+
+      // Background
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, brandedCanvas.width, brandedCanvas.height);
+
+      // Title: "WHERE NEXT"
+      ctx.fillStyle = '#111111';
+      ctx.font = `bold 32px ${font}`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('WHERE NEXT', brandedCanvas.width / 2, 18);
+
+      // Subtitle: "Founder Migration Tracker"
+      ctx.fillStyle = 'rgba(0,0,0,0.4)';
+      ctx.font = `16px ${font}`;
+      ctx.fillText('Founder Migration Tracker', brandedCanvas.width / 2, 18 + 32 + 8);
+
+      // Subtle border around diagram area
+      const diagX = padding.sides;
+      const diagY = padding.top;
+      ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+      ctx.lineWidth = 1;
+      if (ctx.roundRect) {
+        ctx.beginPath();
+        ctx.roundRect(diagX, diagY, cvs.width, cvs.height, 8);
+        ctx.stroke();
+      } else {
+        ctx.strokeRect(diagX, diagY, cvs.width, cvs.height);
+      }
+
+      // Draw captured diagram
+      ctx.drawImage(cvs, diagX, diagY);
+
+      // Footer
+      const footerY = brandedCanvas.height - padding.bottom / 2 - 7;
+      ctx.textBaseline = 'middle';
+
+      // Left: founder names
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.font = `14px ${font}`;
+      ctx.textAlign = 'left';
+      // Truncate names string if too wide
+      const maxNamesWidth = brandedCanvas.width * 0.65;
+      let displayNames = names;
+      ctx.font = `14px ${font}`;
+      while (ctx.measureText(displayNames).width > maxNamesWidth && displayNames.length > 0) {
+        displayNames = displayNames.slice(0, -1);
+      }
+      if (displayNames !== names) displayNames = displayNames.trimEnd() + '…';
+      ctx.fillText(displayNames, diagX, footerY);
+
+      // Right: URL
+      ctx.fillStyle = 'rgba(0,0,0,0.35)';
+      ctx.textAlign = 'right';
+      ctx.fillText('esofast.com/where-next', diagX + cvs.width, footerY);
+
+      // Convert canvas to Blob
+      const blob = await new Promise(res => brandedCanvas.toBlob(res, 'image/png'));
+      const file = new File([blob], 'where-next.png', { type: 'image/png' });
+
+      // Try Web Share API with file (works on mobile, macOS Safari)
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          text: tweetText,
+          files: [file],
+        });
+        newShare.textContent = '✓ Shared!';
+      }
+      // Fallback: copy image to clipboard so user can paste into tweet compose
+      else if (navigator.clipboard && typeof ClipboardItem !== 'undefined') {
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]);
+        // Also copy tweet text (some browsers support both, but image takes priority on clipboard)
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
+        newShare.textContent = '✓ Image copied! Paste into tweet';
+      }
+      // Last resort: download file + open compose
+      else {
+        const link = document.createElement('a');
+        link.download = 'where-next.png';
+        link.href = brandedCanvas.toDataURL('image/png');
+        link.click();
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
+        newShare.textContent = '✓ Image saved, compose opened';
+      }
+
+      setTimeout(() => { newShare.textContent = 'Share on 𝕏'; }, 3000);
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        // User cancelled share sheet, that's fine
+        newShare.textContent = 'Share on 𝕏';
+      } else {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
+        newShare.textContent = 'Share on 𝕏';
+      }
+    }
+    newShare.style.opacity = '1';
+    newShare.style.pointerEvents = '';
+  });
+}
+
+function hideMakeYourOwn() {
+  myoPanel.style.display = 'none';
+}
+
+function updatePresetBtns() {
+  allBtn.textContent = `All (${ALL_FOUNDERS.length})`;
+  allBtn.classList.toggle('active', activePreset === null);
+  presetsBar.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.preset === activePreset);
+  });
+  myoBtn.classList.toggle('active', activePreset === '__myo__');
+}
+
+// Restore all
+document.getElementById('restore-all').addEventListener('click', () => {
+  activePreset = null;
+  restoreAll();
+  updatePresetBtns();
+});
+applyRemovals();
+refresh();
+updateRestoreBtn();
+updatePresetBtns();
+
+// Re-render on window resize (debounced)
+let resizeTimer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    // Update controls toggle visibility
+    const panel = document.getElementById('controls-panel');
+    if (!isMobile()) {
+      panel.classList.remove('collapsed');
+    }
+    refresh();
+  }, 250);
+});
