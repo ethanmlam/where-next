@@ -1240,7 +1240,6 @@ const PRESETS = {
     { name: 'Marissa Mayer', id: 'marissa-mayer' },
     { name: 'Brian Armstrong', id: 'brian-armstrong' },
     { name: 'Fred Ehrsam', id: 'fred-ehrsam' },
-    { name: 'Demis Hassabis', id: 'demis-hassabis' },
     { name: 'Richard Branson', id: 'richard-branson' },
   ],
   'Elon Extended Universe': [
