@@ -1241,6 +1241,7 @@ const PRESETS = {
     { name: 'Brian Armstrong', id: 'brian-armstrong' },
     { name: 'Fred Ehrsam', id: 'fred-ehrsam' },
     { name: 'Demis Hassabis', id: 'demis-hassabis' },
+    { name: 'Richard Branson', id: 'richard-branson' },
   ],
   'Elon Extended Universe': [
     { name: 'Elon Musk', id: 'elon-musk' },
@@ -1382,6 +1383,7 @@ const PRESETS = {
     { name: 'George Hotz', id: 'george-hotz' },
     { name: 'Adam D\'Angelo', id: 'adam-dangelo' },
     { name: 'Jaan Tallinn', id: 'jaan-tallinn' },
+    { name: 'Richard Branson', id: 'richard-branson' },
   ],
   'Cheeky Pint Guests': [
     { name: 'John Collison', id: 'john-collison' },
