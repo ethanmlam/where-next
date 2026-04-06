@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/where-next/:path*", "destination": "/:path*" }
+  ]
+}
