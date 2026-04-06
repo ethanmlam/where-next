@@ -501,8 +501,7 @@
     .welcome-title { font-size: 24px; }
     .welcome-body { font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
 
-    /* Hide MYO panel on mobile */
-    #myo-panel { display: none !important; }
+    /* MYO panel: allow on mobile */
 
     /* Era stepper visible on mobile */
     .era-stepper { display: flex; }

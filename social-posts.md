@@ -4,13 +4,14 @@
 
 ## Tweet (X/Twitter)
 
-We tracked 300 founders across 5 tech eras — from the dot-com boom to AI.
+i tracked every career move of 300 top tech founders over the past 30 years. see what the paypal mafia and epstein files people have been up to. guess where they all are now. search any founder. make your own.
 
-Where did Elon Musk, Sam Altman, and Reid Hoffman end up?
+WHERE NEXT
+esofast.com/where-next
 
-355 sector switches. One clear signal: everyone's heading to AI.
-
-Explore the interactive map: esofast.com/where-next
+**Images:** 2-image carousel
+1. PayPal Mafia overview (clean graph, all 5 eras)
+2. Hover state on Reid Hoffman showing career card
 
 ---
 

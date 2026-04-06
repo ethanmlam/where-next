@@ -1725,6 +1725,11 @@ const myoSuggestions = [
   { name: 'Mark Zuckerberg', id: 'mark-zuckerberg' },
   { name: 'Jeff Bezos', id: 'jeff-bezos' },
   { name: 'Steve Jobs', id: 'steve-jobs' },
+  { name: 'Marissa Mayer', id: 'marissa-mayer' },
+  { name: 'Whitney Wolfe Herd', id: 'whitney-wolfe-herd' },
+  { name: 'Gwynne Shotwell', id: 'gwynne-shotwell' },
+  { name: 'Palmer Luckey', id: 'palmer-luckey' },
+  { name: 'Garry Tan', id: 'garry-tan' },
 ];
 
 function showMakeYourOwn() {
