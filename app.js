@@ -1702,6 +1702,7 @@ myoPanel.innerHTML = `
     <div style="flex:1"></div>
     <span id="myo-counter" style="color:#888;font-size:12px;">0 selected</span>
     <button id="myo-share" style="background:#1d9bf0;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;opacity:0.5;pointer-events:none;transition:all 0.2s;">Share on 𝕏</button>
+    <button id="myo-clear" style="background:none;color:#999;border:1px solid #ddd;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.2s;">Clear All</button>
   </div>
   <div id="myo-suggestions" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
 `;
@@ -1911,6 +1912,19 @@ function showMakeYourOwn() {
     }
     newShare.style.opacity = '1';
     newShare.style.pointerEvents = '';
+  });
+
+  const oldClear = document.getElementById('myo-clear');
+  const newClear = oldClear.cloneNode(true);
+  oldClear.parentNode.replaceChild(newClear, oldClear);
+  newClear.addEventListener('click', () => {
+    clearAll();
+    updateMyoCounter();
+    document.querySelectorAll('#myo-suggestions button[data-founder-id]').forEach(chip => {
+      chip.style.background = '#f0f0f0';
+      chip.style.color = '#555';
+      chip.style.borderColor = '#ddd';
+    });
   });
 }
 
