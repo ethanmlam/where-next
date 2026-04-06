@@ -1717,6 +1717,20 @@ function updateMyoCounter() {
     shareBtn.style.opacity = count > 0 ? '1' : '0.5';
     shareBtn.style.pointerEvents = count > 0 ? 'auto' : 'none';
   }
+  const clearBtn = document.getElementById('myo-clear');
+  if (clearBtn) {
+    if (count > 0) {
+      clearBtn.style.color = '#555';
+      clearBtn.style.borderColor = '#999';
+      clearBtn.style.opacity = '1';
+      clearBtn.style.pointerEvents = 'auto';
+    } else {
+      clearBtn.style.color = '#ccc';
+      clearBtn.style.borderColor = '#eee';
+      clearBtn.style.opacity = '0.5';
+      clearBtn.style.pointerEvents = 'none';
+    }
+  }
 }
 
 const myoSuggestions = [
