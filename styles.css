@@ -412,7 +412,7 @@
     /* MYO panel: full-width on mobile */
     #myo-panel { margin: 0 12px 12px !important; padding: 12px 14px !important; }
     #myo-panel > div:first-child { flex-wrap: wrap; gap: 8px; }
-    #myo-share, #myo-clear { flex: 1; min-width: 0; margin-top: 4px; }
+    #myo-share, #myo-clear { width: 48%; margin-top: 4px; }
 
     /* Controls: hide everything except search behind toggle */
     .controls-toggle { display: block; }
