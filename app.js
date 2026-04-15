@@ -1289,6 +1289,15 @@ const PRESETS = {
     { name: 'Emad Mostaque', id: 'emad-mostaque' },
     { name: 'Richard Socher', id: 'richard-socher' },
   ],
+  'Olympiad Founders': [
+    { name: 'Jesse Zhang', id: 'jesse-zhang' },
+    { name: 'Demi Guo', id: 'demi-guo' },
+    { name: 'Vladimir Novakovski', id: 'vladimir-novakovski' },
+    { name: 'Eugene Chen', id: 'eugene-chen' },
+    { name: 'Jeff Yan', id: 'jeff-yan' },
+    { name: 'Scott Wu', id: 'scott-wu' },
+    { name: 'Johnny Ho', id: 'johnny-ho' },
+  ],
   'Crypto OGs': [
     { name: 'Brian Armstrong', id: 'brian-armstrong' },
     { name: 'Vitalik Buterin', id: 'vitalik-buterin' },
