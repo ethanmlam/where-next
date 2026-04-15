@@ -321,8 +321,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('cards-container').classList.add('view-hidden');
       applyPresetOrWelcome();
 
-      // Background refresh if stale (> 5 min)
-      if (sb && Date.now() - ts > 5 * 60 * 1000) {
+      // Always refresh in the background so local data edits show up quickly.
+      if (sb) {
         fetchFromSupabase().then(() => { refresh(); }).catch(() => {});
       }
       return; // skip the normal fetch flow below
