@@ -1,0 +1,2930 @@
+[
+  {
+    "id": "1a444a03-6cd2-4f2f-8e6f-5ab3f3e7cf97",
+    "founder_id": "ben-horowitz",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 1995,
+    "created_at": "2026-03-25T22:39:27.183798+00:00"
+  },
+  {
+    "id": "ada62965-2035-4ac2-9217-a61bc9f63147",
+    "founder_id": "ben-horowitz",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 1999,
+    "created_at": "2026-03-25T22:39:27.233051+00:00"
+  },
+  {
+    "id": "c5a7298e-21cb-4005-b66a-b5bf7b13d7d1",
+    "founder_id": "ben-horowitz",
+    "from_sector": "Enterprise",
+    "to_sector": "VC & Finance",
+    "year": 2009,
+    "created_at": "2026-03-25T22:39:27.27939+00:00"
+  },
+  {
+    "id": "4db3a0d1-2e1c-45e8-b83b-5511c5d84d93",
+    "founder_id": "sergey-brin",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:27.564858+00:00"
+  },
+  {
+    "id": "2e04aa2c-7314-49ab-bcbc-073ab3096dde",
+    "founder_id": "marc-benioff",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 1986,
+    "created_at": "2026-03-25T22:39:27.808282+00:00"
+  },
+  {
+    "id": "688864f3-9487-4a2b-b55b-25da7925d7c7",
+    "founder_id": "marc-benioff",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:27.860314+00:00"
+  },
+  {
+    "id": "1a47d413-96bb-4b58-b698-b0c103132f5e",
+    "founder_id": "jeff-dean",
+    "from_sector": "Other",
+    "to_sector": "Enterprise",
+    "year": 1996,
+    "created_at": "2026-03-25T22:39:28.220462+00:00"
+  },
+  {
+    "id": "6dac55aa-e057-452d-bc68-8f785aa4b8b7",
+    "founder_id": "jeff-dean",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:28.275826+00:00"
+  },
+  {
+    "id": "8b6e8094-84a8-428e-bf31-6c31da6f810c",
+    "founder_id": "daniel-ek",
+    "from_sector": "Consumer",
+    "to_sector": "Social & Media",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:28.971695+00:00"
+  },
+  {
+    "id": "3d27a085-7c0d-4fe3-8ee4-2ef27bfe8bf8",
+    "founder_id": "daniel-ek",
+    "from_sector": "Social & Media",
+    "to_sector": "Deep Tech",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:29.071722+00:00"
+  },
+  {
+    "id": "60206044-a941-4ca8-a724-f6271f36b36b",
+    "founder_id": "daniel-ek",
+    "from_sector": "Deep Tech",
+    "to_sector": "Defense",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:29.115756+00:00"
+  },
+  {
+    "id": "b5fc5b3c-2064-492b-8b0e-d42a653384a1",
+    "founder_id": "daniel-ek",
+    "from_sector": "Defense",
+    "to_sector": "VC & Finance",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:29.174546+00:00"
+  },
+  {
+    "id": "8da483db-681c-4747-b187-6863708d1089",
+    "founder_id": "brian-acton",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 1996,
+    "created_at": "2026-03-25T22:39:29.424657+00:00"
+  },
+  {
+    "id": "be0374d9-b8e2-4f5b-be14-3f7807604115",
+    "founder_id": "brian-acton",
+    "from_sector": "Social & Media",
+    "to_sector": "Other",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:29.478144+00:00"
+  },
+  {
+    "id": "bf0d33eb-8533-4a52-a861-0d8b678b80fb",
+    "founder_id": "mike-moritz",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 1986,
+    "created_at": "2026-03-25T22:39:29.742483+00:00"
+  },
+  {
+    "id": "9ffd0071-7a5e-4da4-b856-ea117871875f",
+    "founder_id": "jerry-yang",
+    "from_sector": "Other",
+    "to_sector": "Consumer",
+    "year": 1995,
+    "created_at": "2026-03-25T22:39:30.004244+00:00"
+  },
+  {
+    "id": "1eae9f78-de79-42f7-8a99-3e6134611d31",
+    "founder_id": "jerry-yang",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:30.07492+00:00"
+  },
+  {
+    "id": "4778746d-b293-4ccf-b61b-69a7cdea813b",
+    "founder_id": "anne-wojcicki",
+    "from_sector": "VC & Finance",
+    "to_sector": "Deep Tech",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:30.284417+00:00"
+  },
+  {
+    "id": "0e5f6b85-f4f2-432f-b6bb-4a8936fd57c4",
+    "founder_id": "niklas-zennstrom",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2001,
+    "created_at": "2026-03-25T22:39:30.603548+00:00"
+  },
+  {
+    "id": "4e32bdee-71a5-4713-a852-27d9aa93c069",
+    "founder_id": "niklas-zennstrom",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:30.660364+00:00"
+  },
+  {
+    "id": "8976cd75-5cb0-4bd6-baa3-c1c94f72eb72",
+    "founder_id": "niklas-zennstrom",
+    "from_sector": "VC & Finance",
+    "to_sector": "Other",
+    "year": 2007,
+    "created_at": "2026-03-25T22:39:30.711784+00:00"
+  },
+  {
+    "id": "a7e9db48-b57f-49c2-a0c8-ba1317130c8b",
+    "founder_id": "kevin-hartz",
+    "from_sector": "Enterprise",
+    "to_sector": "Fintech",
+    "year": 2001,
+    "created_at": "2026-03-25T22:39:31.04078+00:00"
+  },
+  {
+    "id": "5e206552-d568-4eda-93e2-15f963e6525d",
+    "founder_id": "kevin-hartz",
+    "from_sector": "Fintech",
+    "to_sector": "Consumer",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:31.103707+00:00"
+  },
+  {
+    "id": "5e9ac449-f2c4-49a9-b955-105a5163d54c",
+    "founder_id": "kevin-hartz",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:31.155795+00:00"
+  },
+  {
+    "id": "e042a07a-b586-4c7f-b130-cfe887566209",
+    "founder_id": "bobby-murphy",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:31.324568+00:00"
+  },
+  {
+    "id": "8ee8673e-f5f2-479b-9b86-75685dd515da",
+    "founder_id": "mike-krieger",
+    "from_sector": "Social & Media",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:31.523171+00:00"
+  },
+  {
+    "id": "6fc3a548-dac6-4962-881a-ce1d1f29c6bc",
+    "founder_id": "alfred-lin",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 1998,
+    "created_at": "2026-03-25T22:39:32.027877+00:00"
+  },
+  {
+    "id": "6cf531f2-3af5-44b0-b807-0cd2197a9e0f",
+    "founder_id": "alfred-lin",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:32.077483+00:00"
+  },
+  {
+    "id": "83691124-f312-4777-a398-98b5c42d6a42",
+    "founder_id": "alfred-lin",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:32.136978+00:00"
+  },
+  {
+    "id": "2bec575f-db25-4b0a-b069-80d25a17f549",
+    "founder_id": "anatoly-yakovenko",
+    "from_sector": "Deep Tech",
+    "to_sector": "Enterprise",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:32.457914+00:00"
+  },
+  {
+    "id": "fed1fc59-7eb9-4f6c-ac46-dd7b84b52de1",
+    "founder_id": "anatoly-yakovenko",
+    "from_sector": "Enterprise",
+    "to_sector": "Crypto",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:32.508428+00:00"
+  },
+  {
+    "id": "db08c9de-c644-4619-aff4-7f1f945a1284",
+    "founder_id": "hayden-adams",
+    "from_sector": "Deep Tech",
+    "to_sector": "Crypto",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:32.657049+00:00"
+  },
+  {
+    "id": "b482ca3c-4172-46c3-bb54-cccad43f9903",
+    "founder_id": "sam-lessin",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:32.991072+00:00"
+  },
+  {
+    "id": "7ed27c0f-7c4d-4f3a-baa8-0a7461735215",
+    "founder_id": "sam-lessin",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:33.045235+00:00"
+  },
+  {
+    "id": "c86561dd-791b-4fff-8b6b-4e1413d12023",
+    "founder_id": "sam-lessin",
+    "from_sector": "VC & Finance",
+    "to_sector": "AI",
+    "year": 2015,
+    "created_at": "2026-03-25T22:39:33.105042+00:00"
+  },
+  {
+    "id": "6897c3bf-68a0-4e34-801a-9f6415de90ee",
+    "founder_id": "will-gaybrick",
+    "from_sector": "VC & Finance",
+    "to_sector": "Fintech",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:33.73307+00:00"
+  },
+  {
+    "id": "dc764e8b-2600-42b9-9692-73dc0e315470",
+    "founder_id": "vlad-yatsenko",
+    "from_sector": "VC & Finance",
+    "to_sector": "Fintech",
+    "year": 2015,
+    "created_at": "2026-03-25T22:39:33.936781+00:00"
+  },
+  {
+    "id": "c2301675-1549-4b27-9568-f0689b8353cc",
+    "founder_id": "patrick-mckenzie",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:34.131238+00:00"
+  },
+  {
+    "id": "5f431fe8-55bc-4261-b541-4b1834aea1c5",
+    "founder_id": "patrick-mckenzie",
+    "from_sector": "Enterprise",
+    "to_sector": "Fintech",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:34.192719+00:00"
+  },
+  {
+    "id": "a317575d-5459-490b-9d3e-b70a13415bf5",
+    "founder_id": "masayoshi-son",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Telecom",
+    "year": 1981,
+    "created_at": "2026-03-25T22:39:34.748364+00:00"
+  },
+  {
+    "id": "ae129f8c-423f-4549-8794-98fdaba91a94",
+    "founder_id": "masayoshi-son",
+    "from_sector": "Telecom",
+    "to_sector": "VC & Finance",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:34.800833+00:00"
+  },
+  {
+    "id": "f9f762cf-e9be-49b0-8cf5-74dbc9398bf1",
+    "founder_id": "masayoshi-son",
+    "from_sector": "VC & Finance",
+    "to_sector": "AI",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:34.85628+00:00"
+  },
+  {
+    "id": "7b8447ae-70be-4191-bdb0-165d7cba3f9d",
+    "founder_id": "reed-hastings",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 1997,
+    "created_at": "2026-03-25T22:39:35.148914+00:00"
+  },
+  {
+    "id": "f90bd851-e9bd-4f48-956f-8655ae418975",
+    "founder_id": "martin-casado",
+    "from_sector": "Defense",
+    "to_sector": "Enterprise",
+    "year": 2007,
+    "created_at": "2026-03-25T22:39:35.497386+00:00"
+  },
+  {
+    "id": "79270e73-1200-4464-99f9-93fdfbaf773a",
+    "founder_id": "martin-casado",
+    "from_sector": "Enterprise",
+    "to_sector": "VC & Finance",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:35.554679+00:00"
+  },
+  {
+    "id": "8c12bec9-eadf-43fd-b6cd-9500dea2570e",
+    "founder_id": "daphne-koller",
+    "from_sector": "Other",
+    "to_sector": "Consumer",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:35.854082+00:00"
+  },
+  {
+    "id": "a484192c-eb53-43a0-b80e-1d2a5d13fd00",
+    "founder_id": "daphne-koller",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:35.90578+00:00"
+  },
+  {
+    "id": "826b4bfe-768e-4d89-827f-788c3ead143f",
+    "founder_id": "jim-keller",
+    "from_sector": "Deep Tech",
+    "to_sector": "Consumer",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:36.52899+00:00"
+  },
+  {
+    "id": "6f2de6d4-b14c-4166-a169-ae5e72542ee0",
+    "founder_id": "jim-keller",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:36.575789+00:00"
+  },
+  {
+    "id": "47579139-0c42-48e6-9fec-1075bd662af5",
+    "founder_id": "jim-keller",
+    "from_sector": "Deep Tech",
+    "to_sector": "AI",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:36.625538+00:00"
+  },
+  {
+    "id": "0458a433-294c-48c2-9d32-65f932d218fd",
+    "founder_id": "jack-ma",
+    "from_sector": "Other",
+    "to_sector": "Consumer",
+    "year": 1995,
+    "created_at": "2026-03-25T22:39:37.033856+00:00"
+  },
+  {
+    "id": "0ef6f3b0-2fc3-4493-b4fe-0292e0f5f521",
+    "founder_id": "jack-ma",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:37.095673+00:00"
+  },
+  {
+    "id": "a74bc3e7-ceac-4fe3-817d-9a0cb92f68f1",
+    "founder_id": "pony-ma",
+    "from_sector": "Telecom",
+    "to_sector": "Social & Media",
+    "year": 1998,
+    "created_at": "2026-03-25T22:39:37.290232+00:00"
+  },
+  {
+    "id": "b62b6109-3781-4fc5-9b88-f1f41f03c587",
+    "founder_id": "robin-li",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 1997,
+    "created_at": "2026-03-25T22:39:37.508861+00:00"
+  },
+  {
+    "id": "927274ca-00f6-45c3-bdf7-9f85bcb396e8",
+    "founder_id": "richard-socher",
+    "from_sector": "Other",
+    "to_sector": "AI",
+    "year": 2014,
+    "created_at": "2026-03-25T22:39:37.998047+00:00"
+  },
+  {
+    "id": "f2380100-427d-4832-b091-55f9f1298289",
+    "founder_id": "richard-socher",
+    "from_sector": "AI",
+    "to_sector": "Enterprise",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:38.053685+00:00"
+  },
+  {
+    "id": "f0c6df23-0c3f-45f4-9aad-65df25fdcaf4",
+    "founder_id": "richard-socher",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:38.092565+00:00"
+  },
+  {
+    "id": "22191657-1fae-4812-a120-041a1e4a1616",
+    "founder_id": "david-heinemeier-hansson",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 2001,
+    "created_at": "2026-03-25T22:39:38.768484+00:00"
+  },
+  {
+    "id": "c21747a2-8283-4454-ad87-e4a01a0afbe7",
+    "founder_id": "joel-spolsky",
+    "from_sector": "Social & Media",
+    "to_sector": "Enterprise",
+    "year": 2000,
+    "created_at": "2026-03-25T22:39:39.810548+00:00"
+  },
+  {
+    "id": "0df02e6c-116b-489d-bed5-a5b37b3a4355",
+    "founder_id": "john-collison",
+    "from_sector": "Consumer",
+    "to_sector": "Fintech",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:41.476708+00:00"
+  },
+  {
+    "id": "c7f6701d-3bc8-4257-a957-f03d5826ba80",
+    "founder_id": "michael-saylor",
+    "from_sector": "Enterprise",
+    "to_sector": "Crypto",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:42.987484+00:00"
+  },
+  {
+    "id": "9c37c5f9-10e8-4814-9f69-373122a4e02e",
+    "founder_id": "andy-jassy",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 2003,
+    "created_at": "2026-03-25T22:39:43.800518+00:00"
+  },
+  {
+    "id": "698d6e7a-5b05-4d58-8329-5d491f2fddb8",
+    "founder_id": "andy-jassy",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:43.868687+00:00"
+  },
+  {
+    "id": "a938b122-ac66-437c-a31a-92b0f800382f",
+    "founder_id": "chris-urmson",
+    "from_sector": "Other",
+    "to_sector": "Deep Tech",
+    "year": 2009,
+    "created_at": "2026-03-25T22:39:44.141728+00:00"
+  },
+  {
+    "id": "bad7c6d6-1c9a-4c1e-ad02-1ddf6a71b9e0",
+    "founder_id": "marc-raibert",
+    "from_sector": "Other",
+    "to_sector": "Deep Tech",
+    "year": 1992,
+    "created_at": "2026-03-25T22:39:44.602456+00:00"
+  },
+  {
+    "id": "da145a6c-d51a-413f-9939-e41fc0de5715",
+    "founder_id": "marc-raibert",
+    "from_sector": "Deep Tech",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:44.656657+00:00"
+  },
+  {
+    "id": "d044d8b9-1d4e-4279-8761-048d7f685a22",
+    "founder_id": "john-doerr",
+    "from_sector": "Deep Tech",
+    "to_sector": "VC & Finance",
+    "year": 1980,
+    "created_at": "2026-03-25T22:39:45.25803+00:00"
+  },
+  {
+    "id": "ad2efc7c-a44d-4747-8c2a-56ced0aff124",
+    "founder_id": "michael-moritz",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 1986,
+    "created_at": "2026-03-25T22:39:45.561613+00:00"
+  },
+  {
+    "id": "efc5c499-b640-4543-bf3e-4b3ec5caf318",
+    "founder_id": "bill-gurley",
+    "from_sector": "Deep Tech",
+    "to_sector": "VC & Finance",
+    "year": 1993,
+    "created_at": "2026-03-25T22:39:46.142354+00:00"
+  },
+  {
+    "id": "22f4140d-c170-4369-be66-f2f2ef444149",
+    "founder_id": "parag-agrawal",
+    "from_sector": "Social & Media",
+    "to_sector": "AI",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:46.415992+00:00"
+  },
+  {
+    "id": "f0c62e5b-ab45-4bdb-bf12-6d6ed01da710",
+    "founder_id": "apoorva-mehta",
+    "from_sector": "Deep Tech",
+    "to_sector": "Consumer",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:46.976105+00:00"
+  },
+  {
+    "id": "de3458ea-81b1-4a39-9557-4ec49c2bc94d",
+    "founder_id": "nikhil-kamath",
+    "from_sector": "VC & Finance",
+    "to_sector": "Fintech",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:47.26656+00:00"
+  },
+  {
+    "id": "b2b63367-23da-4839-9ad3-d892b391cfc1",
+    "founder_id": "amjad-masad",
+    "from_sector": "Social & Media",
+    "to_sector": "Enterprise",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:47.700073+00:00"
+  },
+  {
+    "id": "14f21843-19e7-4fef-9370-cbffe78aacdb",
+    "founder_id": "guillermo-rauch",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 2015,
+    "created_at": "2026-03-25T22:39:47.996259+00:00"
+  },
+  {
+    "id": "9276feab-28ec-48b7-b723-7ed373f84a87",
+    "founder_id": "david-velez",
+    "from_sector": "VC & Finance",
+    "to_sector": "Fintech",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:48.292737+00:00"
+  },
+  {
+    "id": "f0e1644b-7ca2-4747-81c4-205c316470e8",
+    "founder_id": "yishan-wong",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:48.725257+00:00"
+  },
+  {
+    "id": "40321ee4-0af9-401a-aaaa-a708eff18a7f",
+    "founder_id": "yishan-wong",
+    "from_sector": "Social & Media",
+    "to_sector": "Consumer",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:48.778945+00:00"
+  },
+  {
+    "id": "4e3c2092-26fb-46af-a9e3-39660160b343",
+    "founder_id": "yishan-wong",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:48.830992+00:00"
+  },
+  {
+    "id": "ffabf064-a927-48a0-a92f-1f1b773787f3",
+    "founder_id": "michael-seibel",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:49.09811+00:00"
+  },
+  {
+    "id": "57aa2b05-56b2-42b3-8840-43dbdc73b6fa",
+    "founder_id": "ken-howery",
+    "from_sector": "Fintech",
+    "to_sector": "VC & Finance",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:49.759883+00:00"
+  },
+  {
+    "id": "c758d85f-32ff-49c9-b7f7-5654f5863cd0",
+    "founder_id": "ken-howery",
+    "from_sector": "VC & Finance",
+    "to_sector": "Other",
+    "year": 2019,
+    "created_at": "2026-03-25T22:39:49.820829+00:00"
+  },
+  {
+    "id": "2a71d756-ff71-41fb-bf8e-926440409231",
+    "founder_id": "tony-xu",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:50.098293+00:00"
+  },
+  {
+    "id": "287adf31-2e54-4e5c-9bfb-3c0bf95cad1f",
+    "founder_id": "premal-shah",
+    "from_sector": "Fintech",
+    "to_sector": "Microfinance / Nonprofit",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:50.329773+00:00"
+  },
+  {
+    "id": "890f7586-932b-4183-ae50-079d56180563",
+    "founder_id": "dalton-caldwell",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:50.608008+00:00"
+  },
+  {
+    "id": "8f28e15a-d31a-47a1-90ea-d8611e459923",
+    "founder_id": "qasar-younis",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2007,
+    "created_at": "2026-03-25T22:39:51.43489+00:00"
+  },
+  {
+    "id": "4d1a92db-fd93-4cd6-8bdf-f19eb8d21357",
+    "founder_id": "qasar-younis",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:51.482773+00:00"
+  },
+  {
+    "id": "00c31a58-7e58-4498-9a67-95e637b5b2ac",
+    "founder_id": "qasar-younis",
+    "from_sector": "VC & Finance",
+    "to_sector": "Deep Tech",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:51.530787+00:00"
+  },
+  {
+    "id": "2c4a5068-e4c3-4746-b57c-7e49ced8fa03",
+    "founder_id": "ali-partovi",
+    "from_sector": "Consumer",
+    "to_sector": "Social & Media",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:52.012706+00:00"
+  },
+  {
+    "id": "a866ab24-1f26-44fb-ae30-f977dc3f62e3",
+    "founder_id": "ali-partovi",
+    "from_sector": "Social & Media",
+    "to_sector": "Consumer",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:52.070028+00:00"
+  },
+  {
+    "id": "808bb2cf-fd92-4ccd-86c5-b3aa4c8da6fb",
+    "founder_id": "ali-partovi",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:52.212634+00:00"
+  },
+  {
+    "id": "21e68480-f12b-470e-9f8c-a43849021efd",
+    "founder_id": "luke-nosek",
+    "from_sector": "Fintech",
+    "to_sector": "VC & Finance",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:52.705102+00:00"
+  },
+  {
+    "id": "eb0ff08b-5b5f-4b80-b497-c2c752baab6c",
+    "founder_id": "jessica-livingston",
+    "from_sector": "Fintech",
+    "to_sector": "VC & Finance",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:52.992988+00:00"
+  },
+  {
+    "id": "8fd3c3e8-07b5-4232-b461-e7cfbe40cc42",
+    "founder_id": "david-holz",
+    "from_sector": "Aerospace / Research",
+    "to_sector": "Hardware / Gesture Control",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:53.300979+00:00"
+  },
+  {
+    "id": "94f83304-9317-474d-af81-a964a00b9d4c",
+    "founder_id": "david-holz",
+    "from_sector": "Hardware / Gesture Control",
+    "to_sector": "AI / Generative Art",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:53.437231+00:00"
+  },
+  {
+    "id": "291b15a7-fc94-473f-80ff-f7c56651b9ad",
+    "founder_id": "aravind-srinivas",
+    "from_sector": "Academia / AI",
+    "to_sector": "AI / Search",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:53.813882+00:00"
+  },
+  {
+    "id": "0d1e9d83-54f8-4a61-8e2d-6138d1f00784",
+    "founder_id": "chris-lattner",
+    "from_sector": "Consumer Tech",
+    "to_sector": "AI / Autonomous Vehicles",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:54.354407+00:00"
+  },
+  {
+    "id": "038cea1f-5a58-4ade-b0b4-ffbbef709848",
+    "founder_id": "chris-lattner",
+    "from_sector": "AI Research",
+    "to_sector": "Semiconductors / RISC-V",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:54.485261+00:00"
+  },
+  {
+    "id": "c39a9ee9-221c-4c78-ade0-5af534a6e338",
+    "founder_id": "chris-lattner",
+    "from_sector": "Semiconductors / RISC-V",
+    "to_sector": "AI Infrastructure",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:54.535926+00:00"
+  },
+  {
+    "id": "fa2e6f6b-0ed5-4cfb-88c7-38727a1e9bbd",
+    "founder_id": "matei-zaharia",
+    "from_sector": "Academia / Computer Science",
+    "to_sector": "Data / AI Infrastructure",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:55.097542+00:00"
+  },
+  {
+    "id": "883521bd-0316-4c8c-a31a-05db0b5b56ba",
+    "founder_id": "kevin-weil",
+    "from_sector": "Social Media",
+    "to_sector": "Crypto / Social",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:55.577248+00:00"
+  },
+  {
+    "id": "b89bfc56-e016-4c0a-b2a2-8c91fc0fa1ab",
+    "founder_id": "kevin-weil",
+    "from_sector": "Crypto / Social",
+    "to_sector": "Aerospace / Earth Data",
+    "year": 2019,
+    "created_at": "2026-03-25T22:39:55.687475+00:00"
+  },
+  {
+    "id": "fe18f0e1-750c-4ef1-aa55-7dcb750c3e52",
+    "founder_id": "kevin-weil",
+    "from_sector": "Aerospace / Earth Data",
+    "to_sector": "AI",
+    "year": 2024,
+    "created_at": "2026-03-25T22:39:55.736725+00:00"
+  },
+  {
+    "id": "8e3d4b84-3ce0-4fd4-81b2-257a91bec71d",
+    "founder_id": "ion-stoica",
+    "from_sector": "Academia / Computer Science",
+    "to_sector": "Enterprise / Video Analytics",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:56.181823+00:00"
+  },
+  {
+    "id": "308651e8-7cb2-4e36-bfeb-1d406fbf45fc",
+    "founder_id": "ion-stoica",
+    "from_sector": "Enterprise / Video Analytics",
+    "to_sector": "Data / AI Infrastructure",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:56.23622+00:00"
+  },
+  {
+    "id": "3917843a-e743-427e-9aae-1f52e0ce55b7",
+    "founder_id": "andrew-feldman",
+    "from_sector": "Enterprise / Networking",
+    "to_sector": "Hardware / Servers",
+    "year": 2007,
+    "created_at": "2026-03-25T22:39:56.623168+00:00"
+  },
+  {
+    "id": "c50770f1-003b-4a73-918f-32412d2f9ae0",
+    "founder_id": "andrew-feldman",
+    "from_sector": "Hardware / Servers",
+    "to_sector": "AI / Semiconductors",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:56.690612+00:00"
+  },
+  {
+    "id": "2634975d-84fe-4a28-9b92-23675060171b",
+    "founder_id": "mike-schroepfer",
+    "from_sector": "Enterprise Tech",
+    "to_sector": "Open Source / Software",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:57.19297+00:00"
+  },
+  {
+    "id": "6561dd58-952f-4284-995c-646b50b525a0",
+    "founder_id": "mike-schroepfer",
+    "from_sector": "Open Source / Software",
+    "to_sector": "Social Media / AI",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:57.24468+00:00"
+  },
+  {
+    "id": "ba6e65e3-4e09-4385-b211-122c70b082f9",
+    "founder_id": "mike-schroepfer",
+    "from_sector": "Social Media / AI",
+    "to_sector": "VC / Climate Tech",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:57.305072+00:00"
+  },
+  {
+    "id": "1329315d-bd36-4f56-af4e-3f58948b6820",
+    "founder_id": "geoffrey-hinton",
+    "from_sector": "Academia / Computer Science",
+    "to_sector": "AI",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:57.738165+00:00"
+  },
+  {
+    "id": "15b9b011-4707-4100-972f-0cfa2e0cc484",
+    "founder_id": "pierre-omidyar",
+    "from_sector": "E-commerce / Consumer Tech",
+    "to_sector": "Philanthropy / Impact Investing",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:58.657208+00:00"
+  },
+  {
+    "id": "a1ad5bb2-02d0-48df-99f7-5f5eb3d47f51",
+    "founder_id": "pierre-omidyar",
+    "from_sector": "Philanthropy / Impact Investing",
+    "to_sector": "Media / Journalism",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:58.742215+00:00"
+  },
+  {
+    "id": "46b63ccf-96d4-490e-a730-dfa35be3a06d",
+    "founder_id": "tim-berners-lee",
+    "from_sector": "Research / Physics",
+    "to_sector": "Internet Standards",
+    "year": 1994,
+    "created_at": "2026-03-25T22:39:59.237856+00:00"
+  },
+  {
+    "id": "3d15b857-bc28-47b5-ab1b-b0a0a3005264",
+    "founder_id": "tim-berners-lee",
+    "from_sector": "Internet Standards",
+    "to_sector": "Decentralized Web",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:59.288059+00:00"
+  },
+  {
+    "id": "2573ba70-201c-4639-94ff-4d398ae932a3",
+    "founder_id": "lei-jun",
+    "from_sector": "Software",
+    "to_sector": "Mobile / Consumer",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:59.717339+00:00"
+  },
+  {
+    "id": "7a02283b-2524-4fe1-bc8c-afc24f184066",
+    "founder_id": "lei-jun",
+    "from_sector": "Mobile / Consumer",
+    "to_sector": "Consumer Electronics / Mobile",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:59.759537+00:00"
+  },
+  {
+    "id": "a7cc6fe4-e977-4ce1-88e2-cf5a53074b57",
+    "founder_id": "zhang-yiming",
+    "from_sector": "Enterprise Tech",
+    "to_sector": "Social Media",
+    "year": 2008,
+    "created_at": "2026-03-25T22:40:00.109533+00:00"
+  },
+  {
+    "id": "2f0a4884-a18a-45be-b37f-1a409395e67d",
+    "founder_id": "zhang-yiming",
+    "from_sector": "Social Media",
+    "to_sector": "Consumer Tech / AI",
+    "year": 2012,
+    "created_at": "2026-03-25T22:40:00.233149+00:00"
+  },
+  {
+    "id": "7551e6c8-9811-4355-9a54-6a7e6e9db27e",
+    "founder_id": "sam-bankman-fried",
+    "from_sector": "Finance / Trading",
+    "to_sector": "Crypto / Trading",
+    "year": 2017,
+    "created_at": "2026-03-25T22:40:00.44963+00:00"
+  },
+  {
+    "id": "bece7e86-f870-4688-a74f-a94795349b61",
+    "founder_id": "do-kwon",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Crypto / Stablecoin",
+    "year": 2018,
+    "created_at": "2026-03-25T22:40:00.848315+00:00"
+  },
+  {
+    "id": "9887d592-647a-4930-a12a-8d89bef028a9",
+    "founder_id": "andre-cronje",
+    "from_sector": "Fintech",
+    "to_sector": "Crypto / DeFi",
+    "year": 2018,
+    "created_at": "2026-03-25T22:40:01.092897+00:00"
+  },
+  {
+    "id": "f37a8118-0d5f-4e79-af95-280e2d54b7fa",
+    "founder_id": "garrett-camp",
+    "from_sector": "Consumer Tech / Ride-sharing",
+    "to_sector": "Startup Studio",
+    "year": 2013,
+    "created_at": "2026-03-25T22:40:01.635608+00:00"
+  },
+  {
+    "id": "aa2bd664-2456-4b2f-8533-af71ec245f07",
+    "founder_id": "garrett-camp",
+    "from_sector": "Startup Studio",
+    "to_sector": "Crypto / Payments",
+    "year": 2018,
+    "created_at": "2026-03-25T22:40:01.69441+00:00"
+  },
+  {
+    "id": "032173eb-6d8d-402f-8bb3-20ca8a1cfe76",
+    "founder_id": "percy-liang",
+    "from_sector": "Academia / AI",
+    "to_sector": "AI Infrastructure",
+    "year": 2022,
+    "created_at": "2026-03-25T22:40:01.907632+00:00"
+  },
+  {
+    "id": "322c82e7-bd61-4d55-8c50-3f2c5b1fc3f9",
+    "founder_id": "jason-citron",
+    "from_sector": "Gaming",
+    "to_sector": "Social Media / Gaming",
+    "year": 2015,
+    "created_at": "2026-03-25T22:40:02.230698+00:00"
+  },
+  {
+    "id": "38902fff-b15d-42c3-aaf8-02b0df4fd039",
+    "founder_id": "pieter-abbeel",
+    "from_sector": "Academia / Robotics",
+    "to_sector": "AI / Robotics",
+    "year": 2017,
+    "created_at": "2026-03-25T22:40:02.677516+00:00"
+  },
+  {
+    "id": "9c820a60-170b-4874-89a4-7b25adb96076",
+    "founder_id": "jony-ive",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Hardware / Design",
+    "year": 2019,
+    "created_at": "2026-03-25T22:40:03.188166+00:00"
+  },
+  {
+    "id": "aa335e01-f507-4962-8d5a-ffbe5eb2f936",
+    "founder_id": "jony-ive",
+    "from_sector": "Hardware / Design",
+    "to_sector": "AI",
+    "year": 2025,
+    "created_at": "2026-03-25T22:40:03.240226+00:00"
+  },
+  {
+    "id": "f1de3b87-3a79-4304-beda-7a846b60c9e7",
+    "founder_id": "sriram-krishnan",
+    "from_sector": "Enterprise Tech",
+    "to_sector": "Social Media",
+    "year": 2013,
+    "created_at": "2026-03-25T22:40:03.770883+00:00"
+  },
+  {
+    "id": "1416907e-7ae9-46c5-af66-0c4adc15a775",
+    "founder_id": "sriram-krishnan",
+    "from_sector": "Social Media",
+    "to_sector": "VC",
+    "year": 2019,
+    "created_at": "2026-03-25T22:40:03.911542+00:00"
+  },
+  {
+    "id": "9583fb4d-b867-438a-83f5-9adfc7bd2060",
+    "founder_id": "sriram-krishnan",
+    "from_sector": "VC",
+    "to_sector": "Government / AI Policy",
+    "year": 2025,
+    "created_at": "2026-03-25T22:40:03.966016+00:00"
+  },
+  {
+    "id": "2622b1df-2d2a-4041-8eea-1ef81177f2e8",
+    "founder_id": "fidji-simo",
+    "from_sector": "Social Media",
+    "to_sector": "Consumer Tech / Delivery",
+    "year": 2021,
+    "created_at": "2026-03-25T22:40:04.475136+00:00"
+  },
+  {
+    "id": "7716d3e0-fe10-433e-982c-6b3cff1e31b8",
+    "founder_id": "alexander-rives",
+    "from_sector": "AI Research",
+    "to_sector": "AI / Biotech",
+    "year": 2023,
+    "created_at": "2026-03-25T22:40:04.786862+00:00"
+  },
+  {
+    "id": "658e7035-fdf7-44dc-a603-f0118afc677a",
+    "founder_id": "sarah-guo",
+    "from_sector": "Finance",
+    "to_sector": "VC",
+    "year": 2013,
+    "created_at": "2026-03-25T22:40:05.026798+00:00"
+  },
+  {
+    "id": "5fc454dc-a46e-4bfc-9cc7-e6586d0c93d4",
+    "founder_id": "brian-halligan",
+    "from_sector": "Enterprise SaaS / Marketing",
+    "to_sector": "VC",
+    "year": 2024,
+    "created_at": "2026-03-25T22:40:06.065284+00:00"
+  },
+  {
+    "id": "0b5849f4-08f4-4f31-9671-fa4dc5889d41",
+    "founder_id": "marc-randolph",
+    "from_sector": "Consumer Tech / Streaming",
+    "to_sector": "VC / Advisory",
+    "year": 2003,
+    "created_at": "2026-03-25T22:40:06.910255+00:00"
+  },
+  {
+    "id": "00e9fdb6-e8f6-492b-afa2-247142d00308",
+    "founder_id": "susan-li",
+    "from_sector": "Finance",
+    "to_sector": "Social & Media",
+    "year": 2008,
+    "created_at": "2026-03-25T22:40:13.775183+00:00"
+  },
+  {
+    "id": "a357e599-1e7b-499b-8c07-bf062b7453d9",
+    "founder_id": "kyle-vogt",
+    "from_sector": "Consumer",
+    "to_sector": "Automotive",
+    "year": 2013,
+    "created_at": "2026-03-25T22:40:14.188746+00:00"
+  },
+  {
+    "id": "ebf7d800-e271-4b98-a2c5-1962ed8c4f68",
+    "founder_id": "kyle-vogt",
+    "from_sector": "Automotive",
+    "to_sector": "Deep Tech",
+    "year": 2024,
+    "created_at": "2026-03-25T22:40:14.246487+00:00"
+  },
+  {
+    "id": "91651959-f272-477e-b427-2bcf95e81fed",
+    "founder_id": "pieter-levels",
+    "from_sector": "Consumer",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:40:14.470626+00:00"
+  },
+  {
+    "id": "b3ed1aab-7abd-495b-8e17-c54e0afa0781",
+    "founder_id": "scott-wu",
+    "from_sector": "Consumer",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:40:14.722958+00:00"
+  },
+  {
+    "id": "3c301f57-2acc-4836-baf2-ff6edf795b3a",
+    "founder_id": "mackenzie-burnett",
+    "from_sector": "Enterprise",
+    "to_sector": "Finance",
+    "year": 2020,
+    "created_at": "2026-03-25T22:40:15.310688+00:00"
+  },
+  {
+    "id": "a3c47deb-404a-4ddd-902b-4c314d8fb7a7",
+    "founder_id": "zach-abrams",
+    "from_sector": "Finance",
+    "to_sector": "Consumer",
+    "year": 2011,
+    "created_at": "2026-03-25T22:40:16.137602+00:00"
+  },
+  {
+    "id": "6c9ad541-6e45-480c-b537-bf5c150d81b9",
+    "founder_id": "zach-abrams",
+    "from_sector": "Consumer",
+    "to_sector": "Finance",
+    "year": 2013,
+    "created_at": "2026-03-25T22:40:16.188279+00:00"
+  },
+  {
+    "id": "95f710a9-fbda-489a-b252-82387816bd98",
+    "founder_id": "zach-abrams",
+    "from_sector": "Finance",
+    "to_sector": "Crypto",
+    "year": 2017,
+    "created_at": "2026-03-25T22:40:16.297352+00:00"
+  },
+  {
+    "id": "278bcc9e-25fc-49e6-8f8f-f82fb4a90a3a",
+    "founder_id": "henri-stern",
+    "from_sector": "Consumer",
+    "to_sector": "Crypto",
+    "year": 2017,
+    "created_at": "2026-03-25T22:40:16.5168+00:00"
+  },
+  {
+    "id": "2c7c1b92-21ab-4a40-8cfb-449f982941fe",
+    "founder_id": "julia-dewahl",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2014,
+    "created_at": "2026-03-25T22:40:16.925476+00:00"
+  },
+  {
+    "id": "034162a4-d880-4515-830c-d41e1078d7d5",
+    "founder_id": "julia-dewahl",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2020,
+    "created_at": "2026-03-25T22:40:16.978975+00:00"
+  },
+  {
+    "id": "e925dccd-9c0f-4435-8692-8226f0aef0e2",
+    "founder_id": "ben-thompson",
+    "from_sector": "Big Tech",
+    "to_sector": "Social & Media",
+    "year": 2014,
+    "created_at": "2026-03-25T22:40:17.261777+00:00"
+  },
+  {
+    "id": "87a98df3-a232-40b6-af86-80a593dc18c5",
+    "founder_id": "eric-glyman",
+    "from_sector": "Consumer",
+    "to_sector": "Finance",
+    "year": 2016,
+    "created_at": "2026-03-25T22:40:17.554914+00:00"
+  },
+  {
+    "id": "f59dbc91-5e9f-4850-b7f5-30ae204a8f5d",
+    "founder_id": "garrett-langley",
+    "from_sector": "Consumer",
+    "to_sector": "Automotive",
+    "year": 2015,
+    "created_at": "2026-03-25T22:40:17.988739+00:00"
+  },
+  {
+    "id": "b271b807-acd4-4da5-b7a6-0cbca9747fa3",
+    "founder_id": "garrett-langley",
+    "from_sector": "Automotive",
+    "to_sector": "Deep Tech",
+    "year": 2017,
+    "created_at": "2026-03-25T22:40:18.033365+00:00"
+  },
+  {
+    "id": "1641015f-15e6-4eb1-b937-779f4632234b",
+    "founder_id": "bret-taylor",
+    "from_sector": "Big Tech",
+    "to_sector": "Social & Media",
+    "year": 2007,
+    "created_at": "2026-03-25T22:40:18.579873+00:00"
+  },
+  {
+    "id": "597eab8c-231f-4974-affc-203764fe6fd8",
+    "founder_id": "bret-taylor",
+    "from_sector": "Social & Media",
+    "to_sector": "Enterprise",
+    "year": 2012,
+    "created_at": "2026-03-25T22:40:18.630126+00:00"
+  },
+  {
+    "id": "22d0e870-981e-4f84-a725-1c0dd61fcd0f",
+    "founder_id": "bret-taylor",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:40:18.678529+00:00"
+  },
+  {
+    "id": "fe0ad95c-add6-4fb8-a180-a29e48cd1d1e",
+    "founder_id": "charlie-songhurst",
+    "from_sector": "Enterprise",
+    "to_sector": "Big Tech",
+    "year": 2005,
+    "created_at": "2026-03-25T22:40:19.490986+00:00"
+  },
+  {
+    "id": "929023fe-018a-4d45-a2ee-9f44252d361d",
+    "founder_id": "charlie-songhurst",
+    "from_sector": "Big Tech",
+    "to_sector": "VC & Finance",
+    "year": 2013,
+    "created_at": "2026-03-25T22:40:19.544025+00:00"
+  },
+  {
+    "id": "74b3661c-2f56-41db-9e4a-5bc9beb9cd4a",
+    "founder_id": "vinay-hiremath",
+    "from_sector": "Enterprise",
+    "to_sector": "Other",
+    "year": 2024,
+    "created_at": "2026-03-26T00:18:10.168277+00:00"
+  },
+  {
+    "id": "4d750ed8-49ef-4770-aadf-c7a3188d637c",
+    "founder_id": "steve-davis",
+    "from_sector": "Deep Tech",
+    "to_sector": "Social & Media",
+    "year": 2022,
+    "created_at": "2026-03-26T00:18:10.572667+00:00"
+  },
+  {
+    "id": "a4555317-aef0-46ac-ab29-c44352d2afe9",
+    "founder_id": "russel-simmons",
+    "from_sector": "Fintech",
+    "to_sector": "Consumer",
+    "year": 2004,
+    "created_at": "2026-03-26T01:13:35.952825+00:00"
+  },
+  {
+    "id": "f4385b36-6536-43fa-9bb8-3e395fcccb09",
+    "founder_id": "russel-simmons",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2010,
+    "created_at": "2026-03-26T01:13:36.1944+00:00"
+  },
+  {
+    "id": "e4a513e0-954d-43c2-8942-e22f56e410a6",
+    "founder_id": "dave-mcclure",
+    "from_sector": "Fintech",
+    "to_sector": "VC & Finance",
+    "year": 2010,
+    "created_at": "2026-03-26T01:13:36.882626+00:00"
+  },
+  {
+    "id": "1f1db64b-a6fb-4497-b959-fe52682b1efb",
+    "founder_id": "joe-gebbia",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2023,
+    "created_at": "2026-03-26T01:13:37.437095+00:00"
+  },
+  {
+    "id": "ff914b08-355d-421b-b6e0-7ebb63ae361a",
+    "founder_id": "calvin-french-owen",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-26T01:13:39.948119+00:00"
+  },
+  {
+    "id": "a3c94b61-399b-4be1-9435-1ec78db15784",
+    "founder_id": "austen-allred",
+    "from_sector": "Consumer",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-26T01:13:40.545424+00:00"
+  },
+  {
+    "id": "5f32a05e-7ca5-4309-95a3-ae15bbc387a4",
+    "founder_id": "liang-wenfeng",
+    "from_sector": "VC & Finance",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-26T01:13:41.601301+00:00"
+  },
+  {
+    "id": "1661e7ad-c741-47bf-8bf5-90f8d55bddbd",
+    "founder_id": "cameron-winklevoss",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2012,
+    "created_at": "2026-03-26T01:13:42.2378+00:00"
+  },
+  {
+    "id": "20b4e717-9b7e-4f81-a108-40fca35f86e7",
+    "founder_id": "cameron-winklevoss",
+    "from_sector": "VC & Finance",
+    "to_sector": "Crypto",
+    "year": 2014,
+    "created_at": "2026-03-26T01:13:42.348071+00:00"
+  },
+  {
+    "id": "15c3e3ac-2066-4c68-93f1-acbaedbb3818",
+    "founder_id": "tyler-winklevoss",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2012,
+    "created_at": "2026-03-26T01:13:42.987873+00:00"
+  },
+  {
+    "id": "3c1bab52-f46c-4038-ac87-18feee0660b4",
+    "founder_id": "tyler-winklevoss",
+    "from_sector": "VC & Finance",
+    "to_sector": "Crypto",
+    "year": 2014,
+    "created_at": "2026-03-26T01:13:43.098549+00:00"
+  },
+  {
+    "id": "674d8e42-8d5c-4f24-bcb2-3a6fab19d04b",
+    "founder_id": "eduardo-saverin",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2009,
+    "created_at": "2026-03-26T01:13:43.83368+00:00"
+  },
+  {
+    "id": "860578cd-b5b2-4d21-8ccc-33f21e2a5f4d",
+    "founder_id": "tom-anderson",
+    "from_sector": "Social & Media",
+    "to_sector": "Other",
+    "year": 2009,
+    "created_at": "2026-03-26T01:13:44.493204+00:00"
+  },
+  {
+    "id": "cb8b18d1-f2aa-4e05-a37e-726b07b2269f",
+    "founder_id": "chris-hughes",
+    "from_sector": "Social & Media",
+    "to_sector": "Other",
+    "year": 2007,
+    "created_at": "2026-03-26T01:13:45.200171+00:00"
+  },
+  {
+    "id": "cf352ce1-dbaf-4372-a32b-5b287900c13c",
+    "founder_id": "chris-hughes",
+    "from_sector": "Other",
+    "to_sector": "Social & Media",
+    "year": 2012,
+    "created_at": "2026-03-26T01:13:45.304335+00:00"
+  },
+  {
+    "id": "5afe21d2-4ca8-4246-bf35-7c240f7d53d6",
+    "founder_id": "chris-hughes",
+    "from_sector": "Social & Media",
+    "to_sector": "Other",
+    "year": 2016,
+    "created_at": "2026-03-26T01:13:45.416792+00:00"
+  },
+  {
+    "id": "41ecbe00-cfc5-4278-8a18-62bf9cbb3d15",
+    "founder_id": "biz-stone",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2006,
+    "created_at": "2026-03-26T01:13:46.195938+00:00"
+  },
+  {
+    "id": "4f8773b9-70fc-4928-b005-6ea1a8e6daab",
+    "founder_id": "biz-stone",
+    "from_sector": "Social & Media",
+    "to_sector": "Consumer",
+    "year": 2013,
+    "created_at": "2026-03-26T01:13:46.313131+00:00"
+  },
+  {
+    "id": "cc257f10-7051-43f6-a7f1-099e875316db",
+    "founder_id": "biz-stone",
+    "from_sector": "Consumer",
+    "to_sector": "Social & Media",
+    "year": 2017,
+    "created_at": "2026-03-26T01:13:46.423576+00:00"
+  },
+  {
+    "id": "2a33030c-3e31-4f5b-b389-23621a266cf6",
+    "founder_id": "nikesh-arora",
+    "from_sector": "Enterprise",
+    "to_sector": "VC & Finance",
+    "year": 2014,
+    "created_at": "2026-03-26T01:13:47.443158+00:00"
+  },
+  {
+    "id": "292a6165-17ac-4c65-bd25-563babd445d4",
+    "founder_id": "nikesh-arora",
+    "from_sector": "VC & Finance",
+    "to_sector": "Defense",
+    "year": 2018,
+    "created_at": "2026-03-26T01:13:47.542113+00:00"
+  },
+  {
+    "id": "584161e4-7940-453a-9dd4-de66613b341a",
+    "founder_id": "sridhar-ramaswamy",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2019,
+    "created_at": "2026-03-26T01:13:48.099358+00:00"
+  },
+  {
+    "id": "7b05bc64-388c-4dc3-98f6-036b0c7b617c",
+    "founder_id": "sridhar-ramaswamy",
+    "from_sector": "AI",
+    "to_sector": "Enterprise",
+    "year": 2024,
+    "created_at": "2026-03-26T01:13:48.222871+00:00"
+  },
+  {
+    "id": "41a3f341-7805-4a04-8555-2a5a7c889298",
+    "founder_id": "sarah-friar",
+    "from_sector": "VC & Finance",
+    "to_sector": "Enterprise",
+    "year": 2006,
+    "created_at": "2026-03-26T01:13:48.858203+00:00"
+  },
+  {
+    "id": "57182e4a-3fb1-4ee9-8bbb-b4976ca85ade",
+    "founder_id": "sarah-friar",
+    "from_sector": "Enterprise",
+    "to_sector": "Fintech",
+    "year": 2012,
+    "created_at": "2026-03-26T01:13:48.976628+00:00"
+  },
+  {
+    "id": "94ee179a-eff5-40b6-b29f-bf15f18382b9",
+    "founder_id": "sarah-friar",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2018,
+    "created_at": "2026-03-26T01:13:49.070121+00:00"
+  },
+  {
+    "id": "dca14066-035a-4558-9699-c2b0706f2b6d",
+    "founder_id": "logan-green",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2023,
+    "created_at": "2026-03-26T01:13:49.600083+00:00"
+  },
+  {
+    "id": "cd27e8e6-2e05-4ba0-b05a-26f01cca7be5",
+    "founder_id": "adam-dangelo",
+    "from_sector": "Social & Media",
+    "to_sector": "Consumer",
+    "year": 2009,
+    "created_at": "2026-03-26T01:13:50.174783+00:00"
+  },
+  {
+    "id": "6c0325f2-726d-4a2e-add6-a2439c12bb73",
+    "founder_id": "jaan-tallinn",
+    "from_sector": "Consumer",
+    "to_sector": "AI",
+    "year": 2012,
+    "created_at": "2026-03-26T01:13:50.96733+00:00"
+  },
+  {
+    "id": "510970df-25e2-40c8-8614-302eaacf0452",
+    "founder_id": "richard-branson",
+    "from_sector": "Social & Media",
+    "to_sector": "Consumer",
+    "year": 1984,
+    "created_at": "2026-04-05T16:39:53.562654+00:00"
+  },
+  {
+    "id": "259e0656-c25d-415d-8340-368a1a020f75",
+    "founder_id": "richard-branson",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2004,
+    "created_at": "2026-04-05T16:39:53.562654+00:00"
+  },
+  {
+    "id": "0c76aa92-698c-4f24-bd9c-4ec1b75da5e4",
+    "founder_id": "jeff-yan",
+    "from_sector": "Fintech",
+    "to_sector": "Crypto",
+    "year": 2023,
+    "created_at": "2026-04-15T00:15:21.498327+00:00"
+  },
+  {
+    "id": "c5149ffe-f35d-446a-a904-41b4cfbd0250",
+    "founder_id": "jesse-zhang",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2018,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "a3c3e333-5663-493c-be37-ddbfdde79891",
+    "founder_id": "jesse-zhang",
+    "from_sector": "Social & Media",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "9d90bf6a-047f-4f72-b5f1-23766799c7b9",
+    "founder_id": "johnny-ho",
+    "from_sector": "Fintech",
+    "to_sector": "AI",
+    "year": 2022,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "daa9ba74-75b7-4b44-a4b7-5c4c9ca424af",
+    "founder_id": "demi-guo",
+    "from_sector": "Research",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "66437c46-6279-433e-90d5-757a8f33c5cf",
+    "founder_id": "vladimir-novakovski",
+    "from_sector": "AI",
+    "to_sector": "Fintech",
+    "year": 2014,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "4558bf56-9251-4b70-9e46-3b3619724580",
+    "founder_id": "vladimir-novakovski",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2017,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "ccbd89cb-de8d-4365-9941-760d3bcc1c54",
+    "founder_id": "vladimir-novakovski",
+    "from_sector": "Social & Media",
+    "to_sector": "Crypto",
+    "year": 2022,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "d6c1183c-ef96-48fc-9ee0-9b70be1ca8c5",
+    "founder_id": "eugene-chen",
+    "from_sector": "Enterprise",
+    "to_sector": "Crypto",
+    "year": 2022,
+    "created_at": "2026-04-15T00:36:29.377059+00:00"
+  },
+  {
+    "id": "3e5bf4ea-682f-455e-b62c-b0b5db794cc0",
+    "founder_id": "fred-ehrsam",
+    "from_sector": "Finance",
+    "to_sector": "Crypto",
+    "year": 2012,
+    "created_at": "2026-03-25T22:38:54.59788+00:00"
+  },
+  {
+    "id": "cea139f0-f790-436f-9811-2ce8ebb3e0c5",
+    "founder_id": "fred-ehrsam",
+    "from_sector": "Crypto VC",
+    "to_sector": "Neurotech",
+    "year": 2024,
+    "created_at": "2026-03-25T22:38:54.655456+00:00"
+  },
+  {
+    "id": "0766abb2-ef83-4f43-91e2-ffc6470d6a3a",
+    "founder_id": "balaji-srinivasan",
+    "from_sector": "Biotech",
+    "to_sector": "VC",
+    "year": 2013,
+    "created_at": "2026-03-25T22:38:55.025068+00:00"
+  },
+  {
+    "id": "14ef36e1-64c9-4c99-a177-afc2029bde6f",
+    "founder_id": "balaji-srinivasan",
+    "from_sector": "VC",
+    "to_sector": "Crypto",
+    "year": 2013,
+    "created_at": "2026-03-25T22:38:55.3339+00:00"
+  },
+  {
+    "id": "f6268872-ff8b-45d2-b2bf-da633199c338",
+    "founder_id": "balaji-srinivasan",
+    "from_sector": "Crypto",
+    "to_sector": "Education / Network States",
+    "year": 2024,
+    "created_at": "2026-03-25T22:38:55.380838+00:00"
+  },
+  {
+    "id": "32ee1279-2ed8-42dd-b823-dbaf1d419818",
+    "founder_id": "alex-atallah",
+    "from_sector": "Defense Tech",
+    "to_sector": "Crypto / NFTs",
+    "year": 2017,
+    "created_at": "2026-03-25T22:38:55.613849+00:00"
+  },
+  {
+    "id": "5249df4e-21b5-4a8d-8035-b2981f3880ab",
+    "founder_id": "alex-atallah",
+    "from_sector": "Crypto / NFTs",
+    "to_sector": "AI Infrastructure",
+    "year": 2024,
+    "created_at": "2026-03-25T22:38:55.668299+00:00"
+  },
+  {
+    "id": "01852e75-5cf9-4e4f-84f9-7b5440480751",
+    "founder_id": "brian-armstrong",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Crypto",
+    "year": 2012,
+    "created_at": "2026-03-25T22:38:56.043018+00:00"
+  },
+  {
+    "id": "0a93fac1-a6cc-46bd-8eef-3faab38e73f8",
+    "founder_id": "brian-armstrong",
+    "from_sector": "Crypto",
+    "to_sector": "Biotech / Longevity",
+    "year": 2022,
+    "created_at": "2026-03-25T22:38:56.090407+00:00"
+  },
+  {
+    "id": "797f72c6-ec29-4aa6-be22-8752aee7e412",
+    "founder_id": "matt-huang",
+    "from_sector": "Consumer Tech",
+    "to_sector": "VC",
+    "year": 2014,
+    "created_at": "2026-03-25T22:38:56.293468+00:00"
+  },
+  {
+    "id": "fdd374dd-1ddd-4318-8abb-7c0ce1aa5889",
+    "founder_id": "matt-huang",
+    "from_sector": "VC",
+    "to_sector": "Crypto VC",
+    "year": 2018,
+    "created_at": "2026-03-25T22:38:56.340101+00:00"
+  },
+  {
+    "id": "dbffc9ae-14d1-45d5-a6e3-80e996151a3a",
+    "founder_id": "dario-amodei",
+    "from_sector": "Academia / Neuroscience",
+    "to_sector": "AI",
+    "year": 2014,
+    "created_at": "2026-03-25T22:38:56.672153+00:00"
+  },
+  {
+    "id": "11006ee4-d8fa-4a65-8de2-11f2bd23f13e",
+    "founder_id": "mustafa-suleyman",
+    "from_sector": "Consulting / Conflict Resolution",
+    "to_sector": "AI Research",
+    "year": 2010,
+    "created_at": "2026-03-25T22:38:56.980423+00:00"
+  },
+  {
+    "id": "3020b798-e72b-4045-9df6-59dcfe5f4554",
+    "founder_id": "jack-dorsey",
+    "from_sector": "Social Media",
+    "to_sector": "Fintech",
+    "year": 2009,
+    "created_at": "2026-03-25T22:38:57.186963+00:00"
+  },
+  {
+    "id": "f44bb17c-7bcb-4c9d-b3e9-b99f8e884949",
+    "founder_id": "stewart-butterfield",
+    "from_sector": "Gaming",
+    "to_sector": "Consumer Tech / Photo Sharing",
+    "year": 2004,
+    "created_at": "2026-03-25T22:38:57.462339+00:00"
+  },
+  {
+    "id": "a928dbfd-383d-469b-85bb-6d2b195399f1",
+    "founder_id": "stewart-butterfield",
+    "from_sector": "Consumer Tech / Photo Sharing",
+    "to_sector": "Gaming",
+    "year": 2009,
+    "created_at": "2026-03-25T22:38:57.515639+00:00"
+  },
+  {
+    "id": "060edbf6-b8f5-456f-b343-8a1b84940034",
+    "founder_id": "stewart-butterfield",
+    "from_sector": "Gaming",
+    "to_sector": "Enterprise SaaS",
+    "year": 2013,
+    "created_at": "2026-03-25T22:38:57.57289+00:00"
+  },
+  {
+    "id": "d59c5a97-41a1-4064-9341-9c6d208bbd00",
+    "founder_id": "reid-hoffman",
+    "from_sector": "Fintech",
+    "to_sector": "Professional Social Network",
+    "year": 2002,
+    "created_at": "2026-03-25T22:38:58.048327+00:00"
+  },
+  {
+    "id": "d47a561a-6f65-4e03-b320-dae8343da61b",
+    "founder_id": "reid-hoffman",
+    "from_sector": "VC",
+    "to_sector": "Consumer AI",
+    "year": 2022,
+    "created_at": "2026-03-25T22:38:58.096849+00:00"
+  },
+  {
+    "id": "3c8021eb-9db1-467d-8b31-ac999ef29d37",
+    "founder_id": "elon-musk",
+    "from_sector": "Internet / Media",
+    "to_sector": "Fintech",
+    "year": 1999,
+    "created_at": "2026-03-25T22:38:58.598404+00:00"
+  },
+  {
+    "id": "0372b19b-46db-4109-a6e9-7693572d27f2",
+    "founder_id": "elon-musk",
+    "from_sector": "Fintech",
+    "to_sector": "Aerospace",
+    "year": 2002,
+    "created_at": "2026-03-25T22:38:58.642483+00:00"
+  },
+  {
+    "id": "e304cc05-0e6d-481c-a0fa-69bed067fa08",
+    "founder_id": "elon-musk",
+    "from_sector": "Aerospace",
+    "to_sector": "Automotive / Clean Energy",
+    "year": 2004,
+    "created_at": "2026-03-25T22:38:58.704679+00:00"
+  },
+  {
+    "id": "b59c35ae-486b-439d-bacc-85f23ce14c83",
+    "founder_id": "elon-musk",
+    "from_sector": "Automotive / Clean Energy",
+    "to_sector": "AI",
+    "year": 2015,
+    "created_at": "2026-03-25T22:38:58.756556+00:00"
+  },
+  {
+    "id": "1ccc8ee5-9fb1-42b6-a4c9-2342760bd9bb",
+    "founder_id": "elon-musk",
+    "from_sector": "AI",
+    "to_sector": "Social Media",
+    "year": 2022,
+    "created_at": "2026-03-25T22:38:58.808172+00:00"
+  },
+  {
+    "id": "9b609f75-2c1b-4f74-bc70-3c14ff6e7de4",
+    "founder_id": "peter-thiel",
+    "from_sector": "Law",
+    "to_sector": "Fintech",
+    "year": 1998,
+    "created_at": "2026-03-25T22:38:59.145045+00:00"
+  },
+  {
+    "id": "d6839e5e-6ef7-4631-8fb6-68a338fc7a75",
+    "founder_id": "peter-thiel",
+    "from_sector": "Fintech",
+    "to_sector": "Defense Tech / Data",
+    "year": 2003,
+    "created_at": "2026-03-25T22:38:59.200858+00:00"
+  },
+  {
+    "id": "ef5480e8-7723-4005-9030-06a13f132888",
+    "founder_id": "devin-finzer",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Fintech",
+    "year": 2015,
+    "created_at": "2026-03-25T22:38:59.417536+00:00"
+  },
+  {
+    "id": "7110b206-2d9d-471a-b563-53ccfad483f7",
+    "founder_id": "devin-finzer",
+    "from_sector": "Fintech",
+    "to_sector": "Crypto / NFTs",
+    "year": 2017,
+    "created_at": "2026-03-25T22:38:59.464665+00:00"
+  },
+  {
+    "id": "851d80a9-4cc8-47e4-a8e2-92fd8dcad997",
+    "founder_id": "sam-altman",
+    "from_sector": "Consumer Tech",
+    "to_sector": "VC",
+    "year": 2014,
+    "created_at": "2026-03-25T22:38:59.709638+00:00"
+  },
+  {
+    "id": "378bdbf5-81fd-4f65-a023-70eda954f3bf",
+    "founder_id": "sam-altman",
+    "from_sector": "VC",
+    "to_sector": "AI",
+    "year": 2019,
+    "created_at": "2026-03-25T22:38:59.756819+00:00"
+  },
+  {
+    "id": "6a4748e2-6d9f-45d4-961e-afc4254119ba",
+    "founder_id": "patrick-collison",
+    "from_sector": "Enterprise Tech",
+    "to_sector": "Fintech",
+    "year": 2010,
+    "created_at": "2026-03-25T22:38:59.995464+00:00"
+  },
+  {
+    "id": "893146b9-f4bf-4ef1-841f-857513ac8347",
+    "founder_id": "patrick-collison",
+    "from_sector": "Fintech",
+    "to_sector": "Biotech",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:00.051708+00:00"
+  },
+  {
+    "id": "f72e656b-3f04-45fa-83ad-a81af8339a4e",
+    "founder_id": "naval-ravikant",
+    "from_sector": "Consumer Tech",
+    "to_sector": "VC",
+    "year": 2007,
+    "created_at": "2026-03-25T22:39:00.25412+00:00"
+  },
+  {
+    "id": "1606fba1-091a-4819-bc36-54002fdfce00",
+    "founder_id": "naval-ravikant",
+    "from_sector": "VC",
+    "to_sector": "Fintech",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:00.305614+00:00"
+  },
+  {
+    "id": "3f2a90d5-a221-4b98-95cb-e1d4465e256d",
+    "founder_id": "sahil-lavingia",
+    "from_sector": "Social Media",
+    "to_sector": "Fintech",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:00.659621+00:00"
+  },
+  {
+    "id": "bf61479e-2c94-46d1-a7d0-f275c8f74540",
+    "founder_id": "sahil-lavingia",
+    "from_sector": "Fintech",
+    "to_sector": "Government / Policy",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:00.71448+00:00"
+  },
+  {
+    "id": "35945da1-3c92-4683-8851-538a39fb4128",
+    "founder_id": "daniela-amodei",
+    "from_sector": "Fintech",
+    "to_sector": "AI",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:01.079186+00:00"
+  },
+  {
+    "id": "812a5f1c-fa2c-455f-9c25-45b809c87cd8",
+    "founder_id": "andrej-karpathy",
+    "from_sector": "AI",
+    "to_sector": "Automotive / Clean Energy",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:01.382138+00:00"
+  },
+  {
+    "id": "e64a44be-7984-49bc-b53e-92afdd12eb51",
+    "founder_id": "andrej-karpathy",
+    "from_sector": "Automotive / Clean Energy",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:01.460486+00:00"
+  },
+  {
+    "id": "fd15e4ec-01da-4070-9050-84ecec901397",
+    "founder_id": "cz-binance",
+    "from_sector": "Finance",
+    "to_sector": "Crypto",
+    "year": 2014,
+    "created_at": "2026-03-25T22:39:01.703755+00:00"
+  },
+  {
+    "id": "1c701302-e442-4a80-a4d3-104974cb7f7a",
+    "founder_id": "cz-binance",
+    "from_sector": "Crypto",
+    "to_sector": "VC & Finance",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:01.752327+00:00"
+  },
+  {
+    "id": "1c3e4c29-235f-4116-b591-3a293e9d6515",
+    "founder_id": "palmer-luckey",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Defense Tech",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:01.913607+00:00"
+  },
+  {
+    "id": "1ce6d9e8-1610-40f1-85cc-f5984bb837dd",
+    "founder_id": "kevin-systrom",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Social Media",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:02.106371+00:00"
+  },
+  {
+    "id": "7e884b79-e43e-4dd7-b517-deac0720be41",
+    "founder_id": "kevin-systrom",
+    "from_sector": "Social Media",
+    "to_sector": "AI",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:02.15997+00:00"
+  },
+  {
+    "id": "74697664-c27b-4a00-8847-478959f6f333",
+    "founder_id": "ev-williams",
+    "from_sector": "Internet / Media",
+    "to_sector": "Social Media",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:02.467279+00:00"
+  },
+  {
+    "id": "2670cf63-c4a6-48ed-859d-8cfea62c9328",
+    "founder_id": "ev-williams",
+    "from_sector": "Social Media",
+    "to_sector": "Internet / Media",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:02.538406+00:00"
+  },
+  {
+    "id": "b106db82-4b6a-4c2e-9dbd-d81d585555a3",
+    "founder_id": "daniel-gross",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:02.987879+00:00"
+  },
+  {
+    "id": "c0f2289c-9333-48d6-beba-99501109c43b",
+    "founder_id": "daniel-gross",
+    "from_sector": "VC & Finance",
+    "to_sector": "AI",
+    "year": 2024,
+    "created_at": "2026-03-25T22:39:03.048368+00:00"
+  },
+  {
+    "id": "2d6ea8e1-329f-4986-87b8-9e2c6710bae0",
+    "founder_id": "alexandr-wang",
+    "from_sector": "AI",
+    "to_sector": "AI",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:03.197271+00:00"
+  },
+  {
+    "id": "6deb7e02-e147-4d8b-929a-8e7985311a3a",
+    "founder_id": "garry-tan",
+    "from_sector": "Social Media",
+    "to_sector": "VC",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:03.495004+00:00"
+  },
+  {
+    "id": "192f1b21-da98-4cd9-9c2a-492075e30bcd",
+    "founder_id": "george-hotz",
+    "from_sector": "Consumer Tech",
+    "to_sector": "Automotive / Clean Energy",
+    "year": 2015,
+    "created_at": "2026-03-25T22:39:03.769166+00:00"
+  },
+  {
+    "id": "8cc050fe-0202-458b-969c-b7f0c8abb8fb",
+    "founder_id": "george-hotz",
+    "from_sector": "Automotive / Clean Energy",
+    "to_sector": "AI Infrastructure",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:03.81192+00:00"
+  },
+  {
+    "id": "6ff021ac-01f2-42cc-b2d5-b1057588e30b",
+    "founder_id": "nat-friedman",
+    "from_sector": "Enterprise Tech",
+    "to_sector": "VC",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:04.092742+00:00"
+  },
+  {
+    "id": "04f7fead-e9d9-47a1-85d3-0252116f15ac",
+    "founder_id": "nat-friedman",
+    "from_sector": "VC & Finance",
+    "to_sector": "AI",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:04.153499+00:00"
+  },
+  {
+    "id": "7a679bd1-4b6c-4abc-bd0b-ab1154c3dcf5",
+    "founder_id": "emmett-shear",
+    "from_sector": "Internet / Media",
+    "to_sector": "Gaming",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:04.545703+00:00"
+  },
+  {
+    "id": "dba4aec9-6bab-406b-b92d-e055137380eb",
+    "founder_id": "emmett-shear",
+    "from_sector": "Gaming",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:04.597386+00:00"
+  },
+  {
+    "id": "e70c6b77-a86d-4327-abeb-65ed85e60767",
+    "founder_id": "emmett-shear",
+    "from_sector": "AI",
+    "to_sector": "VC",
+    "year": 2024,
+    "created_at": "2026-03-25T22:39:04.660098+00:00"
+  },
+  {
+    "id": "87a6a275-051c-4516-ba44-80a76f43de8a",
+    "founder_id": "emmett-shear",
+    "from_sector": "Social & Media",
+    "to_sector": "AI",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:04.718253+00:00"
+  },
+  {
+    "id": "94c15ae2-0d4b-42a6-b365-87e4bba44b10",
+    "founder_id": "logan-paul",
+    "from_sector": "Internet / Media",
+    "to_sector": "Crypto / NFTs",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:04.920201+00:00"
+  },
+  {
+    "id": "1ae17f72-197e-4e47-aa50-ff3341485414",
+    "founder_id": "logan-paul",
+    "from_sector": "Crypto / NFTs",
+    "to_sector": "Consumer Tech",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:04.967502+00:00"
+  },
+  {
+    "id": "32aac7cb-5a5c-4e43-bb98-a5adc93397f5",
+    "founder_id": "jeff-bezos",
+    "from_sector": "Finance",
+    "to_sector": "Consumer",
+    "year": 1994,
+    "created_at": "2026-03-25T22:39:05.288064+00:00"
+  },
+  {
+    "id": "a1d49e72-73d6-48ea-9469-bff109bc51c4",
+    "founder_id": "jeff-bezos",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2000,
+    "created_at": "2026-03-25T22:39:05.332877+00:00"
+  },
+  {
+    "id": "4a4b9596-9abe-4ce4-8c3a-014618e678e4",
+    "founder_id": "jan-koum",
+    "from_sector": "Consumer",
+    "to_sector": "Social & Media",
+    "year": 2009,
+    "created_at": "2026-03-25T22:39:05.74799+00:00"
+  },
+  {
+    "id": "6fd764f4-f8a5-4469-b835-1659fd3a8872",
+    "founder_id": "ben-silbermann",
+    "from_sector": "Consumer",
+    "to_sector": "Social & Media",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:05.943344+00:00"
+  },
+  {
+    "id": "02f747c9-ba21-44d2-86b4-867486a5e97f",
+    "founder_id": "jack-clark",
+    "from_sector": "Other",
+    "to_sector": "AI",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:06.330446+00:00"
+  },
+  {
+    "id": "bd784415-0ad2-456e-8f7b-8216bfa38554",
+    "founder_id": "chris-dixon",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2009,
+    "created_at": "2026-03-25T22:39:06.527368+00:00"
+  },
+  {
+    "id": "330d916e-5c67-406d-9fc4-9a49176d812d",
+    "founder_id": "chris-dixon",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:06.581845+00:00"
+  },
+  {
+    "id": "03fe2be3-56e1-4cce-8a5a-a0eedc0d96cc",
+    "founder_id": "elad-gil",
+    "from_sector": "Consumer",
+    "to_sector": "Social & Media",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:06.869637+00:00"
+  },
+  {
+    "id": "94296f05-4308-49a0-9018-2305fb6698de",
+    "founder_id": "elad-gil",
+    "from_sector": "Social & Media",
+    "to_sector": "Deep Tech",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:06.913652+00:00"
+  },
+  {
+    "id": "f3f9790c-13c5-4ea4-b3ad-869e43444072",
+    "founder_id": "elad-gil",
+    "from_sector": "Deep Tech",
+    "to_sector": "VC & Finance",
+    "year": 2019,
+    "created_at": "2026-03-25T22:39:06.960059+00:00"
+  },
+  {
+    "id": "db2556c3-b13c-4cc0-a8b8-62a350b1e1e7",
+    "founder_id": "vinod-khosla",
+    "from_sector": "Enterprise",
+    "to_sector": "VC & Finance",
+    "year": 1986,
+    "created_at": "2026-03-25T22:39:07.212934+00:00"
+  },
+  {
+    "id": "e0803406-4b99-437b-a5c8-8756a826dacb",
+    "founder_id": "paul-graham",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:07.412268+00:00"
+  },
+  {
+    "id": "5e8be336-152e-429d-bf33-c21da33c5042",
+    "founder_id": "max-levchin",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:07.615528+00:00"
+  },
+  {
+    "id": "63e0b377-7ada-499c-833a-6049a0525be8",
+    "founder_id": "max-levchin",
+    "from_sector": "Social & Media",
+    "to_sector": "Fintech",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:07.664444+00:00"
+  },
+  {
+    "id": "b55235b6-3a06-4ce0-bf68-525aed81c6e7",
+    "founder_id": "sheryl-sandberg",
+    "from_sector": "Other",
+    "to_sector": "Enterprise",
+    "year": 2001,
+    "created_at": "2026-03-25T22:39:07.909347+00:00"
+  },
+  {
+    "id": "f22e3b06-e166-433e-83d1-9a7915fceca9",
+    "founder_id": "sheryl-sandberg",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:07.955478+00:00"
+  },
+  {
+    "id": "fc6559bb-cf91-4760-88c1-5a9def6db006",
+    "founder_id": "marissa-mayer",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:08.184738+00:00"
+  },
+  {
+    "id": "cb5c9876-0d16-456a-bd9c-df24b85c916c",
+    "founder_id": "marissa-mayer",
+    "from_sector": "Consumer",
+    "to_sector": "AI",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:08.239948+00:00"
+  },
+  {
+    "id": "de6f0ac0-a04d-4e67-aeee-4966ec91ca60",
+    "founder_id": "kevin-rose",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:08.558233+00:00"
+  },
+  {
+    "id": "fa7effcb-a461-4d00-9d9f-b28842b8294e",
+    "founder_id": "dennis-crowley",
+    "from_sector": "Social & Media",
+    "to_sector": "Enterprise",
+    "year": 2014,
+    "created_at": "2026-03-25T22:39:08.964158+00:00"
+  },
+  {
+    "id": "ad6afbb5-b044-4686-b708-0166b5c69eaf",
+    "founder_id": "tony-fadell",
+    "from_sector": "Deep Tech",
+    "to_sector": "Consumer",
+    "year": 2001,
+    "created_at": "2026-03-25T22:39:09.321237+00:00"
+  },
+  {
+    "id": "dca19c5d-83ca-4375-9db9-bcf7fd96af5a",
+    "founder_id": "tony-fadell",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:09.369482+00:00"
+  },
+  {
+    "id": "29aa0031-514a-4f9e-b24d-9db0cd5fac7b",
+    "founder_id": "parker-conrad",
+    "from_sector": "Fintech",
+    "to_sector": "Enterprise",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:09.570587+00:00"
+  },
+  {
+    "id": "77b756f2-fa42-454b-96d1-056845d7d92c",
+    "founder_id": "katrina-lake",
+    "from_sector": "Consumer",
+    "to_sector": "VC & Finance",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:09.846529+00:00"
+  },
+  {
+    "id": "c6541d7a-67c6-4586-9810-31c18bd3ff66",
+    "founder_id": "katrina-lake",
+    "from_sector": "VC & Finance",
+    "to_sector": "Consumer",
+    "year": 2023,
+    "created_at": "2026-03-25T22:39:09.892725+00:00"
+  },
+  {
+    "id": "a4702497-49ed-4e0c-bc2c-d7f52dd24875",
+    "founder_id": "tony-hsieh",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 1996,
+    "created_at": "2026-03-25T22:39:10.336504+00:00"
+  },
+  {
+    "id": "b50ceb06-9fc8-45e3-9da7-a923dc51c344",
+    "founder_id": "tony-hsieh",
+    "from_sector": "Social & Media",
+    "to_sector": "Consumer",
+    "year": 1999,
+    "created_at": "2026-03-25T22:39:10.409158+00:00"
+  },
+  {
+    "id": "80059670-7d75-40dd-a235-e0d568929378",
+    "founder_id": "caterina-fake",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:10.810811+00:00"
+  },
+  {
+    "id": "4d247b48-968f-404d-b275-1b88de9e4ac7",
+    "founder_id": "susan-wojcicki",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2014,
+    "created_at": "2026-03-25T22:39:11.089861+00:00"
+  },
+  {
+    "id": "1003bad0-64d3-4c24-9b35-9c7115213332",
+    "founder_id": "gwynne-shotwell",
+    "from_sector": "Defense",
+    "to_sector": "Deep Tech",
+    "year": 2002,
+    "created_at": "2026-03-25T22:39:11.330015+00:00"
+  },
+  {
+    "id": "57d76c2f-62c7-45bc-8e19-43f804c05a57",
+    "founder_id": "andrew-mason",
+    "from_sector": "Consumer",
+    "to_sector": "AI",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:11.617724+00:00"
+  },
+  {
+    "id": "a09cbe46-37d4-48f7-adf2-f1ffc5992f31",
+    "founder_id": "tom-preston-werner",
+    "from_sector": "Enterprise",
+    "to_sector": "VC & Finance",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:11.839998+00:00"
+  },
+  {
+    "id": "6408f496-1af2-41b0-8bec-f4d62b8a1af0",
+    "founder_id": "sundar-pichai",
+    "from_sector": "Other",
+    "to_sector": "Enterprise",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:12.309327+00:00"
+  },
+  {
+    "id": "25708e25-d237-4e53-9835-9e7731641e03",
+    "founder_id": "jensen-huang",
+    "from_sector": "Deep Tech",
+    "to_sector": "AI",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:12.521557+00:00"
+  },
+  {
+    "id": "d608add5-b534-4b13-9356-31ea57d62ce2",
+    "founder_id": "tim-cook",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 1998,
+    "created_at": "2026-03-25T22:39:12.790826+00:00"
+  },
+  {
+    "id": "ea4706c1-856c-4ddb-88a2-de4917ada085",
+    "founder_id": "lisa-su",
+    "from_sector": "Deep Tech",
+    "to_sector": "AI",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:13.052911+00:00"
+  },
+  {
+    "id": "84d9fb2f-bc18-47ea-94a2-1dd07f664459",
+    "founder_id": "david-sacks",
+    "from_sector": "Consulting",
+    "to_sector": "Fintech",
+    "year": 1999,
+    "created_at": "2026-03-25T22:39:13.455064+00:00"
+  },
+  {
+    "id": "0de12b70-127c-4393-8c38-368b6ebeacee",
+    "founder_id": "david-sacks",
+    "from_sector": "Fintech",
+    "to_sector": "Consumer",
+    "year": 2006,
+    "created_at": "2026-03-25T22:39:13.501311+00:00"
+  },
+  {
+    "id": "652c53a9-5cb9-45fd-84e3-a263c472f34a",
+    "founder_id": "david-sacks",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:13.553926+00:00"
+  },
+  {
+    "id": "75c55ce7-ad86-43cb-a8cc-249dc8a30732",
+    "founder_id": "david-sacks",
+    "from_sector": "Enterprise",
+    "to_sector": "VC & Finance",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:13.603458+00:00"
+  },
+  {
+    "id": "8164248a-d320-4d50-8d7f-430b187703f5",
+    "founder_id": "keith-rabois",
+    "from_sector": "Other",
+    "to_sector": "Fintech",
+    "year": 2000,
+    "created_at": "2026-03-25T22:39:15.443706+00:00"
+  },
+  {
+    "id": "4c98d712-6600-4fd8-8e7a-53ce9f7fe12a",
+    "founder_id": "keith-rabois",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:15.4952+00:00"
+  },
+  {
+    "id": "9597f75d-5ac6-4a5f-963c-559dd9f5a1da",
+    "founder_id": "keith-rabois",
+    "from_sector": "Social & Media",
+    "to_sector": "Fintech",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:15.541919+00:00"
+  },
+  {
+    "id": "f9847fba-d69d-4531-943c-e5a8085cfc4d",
+    "founder_id": "keith-rabois",
+    "from_sector": "Fintech",
+    "to_sector": "VC & Finance",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:15.594588+00:00"
+  },
+  {
+    "id": "fb2e293d-5eaa-4b2b-926b-bcc6e0334b91",
+    "founder_id": "roelof-botha",
+    "from_sector": "Consulting",
+    "to_sector": "Fintech",
+    "year": 2000,
+    "created_at": "2026-03-25T22:39:15.874924+00:00"
+  },
+  {
+    "id": "51653dad-9a07-450f-962d-250d6ec09769",
+    "founder_id": "roelof-botha",
+    "from_sector": "Fintech",
+    "to_sector": "VC & Finance",
+    "year": 2003,
+    "created_at": "2026-03-25T22:39:15.954277+00:00"
+  },
+  {
+    "id": "e832919c-4858-485d-8a93-391087a3e9a7",
+    "founder_id": "chad-hurley",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:16.202141+00:00"
+  },
+  {
+    "id": "24424ad6-555e-4fa1-a1a0-34b1bb006fa8",
+    "founder_id": "steve-chen",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:16.564199+00:00"
+  },
+  {
+    "id": "94144f97-a531-4622-a98a-40f4657d84eb",
+    "founder_id": "steve-chen",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2014,
+    "created_at": "2026-03-25T22:39:16.605945+00:00"
+  },
+  {
+    "id": "550fbf9c-fe8e-4785-acfd-2c1557181e7c",
+    "founder_id": "steve-chen",
+    "from_sector": "VC & Finance",
+    "to_sector": "Social & Media",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:16.650881+00:00"
+  },
+  {
+    "id": "84611f19-8411-44cc-97df-6d141eed8aff",
+    "founder_id": "jeremy-stoppelman",
+    "from_sector": "Enterprise",
+    "to_sector": "Fintech",
+    "year": 2000,
+    "created_at": "2026-03-25T22:39:16.937201+00:00"
+  },
+  {
+    "id": "1dcd7a28-ef94-488a-8d96-9197287386c9",
+    "founder_id": "jeremy-stoppelman",
+    "from_sector": "Fintech",
+    "to_sector": "Consumer",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:17.011839+00:00"
+  },
+  {
+    "id": "00b0979e-8447-4989-b359-423498594753",
+    "founder_id": "jawed-karim",
+    "from_sector": "Fintech",
+    "to_sector": "Social & Media",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:17.234277+00:00"
+  },
+  {
+    "id": "3212a6ec-ab70-4b4b-b20c-d0b452162e1a",
+    "founder_id": "jawed-karim",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:17.29137+00:00"
+  },
+  {
+    "id": "d71aac91-76b6-4af8-afb1-64214b941581",
+    "founder_id": "dustin-moskovitz",
+    "from_sector": "Social & Media",
+    "to_sector": "Enterprise",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:17.627026+00:00"
+  },
+  {
+    "id": "2e3c5ca0-fb3a-4784-9edb-6e7bd6a013af",
+    "founder_id": "sean-parker",
+    "from_sector": "Social & Media",
+    "to_sector": "Enterprise",
+    "year": 2002,
+    "created_at": "2026-03-25T22:39:18.110619+00:00"
+  },
+  {
+    "id": "6b634bb4-70a6-4413-a68f-30003d304ace",
+    "founder_id": "sean-parker",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:18.152465+00:00"
+  },
+  {
+    "id": "839312fd-0b27-45da-939f-37d0d84017aa",
+    "founder_id": "sean-parker",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:18.206817+00:00"
+  },
+  {
+    "id": "1bc99854-906f-4c57-afc2-da8574e197ad",
+    "founder_id": "sean-parker",
+    "from_sector": "VC & Finance",
+    "to_sector": "Social & Media",
+    "year": 2007,
+    "created_at": "2026-03-25T22:39:18.274756+00:00"
+  },
+  {
+    "id": "a75254cb-4338-4b91-89e1-7fa9b78eebf2",
+    "founder_id": "demis-hassabis",
+    "from_sector": "Consumer",
+    "to_sector": "Deep Tech",
+    "year": 2005,
+    "created_at": "2026-03-25T22:39:18.575645+00:00"
+  },
+  {
+    "id": "2d0b9ec7-2bc1-4460-bfe6-e0b30cb596bc",
+    "founder_id": "demis-hassabis",
+    "from_sector": "Deep Tech",
+    "to_sector": "AI",
+    "year": 2010,
+    "created_at": "2026-03-25T22:39:18.622572+00:00"
+  },
+  {
+    "id": "34d410a9-393e-44ac-97ea-1600d365f2a9",
+    "founder_id": "yann-lecun",
+    "from_sector": "Research / AI",
+    "to_sector": "AI",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:19.165895+00:00"
+  },
+  {
+    "id": "037bba5b-74bd-4798-92bf-3690cbcc77fe",
+    "founder_id": "andrew-ng",
+    "from_sector": "AI",
+    "to_sector": "Enterprise",
+    "year": 2012,
+    "created_at": "2026-03-25T22:39:19.587359+00:00"
+  },
+  {
+    "id": "b62a8513-948d-407e-ac4d-13ba55fced35",
+    "founder_id": "andrew-ng",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2014,
+    "created_at": "2026-03-25T22:39:19.631321+00:00"
+  },
+  {
+    "id": "c66a3800-8c3b-4e9f-937a-5e75d1accad9",
+    "founder_id": "greg-brockman",
+    "from_sector": "Fintech",
+    "to_sector": "AI",
+    "year": 2015,
+    "created_at": "2026-03-25T22:39:19.79685+00:00"
+  },
+  {
+    "id": "08226e28-415c-450d-a737-061ecdb7827d",
+    "founder_id": "mira-murati",
+    "from_sector": "Deep Tech",
+    "to_sector": "AI",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:20.100452+00:00"
+  },
+  {
+    "id": "4faf9112-d3d3-4cb3-81c2-f96a23946a7d",
+    "founder_id": "emad-mostaque",
+    "from_sector": "VC & Finance",
+    "to_sector": "AI",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:20.628834+00:00"
+  },
+  {
+    "id": "25f18e61-b5f4-4dab-9b4f-22c9c3285fd7",
+    "founder_id": "arthur-mensch",
+    "from_sector": "Deep Tech",
+    "to_sector": "AI",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:20.880451+00:00"
+  },
+  {
+    "id": "c811f5ac-1bc6-433c-a524-6b210900118b",
+    "founder_id": "marc-andreessen",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 1994,
+    "created_at": "2026-03-25T22:39:21.197752+00:00"
+  },
+  {
+    "id": "2835a487-0928-43fa-ac7c-895820c55ac8",
+    "founder_id": "marc-andreessen",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 1999,
+    "created_at": "2026-03-25T22:39:21.240106+00:00"
+  },
+  {
+    "id": "15153ce0-8ec3-42e0-a354-98da1a41bc6e",
+    "founder_id": "marc-andreessen",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:21.2846+00:00"
+  },
+  {
+    "id": "5d9986ce-b4d5-4fa3-b08d-bb4cf53e8c4e",
+    "founder_id": "marc-andreessen",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2009,
+    "created_at": "2026-03-25T22:39:21.378365+00:00"
+  },
+  {
+    "id": "787dc740-e998-40d0-94df-d80a5d5ed9f1",
+    "founder_id": "chamath-palihapitiya",
+    "from_sector": "VC & Finance",
+    "to_sector": "Social & Media",
+    "year": 2001,
+    "created_at": "2026-03-25T22:39:21.715373+00:00"
+  },
+  {
+    "id": "0f49bffa-7a56-4f9b-93d9-99e7c358f78e",
+    "founder_id": "chamath-palihapitiya",
+    "from_sector": "Social & Media",
+    "to_sector": "VC & Finance",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:21.758238+00:00"
+  },
+  {
+    "id": "0cc873e2-3cd9-470e-936b-9e6e442989df",
+    "founder_id": "steve-jobs",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 1985,
+    "created_at": "2026-03-25T22:39:22.039276+00:00"
+  },
+  {
+    "id": "9fe0149b-ffd6-4f72-8def-3855de7442a4",
+    "founder_id": "steve-jobs",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 1997,
+    "created_at": "2026-03-25T22:39:22.099755+00:00"
+  },
+  {
+    "id": "fdfc7980-b62d-4f53-ad85-26c6200be31d",
+    "founder_id": "bill-gates",
+    "from_sector": "Enterprise",
+    "to_sector": "Other",
+    "year": 2000,
+    "created_at": "2026-03-25T22:39:22.745583+00:00"
+  },
+  {
+    "id": "c8282c57-de15-4475-a630-ce40bdffade9",
+    "founder_id": "bill-gates",
+    "from_sector": "Other",
+    "to_sector": "Deep Tech",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:22.793814+00:00"
+  },
+  {
+    "id": "29a0ef9c-152e-4765-84e3-dcc677e8c201",
+    "founder_id": "joe-lonsdale",
+    "from_sector": "VC & Finance",
+    "to_sector": "Defense",
+    "year": 2004,
+    "created_at": "2026-03-25T22:39:23.268739+00:00"
+  },
+  {
+    "id": "66b9b415-7549-42de-a8c8-f824272205a0",
+    "founder_id": "joe-lonsdale",
+    "from_sector": "Defense",
+    "to_sector": "Fintech",
+    "year": 2009,
+    "created_at": "2026-03-25T22:39:23.312354+00:00"
+  },
+  {
+    "id": "38b89a2c-54d5-42e7-b834-ef96fd05301a",
+    "founder_id": "joe-lonsdale",
+    "from_sector": "Fintech",
+    "to_sector": "VC & Finance",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:23.362662+00:00"
+  },
+  {
+    "id": "63bb9958-7420-49d7-aae7-3021026daa2e",
+    "founder_id": "trae-stephens",
+    "from_sector": "Defense",
+    "to_sector": "VC & Finance",
+    "year": 2014,
+    "created_at": "2026-03-25T22:39:23.678798+00:00"
+  },
+  {
+    "id": "140ad1df-667a-49c5-bf61-5704a791019d",
+    "founder_id": "trae-stephens",
+    "from_sector": "VC & Finance",
+    "to_sector": "Defense",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:23.756965+00:00"
+  },
+  {
+    "id": "cd04fe61-e7cc-478c-9d72-51121c8c0e17",
+    "founder_id": "trae-stephens",
+    "from_sector": "Defense",
+    "to_sector": "Deep Tech",
+    "year": 2021,
+    "created_at": "2026-03-25T22:39:23.803496+00:00"
+  },
+  {
+    "id": "ad9d5f95-650d-48fd-a3ff-ae983e144178",
+    "founder_id": "john-carmack",
+    "from_sector": "Gaming",
+    "to_sector": "Consumer",
+    "year": 2013,
+    "created_at": "2026-03-25T22:39:24.133281+00:00"
+  },
+  {
+    "id": "c18d3095-03a1-48fd-9df5-b9b1a657ceac",
+    "founder_id": "john-carmack",
+    "from_sector": "Consumer",
+    "to_sector": "AI",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:24.182466+00:00"
+  },
+  {
+    "id": "dc3ceb52-3a03-4a3b-a014-fc8381cbdb9f",
+    "founder_id": "john-carmack",
+    "from_sector": "Gaming",
+    "to_sector": "Deep Tech",
+    "year": 2000,
+    "created_at": "2026-03-25T22:39:24.22971+00:00"
+  },
+  {
+    "id": "caf1ae2c-4b7d-4570-8629-3268e3814f93",
+    "founder_id": "meg-whitman",
+    "from_sector": "Other",
+    "to_sector": "Social & Media",
+    "year": 1989,
+    "created_at": "2026-03-25T22:39:24.666243+00:00"
+  },
+  {
+    "id": "9c262e87-4a47-41b5-a928-78c56111d591",
+    "founder_id": "meg-whitman",
+    "from_sector": "Social & Media",
+    "to_sector": "Consumer",
+    "year": 1992,
+    "created_at": "2026-03-25T22:39:24.71013+00:00"
+  },
+  {
+    "id": "ebcad282-9e07-4ce4-be5c-1679ed3a7918",
+    "founder_id": "meg-whitman",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 2011,
+    "created_at": "2026-03-25T22:39:24.756053+00:00"
+  },
+  {
+    "id": "92b84c53-ef57-4404-b232-403340e67df7",
+    "founder_id": "meg-whitman",
+    "from_sector": "Enterprise",
+    "to_sector": "Social & Media",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:24.801385+00:00"
+  },
+  {
+    "id": "fac0b517-0b42-49a4-84bf-dc49679cc56d",
+    "founder_id": "meg-whitman",
+    "from_sector": "Social & Media",
+    "to_sector": "Other",
+    "year": 2022,
+    "created_at": "2026-03-25T22:39:24.852915+00:00"
+  },
+  {
+    "id": "de08ff10-5d87-4125-811b-a3341a6e1a88",
+    "founder_id": "eric-schmidt",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 2001,
+    "created_at": "2026-03-25T22:39:25.265853+00:00"
+  },
+  {
+    "id": "9c3e3996-20f7-41af-800b-1378a35e19ef",
+    "founder_id": "eric-schmidt",
+    "from_sector": "Consumer",
+    "to_sector": "Defense",
+    "year": 2016,
+    "created_at": "2026-03-25T22:39:25.331124+00:00"
+  },
+  {
+    "id": "bb2629db-b1c9-44c5-8c23-94d8971281b4",
+    "founder_id": "eric-schmidt",
+    "from_sector": "Defense",
+    "to_sector": "VC & Finance",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:25.374137+00:00"
+  },
+  {
+    "id": "d9ee79b5-de86-4999-bf3d-915e1500e8ae",
+    "founder_id": "eric-schmidt",
+    "from_sector": "VC & Finance",
+    "to_sector": "Deep Tech",
+    "year": 2025,
+    "created_at": "2026-03-25T22:39:25.432813+00:00"
+  },
+  {
+    "id": "46519d57-6e59-489a-81ad-aa96541e14d4",
+    "founder_id": "qi-lu",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 1998,
+    "created_at": "2026-03-25T22:39:25.824621+00:00"
+  },
+  {
+    "id": "97762bdb-0878-453b-ba1d-8eec29fc3537",
+    "founder_id": "qi-lu",
+    "from_sector": "Consumer",
+    "to_sector": "Enterprise",
+    "year": 2008,
+    "created_at": "2026-03-25T22:39:25.869833+00:00"
+  },
+  {
+    "id": "dc8f1a2e-a904-4dc2-b900-4705e701e7da",
+    "founder_id": "qi-lu",
+    "from_sector": "Enterprise",
+    "to_sector": "AI",
+    "year": 2017,
+    "created_at": "2026-03-25T22:39:25.916913+00:00"
+  },
+  {
+    "id": "465c1e4b-e595-4eb9-9122-ff1daa081e3e",
+    "founder_id": "qi-lu",
+    "from_sector": "AI",
+    "to_sector": "VC & Finance",
+    "year": 2018,
+    "created_at": "2026-03-25T22:39:25.962899+00:00"
+  },
+  {
+    "id": "480cc1d0-78a4-4e99-bfb4-eeebd9f75e86",
+    "founder_id": "craig-newmark",
+    "from_sector": "Enterprise",
+    "to_sector": "VC & Finance",
+    "year": 1993,
+    "created_at": "2026-03-25T22:39:26.232355+00:00"
+  },
+  {
+    "id": "97cd77f6-d4f3-4f50-97c7-64f110de709d",
+    "founder_id": "craig-newmark",
+    "from_sector": "VC & Finance",
+    "to_sector": "Consumer",
+    "year": 1995,
+    "created_at": "2026-03-25T22:39:26.281344+00:00"
+  },
+  {
+    "id": "20e27347-1f58-4ea7-9905-0d17ba67edb7",
+    "founder_id": "craig-newmark",
+    "from_sector": "Consumer",
+    "to_sector": "Other",
+    "year": 2015,
+    "created_at": "2026-03-25T22:39:26.321513+00:00"
+  },
+  {
+    "id": "6fbcbceb-ba2f-4ad7-9927-1056974777b4",
+    "founder_id": "steve-wozniak",
+    "from_sector": "Enterprise",
+    "to_sector": "Consumer",
+    "year": 1976,
+    "created_at": "2026-03-25T22:39:26.657846+00:00"
+  },
+  {
+    "id": "b612f631-6c3e-4d5d-84d3-315393213057",
+    "founder_id": "steve-wozniak",
+    "from_sector": "Consumer",
+    "to_sector": "Other",
+    "year": 1990,
+    "created_at": "2026-03-25T22:39:26.701746+00:00"
+  },
+  {
+    "id": "2b580ec2-01bd-47c9-a6a9-9c82ff004ab8",
+    "founder_id": "steve-wozniak",
+    "from_sector": "Other",
+    "to_sector": "Deep Tech",
+    "year": 2002,
+    "created_at": "2026-03-25T22:39:26.755758+00:00"
+  },
+  {
+    "id": "7354850b-f5cd-42c0-8b10-1dcecb47a113",
+    "founder_id": "steve-wozniak",
+    "from_sector": "Deep Tech",
+    "to_sector": "Crypto",
+    "year": 2020,
+    "created_at": "2026-03-25T22:39:26.82532+00:00"
+  }
+]

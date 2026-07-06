@@ -1,7 +1,6 @@
-// Supabase config
-const SUPABASE_URL = 'https://tnmbxxcdabecqknzxuus.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRubWJ4eGNkYWJlY3Frbnp4dXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTE5MTcsImV4cCI6MjA4OTM2NzkxN30.xL4gRw-_JXifwFu4L7g3rZigSAqK9z8cs7YuMlQD28w';
-let sb = null; // initialized in DOMContentLoaded after deferred supabase script loads
+// Data is served from static JSON files exported from Supabase.
+// Re-export with: node scripts/export_data.mjs
+const SUPABASE_PAGE_SIZE = 1000;
 
 let FOUNDERS_DATA = [];
 
@@ -9,6 +8,73 @@ function escapeHtml(str) {
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
+}
+
+function getStorageItem(area, key) {
+  try {
+    return window[area]?.getItem(key) ?? null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function setStorageItem(area, key, value) {
+  try {
+    window[area]?.setItem(key, value);
+  } catch (e) {
+    // Ignore storage failures in restricted contexts.
+  }
+}
+
+function removeStorageItem(area, key) {
+  try {
+    window[area]?.removeItem(key);
+  } catch (e) {
+    // Ignore storage failures in restricted contexts.
+  }
+}
+
+function parseStoredJson(value, fallback) {
+  if (!value) return fallback;
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return fallback;
+  }
+}
+
+const staticDataPromises = {};
+
+function fetchStaticTable(table) {
+  if (!staticDataPromises[table]) {
+    staticDataPromises[table] = fetch(`data/${table}.json`).then(response => {
+      if (!response.ok) {
+        throw new Error(`Static data ${table} ${response.status}: ${response.statusText}`);
+      }
+      return response.json();
+    });
+  }
+  return staticDataPromises[table];
+}
+
+async function fetchFounderRows(searchTerm = '') {
+  const rows = await fetchStaticTable('founders');
+  if (!searchTerm) return rows;
+  const term = searchTerm.toLowerCase();
+  return rows.filter(r => (r.name || '').toLowerCase().includes(term)).slice(0, 10);
+}
+
+async function fetchRoleRows(offset = 0, limit = SUPABASE_PAGE_SIZE, founderId = '') {
+  const allRows = await fetchStaticTable('roles');
+  const rows = founderId ? allRows.filter(r => String(r.founder_id) === String(founderId)) : allRows.slice();
+  rows.sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+  return rows.slice(offset, offset + limit);
+}
+
+async function fetchSwitchRows(founderId = '') {
+  const rows = await fetchStaticTable('sector_switches');
+  if (!founderId) return rows;
+  return rows.filter(r => String(r.founder_id) === String(founderId));
 }
 
 // Mobile detection
@@ -226,26 +292,20 @@ let sectorFilter = 'all';
 async function fetchAllRoles() {
   let allRoles = [], page = 0;
   while (true) {
-    const { data, error } = await sb.from('roles').select('*').order('sort_order').range(page * 1000, (page + 1) * 1000 - 1);
-    if (error) throw error;
-    allRoles = allRoles.concat(data || []);
-    if (!data || data.length < 1000) break;
+    const data = await fetchRoleRows(page * SUPABASE_PAGE_SIZE, SUPABASE_PAGE_SIZE);
+    allRoles = allRoles.concat(data);
+    if (data.length < SUPABASE_PAGE_SIZE) break;
     page++;
   }
   return allRoles;
 }
 
 async function fetchFromSupabase() {
-  const [
-    { data: dbFounders, error: fErr },
-    dbRoles,
-    { data: dbSwitches, error: sErr }
-  ] = await Promise.all([
-    sb.from('founders').select('id, name, primary_sector, source_url, verified'),
+  const [dbFounders, dbRoles, dbSwitches] = await Promise.all([
+    fetchFounderRows(),
     fetchAllRoles(),
-    sb.from('sector_switches').select('*')
+    fetchSwitchRows()
   ]);
-  if (fErr || sErr) throw fErr || sErr;
   const rolesByFounder = {};
   (dbRoles || []).forEach(r => {
     if (!rolesByFounder[r.founder_id]) rolesByFounder[r.founder_id] = [];
@@ -273,9 +333,7 @@ async function fetchFromSupabase() {
   loaded.forEach(f => FOUNDERS_DATA.push(f));
   ALL_FOUNDERS.length = 0;
   FOUNDERS_DATA.forEach(f => ALL_FOUNDERS.push(f));
-  try {
-    sessionStorage.setItem('wn-data', JSON.stringify({ data: loaded, ts: Date.now() }));
-  } catch(e) { /* sessionStorage full, ignore */ }
+  setStorageItem('sessionStorage', 'wn-data', JSON.stringify({ data: loaded, ts: Date.now() }));
 }
 
 function applyPresetOrWelcome() {
@@ -290,7 +348,7 @@ function applyPresetOrWelcome() {
       loadPreset(presetName);
     }
   } else {
-    const hasSeenWelcome = localStorage.getItem('wn-welcome-seen');
+    const hasSeenWelcome = getStorageItem('localStorage', 'wn-welcome-seen');
     if (!hasSeenWelcome) {
       showWelcomeModal();
     }
@@ -299,17 +357,14 @@ function applyPresetOrWelcome() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Initialize Supabase client now that the deferred script has loaded
-  sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-
   document.getElementById('stats-bar').innerHTML = '<div style="color:#888">Loading founders from database...</div>';
   document.getElementById('header-stats').innerHTML = '<div style="color:#888;font-size:13px">Loading...</div>';
 
   // Check sessionStorage cache first
-  const cachedRaw = sessionStorage.getItem('wn-data');
+  const cachedRaw = getStorageItem('sessionStorage', 'wn-data');
   if (cachedRaw) {
     try {
-      const { data, ts } = JSON.parse(cachedRaw);
+      const { data } = JSON.parse(cachedRaw);
       FOUNDERS_DATA.length = 0;
       data.forEach(f => FOUNDERS_DATA.push(f));
       ALL_FOUNDERS.length = 0;
@@ -322,24 +377,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       applyPresetOrWelcome();
 
       // Always refresh in the background so local data edits show up quickly.
-      if (sb) {
-        fetchFromSupabase().then(() => { refresh(); }).catch(() => {});
-      }
+      fetchFromSupabase().then(() => { refresh(); }).catch(() => {});
       return; // skip the normal fetch flow below
     } catch(e) {
       // Cache parse error, fall through to normal fetch
-      sessionStorage.removeItem('wn-data');
+      removeStorageItem('sessionStorage', 'wn-data');
     }
   }
 
-  if (sb) {
-    try {
-      await fetchFromSupabase();
-    } catch (e) {
-      document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
-      return;
-    }
-  } else {
+  try {
+    await fetchFromSupabase();
+  } catch (e) {
+    console.error('Supabase load failed:', e);
     document.getElementById('stats-bar').innerHTML = '<div style="color:#ef4444">Failed to load data. Please refresh.</div>';
     return;
   }
@@ -370,7 +419,7 @@ function showWelcomeModal() {
       loadPreset('PayPal Mafia');
       activePreset = 'PayPal Mafia';
       updatePresetBtns();
-      localStorage.setItem('wn-welcome-seen', '1');
+      setStorageItem('localStorage', 'wn-welcome-seen', '1');
       if (window.posthog) posthog.capture('welcome_modal_closed');
     });
   }
@@ -1205,7 +1254,7 @@ function renderCards() {
 // REMOVE / ADD / PRESETS
 // =====================================================
 let ALL_FOUNDERS = [...FOUNDERS_DATA];
-let removedIds = JSON.parse(localStorage.getItem('wn-removed') || '[]');
+let removedIds = parseStoredJson(getStorageItem('localStorage', 'wn-removed'), []);
 
 // Presets: curated founder groups
 const PRESETS = {
@@ -1443,7 +1492,7 @@ function removePerson(id) {
   if (window.posthog) posthog.capture('founder_removed', { founder_id: id });
   if (!removedIds.includes(id)) {
     removedIds.push(id);
-    localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+    setStorageItem('localStorage', 'wn-removed', JSON.stringify(removedIds));
   }
   applyRemovals();
   refresh();
@@ -1461,7 +1510,7 @@ function removePerson(id) {
 function restoreAll() {
   removedIds = [];
   _removeShifts = {};
-  localStorage.setItem('wn-removed', '[]');
+  setStorageItem('localStorage', 'wn-removed', '[]');
   applyRemovals();
   refresh();
   updateRestoreBtn();
@@ -1498,7 +1547,7 @@ function loadPreset(name) {
     removedIds = removedIds.filter(r => r !== p.id);
   });
 
-  localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+  setStorageItem('localStorage', 'wn-removed', JSON.stringify(removedIds));
   applyRemovals();
   refresh();
   updateRestoreBtn();
@@ -1506,7 +1555,7 @@ function loadPreset(name) {
 
 function clearAll() {
   removedIds = ALL_FOUNDERS.map(f => f.id);
-  localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+  setStorageItem('localStorage', 'wn-removed', JSON.stringify(removedIds));
   applyRemovals();
   refresh();
   updateRestoreBtn();
@@ -1556,24 +1605,22 @@ addInput.addEventListener('input', () => {
     }
 
     // Search Supabase for founders not in local data at all
-    if (sb) {
-      try {
-        const { data: dbFounders } = await sb.from('founders').select('id, name, primary_sector, source_url').ilike('name', `%${q}%`).limit(10);
-        if (dbFounders) {
-          const newFromDb = dbFounders.filter(r => !ALL_FOUNDERS.some(f => f.id === r.id));
-          if (newFromDb.length > 0) {
-            html += `<div style="padding:4px 12px;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From database</div>`;
-            html += newFromDb.slice(0, 5).map(r => {
-              const color = BROAD_COLORS[r.primary_sector] || '#6b7280';
-              return `<div class="add-suggestion" data-db-id="${r.id}" data-db-name="${r.name}" data-db-sector="${r.primary_sector}">
-                <span class="sg-dot" style="background:${color}"></span>
-                <span><span class="sg-name">${escapeHtml(r.name)}</span> <span class="sg-sub">${escapeHtml(r.primary_sector)}</span></span>
-              </div>`;
-            }).join('');
-          }
+    try {
+      const dbFounders = await fetchFounderRows(q);
+      if (dbFounders) {
+        const newFromDb = dbFounders.filter(r => !ALL_FOUNDERS.some(f => f.id === r.id));
+        if (newFromDb.length > 0) {
+          html += `<div style="padding:4px 12px;color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:0.5px">From database</div>`;
+          html += newFromDb.slice(0, 5).map(r => {
+            const color = BROAD_COLORS[r.primary_sector] || '#6b7280';
+            return `<div class="add-suggestion" data-db-id="${r.id}" data-db-name="${r.name}" data-db-sector="${r.primary_sector}">
+              <span class="sg-dot" style="background:${color}"></span>
+              <span><span class="sg-name">${escapeHtml(r.name)}</span> <span class="sg-sub">${escapeHtml(r.primary_sector)}</span></span>
+            </div>`;
+          }).join('');
         }
-      } catch(e) { /* DB search error */ }
-    }
+      }
+    } catch(e) { /* DB search error */ }
 
     // DB-only search — no Wikipedia
 
@@ -1588,7 +1635,7 @@ addInput.addEventListener('input', () => {
       el.addEventListener('mousedown', (e) => {
         e.preventDefault();
         removedIds = removedIds.filter(r => r !== el.dataset.restore);
-        localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+        setStorageItem('localStorage', 'wn-removed', JSON.stringify(removedIds));
         applyRemovals(); refresh(); updateRestoreBtn(); updatePresetBtns();
         addInput.value = ''; suggestions.classList.remove('show'); suggestionsOpen = false;
       });
@@ -1616,8 +1663,10 @@ addInput.addEventListener('input', () => {
         const fid = el.dataset.dbId;
         el.querySelector('.sg-sub').textContent = 'loading...';
         try {
-          const { data: roles } = await sb.from('roles').select('*').eq('founder_id', fid).order('sort_order');
-          const { data: switches } = await sb.from('sector_switches').select('*').eq('founder_id', fid);
+          const [roles, switches] = await Promise.all([
+            fetchRoleRows(0, SUPABASE_PAGE_SIZE, fid),
+            fetchSwitchRows(fid)
+          ]);
           const newFounder = {
             name: el.dataset.dbName,
             id: fid,
@@ -1790,7 +1839,7 @@ function showMakeYourOwn() {
       } else {
         removedIds = removedIds.filter(r => r !== s.id);
       }
-      localStorage.setItem('wn-removed', JSON.stringify(removedIds));
+      setStorageItem('localStorage', 'wn-removed', JSON.stringify(removedIds));
       applyRemovals(); refresh(); updateRestoreBtn();
       updateChipStyle();
       updateMyoCounter();
