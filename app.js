@@ -43,11 +43,18 @@ function parseStoredJson(value, fallback) {
   }
 }
 
+// Resolve data paths against app.js's own URL (e.g. /where-next/), not the
+// document URL. The page mounts at /where-next with no trailing slash, so a
+// bare relative path would wrongly resolve to /data/*.json at the site root.
+const DATA_BASE_URL = new URL('.', document.currentScript?.src
+  || document.querySelector('script[src*="app.js"]')?.src
+  || location.href).href;
+
 const staticDataPromises = {};
 
 function fetchStaticTable(table) {
   if (!staticDataPromises[table]) {
-    staticDataPromises[table] = fetch(`data/${table}.json`).then(response => {
+    staticDataPromises[table] = fetch(new URL(`data/${table}.json`, DATA_BASE_URL).href).then(response => {
       if (!response.ok) {
         throw new Error(`Static data ${table} ${response.status}: ${response.statusText}`);
       }
